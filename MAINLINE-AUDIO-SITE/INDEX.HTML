@@ -1,136 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAINLINE AUDIO</title>
-    <!-- Satoshi 500 + 700 (thicker & soft) -->
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    body { background:#0a0a0a; color:#f5f5f5; overflow:hidden; font-family:'Satoshi',sans-serif; }
-    canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none; }
-    .gradient-text {
-    background:linear-gradient(90deg,#ffffff,#b8f8ff,#ffe0ff,#f0e8ff,#ffffff);
-    background-size:400%;
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:flow 18s ease infinite;
-    }
-    .gradient-logo {
-    height: 520px;
-    max-width: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 20px rgba(184, 248, 255, 0.4));
-    opacity: 0.95;
-    }
-    @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    #mute-btn{
-    position:fixed; bottom:32px; right:32px; width:50px; height:50px;
-    background:rgba(255,255,255,0.1); backdrop-filter:blur(12px); border-radius:50%;
-    display:flex; align-items:center; justify-content:center; cursor:pointer;
-    opacity:0; transition:.4s; z-index:50;
-    }
-    #mute-btn.show{opacity:1}
-    </style></head><body class="flex flex-col min-h-screen"><canvas id="snow"></canvas><section class="flex-1 flex flex-col items-center justify-center px-8 py-24 text-center relative z-10"><div><img src="transparent_logo_MA.png" alt="Mainline Audio" class="gradient-logo"></div><p class="text-base opacity-30  — best on headphones</p><a href="https://www.instagram.com/stasys.muzyka/" target="_blank" class="gradient-text hover:opacity-50"</section><audio id="bg-track" preload="auto"></audio><div id="mute-btn">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-    <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-    <path id="waves" d="M15.5 8.5a5.5 5.5 0 010 8M18.5 5.5a9.5 9.5 0 010 13"/>
-    </svg></div><footer class="py-10 text-center text-xs opacity-20 z-10 relative">© 2025 MAINLINE AUDIO</footer><script>// ========== SHUFFLED PLAYLIST ==========
-const playlist = [
-'MUSIC/Drift.m4a',
-'MUSIC/Draped.m4a',
-'MUSIC/Still Waters.m4a',
-'MUSIC/Weightless.m4a',
-'MUSIC/when the mud settles.m4a',
-    // Add more tracks here as you upload them to the /music folder
-];
-// Shuffle the playlist using Fisher-Yates
-function shuffle(arr) {
-    const shuffled = [...arr];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-}
-let shuffledTracks = shuffle(playlist);
-let currentIndex = 0;
-const audio = document.getElementById('bg-track');
-const muteBtn = document.getElementById('mute-btn');
-const waves = document.getElementById('waves');
-audio.volume = 0.65;
-// Load the first random track
-function loadTrack(index) {
-    audio.src = shuffledTracks[index];
-    audio.load();
-}
-// Play next random track
-function nextTrack() {
-    currentIndex++;
-    if (currentIndex >= shuffledTracks.length) {
-        // Re-shuffle when we've played all tracks
-        shuffledTracks = shuffle(playlist);
-        currentIndex = 0;
-    }
-    loadTrack(currentIndex);
-    audio.play();
-}
-// When a track ends, play the next one
-audio.addEventListener('ended', nextTrack);
-// Start playback on first user interaction
-let started = false;
-const start = () => {
-    if (started) return;
-    started = true;
-    loadTrack(currentIndex);
-    audio.play();
-    muteBtn.classList.add('show');
-    document.removeEventListener('click', start);
-    document.removeEventListener('touchstart', start);
-};
-document.addEventListener('click', start);
-document.addEventListener('touchstart', start);
-// Mute button toggle
-muteBtn.onclick = e => {
-    e.stopPropagation();
-    audio.muted = !audio.muted;
-    waves.style.display = audio.muted ? 'none' : 'block';
-};
-// ========== OPTIMIZED SNOW ==========
-const canvas = document.getElementById('snow');
-const c = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-let particles = [];
-for(let i=0; i<220; i++){
-    particles.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height - canvas.height,
-        r: Math.random()*2 + 1,
-        d: Math.random()*1.8 + 1,
-        opacity: Math.random()*0.5 + 0.5
-    })
-}
-function Snow(){
-    c.clearRect(0,0,canvas.width,canvas.height);
-    c.fillStyle = "rgba(230, 255, 255, 0.8)";
-    particles.forEach(p => {
-        c.beginPath();
-        c.arc(p.x, p.y, p.r, 0, Math.PI*2, false);
-        c.fill();
-        p.y += p.d;
-        p.x += Math.sin(p.y * 0.01) * 0.8;
-        if(p.y > canvas.height){
-            p.y = -10;
-            p.x = Math.random()*canvas.width;
-        }
-    });
-    requestAnimationFrame(Snow);
-}
-Snow();
-window.addEventListener('resize',() =>{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});</script></body></html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAINLINE AUDIO</title>
+  <!-- Satoshi 500 + 700 (thicker & soft) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+body { background:#0a0a0a; color:#f5f5f5; overflow:hidden; font-family:'Satoshi',sans-serif; }
+canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none; }
+.gradient-text { background:linear-gradient(90deg,#ffffff,#b8f8ff,#ffe0ff,#f0e8ff,#ffffff); background-size:400%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:flow 18s ease infinite; }
+.gradient-logo { height: 520px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 20px rgba(184, 248, 255, 0.4)); opacity: 0.95; }
+@keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+#mute-btn{ position:fixed; bottom:32px; right:32px; width:50px; height:50px; background:rgba(255,255,255,0.1); backdrop-filter:blur(12px); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; transition:.4s; z-index:50; }
+#mute-btn.show{opacity:1}
+</style>
+</head>
+<body class="flex flex-col min-h-screen">
+<canvas id="snow"></canvas>
+<section class="flex-1 flex flex-col items-center justify-center px-8 py-24 text-center relative z-10">
+<div><img src="transparent_logo_MA.png" alt="Mainline Audio" class="gradient-logo"></div>
+<p class="text-base opacity-30 mt-3">click anywhere — best on headphones</p>
+<a href="https://www.instagram.com/stays.muyzka/" target="_blank" class="gradient-text hover:opacity-50 mt-4">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+<path d="M11 5L6 9H2v6h4l5 4V5z"/>
+<path id="waves" d="M15.5 8.5a5.5 5.5 0 010 8M18.5 5.5a9.5 9.5 0 010 13"/>
+</svg>
+</a>
+</section>
+<footer class="py-10 text-center text-xs opacity-20 z-10 relative">© 2025 MAINLINE AUDIO</footer>
+<audio id="bg-track" preload="auto"></audio>
+<div id="mute-btn">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+<path d="M11 5L6 9H2v6h4l5 4V5z"/>
+<path id="waves" d="M15.5 8.5a5.5 5.5 0 010 8M18.5 5.5a9.5 9.5 0 010 13"/>
+</svg>
+</div>
+<script>// ========== SHUFFLED PLAYLIST ========== const playlist = ['MUSIC/Drift.m4a', 'MUSIC/Draped.m4a', 'MUSIC/Still Waters.m4a', 'MUSIC/Weightless.m4a', 'MUSIC/when the mud settles.m4a', // Add more tracks here as you upload them to the /music folder ]; // Shuffle the playlist using Fisher-Yates function shuffle(arr) { const shuffled = [...arr]; for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; } return shuffled; } let shuffledTracks = shuffle(playlist); let currentIndex = 0; const audio = document.getElementById('bg-track'); const muteBtn = document.getElementById('mute-btn'); const waves = document.getElementById('waves'); audio.volume = 0.65; // Load the first random track function loadTrack(index) { audio.src = shuffledTracks[index]; audio.load(); } // Play next random track function nextTrack() { currentIndex++; if (currentIndex >= shuffledTracks.length) { // Re-shuffle when we've played all tracks shuffledTracks = shuffle(playlist); currentIndex = 0; } loadTrack(currentIndex); audio.play(); } // When a track ends, play the next one audio.addEventListener('ended', nextTrack); // Start playback on first user interaction let started = false; const start = () => { if (started) return; started = true; loadTrack(currentIndex); audio.play(); muteBtn.classList.add('show'); document.removeEventListener('click', start); document.removeEventListener('touchstart', start); }; document.addEventListener('click', start); document.addEventListener('touchstart', start); // Mute button toggle muteBtn.onclick = e => { e.stopPropagation(); audio.muted = !audio.muted; waves.style.display = audio.muted ? 'none' : 'block'; }; // ========== OPTIMIZED SNOW ========== const canvas = document.getElementById('snow'); const c = canvas.getContext('2d'); canvas.width = window.innerWidth; canvas.height = window.innerHeight; let particles = []; for(let i=0; i<220; i++){ particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height - canvas.height, r: Math.random()*2 + 1, d: Math.random()*1.8 + 1, opacity: Math.random()*0.5 + 0.5 }) } function Snow(){ c.clearRect(0,0,canvas.width,canvas.height); c.fillStyle = "rgba(230, 255, 255, 0.8)"; particles.forEach(p => { c.beginPath(); c.arc(p.x, p.y, p.r, 0, Math.PI*2, false); c.fill(); p.y += p.d; p.x += Math.sin(p.y * 0.01) * 0.8; if(p.y > canvas.height){ p.y = -10; p.x = Math.random()*canvas.width; } }); requestAnimationFrame(Snow); } Snow(); window.addEventListener('resize',() =>{ canvas.width = window.innerWidth; canvas.height = window.innerHeight; });</script>
+</body>
+</html>
