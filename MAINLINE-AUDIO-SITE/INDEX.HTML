@@ -21,6 +21,15 @@
       -webkit-text-fill-color:transparent;
       animation:flow 18s ease infinite;
     }
+
+.gradient-logo {
+  height: 420px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(184, 248, 255, 0.4));
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
     @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
     #mute-btn{
@@ -38,8 +47,7 @@
 
 <section class="flex-1 flex items-center justify-center px-8 py-24 text-center relative z-10">
   <div>
-<img src="MainlinAudio_Transparent_Logo.svg" alt="Mainline Audio" style="height:420px; max-width:100%; object-fit:contain; filter:drop-shadow(0 0 20px rgba(184,248,255,0.4)); mix-blend-mode:screen; opacity:0.95;">    <div class="flex flex-wrap justify-center gap-10 text-lg md:text-xl opacity-75">
-      <a href="https://www.instagram.com/stasys.muzyka/" target="_blank" class="gradient-text hover:opacity-50">Instagram</a>
+<img src="MainlinAudio_Transparent_Logo.svg" alt="Mainline Audio" class="gradient-logo">      <a href="https://www.instagram.com/stasys.muzyka/" target="_blank" class="gradient-text hover:opacity-50">Instagram</a>
       <a href="https://soundcloud.com/stasysmuzyka" target="_blank" class="gradient-text hover:opacity-50">SoundCloud</a>
       <a href="https://youtube.com/@stasys.muzyka" target="_blank" class="gradient-text hover:opacity-50">YouTube</a>
     </div>
