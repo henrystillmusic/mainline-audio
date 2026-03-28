@@ -81,6 +81,7 @@ function nextTrack() {
 }
 // When a track ends, play the next one
 audio.addEventListener('ended', nextTrack);
+audio.addEventListener('error', nextTrack);
 // Start playback on first user interaction
 let started = false;
 const start = () => {
