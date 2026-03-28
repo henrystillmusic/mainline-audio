@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Mastering Is the Final Step Most Artists Undervalue — Henry Still / Mainline Audio</title>
+  <meta name="description" content="Mastering is often misunderstood and overlooked. Henry Still of Mainline Audio explains what mastering actually does — and why it matters for every release.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --bg3: #161616;
+      --text: #f0ede8;
+      --text-muted: #c8c4be;
+      --text-dim: #888880;
+      --text-ghost: #444440;
+      --rule: #1e1e1e;
+      --rule-mid: #2a2a2a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 56px;
+      border-bottom: 0.5px solid var(--rule);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 26px;
+      width: auto;
+      opacity: 0.9;
+    }
+    .nav-logo-text {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--text-muted); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 560px;
+      overflow: hidden;
+    }
+
+    /*
+    ════════════════════════════════════════════════
+    HERO IMAGE — STUDIO / MASTERING SETUP
+    ────────────────────────────────────────────────
+    Good Pixabay search terms:
+      "studio monitors speakers"
+      "audio mixing console studio"
+      "mastering studio equipment"
+      "headphones music production"
+
+    1. Download your image and name it: hero-studio.jpg
+    2. Delete the <div class="hero-placeholder"> block
+    3. Uncomment the <img> line below
+    ════════════════════════════════════════════════
+    */
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+      filter: brightness(0.4) saturate(0.3);
+    }
+    .hero-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--bg3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .hero-placeholder svg { opacity: 0.1; }
+    .hero-placeholder p {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 2;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 15%,
+        rgba(10,10,10,0.3) 50%,
+        rgba(10,10,10,0.97) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 56px 64px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .hero-tag {
+      font-size: 8px;
+      letter-spacing: 0.26em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 0.5px solid var(--text-ghost);
+    }
+    .hero-kicker {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.08;
+      color: var(--text);
+      max-width: 760px;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+    .hero-byline {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+    .hero-byline span {
+      color: var(--text-ghost);
+      margin: 0 10px;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      padding: 0 56px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── ARTICLE INTRO ── */
+    .article-intro {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+      padding: 72px 0 64px;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .intro-label {
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      padding-top: 6px;
+      line-height: 2.2;
+    }
+    .intro-lede {
+      font-family: var(--serif);
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+    .intro-lede strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* ── SECTION DIVIDERS ── */
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 64px 0 52px;
+    }
+    .rule-line { flex: 1; height: 0.5px; background: var(--rule); }
+    .rule-label {
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── BODY TYPE ── */
+    .section-kicker {
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.6vw, 32px);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .body-p {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text-muted);
+      letter-spacing: 0.01em;
+      margin-bottom: 18px;
+    }
+    .body-p:last-child { margin-bottom: 0; }
+    .body-p strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* ── IMAGE BLOCKS ── */
+    .img-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: var(--bg3);
+      border: 0.5px solid var(--rule);
+      position: relative;
+    }
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: brightness(0.72) saturate(0.22);
+      transition: filter 0.5s ease;
+    }
+    .img-wrap:hover img { filter: brightness(0.88) saturate(0.4); }
+    .img-wrap.tall   { height: 440px; }
+    .img-wrap.medium { height: 320px; }
+    .img-wrap.wide   { height: 260px; margin-bottom: 64px; }
+
+    .img-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .img-placeholder svg { opacity: 0.1; margin-bottom: 4px; }
+    .slot-name {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+    }
+    .slot-search {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: #282828;
+      font-family: monospace;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* ── LAYOUTS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 64px;
+      align-items: center;
+    }
+    .body-col { display: flex; flex-direction: column; justify-content: center; }
+
+    .two-col-text {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 64px;
+    }
+
+    /* ── PULL QUOTES ── */
+    .pull-quote {
+      border-top: 1px solid var(--text);
+      border-bottom: 0.5px solid var(--rule-mid);
+      padding: 36px 0 32px;
+      margin: 64px 0;
+    }
+    .pull-quote-text {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── WIDE IMAGE CAPTION ── */
+    .img-caption {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      margin-top: 12px;
+      margin-bottom: 64px;
+    }
+
+    /* ── CLOSING / CTA ── */
+    .closing-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 64px;
+      padding: 64px 0;
+      border-top: 0.5px solid var(--rule);
+      border-bottom: 0.5px solid var(--rule);
+      margin-bottom: 52px;
+      align-items: start;
+    }
+    .cta-block {
+      border-top: 1px solid var(--text-ghost);
+      padding-top: 24px;
+    }
+    .cta-label {
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cta-text {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .cta-link {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--text-ghost);
+      padding-bottom: 3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cta-link:hover { color: var(--text); border-color: var(--text); }
+
+    /* ── BYLINE ── */
+    .byline {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 0 0 72px;
+    }
+    .byline-name {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+    .byline-sub {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      margin-top: 10px;
+      line-height: 2;
+    }
+    .byline-right {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      text-align: right;
+      line-height: 2.2;
+    }
+
+    /* ── RELATED ── */
+    .related {
+      border-top: 0.5px solid var(--rule);
+      padding: 48px 0 72px;
+    }
+    .related-label {
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .related-card {
+      border-top: 0.5px solid var(--rule-mid);
+      padding-top: 20px;
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .related-card:hover { opacity: 0.7; }
+    .related-card-tag {
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .related-card-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--rule);
+      padding: 28px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer span {
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+    }
+    footer a {
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--text-dim); }
+
+    /* ── SCROLL FADE ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 28px; }
+      .hero-overlay { padding: 0 28px 44px; }
+      .content { padding: 0 28px; }
+      .article-intro,
+      .two-col,
+      .two-col-text,
+      .closing-row,
+      .related-grid { grid-template-columns: 1fr; gap: 36px; }
+      .img-wrap.tall   { height: 280px; }
+      .img-wrap.medium { height: 220px; }
+      .byline { flex-direction: column; gap: 20px; align-items: flex-start; }
+      footer { flex-direction: column; gap: 10px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      nav { padding: 18px 20px; }
+      .nav-links { gap: 16px; }
+      .hero-overlay { padding: 0 20px 36px; }
+      .content { padding: 0 20px; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/INDEX.HTML" class="nav-logo">
+      <img src="https://mainline-audio.com/MAINLINE-AUDIO-SITE/transparent_logo_MA.png" alt="Mainline Audio">
+      <span class="nav-logo-text">Mainline Audio</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/INDEX.HTML">Home</a></li>
+      <li><a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mastering.html">Mastering</a></li>
+      <li><a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/writing/">Writing</a></li>
+      <li><a href="https://www.instagram.com/stasys.muzyka/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════
+       HERO IMAGE — STUDIO / MASTERING SETUP
+       ────────────────────────────────────────────────
+       Good Pixabay searches:
+         "studio monitors speakers dark"
+         "audio mixing console studio"
+         "music production studio desk"
+
+       1. Name your file: hero-studio.jpg
+       2. Delete the hero-placeholder div below
+       3. Uncomment the <img> line
+  ════════════════════════════════════════════════ -->
+  <section class="hero">
+
+    <!-- DELETE THIS BLOCK WHEN YOUR IMAGE IS READY -->
+    <div class="hero-placeholder">
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <rect x="4" y="18" width="48" height="8" rx="2" stroke="#f0ede8" stroke-width="1.5"/>
+        <rect x="4" y="30" width="48" height="8" rx="2" stroke="#f0ede8" stroke-width="1.5"/>
+        <circle cx="12" cy="22" r="2" fill="#f0ede8" opacity="0.4"/>
+        <circle cx="12" cy="34" r="2" fill="#f0ede8" opacity="0.4"/>
+        <rect x="20" y="20" width="24" height="4" rx="1" fill="#f0ede8" opacity="0.15"/>
+        <rect x="20" y="32" width="16" height="4" rx="1" fill="#f0ede8" opacity="0.15"/>
+      </svg>
+      <p>Hero image — studio monitors / mastering setup<br>
+        <span style="font-size:8px;color:#252525;">
+          Pixabay: "studio monitors dark" · Upload as: hero-studio.jpg
+        </span>
+      </p>
+    </div>
+    <!-- END PLACEHOLDER -->
+
+    <!-- UNCOMMENT WHEN READY: -->
+    <!-- <img class="hero-img" src="hero-studio.jpg" alt="Mastering studio setup"> -->
+
+    <div class="hero-overlay">
+      <div class="hero-eyebrow">
+        <span class="hero-tag">Guest Column</span>
+        <span class="hero-kicker">Mastering &nbsp;·&nbsp; Mainline Audio</span>
+      </div>
+      <h1 class="hero-headline">Why Mastering Is the Final Step<br>Most Artists Undervalue</h1>
+      <p class="hero-byline">
+        By Henry Still
+        <span>·</span>
+        Mainline Audio
+        <span>·</span>
+        2025
+      </p>
+    </div>
+  </section>
+
+
+  <!-- MAIN -->
+  <main class="content">
+
+    <!-- LEDE -->
+    <div class="article-intro fade-in">
+      <div class="intro-label">
+        On mastering<br>
+        &amp; the final step
+      </div>
+      <p class="intro-lede">
+        In today's music landscape, it's easier than ever to create and release a track. But one area I consistently see misunderstood — and often overlooked — is mastering. <strong>Its job isn't to be noticed. It's to make sure nothing gets in the way of the experience.</strong>
+      </p>
+    </div>
+
+
+    <!-- SECTION 1 — THE PROBLEM -->
+    <div class="section-rule fade-in">
+      <div class="rule-line"></div>
+      <span class="rule-label">The misconception</span>
+      <div class="rule-line"></div>
+    </div>
+
+    <div class="two-col fade-in">
+      <div class="body-col">
+        <p class="section-kicker">How mastering gets misread</p>
+        <h2 class="section-title">A final luxury — or a necessary step?</h2>
+        <p class="body-p">Within the production community, mastering is often seen as highly technical — elusive, even mysterious, and sometimes viewed as almost mystical or magical. While there's truth to that, it can also make it feel like a final luxury rather than a necessary step.</p>
+        <p class="body-p">Outside of that world, most listeners aren't thinking about mastering at all. In most cases, they're not even thinking about the mix. <strong>They care about the artist and how the record feels when it plays.</strong></p>
+        <p class="body-p">That's exactly why mastering matters.</p>
+      </div>
+
+      <!-- ════════════════════════════════════════════════
+           IMAGE SLOT 1 — Headphones or listening setup
+           ────────────────────────────────────────────────
+           Pixabay search: "headphones music dark"
+                        or "studio headphones desk"
+           1. Name file: headphones.jpg
+           2. Delete .img-placeholder div
+           3. Replace with: <img src="headphones.jpg" alt="Studio headphones">
+      ════════════════════════════════════════════════ -->
+      <div class="img-wrap tall">
+        <div class="img-placeholder">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <path d="M8 22 C8 13 14 7 22 7 C30 7 36 13 36 22" stroke="#f0ede8" stroke-width="1.5" fill="none"/>
+            <rect x="4" y="20" width="8" height="12" rx="2" stroke="#f0ede8" stroke-width="1.2"/>
+            <rect x="32" y="20" width="8" height="12" rx="2" stroke="#f0ede8" stroke-width="1.2"/>
+          </svg>
+          <span class="slot-name">Image 1 — headphones / listening</span>
+          <span class="slot-search">
+            Pixabay: "headphones music dark"<br>
+            Upload as: headphones.jpg
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PULL QUOTE 1 -->
+    <div class="pull-quote fade-in">
+      <p class="pull-quote-text">Its job isn't to be noticed — it's to make sure<br>nothing gets in the way of the experience.</p>
+    </div>
+
+
+    <!-- SECTION 2 — TRANSLATION -->
+    <div class="section-rule fade-in">
+      <div class="rule-line"></div>
+      <span class="rule-label">What mastering actually does</span>
+      <div class="rule-line"></div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════
+         IMAGE SLOT 2 — Waveform / DAW / spectrum analyzer
+         ────────────────────────────────────────────────
+         Pixabay search: "audio waveform music"
+                      or "equalizer music dark"
+         1. Name file: waveform.jpg
+         2. Delete .img-placeholder div
+         3. Replace with: <img src="waveform.jpg" alt="Audio waveform">
+    ════════════════════════════════════════════════ -->
+    <div class="img-wrap wide">
+      <div class="img-placeholder">
+        <svg width="48" height="32" viewBox="0 0 48 32" fill="none">
+          <line x1="2" y1="16" x2="6" y2="16" stroke="#f0ede8" stroke-width="1"/>
+          <line x1="6" y1="10" x2="6" y2="22" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="10" y1="8" x2="10" y2="24" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="14" y1="4" x2="14" y2="28" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="18" y1="10" x2="18" y2="22" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="22" y1="6" x2="22" y2="26" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="26" y1="2" x2="26" y2="30" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="30" y1="8" x2="30" y2="24" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="34" y1="12" x2="34" y2="20" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="38" y1="10" x2="38" y2="22" stroke="#f0ede8" stroke-width="1.5"/>
+          <line x1="42" y1="14" x2="42" y2="18" stroke="#f0ede8" stroke-width="1"/>
+          <line x1="46" y1="16" x2="46" y2="16" stroke="#f0ede8" stroke-width="1"/>
+        </svg>
+        <span class="slot-name">Image 2 — waveform / DAW / spectrum</span>
+        <span class="slot-search">
+          Pixabay: "audio waveform music dark"<br>
+          Upload as: waveform.jpg
+        </span>
+      </div>
+    </div>
+
+    <div class="two-col-text fade-in">
+      <div class="body-col">
+        <p class="section-kicker">Translation</p>
+        <h2 class="section-title">The record has to hold up everywhere</h2>
+        <p class="body-p">Mastering is about translation. A track might sound great in the room it was created in, but that doesn't guarantee it will hold up across streaming platforms, cars, headphones, or club systems.</p>
+        <p class="body-p">It ensures consistency, balance, and clarity — and while it can enhance and refine, <strong>it's not a replacement for a strong mix.</strong></p>
+      </div>
+      <div class="body-col">
+        <p class="section-kicker">Alignment</p>
+        <h2 class="section-title">Built on something solid</h2>
+        <p class="body-p">The best results come from alignment — when artists, producers, and engineers are all working toward the same vision.</p>
+        <p class="body-p">That translation only works when the record is already built on something solid. Mastering reveals what's there. It doesn't manufacture what isn't.</p>
+      </div>
+    </div>
+
+
+    <!-- SECTION 3 — PHILOSOPHY -->
+    <div class="section-rule fade-in">
+      <div class="rule-line"></div>
+      <span class="rule-label">The philosophy</span>
+      <div class="rule-line"></div>
+    </div>
+
+    <div class="two-col fade-in">
+
+      <!-- ════════════════════════════════════════════════
+           IMAGE SLOT 3 — Studio monitors or speakers
+           ────────────────────────────────────────────────
+           Pixabay search: "studio monitors speakers black"
+                        or "bookshelf speakers dark room"
+           1. Name file: monitors.jpg
+           2. Delete .img-placeholder div
+           3. Replace with: <img src="monitors.jpg" alt="Studio monitors">
+      ════════════════════════════════════════════════ -->
+      <div class="img-wrap tall">
+        <div class="img-placeholder">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <rect x="6" y="4" width="14" height="36" rx="2" stroke="#f0ede8" stroke-width="1.5"/>
+            <rect x="24" y="4" width="14" height="36" rx="2" stroke="#f0ede8" stroke-width="1.5"/>
+            <circle cx="13" cy="16" r="4" stroke="#f0ede8" stroke-width="1"/>
+            <circle cx="31" cy="16" r="4" stroke="#f0ede8" stroke-width="1"/>
+            <circle cx="13" cy="30" r="2.5" stroke="#f0ede8" stroke-width="1"/>
+            <circle cx="31" cy="30" r="2.5" stroke="#f0ede8" stroke-width="1"/>
+          </svg>
+          <span class="slot-name">Image 3 — studio monitors / speakers</span>
+          <span class="slot-search">
+            Pixabay: "studio monitors speakers dark"<br>
+            Upload as: monitors.jpg
+          </span>
+        </div>
+      </div>
+
+      <div class="body-col">
+        <p class="section-kicker">Preserving the vision</p>
+        <h2 class="section-title">When it's done right, no one talks about it</h2>
+        <p class="body-p">What I've learned is that mastering isn't about adding something new — it's about preserving what's already there and making sure it reaches the listener intact.</p>
+        <p class="body-p">When it's done right, no one talks about it. They just feel the music the way it was intended.</p>
+        <p class="body-p">That's the standard I work to at every session. Not to be heard — but to make sure the record is.</p>
+      </div>
+    </div>
+
+
+    <!-- PULL QUOTE 2 — THE CLOSER -->
+    <div class="pull-quote fade-in">
+      <p class="pull-quote-text">They just feel the music<br>the way it was intended.</p>
+    </div>
+
+
+    <!-- CLOSING + CTA -->
+    <div class="closing-row fade-in">
+      <div class="body-col">
+        <p class="section-kicker">About the author</p>
+        <p class="body-p" style="margin-top:18px;">Henry Still is an audio producer and mastering engineer based out of Mainline Audio. He works with independent artists and producers across electronic, hip-hop, and experimental music — focused on release-ready masters for streaming and club playback.</p>
+      </div>
+      <div class="cta-block">
+        <p class="cta-label">Work with Mainline Audio</p>
+        <p class="cta-text">Release-ready masters for streaming and club playback.</p>
+        <a class="cta-link" href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mastering.html">
+          Mastering inquiries &rarr;
+        </a>
+      </div>
+    </div>
+
+
+    <!-- BYLINE -->
+    <div class="byline fade-in">
+      <div>
+        <div class="byline-name">Henry Still</div>
+        <div class="byline-sub">
+          Mainline Audio &nbsp;·&nbsp; 2025<br>
+          <a href="mailto:henrystill@me.com" style="color:var(--text-ghost);text-decoration:none;letter-spacing:0.18em;">henrystill@me.com</a>
+        </div>
+      </div>
+      <div class="byline-right">
+        Guest Column<br>
+        Audio Mastering
+      </div>
+    </div>
+
+
+    <!-- RELATED -->
+    <div class="related fade-in">
+      <p class="related-label">Also from Henry Still</p>
+      <div class="related-grid">
+        <a class="related-card" href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/writing/">
+          <p class="related-card-tag">Portfolio Reflection</p>
+          <p class="related-card-title">Developing Clarity, Voice, and Purpose in Professional Writing</p>
+        </a>
+        <a class="related-card" href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mastering.html">
+          <p class="related-card-tag">Services</p>
+          <p class="related-card-title">Mainline Mastering — Release-ready masters for streaming and club playback</p>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Mainline Audio</span>
+    <div style="display:flex;gap:28px;">
+      <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/INDEX.HTML">Home</a>
+      <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mastering.html">Mastering</a>
+      <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/writing/">Writing</a>
+      <a href="https://www.instagram.com/stasys.muzyka/" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:henrystill@me.com">henrystill@me.com</a>
+    </div>
+  </footer>
+
+
+  <!-- SCROLL ANIMATION -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
