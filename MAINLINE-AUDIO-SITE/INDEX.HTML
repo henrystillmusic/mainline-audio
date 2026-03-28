@@ -80,7 +80,20 @@ function nextTrack() {
     audio.play();
 }
 // When a track ends, play the next one
-audio.addEventListener('ended', nextTrack);
+function fadeOutAndNext() {
+    const fadeInterval = setInterval(() => {
+        if (audio.volume > 0.05) {
+            audio.volume -= 0.05;
+        } else {
+            clearInterval(fadeInterval);
+            audio.volume = 0.65;
+            nextTrack();
+        }
+    }, 80);
+}
+
+audio.addEventListener('ended', fadeOutAndNext);
+audio.addEventListener('error', nextTrack);
 audio.addEventListener('error', nextTrack);
 // Start playback on first user interaction
 let started = false;
