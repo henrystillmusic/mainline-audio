@@ -88,7 +88,20 @@ function nextTrack() {
     loadTrack(currentIndex);
     audio.play();
 }
-audio.addEventListener('ended', nextTrack);
+function fadeOutAndNext() {
+    const fadeInterval = setInterval(() => {
+        if (audio.volume > 0.05) {
+            audio.volume -= 0.05;
+        } else {
+            clearInterval(fadeInterval);
+            audio.volume = 0.65;
+            nextTrack();
+        }
+    }, 80);
+}
+
+audio.addEventListener('ended', fadeOutAndNext);
+audio.addEventListener('error', nextTrack);
 let started = false;
 const start = () => {
     if (started) return;
