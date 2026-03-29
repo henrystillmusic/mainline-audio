@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Writing — Henry Still / Mainline Audio</title>
-  <meta name="description" content="Writing by Henry Still — audio producer and mastering engineer at Mainline Audio.">
+  <title>Developing Clarity, Voice, and Purpose — Henry Still</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,6 +12,8 @@
 
     :root {
       --bg: #0a0a0a;
+      --bg2: #111111;
+      --bg3: #161616;
       --text: #f0ede8;
       --text-muted: #c8c4be;
       --text-dim: #888880;
@@ -31,12 +32,9 @@
       font-family: var(--sans);
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      overflow-x: hidden;
     }
 
-    /* ── NAV ── */
     nav {
       display: flex;
       justify-content: space-between;
@@ -51,23 +49,13 @@
       z-index: 100;
     }
     .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
-    .nav-logo img {
-      height: 26px;
-      width: auto;
-      opacity: 0.9;
-    }
-    .nav-logo-text {
       font-family: var(--sans);
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.22em;
       color: var(--text);
       text-transform: uppercase;
+      text-decoration: none;
     }
     .nav-links {
       display: flex;
@@ -84,139 +72,221 @@
       transition: color 0.25s;
     }
     .nav-links a:hover { color: var(--text-muted); }
-    .nav-links a.active { color: var(--text-dim); }
 
-    /* ── MAIN ── */
-    main {
-      flex: 1;
+    .hero {
+      position: relative;
+      height: 88vh;
+      min-height: 520px;
+      overflow: hidden;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+      filter: brightness(0.45) saturate(0.35);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 20%,
+        rgba(10,10,10,0.4) 55%,
+        rgba(10,10,10,0.97) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 56px 60px;
+    }
+    .hero-kicker {
+      font-size: 9px;
+      letter-spacing: 0.26em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 300;
+      line-height: 1.06;
+      color: var(--text);
+      max-width: 700px;
+      letter-spacing: -0.01em;
+    }
+
+    .content {
       padding: 0 56px;
       max-width: 1200px;
       margin: 0 auto;
-      width: 100%;
     }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 80px 0 64px;
+    .intro-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      padding: 72px 0 60px;
       border-bottom: 0.5px solid var(--rule);
-      margin-bottom: 0;
     }
-    .page-eyebrow {
+    .intro-subhead {
+      font-family: var(--serif);
+      font-size: 23px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+    .intro-body {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--text-muted);
+      letter-spacing: 0.01em;
+    }
+
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 56px 0 48px;
+    }
+    .rule-line { flex: 1; height: 0.5px; background: var(--rule); }
+    .rule-label {
       font-size: 8px;
       letter-spacing: 0.3em;
       color: var(--text-ghost);
       text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .page-title {
-      font-family: var(--serif);
-      font-size: clamp(36px, 5vw, 60px);
-      font-weight: 300;
-      color: var(--text);
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      margin-bottom: 20px;
-    }
-    .page-sub {
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--text-ghost);
-      letter-spacing: 0.08em;
-      max-width: 480px;
-      line-height: 1.9;
+      white-space: nowrap;
     }
 
-    /* ── ARTICLE CARDS ── */
-    .articles {
-      padding: 0 0 80px;
-    }
-
-    .article-card {
-      display: grid;
-      grid-template-columns: 80px 1fr 120px;
-      gap: 40px;
-      align-items: start;
-      padding: 48px 0;
-      border-bottom: 0.5px solid var(--rule);
-      text-decoration: none;
-      transition: opacity 0.25s;
-    }
-    .article-card:first-child {
-      border-top: 0.5px solid var(--rule);
-      margin-top: 0;
-    }
-    .article-card:hover { opacity: 0.65; }
-
-    .card-number {
-      font-family: var(--serif);
-      font-size: 48px;
-      font-weight: 300;
-      color: var(--rule-mid);
-      line-height: 1;
-      padding-top: 4px;
-      letter-spacing: -0.02em;
-    }
-
-    .card-body { display: flex; flex-direction: column; gap: 0; }
-
-    .card-tag {
+    .section-kicker {
       font-size: 8px;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.28em;
       color: var(--text-ghost);
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 20px;
     }
-    .card-title {
+    .section-title {
       font-family: var(--serif);
-      font-size: clamp(22px, 2.4vw, 28px);
+      font-size: clamp(24px, 2.8vw, 34px);
       font-weight: 300;
       color: var(--text);
       line-height: 1.2;
+      margin-bottom: 26px;
       letter-spacing: -0.01em;
+    }
+    .body-p {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--text-muted);
+      letter-spacing: 0.01em;
       margin-bottom: 16px;
     }
-    .card-excerpt {
-      font-size: 12px;
+    .body-p:last-child { margin-bottom: 0; }
+
+    .img-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: var(--bg3);
+      border: 0.5px solid var(--rule);
+      position: relative;
+    }
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: brightness(0.75) saturate(0.25);
+      transition: filter 0.5s ease;
+    }
+    .img-wrap:hover img { filter: brightness(0.9) saturate(0.45); }
+    .img-wrap.tall { height: 400px; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 64px;
+      align-items: center;
+    }
+    .body-col { display: flex; flex-direction: column; justify-content: center; }
+
+    .pull-quote {
+      border-top: 1px solid var(--text);
+      border-bottom: 0.5px solid var(--rule-mid);
+      padding: 36px 0 30px;
+      margin: 64px 0;
+    }
+    .pull-quote-text {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.2vw, 40px);
       font-weight: 300;
-      line-height: 1.9;
-      color: var(--text-ghost);
-      letter-spacing: 0.01em;
-      max-width: 560px;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
     }
 
-    .card-meta {
-      text-align: right;
-      padding-top: 6px;
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 72px;
     }
-    .card-meta-label {
-      font-size: 8px;
+    .third { border-top: 0.5px solid var(--rule-mid); padding-top: 26px; }
+
+    .tag-strip {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 48px 0;
+      border-top: 0.5px solid var(--rule);
+      border-bottom: 0.5px solid var(--rule);
+      margin-bottom: 52px;
+    }
+    .tag {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--text-ghost);
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border: 0.5px solid var(--rule-mid);
+    }
+
+    .byline {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 0 0 72px;
+    }
+    .byline-name {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+    .byline-sub {
+      font-size: 9px;
       letter-spacing: 0.18em;
       color: var(--text-ghost);
       text-transform: uppercase;
-      line-height: 2.2;
-      display: block;
+      margin-top: 10px;
     }
-    .card-arrow {
-      font-size: 18px;
+    .byline-right {
+      font-size: 9px;
+      letter-spacing: 0.14em;
       color: var(--text-ghost);
-      display: block;
-      margin-top: 16px;
-      transition: transform 0.2s, color 0.2s;
-    }
-    .article-card:hover .card-arrow {
-      transform: translateX(4px);
-      color: var(--text-dim);
+      text-transform: uppercase;
+      text-align: right;
+      line-height: 2;
     }
 
-    /* ── FADE IN ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── FOOTER ── */
     footer {
       border-top: 0.5px solid var(--rule);
       padding: 28px 56px;
@@ -240,91 +310,147 @@
     }
     footer a:hover { color: var(--text-dim); }
 
-    /* ── RESPONSIVE ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
     @media (max-width: 900px) {
       nav { padding: 20px 28px; }
-      main { padding: 0 28px; }
-      .page-header { padding: 56px 0 48px; }
-      .article-card {
-        grid-template-columns: 48px 1fr;
-        gap: 24px;
-      }
-      .card-meta { display: none; }
+      .hero-overlay { padding: 0 28px 44px; }
+      .content { padding: 0 28px; }
+      .intro-row, .two-col, .three-col { grid-template-columns: 1fr; gap: 36px; }
+      .img-wrap.tall { height: 280px; }
+      .byline { flex-direction: column; gap: 20px; align-items: flex-start; }
       footer { flex-direction: column; gap: 10px; text-align: center; }
     }
     @media (max-width: 480px) {
       nav { padding: 18px 20px; }
       .nav-links { gap: 16px; }
-      main { padding: 0 20px; }
+      .hero-overlay { padding: 0 20px 36px; }
+      .content { padding: 0 20px; }
       footer { padding: 24px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/INDEX.HTML" class="nav-logo">
-      <img src="https://mainline-audio.com/MAINLINE-AUDIO-SITE/transparent_logo_MA.png" alt="Mainline Audio">
-      <span class="nav-logo-text">Mainline Audio</span>
-    </a>
+    <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/INDEX.HTML" class="nav-logo">Henry Still</a>
     <ul class="nav-links">
       <li><a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/INDEX.HTML">Home</a></li>
       <li><a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mastering.html">Mastering</a></li>
-      <li><a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/writing/" class="active">Writing</a></li>
+      <li><a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/writing/">Writing</a></li>
       <li><a href="https://www.instagram.com/stasys.muzyka/" target="_blank" rel="noopener">Instagram</a></li>
     </ul>
   </nav>
 
-  <main>
+  <section class="hero">
+    <!-- Image path goes up one level (../) to reach the writing/ folder where your image lives -->
+    <img class="hero-img" src="../hero-workspace.jpg" alt="Laptop and notepad on a desk">
+    <div class="hero-overlay">
+      <p class="hero-kicker">Portfolio Reflection &nbsp;·&nbsp; Professional Writing</p>
+      <h1 class="hero-headline">Developing Clarity,<br>Voice, and Purpose</h1>
+    </div>
+  </section>
 
-    <!-- PAGE HEADER -->
-    <div class="page-header fade-in">
-      <p class="page-eyebrow">Henry Still &nbsp;·&nbsp; Mainline Audio</p>
-      <h1 class="page-title">Writing</h1>
-      <p class="page-sub">Essays and reflections on audio, craft, and the thinking behind the work.</p>
+  <main class="content">
+
+    <div class="intro-row fade-in">
+      <p class="intro-subhead">On finding the link between how you think and how you present yourself.</p>
+      <p class="intro-body">Professional writing changed for me when I stopped treating it like an academic requirement and started seeing it as a career tool. What began as coursework became something practical — a direct link between how I think and how I present myself.</p>
     </div>
 
-    <!-- ARTICLE CARDS -->
-    <div class="articles">
+    <div class="section-rule fade-in">
+      <div class="rule-line"></div>
+      <span class="rule-label">The assignments</span>
+      <div class="rule-line"></div>
+    </div>
 
-      <!-- CARD 1 — Mastering Article -->
-      <a class="article-card fade-in" href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mastering-article/">
-        <div class="card-number">01</div>
-        <div class="card-body">
-          <p class="card-tag">Guest Column &nbsp;·&nbsp; Audio Mastering</p>
-          <h2 class="card-title">Why Mastering Is the Final Step Most Artists Undervalue</h2>
-          <p class="card-excerpt">Mastering is often misunderstood — elusive, technical, sometimes mystical. But its job is simpler than that. It's to make sure nothing gets in the way of how the record feels when it plays.</p>
-        </div>
-        <div class="card-meta">
-          <span class="card-meta-label">2025</span>
-          <span class="card-meta-label">Mainline Audio</span>
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
+    <div class="two-col fade-in">
+      <div class="body-col">
+        <p class="section-kicker">Coursework</p>
+        <h2 class="section-title">Two assignments that changed everything</h2>
+        <p class="body-p">The complaint letter response forced me to answer criticism without reacting — staying calm, clear, and solution-focused. That's real client work.</p>
+        <p class="body-p">The guest author blog post pushed a different skill: writing with authority while still sounding natural. Informative without being stiff.</p>
+        <p class="body-p">In audio production and mastering, communication is everything. At Mainline Audio, the way I write shapes how I'm perceived before anyone hears the work. Strong communication builds trust.</p>
+      </div>
+      <!-- Image path uses ../ to go up one level to writing/ folder -->
+      <div class="img-wrap tall">
+        <img src="../notepad-desk.jpg" alt="Notepad on desk">
+      </div>
+    </div>
 
-      <!-- CARD 2 — Writing Reflection -->
-      <a class="article-card fade-in" href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/writing/reflection/">
-        <div class="card-number">02</div>
-        <div class="card-body">
-          <p class="card-tag">Portfolio Reflection &nbsp;·&nbsp; Professional Writing</p>
-          <h2 class="card-title">Developing Clarity, Voice, and Purpose in Professional Writing</h2>
-          <p class="card-excerpt">Professional writing changed when I stopped treating it like an academic requirement and started seeing it as a career tool — a direct link between how I think and how I present myself.</p>
-        </div>
-        <div class="card-meta">
-          <span class="card-meta-label">2025</span>
-          <span class="card-meta-label">Portfolio</span>
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
+    <div class="pull-quote fade-in">
+      <p class="pull-quote-text">Technical ability gets you in the room —<br>communication keeps you there.</p>
+    </div>
 
+    <div class="section-rule fade-in">
+      <div class="rule-line"></div>
+      <span class="rule-label">On AI &amp; workflow</span>
+      <div class="rule-line"></div>
+    </div>
+
+    <div class="two-col fade-in">
+      <div class="img-wrap tall">
+        <img src="../neural-ai.jpg" alt="Neural network visualization">
+      </div>
+      <div class="body-col">
+        <p class="section-kicker">Artificial intelligence</p>
+        <h2 class="section-title">A tool, not a shortcut</h2>
+        <p class="body-p">AI didn't replace my voice — it refined it. It helped me catch tone, tighten structure, and hear what I was actually saying.</p>
+        <p class="body-p">Used intentionally, it becomes part of the workflow — not a shortcut, but a daily sounding board for business ideas and creative decisions across everything Mainline Audio involves.</p>
+      </div>
+    </div>
+
+    <div class="section-rule fade-in">
+      <div class="rule-line"></div>
+      <span class="rule-label">On intentionality</span>
+      <div class="rule-line"></div>
+    </div>
+
+    <div class="three-col fade-in">
+      <div class="third">
+        <p class="section-kicker">Mindset</p>
+        <p class="body-p" style="margin-top:18px;">The biggest shift was thinking about audience, tone, and purpose before writing — not as a checklist, but as a mindset.</p>
+      </div>
+      <div class="third">
+        <p class="section-kicker">Weakness</p>
+        <p class="body-p" style="margin-top:18px;">My biggest weakness is overwriting. Saying too much weakens the message. The goal now is simple: say more with less.</p>
+      </div>
+      <div class="third">
+        <p class="section-kicker">The standard</p>
+        <p class="body-p" style="margin-top:18px;">Professional writing isn't about sounding professional. It's about being clear, deliberate, and effective — in every email, every proposal, every interaction.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote fade-in">
+      <p class="pull-quote-text">Say more with less.</p>
+    </div>
+
+    <div class="tag-strip fade-in">
+      <span class="tag">Clarity</span>
+      <span class="tag">Connection</span>
+      <span class="tag">Confidence</span>
+    </div>
+
+    <div class="byline fade-in">
+      <div>
+        <div class="byline-name">Henry Still</div>
+        <div class="byline-sub">Mainline Audio &nbsp;·&nbsp; Portfolio 2025</div>
+      </div>
+      <div class="byline-right">
+        Professional Writing<br>
+        Blog Reflection
+      </div>
     </div>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <span>© 2025 Mainline Audio</span>
+    <span>© 2025 Henry Still &nbsp;·&nbsp; Mainline Audio</span>
     <div style="display:flex;gap:28px;">
       <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/INDEX.HTML">Home</a>
       <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mastering.html">Mastering</a>
