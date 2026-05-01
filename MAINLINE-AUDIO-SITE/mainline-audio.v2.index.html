@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mainline Audio — Mastering</title>
+  <meta name="description" content="Release-ready masters for streaming and club playback. Mastering engineer Henry Still, Orlando FL." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0e0e0e;
+      color: #e2ddd6;
+      font-family: 'IBM Plex Mono', monospace;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── SNOW CANVAS ── */
+    #snow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── LAYOUT WRAPPER ── */
+    .site {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      border-bottom: 1px solid rgba(226,221,214,0.12);
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: #e2ddd6;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(226,221,214,0.4);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: #e2ddd6;
+    }
+
+    .nav-loc {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: rgba(226,221,214,0.22);
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid rgba(226,221,214,0.12);
+      min-height: 460px;
+    }
+
+    .hero-left {
+      padding: 56px 48px;
+      border-right: 1px solid rgba(226,221,214,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .kicker {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(226,221,214,0.28);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 108px;
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: #e2ddd6;
+    }
+
+    h1 span {
+      color: #c8391a;
+    }
+
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(226,221,214,0.48);
+      line-height: 1.7;
+      margin-top: 32px;
+      max-width: 360px;
+    }
+
+    .hero-right {
+      background: #141414;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 56px 48px;
+    }
+
+    .hero-right-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(226,221,214,0.18);
+    }
+
+    blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: #e2ddd6;
+      line-height: 1.45;
+      border-left: 3px solid #c8391a;
+      padding-left: 22px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-red {
+      background: #c8391a;
+      color: #e2ddd6;
+      border: none;
+      padding: 14px 28px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.15s;
+    }
+
+    .btn-red:hover {
+      background: #a82e15;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(226,221,214,0.38);
+      border: 1px solid rgba(226,221,214,0.15);
+      padding: 14px 28px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.15s;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(226,221,214,0.5);
+      color: #e2ddd6;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: #c8391a;
+      padding: 11px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: tick 22s linear infinite;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: #e2ddd6;
+    }
+
+    @keyframes tick {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-bottom: 1px solid rgba(226,221,214,0.1);
+    }
+
+    .process-col {
+      padding: 44px 40px;
+      border-right: 1px solid rgba(226,221,214,0.08);
+    }
+
+    .process-col:last-child {
+      border-right: none;
+    }
+
+    .col-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: #c8391a;
+      line-height: 1;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .col-head {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #e2ddd6;
+      margin-bottom: 12px;
+    }
+
+    .col-body {
+      font-size: 11px;
+      line-height: 1.9;
+      color: rgba(226,221,214,0.38);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid rgba(226,221,214,0.1);
+    }
+
+    .contact-left {
+      padding: 52px 48px;
+      border-right: 1px solid rgba(226,221,214,0.08);
+    }
+
+    .contact-right {
+      padding: 52px 48px;
+      background: #111;
+    }
+
+    .contact-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      line-height: 0.93;
+      color: #e2ddd6;
+      margin-bottom: 26px;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-desc {
+      font-size: 11px;
+      line-height: 1.9;
+      color: rgba(226,221,214,0.32);
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+    }
+
+    .email-link {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: #c8391a;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200,57,26,0.35);
+      padding-bottom: 3px;
+      transition: border-color 0.15s;
+    }
+
+    .email-link:hover {
+      border-color: #c8391a;
+    }
+
+    .tags {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      border: 1px solid rgba(226,221,214,0.13);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(226,221,214,0.28);
+      padding: 5px 12px;
+    }
+
+    /* ── FORM ── */
+    .form-field {
+      margin-bottom: 22px;
+    }
+
+    label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(226,221,214,0.22);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(226,221,214,0.14);
+      color: #e2ddd6;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      padding: 9px 0;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-bottom-color: rgba(226,221,214,0.55);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(226,221,214,0.13);
+    }
+
+    textarea {
+      resize: none;
+      height: 68px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+    }
+
+    .footer-copy {
+      font-size: 9px;
+      color: rgba(226,221,214,0.16);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-ig {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: rgba(226,221,214,0.22);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    .footer-ig:hover {
+      color: #c8391a;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .nav-links { display: none; }
+      .nav-loc { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left {
+        padding: 40px 24px;
+        border-right: none;
+        border-bottom: 1px solid rgba(226,221,214,0.1);
+      }
+
+      h1 { font-size: 72px; }
+
+      .hero-right {
+        padding: 40px 24px;
+        gap: 32px;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .process-col {
+        border-right: none;
+        border-bottom: 1px solid rgba(226,221,214,0.08);
+        padding: 36px 24px;
+      }
+
+      .process-col:last-child { border-bottom: none; }
+
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-left {
+        padding: 40px 24px;
+        border-right: none;
+        border-bottom: 1px solid rgba(226,221,214,0.08);
+      }
+
+      .contact-right {
+        padding: 40px 24px;
+      }
+
+      .contact-big { font-size: 44px; }
+
+      footer {
+        padding: 20px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="snow"></canvas>
+
+  <div class="site">
+
+    <!-- NAV -->
+    <nav>
+      <a class="logo" href="#">Mainline Audio</a>
+      <ul class="nav-links">
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.instagram.com/stasys.muzyka/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+      <span class="nav-loc">Mastering · Orlando FL</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div>
+          <p class="kicker">Mastering Engineer — Est. 2025</p>
+          <h1>THE<br>FINAL<br><span>WORD.</span></h1>
+        </div>
+        <p class="hero-sub">Release-ready masters built for streaming platforms, clubs, and everything in between.</p>
+      </div>
+      <div class="hero-right">
+        <p class="hero-right-label">Henry Still — Engineer &amp; Founder</p>
+        <blockquote>
+          "Mastering is where a good mix becomes a statement."
+        </blockquote>
+        <div class="cta-row">
+          <a class="btn-red" href="#contact">Send a track</a>
+          <a class="btn-ghost" href="https://www.instagram.com/stasys.muzyka/" target="_blank" rel="noopener">Hear the work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker" aria-hidden="true">
+      <span class="ticker-inner">
+        Electronic &nbsp;·&nbsp; Rock &nbsp;·&nbsp; Hip-Hop &nbsp;·&nbsp; Indie &nbsp;·&nbsp; Pop &nbsp;·&nbsp; Club &nbsp;·&nbsp; R&amp;B &nbsp;·&nbsp; Alternative &nbsp;·&nbsp; Dance &nbsp;·&nbsp; Electronic &nbsp;·&nbsp; Rock &nbsp;·&nbsp; Hip-Hop &nbsp;·&nbsp; Indie &nbsp;·&nbsp; Pop &nbsp;·&nbsp; Club &nbsp;·&nbsp; R&amp;B &nbsp;·&nbsp; Alternative &nbsp;·&nbsp; Dance &nbsp;·&nbsp;
+      </span>
+    </div>
+
+    <!-- PROCESS -->
+    <section class="process" id="process">
+      <div class="process-col">
+        <div class="col-num">01</div>
+        <div class="col-head">Submit your mix</div>
+        <p class="col-body">Send your stereo mix via WeTransfer or Google Drive. Include references and target loudness if you have them.</p>
+      </div>
+      <div class="process-col">
+        <div class="col-num">02</div>
+        <div class="col-head">Master delivered</div>
+        <p class="col-body">Typically 48–72 hours. You'll receive a streaming-optimised master plus a high-res file ready for distribution.</p>
+      </div>
+      <div class="process-col">
+        <div class="col-num">03</div>
+        <div class="col-head">Revisions included</div>
+        <p class="col-body">One round of revisions on every project. Your satisfaction with the final sound is the goal, not a checkbox.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="contact-left">
+        <div class="contact-big">READY<br>TO<br>MASTER?</div>
+        <p class="contact-desc">
+          Reach out directly or use the form.<br>
+          All genres considered.<br>
+          References always welcome.
+        </p>
+        <a class="email-link" href="mailto:henrystill@me.com">henrystill@me.com</a>
+        <div class="tags">
+          <span class="tag">Electronic</span>
+          <span class="tag">Rock</span>
+          <span class="tag">Hip-Hop</span>
+          <span class="tag">Pop</span>
+          <span class="tag">Indie</span>
+          <span class="tag">R&amp;B</span>
+        </div>
+      </div>
+      <div class="contact-right">
+        <!-- 
+          TO MAKE THE FORM WORK:
+          Replace action="#" with your form backend URL.
+          Options: Formspree (https://formspree.io), Netlify Forms, EmailJS.
+          Formspree is the easiest — sign up free, get a form endpoint, paste it here.
+        -->
+        <form action="#" method="POST">
+          <div class="form-field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@label.com" required />
+          </div>
+          <div class="form-field">
+            <label for="message">About the project</label>
+            <textarea id="message" name="message" placeholder="Genre, release date, references, format needed..."></textarea>
+          </div>
+          <button type="submit" class="btn-red" style="margin-top: 10px; border: none; cursor: pointer;">Submit inquiry</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span class="footer-copy">© 2025 Mainline Audio</span>
+      <a class="footer-ig" href="https://www.instagram.com/stasys.muzyka/" target="_blank" rel="noopener">Instagram ↗</a>
+    </footer>
+
+  </div><!-- /.site -->
+
+  <script>
+    // ── FALLING PARTICLES ──
+    const canvas = document.getElementById('snow');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const COUNT = 110;
+    const particles = [];
+
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x:       Math.random() * window.innerWidth,
+        y:       Math.random() * window.innerHeight,
+        r:       Math.random() * 1.5 + 0.25,
+        speed:   Math.random() * 0.45 + 0.12,
+        drift:   (Math.random() - 0.5) * 0.22,
+        opacity: Math.random() * 0.32 + 0.04
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(226,221,214,' + p.opacity + ')';
+        ctx.fill();
+
+        p.y += p.speed;
+        p.x += p.drift;
+
+        if (p.y > canvas.height + 4) {
+          p.y = -4;
+          p.x = Math.random() * canvas.width;
+        }
+        if (p.x < -4)                 p.x = canvas.width + 4;
+        if (p.x > canvas.width + 4)   p.x = -4;
+      }
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+
+</body>
+</html>
