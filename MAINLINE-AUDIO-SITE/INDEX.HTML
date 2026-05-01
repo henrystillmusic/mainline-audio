@@ -383,59 +383,30 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
-      nav {
-        padding: 24px 28px;
-      }
-
-      .nav-links {
-        gap: 24px;
-      }
-
-      .hero {
-        padding: 40px 28px 56px;
-      }
-
-      .hero-logo {
-        width: 280px;
-      }
-
+      nav { padding: 24px 28px; }
+      .nav-links { gap: 24px; }
+      .hero { padding: 40px 28px 56px; }
+      .hero-logo { width: 280px; }
       .process {
         flex-direction: column;
         align-items: center;
         gap: 36px;
         padding: 40px 28px;
       }
-
       .process-item {
         border-right: none;
         border-bottom: 1px solid rgba(245,245,245,0.05);
         padding: 0 0 36px;
       }
-
       .process-item:last-child {
         border-bottom: none;
         padding-bottom: 0;
       }
-
-      .process-body {
-        max-width: 220px;
-      }
-
-      .closer {
-        padding: 56px 28px 40px;
-      }
-
-      .closer-headline {
-        font-size: 52px;
-      }
-
-      .contact {
-        padding: 40px 28px 64px;
-      }
-
-      footer {
-        padding: 0 28px 36px;
-      }
+      .process-body { max-width: 220px; }
+      .closer { padding: 56px 28px 40px; }
+      .closer-headline { font-size: 52px; }
+      .contact { padding: 40px 28px 64px; }
+      footer { padding: 0 28px 36px; }
     }
   </style>
 </head>
@@ -463,7 +434,7 @@
       />
       <p class="hero-sub">Release-ready masters for streaming and club systems.</p>
       <div class="hero-cta">
-        <a class="btn-outline" href="#contact">Send a track</a>
+        <a class="btn-outline" href="#contact">Start a project</a>
         <a class="btn-text" href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Hear the work ↗</a>
       </div>
     </section>
@@ -502,19 +473,15 @@
     <section class="contact" id="contact">
       <p class="contact-label">Get in touch</p>
       <a class="contact-email gradient-text" href="mailto:henrystill@me.com">henrystill@me.com</a>
-      <!--
-        TO ACTIVATE THE FORM:
-        1. Sign up free at https://formspree.io
-        2. Create a new form and copy your endpoint URL
-        3. Replace action="#" with your URL, e.g.:
-           action="https://formspree.io/f/abcdefgh"
-      -->
       <form class="contact-form" action="https://formspree.io/f/xrejblzw" method="POST">
         <div class="form-row">
           <input type="text" name="name" placeholder="Your name" />
         </div>
         <div class="form-row">
           <input type="email" name="email" placeholder="Your email" />
+        </div>
+        <div class="form-row">
+          <input type="text" name="mix_link" placeholder="Link to your mix (WeTransfer, Drive, Dropbox...)" />
         </div>
         <div class="form-row">
           <textarea name="message" placeholder="Tell me about your project"></textarea>
@@ -530,10 +497,8 @@
 
   </div><!-- /.site -->
 
-  <!-- AUDIO -->
   <audio id="bg-track" preload="auto"></audio>
 
-  <!-- MUTE BUTTON -->
   <div id="mute-btn" title="Toggle music">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M11 5L6 9H2v6h4l5 4V5z"/>
@@ -543,9 +508,6 @@
   </div>
 
   <script>
-    // ── AUDIO SHUFFLE ──
-    // Add or remove tracks from this list as you please.
-    // All files should live in your MUSIC/ folder alongside this HTML.
     const playlist = [
       'MUSIC/Drift.m4a',
       'MUSIC/Draped.m4a',
@@ -604,7 +566,6 @@
     audio.addEventListener('ended', fadeOutAndNext);
     audio.addEventListener('error', nextTrack);
 
-    // Start on first interaction
     let started = false;
     function start() {
       if (started) return;
@@ -619,19 +580,15 @@
     document.addEventListener('click', start);
     document.addEventListener('touchstart', start);
 
-    // Mute toggle
     muteBtn.addEventListener('click', e => {
       e.stopPropagation();
       audio.muted = !audio.muted;
-      const dim = 'rgba(245,245,245,0.2)';
-      const bright = 'rgba(245,245,245,0.7)';
-      wave1.setAttribute('stroke', audio.muted ? dim : bright);
-      wave2.setAttribute('stroke', audio.muted ? dim : bright);
+      wave1.setAttribute('stroke', audio.muted ? 'rgba(245,245,245,0.2)' : 'rgba(245,245,245,0.7)');
+      wave2.setAttribute('stroke', audio.muted ? 'rgba(245,245,245,0.2)' : 'rgba(245,245,245,0.7)');
       wave1.style.display = audio.muted ? 'none' : 'block';
       wave2.style.display = audio.muted ? 'none' : 'block';
     });
 
-    // ── SNOW (your original) ──
     const canvas = document.getElementById('snow');
     const c = canvas.getContext('2d');
 
