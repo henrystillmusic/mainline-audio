@@ -170,51 +170,6 @@
       font-size: 11px; font-weight: 400; color: rgba(245,245,245,0.18);
       letter-spacing: 0.1em; line-height: 1.9; margin-bottom: 40px; font-style: italic;
     }
-    .edit-toggle-bar { display: flex; justify-content: flex-end; margin-bottom: 24px; }
-    .btn-edit {
-      background: transparent; border: 1px solid rgba(245,245,245,0.1);
-      color: rgba(245,245,245,0.3); padding: 8px 18px;
-      font-family: 'Satoshi', sans-serif; font-size: 9px; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; transition: all 0.2s;
-    }
-    .btn-edit:hover { border-color: rgba(245,245,245,0.35); color: rgba(245,245,245,0.7); }
-
-    .edit-panel {
-      display: none; background: rgba(245,245,245,0.02);
-      border: 1px solid rgba(245,245,245,0.06); padding: 32px; margin-bottom: 32px;
-    }
-    .edit-panel.open { display: block; }
-    .edit-panel-title {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.28em;
-      text-transform: uppercase; color: rgba(245,245,245,0.2); margin-bottom: 28px;
-    }
-    .edit-track { padding: 20px 0; border-bottom: 1px solid rgba(245,245,245,0.04); }
-    .edit-track:last-child { border-bottom: none; padding-bottom: 0; }
-    .edit-track-name {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: rgba(245,245,245,0.3); margin-bottom: 14px;
-    }
-    .edit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
-    .edit-field label {
-      display: block; font-size: 8px; font-weight: 700; letter-spacing: 0.22em;
-      text-transform: uppercase; color: rgba(245,245,245,0.16); margin-bottom: 6px;
-    }
-    .edit-field input {
-      width: 100%; background: transparent; border: none;
-      border-bottom: 1px solid rgba(245,245,245,0.08); color: rgba(245,245,245,0.55);
-      font-family: 'Satoshi', sans-serif; font-size: 11px; font-weight: 400;
-      letter-spacing: 0.04em; padding: 8px 0; outline: none; transition: border-color 0.2s;
-    }
-    .edit-field input:focus { border-bottom-color: rgba(245,245,245,0.3); }
-    .edit-field input::placeholder { color: rgba(245,245,245,0.1); }
-    .edit-actions { display: flex; gap: 12px; margin-top: 24px; }
-    .btn-apply {
-      background: transparent; border: 1px solid rgba(245,245,245,0.18);
-      color: rgba(245,245,245,0.5); padding: 10px 24px;
-      font-family: 'Satoshi', sans-serif; font-size: 9px; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; transition: all 0.2s;
-    }
-    .btn-apply:hover { border-color: rgba(245,245,245,0.5); color: #f5f5f5; }
 
     /* TRACKS */
     .track-list { display: flex; flex-direction: column; gap: 1px; background: rgba(245,245,245,0.04); }
@@ -420,19 +375,6 @@
         <div class="section-label">Portfolio</div>
         <p class="portfolio-intro">Selected work available via Apple Music and Spotify. Direct links available upon request.</p>
 
-        <div class="edit-toggle-bar">
-          <button class="btn-edit" id="editToggle">Edit tracks</button>
-        </div>
-
-        <div class="edit-panel" id="editPanel">
-          <div class="edit-panel-title">Update Portfolio Tracks</div>
-          <div id="editFields"></div>
-          <div class="edit-actions">
-            <button class="btn-apply" id="applyEdits">Apply changes</button>
-            <button class="btn-edit" id="cancelEdit">Cancel</button>
-          </div>
-        </div>
-
         <div class="track-list" id="trackList"></div>
       </div>
 
@@ -453,45 +395,43 @@
   </div>
 
   <script>
-    // ── TRACK DATA ─────────────────────────────────────────────────────────────
-    // To add a track: fill in title, meta, apple/spotify links, and an embed URL.
-    // Embed URL = the "src" from a Spotify or Apple Music embed iframe.
-    // Spotify embed src looks like: https://open.spotify.com/embed/track/TRACKID
-    // Apple Music embed src looks like: https://embed.music.apple.com/us/album/...
-    const defaultTracks = [
+    // ═══════════════════════════════════════════════════════════════════════════
+    // PORTFOLIO TRACKS — edit this list to update the portfolio section.
+    //
+    // For each track:
+    //   title   — track or project name
+    //   meta    — genre · your role
+    //   apple   — full Apple Music URL (or leave as "")
+    //   spotify — full Spotify track URL (or leave as "")
+    //   embed   — embed src URL for the inline player:
+    //             Spotify:     https://open.spotify.com/embed/track/TRACKID
+    //             Apple Music: https://embed.music.apple.com/us/album/ALBUMNAME/ALBUMID?i=TRACKID
+    //             Get it via: Share → Copy Embed Code → grab the src="..." value
+    // ═══════════════════════════════════════════════════════════════════════════
+    const tracks = [
       {
-        title: "Skyline",
-        meta: "Electronic / Breakbeat · Producer, Mix Engineer, Mastering Engineer",
-        apple: "",
+        title:   "Skyline",
+        meta:    "Electronic / Breakbeat · Producer, Mix Engineer, Mastering Engineer",
+        apple:   "",
         spotify: "",
-        embed: ""
+        embed:   ""
       },
       {
-        title: "Band Recording & Mix Project",
-        meta: "Rock / Indie · Recording Engineer, Mix Engineer, Mastering Engineer",
-        apple: "",
+        title:   "Band Recording & Mix Project",
+        meta:    "Rock / Indie · Recording Engineer, Mix Engineer, Mastering Engineer",
+        apple:   "",
         spotify: "",
-        embed: ""
+        embed:   ""
       },
       {
-        title: "Mastering Project",
-        meta: "Electronic / Hip-Hop · Mastering Engineer",
-        apple: "",
+        title:   "Mastering Project",
+        meta:    "Electronic / Hip-Hop · Mastering Engineer",
+        apple:   "",
         spotify: "",
-        embed: ""
+        embed:   ""
       }
     ];
-
-    let tracks = (() => {
-      try {
-        const saved = sessionStorage.getItem('ml_tracks');
-        return saved ? JSON.parse(saved) : defaultTracks;
-      } catch { return defaultTracks; }
-    })();
-
-    function saveTracks() {
-      try { sessionStorage.setItem('ml_tracks', JSON.stringify(tracks)); } catch {}
-    }
+    // ═══════════════════════════════════════════════════════════════════════════
 
     function renderTracks() {
       const list = document.getElementById('trackList');
@@ -516,7 +456,7 @@
             <div class="embed-area">
               ${t.embed
                 ? `<iframe src="${t.embed}" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`
-                : `<div class="embed-placeholder">Stream link coming soon<br><span style="opacity:0.4;font-size:8px">Use "Edit tracks" to add Apple Music or Spotify links</span></div>`
+                : `<div class="embed-placeholder">Stream link coming soon</div>`
               }
             </div>
           </div>`;
@@ -524,61 +464,6 @@
         list.appendChild(item);
       });
     }
-
-    function renderEditFields() {
-      document.getElementById('editFields').innerHTML = tracks.map((t, i) => `
-        <div class="edit-track">
-          <div class="edit-track-name">Track ${i + 1}</div>
-          <div class="edit-row">
-            <div class="edit-field">
-              <label>Title</label>
-              <input type="text" data-i="${i}" data-key="title" value="${t.title}" placeholder="Track title" />
-            </div>
-            <div class="edit-field">
-              <label>Genre / Role</label>
-              <input type="text" data-i="${i}" data-key="meta" value="${t.meta}" placeholder="Genre · Role" />
-            </div>
-          </div>
-          <div class="edit-row">
-            <div class="edit-field">
-              <label>Apple Music Link</label>
-              <input type="text" data-i="${i}" data-key="apple" value="${t.apple}" placeholder="https://music.apple.com/..." />
-            </div>
-            <div class="edit-field">
-              <label>Spotify Link</label>
-              <input type="text" data-i="${i}" data-key="spotify" value="${t.spotify}" placeholder="https://open.spotify.com/..." />
-            </div>
-          </div>
-          <div class="edit-row">
-            <div class="edit-field" style="grid-column:1/-1">
-              <label>Embed URL (iframe src from Spotify or Apple Music share → embed)</label>
-              <input type="text" data-i="${i}" data-key="embed" value="${t.embed}" placeholder="https://open.spotify.com/embed/track/..." />
-            </div>
-          </div>
-        </div>`).join('');
-    }
-
-    document.getElementById('editToggle').addEventListener('click', () => {
-      const panel = document.getElementById('editPanel');
-      const open  = panel.classList.toggle('open');
-      if (open) renderEditFields();
-      document.getElementById('editToggle').textContent = open ? 'Close' : 'Edit tracks';
-    });
-
-    document.getElementById('cancelEdit').addEventListener('click', () => {
-      document.getElementById('editPanel').classList.remove('open');
-      document.getElementById('editToggle').textContent = 'Edit tracks';
-    });
-
-    document.getElementById('applyEdits').addEventListener('click', () => {
-      document.querySelectorAll('#editFields input').forEach(input => {
-        tracks[+input.dataset.i][input.dataset.key] = input.value.trim();
-      });
-      saveTracks();
-      renderTracks();
-      document.getElementById('editPanel').classList.remove('open');
-      document.getElementById('editToggle').textContent = 'Edit tracks';
-    });
 
     renderTracks();
 
