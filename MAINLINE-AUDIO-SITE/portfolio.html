@@ -292,6 +292,33 @@
 
     #mute-btn:hover { background: rgba(255,255,255,0.12); }
 
+    #skip-btn {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: rgba(245,245,245,0.38);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    #skip-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.12);
+      color: rgba(245,245,245,0.72);
+    }
+
 
     /* RESPONSIVE */
     @media (max-width: 640px) {
@@ -463,6 +490,7 @@
     <div class="audio-widget" id="audio-widget">
       <div class="now-playing" id="now-playing">Click anywhere to play</div>
       <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+      <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
       <div id="mute-btn" title="Toggle music">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M11 5L6 9H2v6h4l5 4V5z"/>
@@ -499,6 +527,7 @@
     const audioWidget  = document.getElementById('audio-widget');
     const audio        = document.getElementById('bg-track');
     const muteBtn      = document.getElementById('mute-btn');
+    const skipBtn      = document.getElementById('skip-btn');
     const wave1        = document.getElementById('wave-1');
     const wave2        = document.getElementById('wave-2');
     const nowPlaying   = document.getElementById('now-playing');
@@ -568,6 +597,13 @@
       saveAudioState();
     }
 
+    function skipToNextTrack(e) {
+      if (e) e.stopPropagation();
+      savedTime = 0;
+      localStorage.setItem('mainlineAudioTime', 0);
+      nextTrack();
+    }
+
     audio.addEventListener('ended', nextTrack);
     audio.addEventListener('timeupdate', saveAudioState);
     audio.addEventListener('error', nextTrack);
@@ -605,6 +641,8 @@
       updateMuteIcon();
       saveAudioState();
     });
+
+    skipBtn.addEventListener('click', skipToNextTrack);
 
     volumeSlider.addEventListener('click', e => e.stopPropagation());
     volumeSlider.addEventListener('input', e => {
