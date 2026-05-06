@@ -1,0 +1,150 @@
+<!-- MAINLINE AUDIO — Selected Work / Spotify Embed Section -->
+<section class="selected-work-section">
+  <div class="selected-work-inner">
+    <p class="section-kicker">Selected Work</p>
+    <h1 class="section-title">Releases</h1>
+
+    <p class="section-intro">
+      Original electronic music produced, mixed, and mastered by Henry Still / Mainline Audio.
+    </p>
+
+    <div class="release-grid">
+      <!-- RELEASE 1 -->
+      <article class="release-card">
+        <div class="release-meta">
+          <p class="release-artist">MAINLINE &amp; STASYS</p>
+          <h2 class="release-title">Get Down</h2>
+          <p class="release-role">Production · Mixing · Mastering</p>
+        </div>
+
+        <!-- Replace the src URL with your Spotify embed link -->
+        <iframe
+          class="spotify-player"
+          src="https://open.spotify.com/embed/track/YOUR_TRACK_ID_HERE?utm_source=generator&theme=0"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </article>
+
+      <!-- RELEASE 2 -->
+      <article class="release-card">
+        <div class="release-meta">
+          <p class="release-artist">HENRY STILL</p>
+          <h2 class="release-title">Skyline</h2>
+          <p class="release-role">Production · Mixing · Mastering</p>
+        </div>
+
+        <iframe
+          class="spotify-player"
+          src="https://open.spotify.com/embed/track/YOUR_TRACK_ID_HERE?utm_source=generator&theme=0"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .selected-work-section {
+    background: #050505;
+    color: #f4f4f4;
+    padding: 96px 24px;
+    font-family: "Satoshi", "Inter", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .selected-work-inner {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .section-kicker {
+    margin: 0 0 16px;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8d8d8d;
+  }
+
+  .section-title {
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 500;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+  }
+
+  .section-intro {
+    max-width: 620px;
+    margin: 28px 0 56px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    color: #b8b8b8;
+  }
+
+  .release-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .release-card {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 28px 0 0;
+  }
+
+  .release-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  .release-artist {
+    margin: 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8d8d8d;
+  }
+
+  .release-title {
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+
+  .release-role {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #b8b8b8;
+  }
+
+  .spotify-player {
+    border-radius: 12px;
+    filter: grayscale(1);
+    opacity: 0.92;
+  }
+
+  @media (min-width: 760px) {
+    .release-card {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .release-meta {
+      margin-bottom: 0;
+    }
+  }
+</style>
