@@ -82,19 +82,19 @@
   <div class="site">
     <nav>
       <ul class="nav-links">
-        <li><a href="MAINLINE-AUDIO-SITE/music.html">Music</a></li>
+        <li><a href="music.html">Music</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </nav>
     <section class="hero">
       <p class="hero-eyebrow">Mastering Engineer — Orlando, FL</p>
-      <img class="hero-logo" src="MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" alt="Mainline Audio" />
+      <img class="hero-logo" src="mainline_logo_transparent.png" alt="Mainline Audio" />
       <p class="hero-sub">Release-ready masters for streaming and club systems.</p>
       <p class="hero-genre">Electronic, hip-hop, indie, and experimental records.</p>
       <div class="hero-cta">
         <a class="btn-outline" href="#contact">Start a project</a>
-        <a class="btn-text" href="MAINLINE-AUDIO-SITE/music.html">Hear the work ↗</a>
+        <a class="btn-text" href="music.html">Hear the work ↗</a>
       </div>
     </section>
     <div class="divider"></div>
@@ -149,17 +149,17 @@
   </div>
   <script>
     const playlist = [
-      { title: 'Drift', src: 'MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3' },
-      { title: 'Draped', src: 'MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3' },
-      { title: 'Still Waters', src: 'MAINLINE-AUDIO-SITE/MUSIC/SRS_Still Waters_Master_01.mp3' },
-      { title: 'Weightless', src: 'MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3' },
-      { title: 'When the Mud Settles', src: 'MAINLINE-AUDIO-SITE/MUSIC/when the mud settles.m4a' },
-      { title: 'Run Free', src: 'MAINLINE-AUDIO-SITE/MUSIC/Run Free.mp3' },
+      { title: 'Drift', src: 'MUSIC/SRS_Drift_Master_01.mp3' },
+      { title: 'Draped', src: 'MUSIC/SRS_Draped_Master_01.mp3' },
+      { title: 'Still Waters', src: 'MUSIC/SRS_Still Waters_Master_01.mp3' },
+      { title: 'Weightless', src: 'MUSIC/SRS_Weightless_Master_01.mp3' },
+      { title: 'When the Mud Settles', src: 'MUSIC/when the mud settles.m4a' },
+      { title: 'Run Free', src: 'MUSIC/Run Free.mp3' },
     ];
-    function shuffle(arr) { const s=[...arr]; for(let i=s.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[s[i],s[j]]=[s[j],s[i]];}return s; }
+    function shuffle(arr){const s=[...arr];for(let i=s.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[s[i],s[j]]=[s[j],s[i]];}return s;}
     const audioWidget=document.getElementById('audio-widget'),audio=document.getElementById('bg-track'),muteBtn=document.getElementById('mute-btn'),skipBtn=document.getElementById('skip-btn'),wave1=document.getElementById('wave-1'),wave2=document.getElementById('wave-2'),nowPlaying=document.getElementById('now-playing'),volumeSlider=document.getElementById('volume-slider');
-    let shuffled; try{const s=JSON.parse(localStorage.getItem('mainlineAudioOrder'));shuffled=Array.isArray(s)&&s.every(t=>playlist.some(p=>p.title===t.title))?s:shuffle(playlist);}catch{shuffled=shuffle(playlist);}
-    let trackIndex=parseInt(localStorage.getItem('mainlineAudioIndex'),10); if(Number.isNaN(trackIndex)||trackIndex<0||trackIndex>=shuffled.length)trackIndex=0;
+    let shuffled;try{const s=JSON.parse(localStorage.getItem('mainlineAudioOrder'));shuffled=Array.isArray(s)&&s.every(t=>playlist.some(p=>p.title===t.title))?s:shuffle(playlist);}catch{shuffled=shuffle(playlist);}
+    let trackIndex=parseInt(localStorage.getItem('mainlineAudioIndex'),10);if(Number.isNaN(trackIndex)||trackIndex<0||trackIndex>=shuffled.length)trackIndex=0;
     let savedTime=parseFloat(localStorage.getItem('mainlineAudioTime'))||0,savedVolume=parseFloat(localStorage.getItem('mainlineAudioVolume'));if(Number.isNaN(savedVolume))savedVolume=0.65;
     audio.volume=savedVolume;audio.muted=localStorage.getItem('mainlineAudioMuted')==='true';volumeSlider.value=savedVolume;
     function updateNowPlaying(){const t=shuffled[trackIndex];nowPlaying.textContent=t?`Now playing — ${t.title}`:'Now playing';}
