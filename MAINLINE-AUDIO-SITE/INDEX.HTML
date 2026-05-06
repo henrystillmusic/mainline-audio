@@ -1,69 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <title>Mainline Audio — Mastering</title>
-
-  <meta
-    name="description"
-    content="Release-ready masters for streaming and club playback. Mastering engineer Henry Still, Orlando FL."
-  />
-
-  <link
-    href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #0a0a0a;
-      color: #f5f5f5;
-      font-family: 'Satoshi', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    #snow {
-      position: fixed;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      pointer-events: none;
-
-      z-index: 0;
-    }
-
-    .site {
-      position: relative;
-      z-index: 1;
-    }
-
-    .gradient-text {
-      background:
-        linear-gradient(
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mainline Audio — Mastering</title>
+    <meta
+      name="description"
+      content="Release-ready masters for streaming and club playback. Mastering engineer Henry Still, Orlando FL."
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #0a0a0a;
+        color: #f5f5f5;
+        font-family: "Satoshi", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      #snow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .site {
+        position: relative;
+        z-index: 1;
+      }
+      .gradient-text {
+        background: linear-gradient(
           90deg,
           #ffffff,
           #b8f8ff,
@@ -71,261 +52,720 @@
           #f0e8ff,
           #ffffff
         );
-
-      background-size: 400%;
-
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      animation: flow 18s ease infinite;
-    }
-
-    @keyframes flow {
-
-      0% {
-        background-position: 0% 50%;
+        background-size: 400%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: flow 18s ease infinite;
       }
-
-      50% {
-        background-position: 100% 50%;
+      @keyframes flow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
-
-      100% {
-        background-position: 0% 50%;
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 32px 56px;
       }
-    }
-
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-
-      padding: 32px 56px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-
-      color: rgba(245,245,245,0.28);
-
-      text-decoration: none;
-
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: #f5f5f5;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      text-align: center;
-
-      padding: 48px 48px 72px;
-    }
-
-    .hero-eyebrow {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-
-      color: rgba(245,245,245,0.18);
-
-      margin-bottom: 48px;
-    }
-
-    .hero-logo {
-      width: 440px;
-      max-width: 88%;
-
-      filter:
-        drop-shadow(
-          0 0 40px rgba(184,248,255,0.18)
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 245, 0.28);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: #f5f5f5;
+      }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 48px 48px 72px;
+      }
+      .hero-eyebrow {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 245, 0.18);
+        margin-bottom: 48px;
+      }
+      .hero-logo {
+        width: 440px;
+        max-width: 88%;
+        filter: drop-shadow(0 0 40px rgba(184, 248, 255, 0.18));
+        opacity: 0.93;
+        margin-bottom: 48px;
+      }
+      .hero-sub {
+        font-size: 12px;
+        font-weight: 400;
+        color: rgba(245, 245, 245, 0.28);
+        letter-spacing: 0.1em;
+        line-height: 1.9;
+        margin-bottom: 10px;
+      }
+      .hero-genre {
+        font-size: 11px;
+        font-weight: 400;
+        color: rgba(245, 245, 245, 0.18);
+        letter-spacing: 0.12em;
+        line-height: 1.9;
+        margin-bottom: 48px;
+        font-style: italic;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .btn-outline {
+        background: transparent;
+        border: 1px solid rgba(245, 245, 245, 0.2);
+        color: rgba(245, 245, 245, 0.6);
+        padding: 13px 34px;
+        font-family: "Satoshi", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s;
+      }
+      .btn-outline:hover {
+        border-color: rgba(245, 245, 245, 0.55);
+        color: #f5f5f5;
+      }
+      .btn-text {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 245, 0.22);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .btn-text:hover {
+        color: rgba(245, 245, 245, 0.55);
+      }
+      .divider {
+        width: 1px;
+        height: 64px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(245, 245, 245, 0.07),
+          transparent
         );
-
-      opacity: 0.93;
-
-      margin-bottom: 48px;
-    }
-
-    .hero-sub {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      line-height: 1.9;
-
-      color: rgba(245,245,245,0.28);
-
-      margin-bottom: 10px;
-    }
-
-    .hero-genre {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      line-height: 1.9;
-
-      font-style: italic;
-
-      color: rgba(245,245,245,0.18);
-
-      margin-bottom: 48px;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .btn-outline {
-      background: transparent;
-
-      border:
-        1px solid rgba(245,245,245,0.2);
-
-      color:
-        rgba(245,245,245,0.6);
-
-      padding: 13px 34px;
-
-      font-family: 'Satoshi', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-
-      cursor: pointer;
-
-      text-decoration: none;
-
-      display: inline-block;
-
-      transition: all 0.2s;
-    }
-
-    .btn-outline:hover {
-      border-color:
-        rgba(245,245,245,0.55);
-
-      color: #f5f5f5;
-    }
-
-    .btn-text {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-
-      color:
-        rgba(245,245,245,0.22);
-
-      text-decoration: none;
-
-      transition: color 0.2s;
-    }
-
-    .btn-text:hover {
-      color:
-        rgba(245,245,245,0.55);
-    }
-
-  </style>
-</head>
-
-<body>
-
-  <canvas id="snow"></canvas>
-
-  <div class="site">
-
-    <nav>
-
-      <ul class="nav-links">
-
-        <li>
-          <a href="music.html">
-            Music
-          </a>
-        </li>
-
-        <li>
-          <a href="#contact">
-            Contact
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="https://www.instagram.com/henrystill/"
-            target="_blank"
-            rel="noopener"
-          >
-            Instagram
-          </a>
-        </li>
-
-      </ul>
-
-    </nav>
-
-    <section class="hero">
-
-      <p class="hero-eyebrow">
-        Mastering Engineer — Orlando, FL
-      </p>
-
-      <img
-        class="hero-logo"
-        src="mainline_logo_transparent.png"
-        alt="Mainline Audio"
+        margin: 0 auto;
+      }
+      .process {
+        display: flex;
+        justify-content: center;
+        padding: 56px 48px;
+      }
+      .process-item {
+        text-align: center;
+        padding: 0 52px;
+        border-right: 1px solid rgba(245, 245, 245, 0.05);
+      }
+      .process-item:last-child {
+        border-right: none;
+      }
+      .process-num {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        color: rgba(245, 245, 245, 0.12);
+        margin-bottom: 12px;
+      }
+      .process-head {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 245, 0.45);
+        margin-bottom: 10px;
+      }
+      .process-body {
+        font-size: 11px;
+        font-weight: 400;
+        color: rgba(245, 245, 245, 0.18);
+        line-height: 1.85;
+        letter-spacing: 0.03em;
+        max-width: 150px;
+      }
+      .closer {
+        text-align: center;
+        padding: 72px 48px 56px;
+      }
+      .closer-byline {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 245, 0.14);
+        margin-bottom: 20px;
+      }
+      .closer-headline {
+        font-size: 76px;
+        font-weight: 700;
+        line-height: 0.92;
+        letter-spacing: -0.02em;
+        margin-bottom: 26px;
+        display: block;
+      }
+      .closer-sub {
+        font-size: 12px;
+        font-weight: 400;
+        color: rgba(245, 245, 245, 0.24);
+        letter-spacing: 0.07em;
+        line-height: 1.9;
+      }
+      .contact {
+        text-align: center;
+        padding: 56px 48px 80px;
+      }
+      .contact-label {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 245, 0.14);
+        margin-bottom: 22px;
+      }
+      .contact-email {
+        display: inline-block;
+        font-size: 17px;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-decoration: none;
+        margin-bottom: 44px;
+        transition: opacity 0.2s;
+      }
+      .contact-email:hover {
+        opacity: 0.6;
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 380px;
+        margin: 0 auto;
+      }
+      .form-row {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(245, 245, 245, 0.08);
+        color: #f5f5f5;
+        font-family: "Satoshi", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        padding: 10px 0;
+        outline: none;
+        text-align: center;
+        transition: border-color 0.2s;
+        -webkit-appearance: none;
+      }
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      textarea:focus {
+        border-bottom-color: rgba(245, 245, 245, 0.35);
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(245, 245, 245, 0.12);
+      }
+      textarea {
+        resize: none;
+        height: 64px;
+      }
+      .btn-submit {
+        background: transparent;
+        border: 1px solid rgba(245, 245, 245, 0.18);
+        color: rgba(245, 245, 245, 0.5);
+        padding: 13px 34px;
+        font-family: "Satoshi", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        cursor: pointer;
+        margin-top: 12px;
+        transition: all 0.2s;
+      }
+      .btn-submit:hover {
+        border-color: rgba(245, 245, 245, 0.5);
+        color: #f5f5f5;
+      }
+      footer {
+        text-align: center;
+        padding: 0 48px 40px;
+      }
+      .footer-copy {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 245, 0.08);
+      }
+      .audio-widget {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 50;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.4s,
+          transform 0.4s;
+      }
+      .audio-widget.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .now-playing {
+        min-width: 190px;
+        max-width: 240px;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.055);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        color: rgba(245, 245, 245, 0.55);
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .volume-slider {
+        width: 82px;
+        accent-color: rgba(245, 245, 245, 0.7);
+        opacity: 0.45;
+        cursor: pointer;
+      }
+      #mute-btn {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        flex-shrink: 0;
+      }
+      #mute-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      #skip-btn {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.045);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        color: rgba(245, 245, 245, 0.38);
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1;
+        flex-shrink: 0;
+        user-select: none;
+      }
+      #skip-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.12);
+        color: rgba(245, 245, 245, 0.72);
+      }
+      @media (max-width: 640px) {
+        nav {
+          padding: 24px 28px;
+        }
+        .nav-links {
+          gap: 24px;
+        }
+        .hero {
+          padding: 40px 28px 56px;
+        }
+        .hero-logo {
+          width: 280px;
+        }
+        .process {
+          flex-direction: column;
+          align-items: center;
+          gap: 36px;
+          padding: 40px 28px;
+        }
+        .process-item {
+          border-right: none;
+          border-bottom: 1px solid rgba(245, 245, 245, 0.05);
+          padding: 0 0 36px;
+        }
+        .process-item:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .process-body {
+          max-width: 220px;
+        }
+        .closer {
+          padding: 56px 28px 40px;
+        }
+        .closer-headline {
+          font-size: 52px;
+        }
+        .contact {
+          padding: 40px 28px 64px;
+        }
+        footer {
+          padding: 0 28px 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="snow"></canvas>
+    <div class="site">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="music.html">Music</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a
+              href="https://www.instagram.com/henrystill/"
+              target="_blank"
+              rel="noopener"
+              >Instagram</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <section class="hero">
+        <p class="hero-eyebrow">Mastering Engineer — Orlando, FL</p>
+        <img
+          class="hero-logo"
+          src="mainline_logo_transparent.png"
+          alt="Mainline Audio"
+        />
+        <p class="hero-sub">
+          Release-ready masters for streaming and club systems.
+        </p>
+        <p class="hero-genre">
+          Electronic, hip-hop, indie, and experimental records.
+        </p>
+        <div class="hero-cta">
+          <a class="btn-outline" href="#contact">Start a project</a>
+          <a class="btn-text" href="music.html">Hear the work ↗</a>
+        </div>
+      </section>
+      <div class="divider"></div>
+      <section class="process">
+        <div class="process-item">
+          <div class="process-num">01</div>
+          <div class="process-head">Submit</div>
+          <p class="process-body">Send your stereo mix + references.</p>
+        </div>
+        <div class="process-item">
+          <div class="process-num">02</div>
+          <div class="process-head">Master</div>
+          <p class="process-body">
+            Delivered in 48–72 hours.<br />Stereo master · 24-bit WAV ·
+            Streaming-optimized versions.
+          </p>
+        </div>
+        <div class="process-item">
+          <div class="process-num">03</div>
+          <div class="process-head">Refine</div>
+          <p class="process-body">One round of revisions included.</p>
+        </div>
+      </section>
+      <div class="divider"></div>
+      <section class="closer">
+        <p class="closer-byline">Henry Still</p>
+        <span class="closer-headline gradient-text">The Final<br />Word.</span>
+        <p class="closer-sub">
+          Mastering is the final word on your record.<br />Make it count.
+        </p>
+      </section>
+      <section class="contact" id="contact">
+        <p class="contact-label">Get in touch</p>
+        <a class="contact-email gradient-text" href="mailto:henrystill@me.com"
+          >henrystill@me.com</a
+        >
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xrejblzw"
+          method="POST"
+        >
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" />
+          </div>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Your email" />
+          </div>
+          <div class="form-row">
+            <input
+              type="text"
+              name="mix_link"
+              placeholder="Link to your mix (WeTransfer, Drive, Dropbox...)"
+            />
+          </div>
+          <div class="form-row">
+            <textarea
+              name="message"
+              placeholder="Tell me about your project"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send message</button>
+        </form>
+      </section>
+      <footer><p class="footer-copy">© 2026 Mainline Audio</p></footer>
+    </div>
+    <audio id="bg-track" preload="auto"></audio>
+    <div class="audio-widget" id="audio-widget">
+      <div class="now-playing" id="now-playing">Click anywhere to play</div>
+      <input
+        class="volume-slider"
+        id="volume-slider"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.65"
+        aria-label="Volume"
       />
-
-      <p class="hero-sub">
-        Release-ready masters for streaming and club systems.
-      </p>
-
-      <p class="hero-genre">
-        Electronic, hip-hop, indie, and experimental records.
-      </p>
-
-      <div class="hero-cta">
-
-        <a
-          class="btn-outline"
-          href="#contact"
+      <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+      <div id="mute-btn" title="Toggle music">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="rgba(245,245,245,0.7)"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         >
-          Start a project
-        </a>
-
-        <a
-          class="btn-text"
-          href="music.html"
-        >
-          Hear the work ↗
-        </a>
-
+          <path d="M11 5L6 9H2v6h4l5 4V5z" />
+          <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+          <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+        </svg>
       </div>
-
-    </section>
-
-  </div>
-
-</body>
-
+    </div>
+    <script>
+      const playlist = [
+        { title: "Drift", src: "MUSIC/SRS_Drift_Master_01.mp3" },
+        { title: "Draped", src: "MUSIC/SRS_Draped_Master_01.mp3" },
+        { title: "Still Waters", src: "MUSIC/SRS_Still Waters_Master_01.mp3" },
+        { title: "Weightless", src: "MUSIC/SRS_Weightless_Master_01.mp3" },
+        {
+          title: "When the Mud Settles",
+          src: "MUSIC/when the mud settles.m4a",
+        },
+        { title: "Run Free", src: "MUSIC/Run Free.mp3" },
+      ];
+      function shuffle(arr) {
+        const s = [...arr];
+        for (let i = s.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [s[i], s[j]] = [s[j], s[i]];
+        }
+        return s;
+      }
+      const audioWidget = document.getElementById("audio-widget"),
+        audio = document.getElementById("bg-track"),
+        muteBtn = document.getElementById("mute-btn"),
+        skipBtn = document.getElementById("skip-btn"),
+        wave1 = document.getElementById("wave-1"),
+        wave2 = document.getElementById("wave-2"),
+        nowPlaying = document.getElementById("now-playing"),
+        volumeSlider = document.getElementById("volume-slider");
+      let shuffled;
+      try {
+        const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
+        shuffled =
+          Array.isArray(s) &&
+          s.every((t) => playlist.some((p) => p.title === t.title))
+            ? s
+            : shuffle(playlist);
+      } catch {
+        shuffled = shuffle(playlist);
+      }
+      let trackIndex = parseInt(localStorage.getItem("mainlineAudioIndex"), 10);
+      if (
+        Number.isNaN(trackIndex) ||
+        trackIndex < 0 ||
+        trackIndex >= shuffled.length
+      )
+        trackIndex = 0;
+      let savedTime =
+          parseFloat(localStorage.getItem("mainlineAudioTime")) || 0,
+        savedVolume = parseFloat(localStorage.getItem("mainlineAudioVolume"));
+      if (Number.isNaN(savedVolume)) savedVolume = 0.65;
+      audio.volume = savedVolume;
+      audio.muted = localStorage.getItem("mainlineAudioMuted") === "true";
+      volumeSlider.value = savedVolume;
+      function updateNowPlaying() {
+        const t = shuffled[trackIndex];
+        nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing";
+      }
+      function updateMuteIcon() {
+        const dim = "rgba(245,245,245,0.2)",
+          bright = "rgba(245,245,245,0.7)";
+        wave1.setAttribute("stroke", audio.muted ? dim : bright);
+        wave2.setAttribute("stroke", audio.muted ? dim : bright);
+        wave1.style.display = audio.muted ? "none" : "block";
+        wave2.style.display = audio.muted ? "none" : "block";
+      }
+      function loadTrack(i) {
+        audio.src = shuffled[i].src;
+        audio.load();
+        updateNowPlaying();
+      }
+      function saveAudioState() {
+        localStorage.setItem("mainlineAudioOrder", JSON.stringify(shuffled));
+        localStorage.setItem("mainlineAudioIndex", trackIndex);
+        localStorage.setItem("mainlineAudioTime", audio.currentTime || 0);
+        localStorage.setItem("mainlineAudioMuted", audio.muted);
+        localStorage.setItem("mainlineAudioVolume", audio.volume);
+      }
+      function nextTrack() {
+        trackIndex++;
+        savedTime = 0;
+        if (trackIndex >= shuffled.length) {
+          shuffled = shuffle(playlist);
+          trackIndex = 0;
+        }
+        loadTrack(trackIndex);
+        audio.play();
+        saveAudioState();
+      }
+      audio.addEventListener("ended", nextTrack);
+      audio.addEventListener("timeupdate", saveAudioState);
+      audio.addEventListener("error", nextTrack);
+      let started = false;
+      function startAudio() {
+        if (started) return;
+        started = true;
+        loadTrack(trackIndex);
+        audio.addEventListener(
+          "loadedmetadata",
+          () => {
+            if (savedTime > 0 && savedTime < audio.duration)
+              audio.currentTime = savedTime;
+            audio.play();
+            saveAudioState();
+          },
+          { once: true },
+        );
+        audioWidget.classList.add("show");
+        updateMuteIcon();
+        updateNowPlaying();
+        document.removeEventListener("click", startAudio);
+        document.removeEventListener("touchstart", startAudio);
+      }
+      document.addEventListener("click", startAudio);
+      document.addEventListener("touchstart", startAudio);
+      muteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        audio.muted = !audio.muted;
+        updateMuteIcon();
+        saveAudioState();
+      });
+      skipBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        savedTime = 0;
+        localStorage.setItem("mainlineAudioTime", 0);
+        nextTrack();
+      });
+      volumeSlider.addEventListener("click", (e) => e.stopPropagation());
+      volumeSlider.addEventListener("input", (e) => {
+        audio.volume = parseFloat(e.target.value);
+        if (audio.volume > 0) audio.muted = false;
+        updateMuteIcon();
+        saveAudioState();
+      });
+      window.addEventListener("beforeunload", saveAudioState);
+      const canvas = document.getElementById("snow"),
+        c = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+      const particles = [];
+      for (let i = 0; i < 220; i++)
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          r: Math.random() * 2 + 1,
+          d: Math.random() * 1.8 + 1,
+        });
+      function snow() {
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        c.fillStyle = "rgba(230,255,255,0.8)";
+        particles.forEach((p) => {
+          c.beginPath();
+          c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+          c.fill();
+          p.y += p.d;
+          p.x += Math.sin(p.y * 0.01) * 0.8;
+          if (p.y > canvas.height) {
+            p.y = -10;
+            p.x = Math.random() * canvas.width;
+          }
+        });
+        requestAnimationFrame(snow);
+      }
+      snow();
+    </script>
+  </body>
 </html>
