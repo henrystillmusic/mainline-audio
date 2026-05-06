@@ -52,7 +52,13 @@
         </iframe>
       </article>
     </div>
-  </div>
+    <footer class="music-footer">
+    <a href="INDEX.HTML" class="footer-link">Mainline Audio</a>
+    <span class="footer-divider">/</span>
+    <a href="https://instagram.com/henrystill" target="_blank" class="footer-link">@henrystill</a>
+  </footer>
+
+</div>
 </section>
 
 <style>
@@ -185,6 +191,35 @@
     .release-meta {
       margin-bottom: 0;
     }
+  }
+
+  .music-footer {
+    margin-top: 120px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-link {
+    color: #8d8d8d;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .footer-link:hover {
+    opacity: 0.55;
+  }
+
+  .footer-divider {
+    color: rgba(255,255,255,0.2);
   }
 
   @media (prefers-reduced-motion: reduce) {
