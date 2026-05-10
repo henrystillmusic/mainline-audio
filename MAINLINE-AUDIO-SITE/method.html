@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Process | Mainline Audio</title>
+  <title>Method | Mainline Audio</title>
 
   <link
     href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
@@ -138,6 +138,8 @@
       font-weight: 700;
       letter-spacing: -0.06em;
       margin-bottom: 34px;
+      padding-right: 0.1em;
+      overflow: visible;
     }
 
     .intro {
@@ -226,6 +228,88 @@
       color: rgba(245, 245, 245, 0.08);
     }
 
+    .audio-widget {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 50;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .audio-widget.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .now-playing {
+      min-width: 190px;
+      max-width: 240px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.055);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      color: rgba(245, 245, 245, 0.55);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .volume-slider {
+      width: 82px;
+      accent-color: rgba(245, 245, 245, 0.7);
+      opacity: 0.45;
+      cursor: pointer;
+    }
+    #mute-btn {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+    }
+    #mute-btn:hover { background: rgba(255, 255, 255, 0.12); }
+    #skip-btn {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: rgba(245, 245, 245, 0.38);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    #skip-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: rgba(245, 245, 245, 0.72);
+    }
+
     @media (max-width: 760px) {
       .site {
         width: min(100%, 88%);
@@ -275,7 +359,7 @@
       <p class="eyebrow">Mastering Workflow</p>
 
       <h1>
-        <span class="gradient-text">Process</span>
+        <span class="gradient-text">Method</span>
       </h1>
 
       <p class="intro">
@@ -347,50 +431,203 @@
     </footer>
   </main>
 
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Loading...</div>
+    <input
+      class="volume-slider"
+      id="volume-slider"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0.65"
+      aria-label="Volume"
+    />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(245,245,245,0.7)"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
   <script>
-    const canvas = document.getElementById("snow"),
-      c = canvas.getContext("2d");
+    const playlist = [
+      { title: "Drift",           src: "MUSIC/SRS_Drift_Master_01.mp3" },
+      { title: "Draped",          src: "MUSIC/SRS_Draped_Master_01.mp3" },
+      { title: "Still Waters",    src: "MUSIC/SRS_Still Waters_Master_01.mp3" },
+      { title: "Weightless",      src: "MUSIC/SRS_Weightless_Master_01.mp3" },
+      { title: "When the Mud Settles", src: "MUSIC/when the mud settles.m4a" },
+      { title: "Run Free",        src: "MUSIC/Run Free.mp3" },
+    ];
+    function shuffle(arr) {
+      const s = [...arr];
+      for (let i = s.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [s[i], s[j]] = [s[j], s[i]];
+      }
+      return s;
+    }
+    const audioWidget  = document.getElementById("audio-widget"),
+          audio        = document.getElementById("bg-track"),
+          muteBtn      = document.getElementById("mute-btn"),
+          skipBtn      = document.getElementById("skip-btn"),
+          wave1        = document.getElementById("wave-1"),
+          wave2        = document.getElementById("wave-2"),
+          nowPlaying   = document.getElementById("now-playing"),
+          volumeSlider = document.getElementById("volume-slider");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    let shuffled;
+    try {
+      const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
+      shuffled = Array.isArray(s) && s.every(t => playlist.some(p => p.title === t.title))
+        ? s : shuffle(playlist);
+    } catch { shuffled = shuffle(playlist); }
 
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    let trackIndex = parseInt(localStorage.getItem("mainlineAudioIndex"), 10);
+    if (Number.isNaN(trackIndex) || trackIndex < 0 || trackIndex >= shuffled.length) trackIndex = 0;
+
+    let savedTime   = parseFloat(localStorage.getItem("mainlineAudioTime")) || 0,
+        savedVolume = parseFloat(localStorage.getItem("mainlineAudioVolume"));
+    if (Number.isNaN(savedVolume)) savedVolume = 0.65;
+
+    audio.volume = savedVolume;
+    audio.muted  = localStorage.getItem("mainlineAudioMuted") === "true";
+    volumeSlider.value = savedVolume;
+
+    function updateNowPlaying() {
+      const t = shuffled[trackIndex];
+      nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing";
+    }
+    function updateMuteIcon() {
+      const dim = "rgba(245,245,245,0.2)", bright = "rgba(245,245,245,0.7)";
+      wave1.setAttribute("stroke", audio.muted ? dim : bright);
+      wave2.setAttribute("stroke", audio.muted ? dim : bright);
+      wave1.style.display = audio.muted ? "none" : "block";
+      wave2.style.display = audio.muted ? "none" : "block";
+    }
+    function loadTrack(i) {
+      audio.src = shuffled[i].src;
+      audio.load();
+      updateNowPlaying();
+    }
+    function saveAudioState() {
+      localStorage.setItem("mainlineAudioOrder",  JSON.stringify(shuffled));
+      localStorage.setItem("mainlineAudioIndex",  trackIndex);
+      localStorage.setItem("mainlineAudioTime",   audio.currentTime || 0);
+      localStorage.setItem("mainlineAudioMuted",  audio.muted);
+      localStorage.setItem("mainlineAudioVolume", audio.volume);
+    }
+    function nextTrack() {
+      trackIndex++;
+      savedTime = 0;
+      if (trackIndex >= shuffled.length) { shuffled = shuffle(playlist); trackIndex = 0; }
+      loadTrack(trackIndex);
+      audio.play();
+      saveAudioState();
+    }
+
+    audio.addEventListener("ended",      nextTrack);
+    audio.addEventListener("timeupdate", saveAudioState);
+    audio.addEventListener("error",      nextTrack);
+
+    // On process page: resume automatically if audio was already playing on index
+    const wasPlaying = localStorage.getItem("mainlineAudioPlaying") === "true";
+
+    function initPlayer(autoplay) {
+      loadTrack(trackIndex);
+      audio.addEventListener("loadedmetadata", () => {
+        if (savedTime > 0 && savedTime < audio.duration) audio.currentTime = savedTime;
+        if (autoplay) audio.play();
+        saveAudioState();
+      }, { once: true });
+      audioWidget.classList.add("show");
+      updateMuteIcon();
+      updateNowPlaying();
+    }
+
+    if (wasPlaying) {
+      // Resume seamlessly — no click needed
+      initPlayer(true);
+    } else {
+      // First visit: wait for a click
+      function startAudio() {
+        initPlayer(true);
+        document.removeEventListener("click",      startAudio);
+        document.removeEventListener("touchstart", startAudio);
+      }
+      audioWidget.classList.add("show");
+      updateNowPlaying();
+      document.addEventListener("click",      startAudio);
+      document.addEventListener("touchstart", startAudio);
+    }
+
+    muteBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      audio.muted = !audio.muted;
+      updateMuteIcon();
+      saveAudioState();
+    });
+    skipBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      savedTime = 0;
+      localStorage.setItem("mainlineAudioTime", 0);
+      nextTrack();
+    });
+    volumeSlider.addEventListener("click", (e) => e.stopPropagation());
+    volumeSlider.addEventListener("input", (e) => {
+      audio.volume = parseFloat(e.target.value);
+      if (audio.volume > 0) audio.muted = false;
+      updateMuteIcon();
+      saveAudioState();
+    });
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
+      saveAudioState();
     });
 
+    // Snow
+    const canvas = document.getElementById("snow"),
+          c      = canvas.getContext("2d");
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    window.addEventListener("resize", () => {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
     const particles = [];
-
-    for (let i = 0; i < 220; i++) {
+    for (let i = 0; i < 220; i++)
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height - canvas.height,
         r: Math.random() * 2 + 1,
         d: Math.random() * 1.8 + 1,
       });
-    }
-
     function snow() {
       c.clearRect(0, 0, canvas.width, canvas.height);
       c.fillStyle = "rgba(230,255,255,0.8)";
-
       particles.forEach((p) => {
         c.beginPath();
         c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
         c.fill();
-
         p.y += p.d;
         p.x += Math.sin(p.y * 0.01) * 0.8;
-
-        if (p.y > canvas.height) {
-          p.y = -10;
-          p.x = Math.random() * canvas.width;
-        }
+        if (p.y > canvas.height) { p.y = -10; p.x = Math.random() * canvas.width; }
       });
-
       requestAnimationFrame(snow);
     }
-
     snow();
   </script>
 </body>
