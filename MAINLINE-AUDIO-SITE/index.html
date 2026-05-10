@@ -377,12 +377,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      .volume-slider {
-        width: 82px;
-        accent-color: rgba(245, 245, 245, 0.7);
-        opacity: 0.45;
-        cursor: pointer;
-      }
       #mute-btn {
         width: 48px;
         height: 48px;
@@ -585,16 +579,6 @@
     <audio id="bg-track" preload="auto"></audio>
     <div class="audio-widget" id="audio-widget">
       <div class="now-playing" id="now-playing">Click anywhere to play</div>
-      <input
-        class="volume-slider"
-        id="volume-slider"
-        type="range"
-        min="0"
-        max="1"
-        step="0.01"
-        value="0.65"
-        aria-label="Volume"
-      />
       <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
       <div id="mute-btn" title="Toggle music">
         <svg
@@ -640,7 +624,6 @@
         wave1 = document.getElementById("wave-1"),
         wave2 = document.getElementById("wave-2"),
         nowPlaying = document.getElementById("now-playing"),
-        volumeSlider = document.getElementById("volume-slider");
       let shuffled;
       try {
         const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
@@ -665,7 +648,6 @@
       if (Number.isNaN(savedVolume)) savedVolume = 0.65;
       audio.volume = savedVolume;
       audio.muted = localStorage.getItem("mainlineAudioMuted") === "true";
-      volumeSlider.value = savedVolume;
       function updateNowPlaying() {
         const t = shuffled[trackIndex];
         nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing";
@@ -738,13 +720,6 @@
         savedTime = 0;
         localStorage.setItem("mainlineAudioTime", 0);
         nextTrack();
-      });
-      volumeSlider.addEventListener("click", (e) => e.stopPropagation());
-      volumeSlider.addEventListener("input", (e) => {
-        audio.volume = parseFloat(e.target.value);
-        if (audio.volume > 0) audio.muted = false;
-        updateMuteIcon();
-        saveAudioState();
       });
  window.addEventListener("beforeunload", () => {
   localStorage.setItem(
