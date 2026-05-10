@@ -1,324 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Mainline Audio — Music</title>
-
-  <meta
-    name="description"
-    content="Original music produced, mixed, and mastered by Henry Still / Mainline Audio."
-  />
-
-  <link
-    href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
-    rel="stylesheet"
-  />
-
+  <title>Music | Mainline Audio</title>
+  <meta name="description" content="Original music produced, mixed, and mastered by Henry Still / Mainline Audio." />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #0a0a0a;
-      color: #f5f5f5;
-      font-family: 'Satoshi', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    #snow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .site {
-      position: relative;
-      z-index: 1;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #0a0a0a; color: #f5f5f5; font-family: "Satoshi", sans-serif; min-height: 100vh; overflow-x: hidden; }
+    #snow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .site { position: relative; z-index: 1; }
     .gradient-text {
-      background: linear-gradient(
-        90deg,
-        #ffffff,
-        #b8f8ff,
-        #ffe0ff,
-        #f0e8ff,
-        #ffffff
-      );
-      background-size: 400%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: flow 18s ease infinite;
+      background: linear-gradient(90deg, #ffffff, #b8f8ff, #ffe0ff, #f0e8ff, #ffffff);
+      background-size: 400%; -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; animation: flow 18s ease infinite;
     }
+    @keyframes flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    @keyframes flow {
-      0% {
-        background-position: 0% 50%;
-      }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 56px; }
+    .nav-home { font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(245,245,245,0.38); text-decoration: none; transition: color 0.2s; }
+    .nav-home:hover { color: #f5f5f5; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.28); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #f5f5f5; }
+    .nav-links a.current { color: rgba(245,245,245,0.1); pointer-events: none; }
 
-      50% {
-        background-position: 100% 50%;
-      }
+    .page-inner { max-width: 980px; margin: 0 auto; padding: 48px 48px 96px; }
+    .section-kicker { font-size: 10px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.18); margin-bottom: 20px; }
+    .section-title { font-size: clamp(2.5rem, 7vw, 6rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.92; color: #f5f5f5; margin-bottom: 28px; }
+    .section-intro { max-width: 520px; font-size: 12px; font-weight: 400; color: rgba(245,245,245,0.28); letter-spacing: 0.06em; line-height: 1.9; margin-bottom: 64px; }
 
-      100% {
-        background-position: 0% 50%;
-      }
-    }
+    .release-grid { display: flex; flex-direction: column; gap: 0; }
+    .release-card { border-top: 1px solid rgba(245,245,245,0.07); padding: 36px 0; display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .release-card:last-child { border-bottom: 1px solid rgba(245,245,245,0.07); }
+    .release-artist { font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.18); margin-bottom: 8px; }
+    .release-title { font-size: clamp(1.8rem, 4vw, 3.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: #f5f5f5; margin-bottom: 10px; }
+    .release-role { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; color: rgba(245,245,245,0.22); }
+    .spotify-player { border-radius: 12px; filter: grayscale(1); opacity: 0.88; display: block; width: 100%; height: 152px; border: 0; }
 
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 32px 56px;
-    }
+    footer { text-align: center; padding: 72px 48px 40px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 32px; }
+    .footer-links a { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.28); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #f5f5f5; }
+    .footer-copy { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.08); }
 
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(245,245,245,0.28);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #f5f5f5;
-    }
-
-    .page-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 48px 48px 96px;
-    }
-
-    .section-kicker {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: rgba(245,245,245,0.18);
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-size: clamp(2.5rem, 7vw, 6rem);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 0.92;
-      color: #f5f5f5;
-      margin-bottom: 28px;
-    }
-
-    .section-intro {
-      max-width: 520px;
-      font-size: 12px;
-      font-weight: 400;
-      color: rgba(245,245,245,0.28);
-      letter-spacing: 0.06em;
-      line-height: 1.9;
-      margin-bottom: 64px;
-    }
-
-    .release-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .release-card {
-      border-top: 1px solid rgba(245,245,245,0.07);
-      padding: 36px 0;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    .release-card:last-child {
-      border-bottom: 1px solid rgba(245,245,245,0.07);
-    }
-
-    .release-artist {
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(245,245,245,0.18);
-      margin-bottom: 8px;
-    }
-
-    .release-title {
-      font-size: clamp(1.8rem, 4vw, 3.6rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      color: #f5f5f5;
-      margin-bottom: 10px;
-    }
-
-    .release-role {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      color: rgba(245,245,245,0.22);
-    }
-
-    .spotify-player {
-      border-radius: 12px;
-      filter: grayscale(1);
-      opacity: 0.88;
-      display: block;
-      width: 100%;
-      height: 152px;
-      border: 0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 72px 48px 40px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-
-    .footer-links a {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(245,245,245,0.28);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #f5f5f5;
-    }
-
-    .footer-copy {
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(245,245,245,0.08);
-    }
-
-    @media (min-width: 760px) {
-      .release-card {
-        grid-template-columns: 0.9fr 1.1fr;
-        gap: 48px;
-        align-items: center;
-      }
-    }
-
+    @media (min-width: 760px) { .release-card { grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; } }
     @media (max-width: 640px) {
-      nav {
-        padding: 24px 28px;
-      }
-
-      .nav-links {
-        gap: 24px;
-      }
-
-      .page-inner {
-        padding: 40px 28px 72px;
-      }
-
-      footer {
-        padding: 56px 28px 36px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
+      nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; }
+      .nav-links { gap: 24px; }
+      .page-inner { padding: 40px 28px 72px; }
+      footer { padding: 56px 28px 36px; }
     }
   </style>
 </head>
-
 <body>
   <canvas id="snow"></canvas>
-
   <div class="site">
-
     <nav>
+      <a class="nav-home" href="index.html">Mainline Audio</a>
       <ul class="nav-links">
-        <li>
-          <a href="index.html">Mastering</a>
-        </li>
-
-        <li>
-          <a href="music.html" class="active">Music</a>
-        </li>
-
-        <li>
-          <a
-            href="https://www.instagram.com/henrystill/"
-            target="_blank"
-            rel="noopener"
-          >
-            Instagram
-          </a>
-        </li>
+        <li><a href="method.html">Method</a></li>
+        <li><a href="music.html" class="current">Music</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </nav>
 
     <div class="page-inner">
       <p class="section-kicker">Selected Work</p>
-
       <h1 class="section-title gradient-text">Releases</h1>
-
-      <p class="section-intro">
-        Original music produced, mixed, and mastered by Henry Still / Mainline Audio.
-      </p>
+      <p class="section-intro">Original music produced, mixed, and mastered by Henry Still / Mainline Audio.</p>
 
       <div class="release-grid">
-
         <article class="release-card">
           <div class="release-meta">
             <p class="release-artist">Mainline &amp; Stasys</p>
             <h2 class="release-title gradient-text">Get Down</h2>
             <p class="release-role">Production · Mixing · Mastering</p>
           </div>
-
-          <iframe
-            class="spotify-player"
+          <iframe class="spotify-player"
             src="https://open.spotify.com/embed/track/04lk4YFBDZvxF5itDf0PMu?utm_source=generator&theme=0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
+            allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
           </iframe>
         </article>
 
@@ -328,16 +92,11 @@
             <h2 class="release-title gradient-text">Kerplunk</h2>
             <p class="release-role">Production · Mixing · Mastering</p>
           </div>
-
-          <iframe
-            class="spotify-player"
+          <iframe class="spotify-player"
             src="https://open.spotify.com/embed/track/5sHd3raeTqgbXC2F5Fnh7C?utm_source=generator&theme=0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
+            allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
           </iframe>
         </article>
-
       </div>
     </div>
 
@@ -345,67 +104,30 @@
       <div class="footer-links">
         <a href="index.html">Mainline Audio</a>
         <a href="index.html#contact">Start a project</a>
-        <a
-          href="https://www.instagram.com/henrystill/"
-          target="_blank"
-          rel="noopener"
-        >
-          Instagram
-        </a>
+        <a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a>
       </div>
-
       <p class="footer-copy">© 2026 Mainline Audio</p>
     </footer>
-
   </div>
 
   <script>
-    const canvas = document.getElementById('snow');
-    const c = canvas.getContext('2d');
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    // Stop background player from resuming after leaving music page
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("mainlineAudioPlaying", "false");
     });
 
+    // Snow
+    const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
     const particles = [];
-
-    for (let i = 0; i < 220; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height - canvas.height,
-        r: Math.random() * 2 + 1,
-        d: Math.random() * 1.8 + 1
-      });
-    }
-
+    for (let i = 0; i < 220; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height - canvas.height, r: Math.random() * 2 + 1, d: Math.random() * 1.8 + 1 });
     function snow() {
-      c.clearRect(0, 0, canvas.width, canvas.height);
-      c.fillStyle = 'rgba(230, 255, 255, 0.8)';
-
-      particles.forEach(p => {
-        c.beginPath();
-        c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
-        c.fill();
-
-        p.y += p.d;
-        p.x += Math.sin(p.y * 0.01) * 0.8;
-
-        if (p.y > canvas.height) {
-          p.y = -10;
-          p.x = Math.random() * canvas.width;
-        }
-      });
-
+      c.clearRect(0, 0, canvas.width, canvas.height); c.fillStyle = "rgba(230,255,255,0.8)";
+      particles.forEach(p => { c.beginPath(); c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false); c.fill(); p.y += p.d; p.x += Math.sin(p.y * 0.01) * 0.8; if (p.y > canvas.height) { p.y = -10; p.x = Math.random() * canvas.width; } });
       requestAnimationFrame(snow);
     }
-
     snow();
   </script>
-
 </body>
-
 </html>
