@@ -746,7 +746,13 @@
         updateMuteIcon();
         saveAudioState();
       });
-      window.addEventListener("beforeunload", saveAudioState);
+ window.addEventListener("beforeunload", () => {
+  localStorage.setItem(
+    "mainlineAudioPlaying",
+    !audio.paused && !audio.muted ? "true" : "false"
+  );
+  saveAudioState();
+});
       const canvas = document.getElementById("snow"),
         c = canvas.getContext("2d");
       canvas.width = window.innerWidth;
