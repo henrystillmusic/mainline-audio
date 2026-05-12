@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mainline Audio — Visualizer</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: #0a0a0a; overflow: hidden; }
+
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; }
+  #bg    { z-index: 1; }
+  #coral { z-index: 2; }
+  #snow  { z-index: 3; pointer-events: none; }
+
+  .stage {
+    position: fixed; inset: 0; z-index: 10;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+
+  .logo-img {
+    width: min(380px, 78vw);
+    filter: drop-shadow(0 0 40px rgba(184,248,255,0.12));
+    opacity: 0;
+    animation: rise 2.4s cubic-bezier(.22,1,.36,1) .7s forwards;
+  }
+
+  .rule {
+    width: min(380px, 78vw); height: 1px;
+    background: rgba(184,248,255,0.08);
+    margin: 28px 0 24px;
+    opacity: 0;
+    animation: rise 2s ease 1.5s forwards;
+  }
+
+  .tagline {
+    font-family: "Satoshi", sans-serif;
+    font-size: clamp(.7rem, 1.6vw, .85rem);
+    font-weight: 500; letter-spacing: .3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: rise 2s ease 1.9s forwards;
+  }
+
+  .bottom-label {
+    position: fixed; bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    font-family: "Satoshi", sans-serif;
+    font-size: clamp(.52rem, 1.1vw, .63rem);
+    font-weight: 500; letter-spacing: .34em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.1);
+    white-space: nowrap;
+    opacity: 0;
+    animation: rise 2s ease 2.4s forwards;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #ffffff, #b8f8ff, #ffe0ff, #f0e8ff, #ffffff);
+    background-size: 400%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flow 18s ease infinite;
+  }
+
+  @keyframes flow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<canvas id="coral"></canvas>
+<canvas id="snow"></canvas>
+
+<div class="stage">
+  <img class="logo-img"
+    src="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png"
+    alt="Mainline Audio" crossorigin="anonymous">
+  <div class="rule"></div>
+  <p class="tagline gradient-text">Mastering — Orlando, FL</p>
+</div>
+
+<div class="bottom-label">mainline-audio.com</div>
+
+<script>
+let W = window.innerWidth, H = window.innerHeight;
+window.addEventListener('resize', () => { W = window.innerWidth; H = window.innerHeight; });
+
+/* ── 1. BACKGROUND ───────────────────────────── */
+(function(){
+  const c = document.getElementById('bg');
+  const ctx = c.getContext('2d');
+  function resize(){ c.width = W; c.height = H; }
+  resize(); window.addEventListener('resize', resize);
+
+  function draw(ts){
+    const t = ts * 0.00014;
+    const topH = 222 + Math.sin(t) * 7;
+    const botH = 198 + Math.sin(t * .5) * 5;
+
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0,    `hsl(${topH}, 48%, 4%)`);
+    g.addColorStop(0.45, `hsl(${topH - 8}, 42%, 7%)`);
+    g.addColorStop(0.8,  `hsl(${botH}, 36%, 10%)`);
+    g.addColorStop(1,    `hsl(${botH - 10}, 30%, 5%)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    // Caustic shimmer
+    for(let i = 0; i < 4; i++){
+      const bx   = (Math.sin(ts * (0.00026 + i * 0.00008) + i * 2.1) * .5 + .5) * W;
+      const by   = H * (0.03 + i * 0.065);
+      const beam = ctx.createRadialGradient(bx, by, 0, bx, by, W * .55);
+      beam.addColorStop(0,  `rgba(184,248,255,${0.032 - i * 0.006})`);
+      beam.addColorStop(.7, 'rgba(0,0,0,0)');
+      ctx.fillStyle = beam;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    // Vignette
+    const vig = ctx.createRadialGradient(W*.5, H*.38, H*.15, W*.5, H*.38, H*.92);
+    vig.addColorStop(0, 'rgba(0,0,0,0)');
+    vig.addColorStop(1, 'rgba(0,0,0,.85)');
+    ctx.fillStyle = vig;
+    ctx.fillRect(0, 0, W, H);
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+
+/* ── 2. CORAL ────────────────────────────────────
+   Real coral reference:
+   - Irregular widths — some thin tendrils, some broad fans
+   - Heights vary wildly, clusters of short + one tall
+   - Colours muted/earthy: dusty rose, ochre, pale teal,
+     bleached white — not neon
+   - Tips branch like antlers or cup shapes, not glowing orbs
+   - Whole colony sways together with a slow shared current
+──────────────────────────────────────────────── */
+(function(){
+  const c = document.getElementById('coral');
+  const ctx = c.getContext('2d');
+  function resize(){ c.width = W; c.height = H; }
+  resize(); window.addEventListener('resize', resize);
+
+  const COUNT = 90;
+
+  // Muted, organic coral palette — dusty not neon
+  // hue, sat, lit — kept low-saturation and darker
+  const PALETTE = [
+    [8,  35, 42],   // dusty coral/terracotta
+    [340,28, 45],   // muted rose
+    [18, 30, 38],   // warm sand
+    [185,25, 35],   // faded teal
+    [195,22, 40],   // pale blue-green
+    [270,18, 38],   // dusty mauve
+    [30, 25, 50],   // bleached peach
+    [0,  15, 52],   // near-white blush
+  ];
+
+  // Build colony — irregular sizing in clusters
+  const stalks = Array.from({length: COUNT}, (_, i) => {
+    const [h, s, l] = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    // Varied width: most thin, some wide fans
+    const widthClass = Math.random();
+    const baseW = widthClass < 0.6
+      ? 0.4 + Math.random() * 0.6   // thin tendril
+      : 1.2 + Math.random() * 1.8;  // broad fan
+
+    // Height profile: cluster short ones with occasional tall spike
+    const heightBias = Math.random();
+    const maxFrac = heightBias < 0.55
+      ? 0.12 + Math.random() * 0.22   // short carpet layer
+      : heightBias < 0.82
+      ? 0.25 + Math.random() * 0.22   // mid height
+      : 0.45 + Math.random() * 0.25;  // tall spike
+
+    return {
+      phase:   Math.random() * Math.PI * 2,
+      freq:    0.1 + Math.random() * 0.35,    // slow
+      amp:     0.15 + Math.random() * 0.55,   // subtle height variation
+      // Sway: whole colony shares a slow current + individual flutter
+      swayF:   0.00018 + Math.random() * 0.00022,
+      swayA:   2 + Math.random() * 8,
+      h, s, l,
+      baseW,
+      maxFrac,
+      // Branch style: 0=simple tip, 1=antler fork, 2=cup/fan
+      branchStyle: Math.floor(Math.random() * 3),
+      // Slight lean direction for variety
+      lean: (Math.random() - 0.5) * 0.18,
+    };
+  });
+
+  // Shared slow current — all sway together gently
+  let currentPhase = 0;
+
+  function drawBranch(ctx, x, y, angle, len, depth, hue, sat, lit, alpha){
+    if(depth === 0 || len < 3) return;
+    const ex = x + Math.sin(angle) * len;
+    const ey = y - Math.cos(angle) * len;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(ex, ey);
+    ctx.strokeStyle = `hsla(${hue}, ${sat}%, ${lit + depth * 5}%, ${alpha})`;
+    ctx.lineWidth = Math.max(0.4, depth * 0.7);
+    ctx.stroke();
+    // Fork
+    const spread = 0.3 + Math.random() * 0.25;
+    drawBranch(ctx, ex, ey, angle - spread, len * 0.62, depth - 1, hue, sat, lit, alpha * 0.85);
+    drawBranch(ctx, ex, ey, angle + spread, len * 0.62, depth - 1, hue, sat, lit, alpha * 0.85);
+  }
+
+  function draw(ts){
+    ctx.clearRect(0, 0, W, H);
+    currentPhase = ts * 0.00016; // slow shared current
+
+    const slotW = W / COUNT;
+
+    stalks.forEach((s, i) => {
+      const t = ts * 0.001;
+
+      // Height breathes slowly
+      const v =
+        Math.sin(t * s.freq       + s.phase) * s.amp * .6 +
+        Math.sin(t * s.freq * 1.8 + s.phase * 1.3) * s.amp * .25 +
+        Math.sin(t * s.freq * 0.3 + s.phase * .7) * s.amp * .15;
+
+      const norm  = (v + 1) / 2;
+      const barH  = Math.max(4, norm * H * s.maxFrac);
+      const rootX = i * slotW + slotW / 2;
+      const tipY  = H - barH;
+
+      // Sway: shared current + individual
+      const shared     = Math.sin(currentPhase + i * 0.12) * 6;
+      const individual = Math.sin(ts * s.swayF + s.phase) * s.swayA;
+      const totalSway  = shared + individual;
+      const leanOffset = s.lean * barH;
+
+      const w2 = (slotW * s.baseW) * 0.5;
+
+      // Stalk — tapered, organic curve, very subtle colour
+      // Root almost invisible, colour appears mid-stalk
+      const gr = ctx.createLinearGradient(rootX, H, rootX + totalSway + leanOffset, tipY);
+      gr.addColorStop(0,    `hsla(${s.h}, ${s.s}%, ${s.l - 15}%, 0)`);
+      gr.addColorStop(0.08, `hsla(${s.h}, ${s.s}%, ${s.l - 10}%, 0.3)`);
+      gr.addColorStop(0.5,  `hsla(${s.h}, ${s.s}%, ${s.l}%,       0.65)`);
+      gr.addColorStop(1,    `hsla(${s.h}, ${s.s + 8}%, ${s.l + 12}%, 0.78)`);
+
+      // Tapered path: wide at base, narrow at tip
+      const rootW = w2 * 1.0;
+      const tipW  = w2 * 0.18;
+      const tipX  = rootX + totalSway + leanOffset;
+      const ctrlX = rootX + (totalSway + leanOffset) * 0.4;
+      const ctrlY = H - barH * 0.55;
+
+      ctx.beginPath();
+      ctx.moveTo(rootX - rootW, H);
+      ctx.quadraticCurveTo(ctrlX - tipW * 1.5, ctrlY, tipX - tipW, tipY);
+      ctx.lineTo(tipX + tipW, tipY);
+      ctx.quadraticCurveTo(ctrlX + tipW * 1.5, ctrlY, rootX + rootW, H);
+      ctx.closePath();
+      ctx.fillStyle = gr;
+      ctx.fill();
+
+      // Tip detail based on branch style
+      if(s.branchStyle === 1 && barH > H * 0.08){
+        // Antler fork — small branching lines
+        ctx.save();
+        const blen = barH * 0.12;
+        drawBranch(ctx, tipX, tipY + 2, 0, blen, 2, s.h, s.s, s.l + 10, 0.55);
+        ctx.restore();
+      } else if(s.branchStyle === 2){
+        // Cup/fan — soft arc of dots at tip
+        const dotCount = 3 + Math.floor(norm * 3);
+        for(let d = 0; d < dotCount; d++){
+          const angle = (d / (dotCount - 1) - 0.5) * Math.PI * 0.7;
+          const dr    = barH * 0.06;
+          const dx    = tipX + Math.sin(angle) * dr * 3;
+          const dy    = tipY - Math.cos(angle) * dr * 2;
+          const dotR  = Math.max(0.6, w2 * 0.35 * (1 - Math.abs(d - dotCount/2) / dotCount));
+          ctx.beginPath();
+          ctx.arc(dx, dy, dotR, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${s.h + 10}, ${s.s + 10}%, ${s.l + 18}%, 0.7)`;
+          ctx.fill();
+        }
+      }
+      // branchStyle 0 = plain tapered tip (most realistic)
+    });
+
+    // Seafloor sediment — soft layered fade at base
+    const floor = ctx.createLinearGradient(0, H - H * 0.1, 0, H);
+    floor.addColorStop(0, 'rgba(0,0,0,0)');
+    floor.addColorStop(1, 'rgba(4,7,12,.95)');
+    ctx.fillStyle = floor;
+    ctx.fillRect(0, H - H * 0.1, W, H * 0.1);
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+
+/* ── 3. SNOW — exact from your site ─────────── */
+(function(){
+  const canvas = document.getElementById('snow');
+  const c = canvas.getContext('2d');
+
+  function resize(){
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize(); window.addEventListener('resize', resize);
+
+  const particles = [];
+  for(let i = 0; i < 220; i++){
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      r: Math.random() * 2 + 1,
+      d: Math.random() * 1.8 + 1
+    });
+  }
+
+  function snow(){
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.fillStyle = 'rgba(230,255,255,0.8)';
+    particles.forEach(p => {
+      c.beginPath();
+      c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+      c.fill();
+      p.y += p.d;
+      p.x += Math.sin(p.y * 0.01) * 0.8;
+      if(p.y > canvas.height){ p.y = -10; p.x = Math.random() * canvas.width; }
+    });
+    requestAnimationFrame(snow);
+  }
+  snow();
+})();
+</script>
+</body>
+</html>
