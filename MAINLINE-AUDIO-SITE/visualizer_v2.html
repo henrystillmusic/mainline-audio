@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mainline Audio — Visualizer</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: #0a0a0a; overflow: hidden; }
+
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; }
+  #bg    { z-index: 1; }
+  #coral { z-index: 2; }
+  #snow  { z-index: 3; pointer-events: none; }
+
+  .stage {
+    position: fixed; inset: 0; z-index: 10;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+
+  .logo-img {
+    width: min(380px, 78vw);
+    filter: drop-shadow(0 0 40px rgba(184,248,255,0.18));
+    opacity: 0;
+    animation: rise 2.4s cubic-bezier(.22,1,.36,1) .7s forwards;
+  }
+
+  .rule {
+    width: min(380px, 78vw); height: 1px;
+    background: rgba(184,248,255,0.1);
+    margin: 28px 0 24px;
+    opacity: 0;
+    animation: rise 2s ease 1.5s forwards;
+  }
+
+  .tagline {
+    font-family: "Satoshi", sans-serif;
+    font-size: clamp(.7rem, 1.6vw, .85rem);
+    font-weight: 500; letter-spacing: .3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: rise 2s ease 1.9s forwards;
+  }
+
+  .bottom-label {
+    position: fixed; bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    font-family: "Satoshi", sans-serif;
+    font-size: clamp(.52rem, 1.1vw, .63rem);
+    font-weight: 500; letter-spacing: .34em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.1);
+    white-space: nowrap;
+    opacity: 0;
+    animation: rise 2s ease 2.4s forwards;
+  }
+
+  /* Exact gradient from your site */
+  .gradient-text {
+    background: linear-gradient(90deg, #ffffff, #b8f8ff, #ffe0ff, #f0e8ff, #ffffff);
+    background-size: 400%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flow 18s ease infinite;
+  }
+
+  @keyframes flow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<canvas id="coral"></canvas>
+<canvas id="snow"></canvas>
+
+<div class="stage">
+  <img class="logo-img"
+    src="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png"
+    alt="Mainline Audio" crossorigin="anonymous">
+  <div class="rule"></div>
+  <p class="tagline gradient-text">Mastering — Orlando, FL</p>
+</div>
+
+<div class="bottom-label">mainline-audio.com</div>
+
+<script>
+let W = window.innerWidth, H = window.innerHeight;
+window.addEventListener('resize', () => { W = window.innerWidth; H = window.innerHeight; });
+
+/* ══════════════════════════════════════
+   1. BACKGROUND — deep ocean gradient
+      slow colour-shift, caustic shimmer
+══════════════════════════════════════ */
+(function(){
+  const c = document.getElementById('bg');
+  const ctx = c.getContext('2d');
+  function resize(){ c.width = W; c.height = H; }
+  resize(); window.addEventListener('resize', resize);
+
+  function draw(ts){
+    const t = ts * 0.00014;
+    const topH = 222 + Math.sin(t) * 7;
+    const midH = 210 + Math.cos(t * .8) * 6;
+    const botH = 195 + Math.sin(t * .5) * 5;
+
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0,    `hsl(${topH}, 50%, 4%)`);
+    g.addColorStop(0.4,  `hsl(${midH}, 44%, 7%)`);
+    g.addColorStop(0.75, `hsl(${botH}, 38%, 10%)`);
+    g.addColorStop(1,    `hsl(${botH - 10}, 32%, 5%)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    // Caustic light shimmer — like sun through water
+    for(let i = 0; i < 4; i++){
+      const bx   = (Math.sin(ts * (0.00028 + i * 0.00009) + i * 1.9) * .5 + .5) * W;
+      const by   = H * (0.04 + i * 0.07);
+      const bw   = W * (.5 + i * .05);
+      const beam = ctx.createRadialGradient(bx, by, 0, bx, by, bw);
+      beam.addColorStop(0,  `rgba(184,248,255,${0.038 - i * 0.007})`);
+      beam.addColorStop(.6, `rgba(100,180,220,${0.012 - i * 0.002})`);
+      beam.addColorStop(1,  'rgba(0,0,0,0)');
+      ctx.fillStyle = beam;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    // Vignette
+    const vig = ctx.createRadialGradient(W*.5, H*.4, H*.18, W*.5, H*.4, H*.9);
+    vig.addColorStop(0, 'rgba(0,0,0,0)');
+    vig.addColorStop(1, 'rgba(0,0,0,.82)');
+    ctx.fillStyle = vig;
+    ctx.fillRect(0, 0, W, H);
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+
+/* ══════════════════════════════════════
+   2. CORAL REEF WAVEFORM
+      Bezier stalks, polyp blooms,
+      palette = your gradient hues:
+      teal #b8f8ff · pink #ffe0ff ·
+      lavender #f0e8ff · warm coral
+══════════════════════════════════════ */
+(function(){
+  const c = document.getElementById('coral');
+  const ctx = c.getContext('2d');
+  function resize(){ c.width = W; c.height = H; }
+  resize(); window.addEventListener('resize', resize);
+
+  const COUNT = 80;
+  // Hues matching your gradient stops
+  const HUES = [185, 190, 195, 318, 328, 338, 17, 22, 268, 278];
+
+  const stalks = Array.from({length: COUNT}, () => {
+    const hue = HUES[Math.floor(Math.random() * HUES.length)];
+    return {
+      phase:  Math.random() * Math.PI * 2,
+      freq:   0.15 + Math.random() * 0.48,
+      amp:    0.3  + Math.random() * 0.7,
+      swayF:  0.00026 + Math.random() * 0.00032,
+      swayA:  4 + Math.random() * 13,
+      hue,
+      sat:    48 + Math.random() * 36,
+      lit:    40 + Math.random() * 20,
+      polyps: Math.floor(1 + Math.random() * 3),
+    };
+  });
+
+  function draw(ts){
+    ctx.clearRect(0, 0, W, H);
+    const t = ts * 0.001;
+    const barW = W / COUNT;
+    const gap  = barW * 0.28;
+
+    stalks.forEach((s, i) => {
+      const v =
+        Math.sin(t * s.freq        + s.phase) * s.amp * .55 +
+        Math.sin(t * s.freq * 2.1  + s.phase * 1.4) * s.amp * .28 +
+        Math.sin(t * s.freq * 0.38 + s.phase * .65) * s.amp * .17;
+
+      const norm  = (v + 1) / 2;
+      const barH  = Math.max(6, norm * H * 0.55);
+      const rootX = i * barW + barW / 2;
+      const tipY  = H - barH;
+      const sway  = Math.sin(ts * s.swayF + s.phase) * s.swayA;
+      const w2    = (barW - gap) * 0.5;
+
+      // Stalk gradient
+      const gr = ctx.createLinearGradient(rootX, H, rootX + sway, tipY);
+      gr.addColorStop(0,    `hsla(${s.hue}, ${s.sat}%, ${s.lit - 16}%, 0)`);
+      gr.addColorStop(0.12, `hsla(${s.hue}, ${s.sat}%, ${s.lit - 8}%,  0.55)`);
+      gr.addColorStop(0.7,  `hsla(${s.hue}, ${s.sat}%, ${s.lit}%,       0.8)`);
+      gr.addColorStop(1,    `hsla(${s.hue}, ${s.sat + 12}%, ${s.lit + 20}%, 0.95)`);
+
+      // Curved stalk body
+      ctx.beginPath();
+      ctx.moveTo(rootX - w2, H);
+      ctx.quadraticCurveTo(
+        rootX - w2 + sway * .45, H - barH * .5,
+        rootX - w2 * 0.35 + sway, tipY
+      );
+      ctx.lineTo(rootX + w2 * 0.35 + sway, tipY);
+      ctx.quadraticCurveTo(
+        rootX + w2 + sway * .45, H - barH * .5,
+        rootX + w2, H
+      );
+      ctx.closePath();
+      ctx.fillStyle = gr;
+      ctx.fill();
+
+      // Tip polyp bloom
+      const pr = w2 * 1.5 * (0.65 + norm * 0.5);
+      const pg = ctx.createRadialGradient(
+        rootX + sway, tipY, 0,
+        rootX + sway, tipY, pr
+      );
+      pg.addColorStop(0,    `hsla(${s.hue + 20}, ${s.sat + 18}%, ${s.lit + 28}%, 0.92)`);
+      pg.addColorStop(0.45, `hsla(${s.hue + 8},  ${s.sat + 8}%,  ${s.lit + 12}%, 0.5)`);
+      pg.addColorStop(1,    `hsla(${s.hue},       ${s.sat}%,      ${s.lit}%,       0)`);
+      ctx.beginPath();
+      ctx.arc(rootX + sway, tipY, pr, 0, Math.PI * 2);
+      ctx.fillStyle = pg;
+      ctx.fill();
+
+      // Side branch polyps along stalk
+      for(let p = 1; p <= s.polyps; p++){
+        const frac = p / (s.polyps + 1);
+        const bx   = rootX + sway * frac;
+        const by   = H - barH * frac;
+        const br   = w2 * 0.65 * (1 - frac * 0.35);
+        const side = (i % 2 === 0 ? 1 : -1) * br * 2;
+        ctx.beginPath();
+        ctx.arc(bx + side, by, br, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${s.hue + 10}, ${s.sat}%, ${s.lit + 12}%, 0.4)`;
+        ctx.fill();
+      }
+    });
+
+    // Sea floor fade
+    const floor = ctx.createLinearGradient(0, H - H * .06, 0, H);
+    floor.addColorStop(0, 'rgba(0,0,0,0)');
+    floor.addColorStop(1, 'rgba(5,8,14,.92)');
+    ctx.fillStyle = floor;
+    ctx.fillRect(0, H - H * .06, W, H * .06);
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+
+/* ══════════════════════════════════════
+   3. SNOW — lifted exactly from your site
+      rgba(230,255,255,0.8), falls down,
+      sine horizontal drift
+══════════════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('snow');
+  const c = canvas.getContext('2d');
+
+  function resize(){
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize(); window.addEventListener('resize', resize);
+
+  const particles = [];
+  for(let i = 0; i < 220; i++){
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      r: Math.random() * 2 + 1,
+      d: Math.random() * 1.8 + 1
+    });
+  }
+
+  function snow(){
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.fillStyle = 'rgba(230,255,255,0.8)';
+    particles.forEach(p => {
+      c.beginPath();
+      c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+      c.fill();
+      p.y += p.d;
+      p.x += Math.sin(p.y * 0.01) * 0.8;
+      if(p.y > canvas.height){ p.y = -10; p.x = Math.random() * canvas.width; }
+    });
+    requestAnimationFrame(snow);
+  }
+  snow();
+})();
+</script>
+</body>
+</html>
