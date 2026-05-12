@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mainline Audio — 3D EQ</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: #0a0a0a; overflow: hidden; }
+
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; }
+  #bg    { z-index: 1; }
+  #eq    { z-index: 2; }
+  #snow  { z-index: 3; pointer-events: none; }
+
+  .stage {
+    position: fixed; inset: 0; z-index: 10;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    /* Push logo up so bars are visible below */
+    padding-bottom: 28vh;
+  }
+
+  .logo-img {
+    width: min(340px, 72vw);
+    filter: drop-shadow(0 0 36px rgba(184,248,255,0.15));
+    opacity: 0;
+    animation: rise 2.4s cubic-bezier(.22,1,.36,1) .7s forwards;
+  }
+
+  .rule {
+    width: min(340px, 72vw); height: 1px;
+    background: rgba(184,248,255,0.09);
+    margin: 24px 0 20px;
+    opacity: 0;
+    animation: rise 2s ease 1.5s forwards;
+  }
+
+  .tagline {
+    font-family: "Satoshi", sans-serif;
+    font-size: clamp(.65rem, 1.5vw, .82rem);
+    font-weight: 500; letter-spacing: .3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: rise 2s ease 1.9s forwards;
+  }
+
+  .bottom-label {
+    position: fixed; bottom: 34px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    font-family: "Satoshi", sans-serif;
+    font-size: clamp(.5rem, 1.1vw, .62rem);
+    font-weight: 500; letter-spacing: .34em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.1);
+    white-space: nowrap;
+    opacity: 0;
+    animation: rise 2s ease 2.4s forwards;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #ffffff, #b8f8ff, #ffe0ff, #f0e8ff, #ffffff);
+    background-size: 400%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flow 18s ease infinite;
+  }
+
+  @keyframes flow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<canvas id="eq"></canvas>
+<canvas id="snow"></canvas>
+
+<div class="stage">
+  <img class="logo-img"
+    src="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png"
+    alt="Mainline Audio" crossorigin="anonymous">
+  <div class="rule"></div>
+  <p class="tagline gradient-text">Mastering — Orlando, FL</p>
+</div>
+
+<div class="bottom-label">mainline-audio.com</div>
+
+<script>
+let W = window.innerWidth, H = window.innerHeight;
+window.addEventListener('resize', () => { W = window.innerWidth; H = window.innerHeight; });
+
+/* ── 1. BACKGROUND ── */
+(function(){
+  const c = document.getElementById('bg');
+  const ctx = c.getContext('2d');
+  function resize(){ c.width = W; c.height = H; }
+  resize(); window.addEventListener('resize', resize);
+
+  function draw(ts){
+    const t = ts * 0.00013;
+    const topH = 222 + Math.sin(t) * 7;
+    const botH = 198 + Math.sin(t * .5) * 5;
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0,   `hsl(${topH}, 48%, 4%)`);
+    g.addColorStop(.45, `hsl(${topH-8}, 42%, 7%)`);
+    g.addColorStop(.82, `hsl(${botH}, 36%, 10%)`);
+    g.addColorStop(1,   `hsl(${botH-10}, 30%, 5%)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    // Caustic shimmer
+    for(let i = 0; i < 3; i++){
+      const bx   = (Math.sin(ts * (0.00024 + i * 0.00008) + i * 2.1) * .5 + .5) * W;
+      const by   = H * (0.04 + i * 0.07);
+      const beam = ctx.createRadialGradient(bx, by, 0, bx, by, W * .52);
+      beam.addColorStop(0,  `rgba(184,248,255,${0.028 - i * 0.007})`);
+      beam.addColorStop(.7, 'rgba(0,0,0,0)');
+      ctx.fillStyle = beam;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    const vig = ctx.createRadialGradient(W*.5, H*.4, H*.14, W*.5, H*.4, H*.9);
+    vig.addColorStop(0, 'rgba(0,0,0,0)');
+    vig.addColorStop(1, 'rgba(0,0,0,.88)');
+    ctx.fillStyle = vig;
+    ctx.fillRect(0, 0, W, H);
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+
+/* ── 2. 3D ISOMETRIC EQ BARS ── */
+(function(){
+  const c   = document.getElementById('eq');
+  const ctx = c.getContext('2d');
+  function resize(){ c.width = W; c.height = H; }
+  resize(); window.addEventListener('resize', resize);
+
+  // ── Isometric helpers ──────────────────────────
+  // We use a classic iso projection:
+  // screen_x = (col - row) * tileW/2
+  // screen_y = (col + row) * tileH/2 - barHeight
+  // Origin anchored to bottom-center of screen
+
+  const COLS  = 28;   // frequency bands (columns)
+  const ROWS  = 3;    // depth rows — creates the 3D grid
+  const TILE_W = 0;   // computed on resize
+  const TILE_H = 0;
+
+  // Bar state per column per row
+  const bars = Array.from({length: ROWS}, (_, row) =>
+    Array.from({length: COLS}, (_, col) => ({
+      // Each bar has independent slow sinusoidal animation
+      phase:  Math.random() * Math.PI * 2,
+      freq:   0.25 + Math.random() * 0.65,
+      amp:    0.3  + Math.random() * 0.7,
+      // Frequency position 0..1 across spectrum
+      fpos:   col / (COLS - 1),
+      // Row depth
+      row,
+      col,
+      // Current & target height for smooth interpolation
+      current: 0.1 + Math.random() * 0.4,
+      target:  0.1 + Math.random() * 0.4,
+    }))
+  );
+
+  // Colour per frequency position:
+  // Low freq (left): dusty warm teal
+  // Mid: site blue-white
+  // High (right): pale lavender/pink
+  function barColor(fpos, face, alpha){
+    // Hue sweep: 190 (teal) → 210 (blue) → 290 (lavender) → 330 (pink)
+    const hue = 190 + fpos * 140;
+    const sat = 28 + fpos * 22;
+    const litBase = face === 'top'  ? 62 :
+                    face === 'left' ? 40 : 28;
+    return `hsla(${hue}, ${sat}%, ${litBase}%, ${alpha})`;
+  }
+
+  // Draw one 3D box at iso grid position (col, row) with given height fraction
+  function drawBar(col, row, heightFrac, originX, originY, tW, tH, tD){
+    const h = Math.max(2, heightFrac * tD * 8); // actual pixel height
+
+    // Iso screen position of this tile's "floor" corner
+    const sx = originX + (col - row) * tW;
+    const sy = originY + (col + row) * tH;
+
+    // The four corners of the top face (rhombus)
+    // In iso: right = (+tW, +tH), back = (-tW, +tH), forward = (+tW, -tH)
+    const topFace = [
+      { x: sx,          y: sy - h },           // near corner (front)
+      { x: sx + tW,     y: sy - h + tH },      // right corner
+      { x: sx,          y: sy - h + tH * 2 },  // back corner
+      { x: sx - tW,     y: sy - h + tH },      // left corner
+    ];
+
+    // Left face (going down from left & back corners of top)
+    const leftFace = [
+      topFace[3],
+      topFace[2],
+      { x: sx,      y: sy + tH * 2 },   // back bottom
+      { x: sx - tW, y: sy + tH },        // left bottom
+    ];
+
+    // Right face
+    const rightFace = [
+      topFace[1],
+      topFace[2],
+      { x: sx,      y: sy + tH * 2 },
+      { x: sx + tW, y: sy + tH },
+    ];
+
+    // Draw right face (darkest — shadow side)
+    ctx.beginPath();
+    rightFace.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.closePath();
+    ctx.fillStyle = barColor(col / (COLS - 1), 'right', 0.82);
+    ctx.fill();
+
+    // Draw left face (mid tone)
+    ctx.beginPath();
+    leftFace.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.closePath();
+    ctx.fillStyle = barColor(col / (COLS - 1), 'left', 0.88);
+    ctx.fill();
+
+    // Draw top face (brightest — light source)
+    ctx.beginPath();
+    topFace.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.closePath();
+    ctx.fillStyle = barColor(col / (COLS - 1), 'top', 0.95);
+    ctx.fill();
+
+    // Thin edge highlight on top-left edges
+    ctx.beginPath();
+    ctx.moveTo(topFace[0].x, topFace[0].y);
+    ctx.lineTo(topFace[3].x, topFace[3].y);
+    ctx.lineTo(topFace[2].x, topFace[2].y);
+    ctx.strokeStyle = `rgba(255,255,255,0.08)`;
+    ctx.lineWidth = 0.6;
+    ctx.stroke();
+  }
+
+  function draw(ts){
+    ctx.clearRect(0, 0, W, H);
+
+    const t = ts * 0.001;
+
+    // Tile dimensions — scale to screen
+    const scale = Math.min(W, H) / 900;
+    const tW = 18 * scale;   // half-width of iso tile
+    const tH = 9  * scale;   // half-height (iso squish)
+    const tD = H  * 0.38;    // max bar height in pixels
+
+    // Origin: bottom-center, shifted up so bars sit in lower half
+    const originX = W / 2;
+    const originY = H * 0.86;
+
+    // Update bar targets with organic EQ-style animation
+    // Low freqs move slower and taller, highs faster and shorter
+    bars.forEach((rowBars, row) => {
+      rowBars.forEach((b, col) => {
+        const lowBias = 1 - b.fpos * 0.5;  // lows get more height
+        const v =
+          Math.sin(t * b.freq       + b.phase) * b.amp * .55 +
+          Math.sin(t * b.freq * 2.3 + b.phase * 1.5) * b.amp * .28 +
+          Math.sin(t * b.freq * 0.4 + b.phase * .7) * b.amp * .17;
+
+        b.target = Math.max(0.03, ((v + 1) / 2) * lowBias * 0.9);
+        // Smooth lerp toward target — attack fast, decay slow (EQ behaviour)
+        const speed = b.current < b.target ? 0.12 : 0.055;
+        b.current += (b.target - b.current) * speed;
+      });
+    });
+
+    // Draw back rows first (painter's algorithm)
+    // In iso, higher row index = further back
+    for(let row = ROWS - 1; row >= 0; row--){
+      // Within a row, draw right-to-left (higher col = further right = draw first)
+      for(let col = COLS - 1; col >= 0; col--){
+        const b = bars[row][col];
+        // Back rows are slightly dimmer and shorter to enhance depth
+        const depthScale  = 1 - row * 0.18;
+        const depthAlpha  = 1 - row * 0.22;
+        ctx.globalAlpha   = depthAlpha;
+        drawBar(col, row, b.current * depthScale, originX, originY, tW, tH, tD);
+      }
+    }
+    ctx.globalAlpha = 1;
+
+    // Floor grid — subtle iso grid lines on the "ground"
+    ctx.strokeStyle = 'rgba(184,248,255,0.04)';
+    ctx.lineWidth = 0.5;
+    for(let col = 0; col <= COLS; col++){
+      ctx.beginPath();
+      for(let row = 0; row <= ROWS; row++){
+        const sx = originX + (col - row) * tW;
+        const sy = originY + (col + row) * tH;
+        row === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+      }
+      ctx.stroke();
+    }
+    for(let row = 0; row <= ROWS; row++){
+      ctx.beginPath();
+      for(let col = 0; col <= COLS; col++){
+        const sx = originX + (col - row) * tW;
+        const sy = originY + (col + row) * tH;
+        col === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+      }
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+
+/* ── 3. SNOW — exact from your site ── */
+(function(){
+  const canvas = document.getElementById('snow');
+  const c = canvas.getContext('2d');
+  function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+
+  const particles = [];
+  for(let i = 0; i < 220; i++){
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      r: Math.random() * 2 + 1,
+      d: Math.random() * 1.8 + 1
+    });
+  }
+
+  function snow(){
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.fillStyle = 'rgba(230,255,255,0.8)';
+    particles.forEach(p => {
+      c.beginPath();
+      c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+      c.fill();
+      p.y += p.d;
+      p.x += Math.sin(p.y * 0.01) * 0.8;
+      if(p.y > canvas.height){ p.y = -10; p.x = Math.random() * canvas.width; }
+    });
+    requestAnimationFrame(snow);
+  }
+  snow();
+})();
+</script>
+</body>
+</html>
