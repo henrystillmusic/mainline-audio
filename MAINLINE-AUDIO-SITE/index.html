@@ -435,12 +435,11 @@ function snow() {
     c.fill();
 
     p.y += p.d;
-    p.x += Math.sin(p.y * 0.01) * 0.25;
+    p.x += Math.sin((p.y + p.x) * 0.005) * 0.12;
 
     if (p.y > canvas.height + 20) {
-      p.y = -20 - Math.random() * 100;
-      p.x = Math.random() * canvas.width;
-    }
+  p.y = -20;
+}
   });
 
   requestAnimationFrame(snow);
