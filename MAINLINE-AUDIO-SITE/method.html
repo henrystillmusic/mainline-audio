@@ -286,14 +286,41 @@
     const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
     canvas.width = window.innerWidth; canvas.height = window.innerHeight;
     window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
-    const particles = [];
-    for (let i = 0; i < 220; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height - canvas.height, r: Math.random() * 2 + 1, d: Math.random() * 1.8 + 1 });
-    function snow() {
-      c.clearRect(0, 0, canvas.width, canvas.height); c.fillStyle = "rgba(230,255,255,0.8)";
-      particles.forEach(p => { c.beginPath(); c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false); c.fill(); p.y += p.d; p.x += Math.sin(p.y * 0.01) * 0.8; if (p.y > canvas.height) { p.y = -10; p.x = Math.random() * canvas.width; } });
-      requestAnimationFrame(snow);
+   const particles = [];
+
+for (let i = 0; i < 160; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height - canvas.height,
+    r: Math.random() * 2 + 1,
+    d: Math.random() * 1.8 + 1
+  });
+}
+
+function snow() {
+  c.clearRect(0, 0, canvas.width, canvas.height);
+
+  c.fillStyle = "rgba(230,255,255,0.45)";
+
+  particles.forEach(p => {
+    c.beginPath();
+    c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+    c.fill();
+
+    p.y += p.d;
+
+    p.x += Math.sin(p.y * 0.01) * 0.25;
+
+    if (p.y > canvas.height + 20) {
+      p.y = -20 - Math.random() * 100;
+      p.x = Math.random() * canvas.width;
     }
-    snow();
+  });
+
+  requestAnimationFrame(snow);
+}
+
+snow();
   </script>
 </body>
 </html>
