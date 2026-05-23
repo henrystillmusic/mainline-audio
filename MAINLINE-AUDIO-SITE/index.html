@@ -23,12 +23,20 @@
       }
       .site { position: relative; z-index: 1; }
       .gradient-text {
-        background: linear-gradient(90deg, #ffffff, #b8f8ff, #ffe0ff, #f0e8ff, #ffffff);
-        background-size: 400%;
-        -webkit-background-clip: text; background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: flow 18s ease infinite;
-      }
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #dffcff,
+    #f7eaff,
+    #ece8ff,
+    #ffffff
+  );
+  background-size: 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: flow 90s linear infinite;
+}
       @keyframes flow {
         0%   { background-position: 0% 50%; }
         50%  { background-position: 100% 50%; }
