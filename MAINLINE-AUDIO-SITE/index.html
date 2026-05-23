@@ -131,7 +131,7 @@
       .contact { text-align: center; padding: 56px 48px 80px; }
       .contact-label {
         font-size: 9px; font-weight: 500; letter-spacing: 0.32em;
-        text-transform: uppercase; color: rgba(245,245,245,0.14); margin-bottom: 22px;
+        text-transform: uppercase; color: rgba(245,245,245,0.35); margin-bottom: 22px;
       }
       .contact-email {
         display: inline-block; font-size: 17px; font-weight: 500;
@@ -146,24 +146,24 @@
       .form-row { width: 100%; margin-bottom: 20px; }
       input[type="text"], input[type="email"], textarea {
         width: 100%; background: transparent; border: none;
-        border-bottom: 1px solid rgba(245,245,245,0.08); color: #f5f5f5;
+        border-bottom: 1px solid rgba(245,245,245,0.2); color: #f5f5f5;
         font-family: "Satoshi", sans-serif; font-size: 12px; font-weight: 400;
         letter-spacing: 0.06em; padding: 10px 0; outline: none;
         text-align: center; transition: border-color 0.2s; -webkit-appearance: none;
       }
       input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
-        border-bottom-color: rgba(245,245,245,0.35);
+        border-bottom-color: rgba(245,245,245,0.5);
       }
-      input::placeholder, textarea::placeholder { color: rgba(245,245,245,0.12); }
+      input::placeholder, textarea::placeholder { color: rgba(245,245,245,0.28); }
       textarea { resize: none; height: 64px; }
       .btn-submit {
-        background: transparent; border: 1px solid rgba(245,245,245,0.18);
-        color: rgba(245,245,245,0.5); padding: 13px 34px;
+        background: transparent; border: 1px solid rgba(245,245,245,0.35);
+        color: rgba(245,245,245,0.7); padding: 13px 34px;
         font-family: "Satoshi", sans-serif; font-size: 10px; font-weight: 700;
         letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer;
         margin-top: 12px; transition: all 0.2s;
       }
-      .btn-submit:hover { border-color: rgba(245,245,245,0.5); color: #f5f5f5; }
+      .btn-submit:hover { border-color: rgba(245,245,245,0.7); color: #f5f5f5; }
       footer { text-align: center; padding: 0 48px 40px; }
       .footer-copy {
         font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
@@ -403,7 +403,6 @@
         localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
         saveAudioState();
       });
-      // Snow
       const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
       canvas.width = window.innerWidth; canvas.height = window.innerHeight;
       window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
