@@ -298,10 +298,9 @@ for (let i = 0; i < 160; i++) {
 }
 
 function snow() {
-  c.fillStyle = "rgba(10,10,10,0.08)";
-  c.fillRect(0, 0, canvas.width, canvas.height);
+  c.clearRect(0, 0, canvas.width, canvas.height);
 
-  c.fillStyle = "rgba(230,255,255,0.28)";
+  c.fillStyle = "rgba(230,255,255,0.45)";
 
   particles.forEach(p => {
     c.beginPath();
