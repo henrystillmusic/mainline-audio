@@ -405,6 +405,14 @@
         localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
         saveAudioState();
       });
+      const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
       const particles = [];
 
 for (let i = 0; i < 160; i++) {
