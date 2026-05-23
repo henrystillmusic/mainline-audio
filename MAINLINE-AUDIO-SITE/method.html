@@ -11,10 +11,7 @@
     body { min-height: 100vh; background: #0a0a0a; color: #f5f5f5; font-family: "Satoshi", sans-serif; overflow-x: hidden; }
     #snow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 
-    /* full-width wrapper for nav — matches index/music */
     .site { position: relative; z-index: 1; }
-
-    /* constrained content below nav */
     .inner { width: min(1100px, 90%); margin: 0 auto; padding-bottom: 80px; }
 
     a { color: inherit; text-decoration: none; }
@@ -25,7 +22,6 @@
     }
     @keyframes flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    /* NAV — full width, same padding as index/music */
     nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 56px; margin-bottom: 110px; }
     .nav-home { font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(245,245,245,0.38); transition: color 0.2s; }
     .nav-home:hover { color: #f5f5f5; }
@@ -49,6 +45,9 @@
     li strong { color: rgba(245,245,245,0.6); font-weight: 600; }
     .formats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
     .pill { border: 1px solid rgba(245,245,245,0.16); border-radius: 999px; padding: 8px 14px; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,245,245,0.42); }
+
+    .closing { border-top: 1px solid rgba(245,245,245,0.08); padding-top: 64px; margin-top: 64px; text-align: center; }
+    .closing-line { font-size: 13px; font-weight: 400; font-style: italic; color: rgba(245,245,245,0.22); letter-spacing: 0.1em; line-height: 1.9; }
 
     footer { text-align: center; padding: 90px 48px 40px; }
     .footer-copy { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.08); }
@@ -79,47 +78,97 @@
       <a class="nav-home" href="index.html">Mainline Audio</a>
       <ul class="nav-links">
         <li><a href="method.html" class="current">Method</a></li>
-        <li><a href="music.html">Music</a></li>
         <li><a href="index.html#contact">Contact</a></li>
         <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </nav>
 
     <div class="inner">
+
+      <!-- HERO -->
       <section class="hero">
         <h1><span class="gradient-text">Method.</span></h1>
-        <p class="intro">Mastering is where a record becomes itself — the final stage where technical precision and critical listening converge. Every decision is made in service of the music: how it feels, how it translates, and how it lasts.</p>
+        <p class="intro">Mastering is the final stage of translation. It is where tone, dynamics, depth, and intention are refined so the record feels complete across real-world playback systems. The goal is not to make everything louder. The goal is to make the work feel finished.</p>
       </section>
 
       <div class="divider"></div>
 
+      <!-- SUBMISSION -->
       <section class="section">
-        <h2>The Work</h2>
+        <h2>Submission</h2>
         <div class="section-content">
           <ul>
-            <li><strong>The Foundation</strong> — I start by listening. I look for the emotional intent of the project before any processing begins.</li>
-            <li><strong>Intentional Processing</strong> — I apply EQ and dynamics only where they are needed. The goal is to enhance the character of the mix, not change it.</li>
-            <li><strong>Translation</strong> — The music is optimized to translate accurately across club systems, headphones, and streaming environments.</li>
-            <li><strong>Project Flow</strong> — I handle the sequencing and spacing for EPs and albums, ensuring the tracks feel like a single, cohesive body of work.</li>
-            <li><strong>Restoration</strong> — Noise reduction and archival work applied where needed, with care for the original source.</li>
-            <li><strong>Quality Control</strong> — A final, manual pass on every file to ensure the audio is technically clean before delivery.</li>
-            <li><strong>Final Files</strong> — High-resolution masters, stems, and any alternate versions required for your release, properly labeled and ready for distribution.</li>
+            <li><strong>Format</strong> — Please send 24-bit WAV or AIFF files at the project's native sample rate.</li>
+            <li><strong>Processing</strong> — Do not normalize, upsample, or convert the files unless specifically needed.</li>
+            <li><strong>Mix Bus</strong> — Leave mix bus processing in place if it is part of the sound. If heavy limiting or clipping is being used for loudness, include both the limited reference and an unlimited version when possible.</li>
+            <li><strong>Headroom</strong> — Clean exports with no digital clipping are more important than hitting a specific headroom number.</li>
           </ul>
         </div>
       </section>
 
+      <!-- NOTES -->
       <section class="section">
-        <h2>Delivery Formats</h2>
+        <h2>Notes</h2>
+        <div class="section-content">
+          <ul>
+            <li><strong>Creative Direction</strong> — Always welcome. References, version notes, loudness preferences, release format, and any concerns about the mix can help guide the process.</li>
+            <li><strong>Intentional Sounds</strong> — If the mix is intentionally distorted, saturated, dark, bright, dense, or heavily processed, that is not a problem. The intention matters.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- DELIVERY -->
+      <section class="section">
+        <h2>Delivery</h2>
         <div class="section-content">
           <div class="formats">
-            <span class="pill">WAV / AIFF</span>
-            <span class="pill">Streaming Masters</span>
-            <span class="pill">Stems & Alternates</span>
+            <span class="pill">Streaming</span>
+            <span class="pill">Club Playback</span>
+            <span class="pill">Digital Release</span>
+            <span class="pill">Vinyl Pre-Mastering</span>
+            <span class="pill">Instrumentals</span>
+            <span class="pill">Clean Versions</span>
+            <span class="pill">Alternate Edits</span>
           </div>
         </div>
       </section>
 
+      <!-- FAQ -->
+      <section class="section">
+        <h2>Questions</h2>
+        <div class="section-content">
+          <ul>
+            <li>
+              <strong>Should I remove my mix bus processing?</strong><br>
+              Not necessarily — if it's part of the sound, leave it on. If possible, include both the final mix and a version with loudness limiting bypassed.
+            </li>
+            <li>
+              <strong>How much headroom should I leave?</strong><br>
+              There is no magic number. A clean file with no clipping is more important than leaving exactly -6 dB of headroom.
+            </li>
+            <li>
+              <strong>Can heavily processed or distorted mixes still be mastered?</strong><br>
+              Yes. The intention of the mix matters more than rigid technical rules.
+            </li>
+            <li>
+              <strong>Do you offer revisions?</strong><br>
+              Yes. The goal is always to arrive at the strongest final version of the record.
+            </li>
+            <li>
+              <strong>Can I send references?</strong><br>
+              Absolutely. References can help communicate tone, space, weight, or overall direction.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CLOSING LINE -->
+      <div class="closing">
+        <p class="closing-line">Understanding what matters means letting go of what doesn't.</p>
+      </div>
+
       <footer><p class="footer-copy">© 2026 Mainline Audio</p></footer>
+
     </div>
   </div>
 
