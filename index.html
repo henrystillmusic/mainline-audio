@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,12 +23,20 @@
       }
       .site { position: relative; z-index: 1; }
       .gradient-text {
-        background: linear-gradient(90deg, #ffffff, #b8f8ff, #ffe0ff, #f0e8ff, #ffffff);
-        background-size: 400%;
-        -webkit-background-clip: text; background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: flow 18s ease infinite;
-      }
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #dffcff,
+    #f7eaff,
+    #ece8ff,
+    #ffffff
+  );
+  background-size: 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: flow 90s linear infinite;
+}
       @keyframes flow {
         0%   { background-position: 0% 50%; }
         50%  { background-position: 100% 50%; }
@@ -131,7 +139,7 @@
       .contact { text-align: center; padding: 56px 48px 80px; }
       .contact-label {
         font-size: 9px; font-weight: 500; letter-spacing: 0.32em;
-        text-transform: uppercase; color: rgba(245,245,245,0.14); margin-bottom: 22px;
+        text-transform: uppercase; color: rgba(245,245,245,0.35); margin-bottom: 22px;
       }
       .contact-email {
         display: inline-block; font-size: 17px; font-weight: 500;
@@ -146,24 +154,24 @@
       .form-row { width: 100%; margin-bottom: 20px; }
       input[type="text"], input[type="email"], textarea {
         width: 100%; background: transparent; border: none;
-        border-bottom: 1px solid rgba(245,245,245,0.08); color: #f5f5f5;
+        border-bottom: 1px solid rgba(245,245,245,0.2); color: #f5f5f5;
         font-family: "Satoshi", sans-serif; font-size: 12px; font-weight: 400;
         letter-spacing: 0.06em; padding: 10px 0; outline: none;
         text-align: center; transition: border-color 0.2s; -webkit-appearance: none;
       }
       input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
-        border-bottom-color: rgba(245,245,245,0.35);
+        border-bottom-color: rgba(245,245,245,0.5);
       }
-      input::placeholder, textarea::placeholder { color: rgba(245,245,245,0.12); }
+      input::placeholder, textarea::placeholder { color: rgba(245,245,245,0.28); }
       textarea { resize: none; height: 64px; }
       .btn-submit {
-        background: transparent; border: 1px solid rgba(245,245,245,0.18);
-        color: rgba(245,245,245,0.5); padding: 13px 34px;
+        background: transparent; border: 1px solid rgba(245,245,245,0.35);
+        color: rgba(245,245,245,0.7); padding: 13px 34px;
         font-family: "Satoshi", sans-serif; font-size: 10px; font-weight: 700;
         letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer;
         margin-top: 12px; transition: all 0.2s;
       }
-      .btn-submit:hover { border-color: rgba(245,245,245,0.5); color: #f5f5f5; }
+      .btn-submit:hover { border-color: rgba(245,245,245,0.7); color: #f5f5f5; }
       footer { text-align: center; padding: 0 48px 40px; }
       .footer-copy {
         font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
@@ -228,10 +236,10 @@
     <canvas id="snow"></canvas>
     <div class="site">
       <nav>
-        <a class="nav-home" href="index.html">Mainline Audio</a>
+        <a class="nav-home" href="/MAINLINE-AUDIO-SITE/index.html">Mainline Audio</a>
         <ul class="nav-links">
-          <li><a href="method.html">Method</a></li>
-          <li><a href="music.html">Music</a></li>
+          <li><a href="/MAINLINE-AUDIO-SITE/method.html">Method</a></li>
+          <li><a href="/MAINLINE-AUDIO-SITE/music.html">Music</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
@@ -239,12 +247,12 @@
 
       <section class="hero">
         <p class="hero-eyebrow">Mastering Engineer — Orlando, FL</p>
-        <img class="hero-logo" src="mainline_logo_transparent.png" alt="Mainline Audio" />
+        <img class="hero-logo" src="/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" alt="Mainline Audio" />
         <p class="hero-sub">Release-ready masters for streaming and club systems.</p>
         <p class="hero-genre">Electronic, hip-hop, indie, and experimental records.</p>
         <div class="hero-cta">
           <a class="btn-outline" href="#contact">Start a project</a>
-          <a class="btn-text" href="music.html">Hear the work ↗</a>
+          <a class="btn-text" href="/MAINLINE-AUDIO-SITE/music.html">Hear the work ↗</a>
         </div>
       </section>
 
@@ -271,21 +279,15 @@
       <div class="divider"></div>
 
       <section class="closer">
-        <p class="closer-byline">Henry Still</p>
-        <span class="closer-headline gradient-text">The Final<br />Word.</span>
-        <div class="closer-sub">
-          <p>The tools changed.</p>
-          <p>The formats changed.</p>
-          <p>The way we listen changed.</p>
-          <br />
-          <p>What hasn't changed is the feeling.</p>
-          <p>A great master makes a record feel inevitable.</p>
-        </div>
-      </section>
+  <p class="closer-byline">Henry Still</p>
+  <span class="closer-headline gradient-text">The Final<br />Word.</span>
+  <div class="closer-sub">
+    <p>Understanding what matters means letting go of what doesn’t.</p>
+  </div>
+</section>
 
       <section class="contact" id="contact">
         <p class="contact-label">Get in touch</p>
-        <a class="contact-email gradient-text" href="mailto:henrystill@me.com">henrystill@me.com</a>
         <form class="contact-form" action="https://formspree.io/f/xrejblzw" method="POST">
           <div class="form-row"><input type="text" name="name" placeholder="Your name" /></div>
           <div class="form-row"><input type="email" name="email" placeholder="Your email" /></div>
@@ -403,10 +405,14 @@
         localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
         saveAudioState();
       });
-      // Snow
       const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
-      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-      window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
       const particles = [];
 
 for (let i = 0; i < 160; i++) {
@@ -429,13 +435,11 @@ function snow() {
     c.fill();
 
     p.y += p.d;
-
-    p.x += Math.sin(p.y * 0.01) * 0.25;
+    p.x += Math.sin((p.y + p.x) * 0.005) * 0.12;
 
     if (p.y > canvas.height + 20) {
-      p.y = -20 - Math.random() * 100;
-      p.x = Math.random() * canvas.width;
-    }
+  p.y = -20;
+}
   });
 
   requestAnimationFrame(snow);
