@@ -468,45 +468,57 @@
 ════════════════════════════════ */
 const playlist = [
   {
-    title: "Drift",
-    mood: ["Ambient", "Reflective", "Slow Motion"],
-    use: "Documentary, fashion film, reflective montage, emotional underscore",
-    bpm: "—",
-    src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3"
-  },
+  title: "Drift",
+  mood: ["Ambient", "Reflective", "Slow Motion"],
+  use: "Documentary, fashion film, reflective montage, emotional underscore",
+  bpm: "88",
+  key: "Am",
+  duration: "3:42",
+  src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3"
+},
   {
     title: "Draped",
     mood: ["Dark", "Minimal", "Tension"],
     use: "Technology, cinematic transitions, late-night visuals, restrained suspense",
-    bpm: "—",
+    bpm: "88",
+    key: "Am",
+    duration: "3:42",
     src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3"
   },
   {
     title: "Still Waters",
     mood: ["Atmospheric", "Emotional", "Elegant"],
     use: "Editorial film, documentary, personal story, luxury / lifestyle visuals",
-    bpm: "—",
+    bpm: "88",
+    key: "Am",
+    duration: "3:42",
     src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/SRS_Still Waters_Master_01.mp3"
   },
   {
     title: "Weightless",
     mood: ["Floating", "Cinematic", "Open"],
     use: "Travel, architecture, nature, memory, introspective visual sequences",
-    bpm: "—",
+    bpm: "88",
+    key: "Am",
+    duration: "3:42",
     src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3"
   },
   {
     title: "When the Mud Settles",
     mood: ["Textural", "Nocturnal", "Experimental"],
     use: "Gritty documentary, urban visuals, abstract editorial, tension beds",
-    bpm: "—",
+    bpm: "88",
+    key: "Am",
+    duration: "3:42",
     src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/when the mud settles.m4a"
   },
   {
     title: "Run Free",
     mood: ["Rhythmic", "Forward", "Human"],
     use: "Movement, sports-adjacent visuals, creator content, momentum edits",
-    bpm: "—",
+    bpm: "88",
+    key: "Am",
+    duration: "3:42",
     src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/Run Free.mp3"
   }
 ];
@@ -590,7 +602,9 @@ function renderCues(){
         <h3 class="cue-title">${cue.title}</h3>
         <div class="cue-meta">
           ${cue.mood.map(tag => `<span class="pill">${tag}</span>`).join('')}
-          <span class="pill">BPM ${cue.bpm}</span>
+<span class="pill">BPM ${cue.bpm}</span>
+<span class="pill">KEY ${cue.key}</span>
+<span class="pill">${cue.duration}</span>
         </div>
         <p class="cue-use"><strong>Best for:</strong> ${cue.use}</p>
         <div class="cue-actions">
