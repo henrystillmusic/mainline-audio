@@ -602,10 +602,10 @@ function renderCues(){
       <div class="cue-inner">
         <h3 class="cue-title">${cue.title}</h3>
         <div class="cue-meta">
+          <span class="pill">BPM ${cue.bpm}</span>
+          <span class="pill">KEY ${cue.key}</span>
+          <span class="pill">${cue.duration}</span>
           ${cue.mood.map(tag => `<span class="pill">${tag}</span>`).join('')}
-<span class="pill">BPM ${cue.bpm}</span>
-<span class="pill">KEY ${cue.key}</span>
-<span class="pill">${cue.duration}</span>
         </div>
         <p class="cue-use"><strong>Best for:</strong> ${cue.use}</p>
         <div class="cue-actions">
