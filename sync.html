@@ -5,15 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Mainline Audio — Sync Portfolio</title>
-  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
-    <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
 
 <meta name="description" content="Cinematic electronic music, ambient textures, rhythmic tension, and modern editorial sound design by Henry Still / Mainline Audio for sync licensing, film, documentary, advertising, fashion, and digital media.">
 
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
-<script src="https://unpkg.com/wavesurfer.js@7"></script>
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +21,7 @@
     overflow-x: hidden;
   }
 
-  body { padding: 42px 22px 160px; }
+  body { padding: 42px 22px 220px; }
 
   canvas { position: fixed; inset: 0; width: 100%; height: 100%; }
   #bg   { z-index: 1; }
@@ -223,7 +218,7 @@
     background: rgba(255,255,255,.035);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
 
   .about h2 {
@@ -233,11 +228,11 @@
     font-weight: 500;
   }
 
-.artist-name {
-  letter-spacing: .01em !important;
-  font-size: clamp(1.6rem, 2.6vw, 2.9rem);
-}
- 
+  .artist-name {
+    letter-spacing: .01em !important;
+    font-size: clamp(1.6rem, 2.6vw, 2.9rem);
+  }
+
   .about p {
     color: rgba(245,245,245,.66);
     line-height: 1.75;
@@ -245,11 +240,23 @@
     margin-bottom: 18px;
   }
 
+  .about p:last-child { margin-bottom: 0; }
+
+  .licensing {
+    text-align: center;
+    padding: 28px 42px 56px;
+    font-size: 11px;
+    letter-spacing: .14em;
+    color: rgba(245,245,245,.22);
+    line-height: 1.8;
+  }
+
   .contact {
     display: flex;
     justify-content: space-between;
     gap: 28px;
     padding-bottom: 40px;
+    margin-bottom: 80px;
     color: rgba(245,245,245,.44);
     font-size: 10px;
     letter-spacing: .22em;
@@ -367,7 +374,7 @@
   }
 
   @media (max-width: 760px) {
-    body { padding: 28px 18px 168px; }
+    body { padding: 28px 18px 220px; }
     header { flex-direction: column; margin-bottom: 70px; }
     .nav { flex-wrap: wrap; gap: 18px; }
     .cue-grid { grid-template-columns: 1fr; }
@@ -386,13 +393,12 @@
   <header>
     <div class="brand">
       <img class="logo-img"
-  src="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png"
-  alt="Mainline Audio">
+        src="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png"
+        alt="Mainline Audio">
     </div>
     <nav class="nav" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="music.html">Music</a>
-      <a href="method.html">Method</a>
+      <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/index.html">Home</a>
+      <a href="https://mainline-audio.com/MAINLINE-AUDIO-SITE/method.html">Method</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -417,16 +423,21 @@
     </div>
     <div>
       <p>
-        Producer, composer, and audio engineer focused on cinematic electronic music, ambient textures, rhythmic tension, and modern editorial sound design.
+        Henry Still makes music shaped by a lifetime of listening across genres, decades, and cultures — from classic rock, hip-hop, and dub reggae to jazz, post-punk, and the outer edges of electronic music, crystallized through rave culture and the discovery of electronic music as a compositional language.
       </p>
       <p>
-          My work is shaped by underground electronic music culture, immersive listening environments, and a cinematic approach to tone, movement, and atmosphere.
+        His work is atmospheric and emotionally specific: dark but hopeful, energetic but interior, built with the patience of someone who has heard everything and is in no hurry to prove it. Henry Still approaches composition the way a mastering engineer approaches a mix — with the final listener always in mind.
       </p>
       <p>
-        Currently building a curated catalog for sync licensing across film, documentary, fashion, advertising, and digital media.
+        The result is music that sits comfortably under image without disappearing into it.
       </p>
     </div>
   </section>
+
+  <div class="licensing">
+    Available for non-exclusive sync licensing.<br>
+    Custom edits, stems, and alternate versions upon request.
+  </div>
 
   <footer class="contact" id="contact">
     <span>Mainline Audio — Orlando, FL</span>
@@ -442,12 +453,10 @@
     <div class="ctrl-btn" id="prev-btn" title="Previous">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
     </div>
-
     <div class="ctrl-btn play-btn" id="play-btn" title="Play / Pause">
       <svg id="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       <svg id="pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
     </div>
-
     <div class="ctrl-btn" id="next-btn" title="Next">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6zm8.5-6v6h2V6h-2z"/></svg>
     </div>
@@ -467,20 +476,21 @@
 
 <audio id="audio" preload="metadata"></audio>
 
+<script src="https://unpkg.com/wavesurfer.js@7"></script>
 <script>
 /* ════════════════════════════════
    SYNC CUE PLAYER
 ════════════════════════════════ */
 const playlist = [
   {
-  title: "Drift",
-  mood: ["Ambient", "Reflective", "Slow Motion"],
-  use: "Documentary, fashion film, reflective montage, emotional underscore",
-  bpm: "114",
-  key: "C",
-  duration: "4:20",
-  src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3"
-},
+    title: "Drift",
+    mood: ["Ambient", "Reflective", "Slow Motion"],
+    use: "Documentary, fashion film, reflective montage, emotional underscore",
+    bpm: "114",
+    key: "C",
+    duration: "4:20",
+    src: "https://mainline-audio.com/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3"
+  },
   {
     title: "Draped",
     mood: ["Dark", "Minimal", "Tension"],
@@ -528,19 +538,19 @@ const playlist = [
   }
 ];
 
-const audio = document.getElementById('audio');
-const cueGrid = document.getElementById('cue-grid');
-const playerEl = document.getElementById('player');
+const audio      = document.getElementById('audio');
+const cueGrid    = document.getElementById('cue-grid');
+const playerEl   = document.getElementById('player');
 const trackTitle = document.getElementById('track-title');
-const playBtn = document.getElementById('play-btn');
-const playIcon = document.getElementById('play-icon');
-const pauseIcon = document.getElementById('pause-icon');
-const nextBtn = document.getElementById('next-btn');
-const prevBtn = document.getElementById('prev-btn');
+const playBtn    = document.getElementById('play-btn');
+const playIcon   = document.getElementById('play-icon');
+const pauseIcon  = document.getElementById('pause-icon');
+const nextBtn    = document.getElementById('next-btn');
+const prevBtn    = document.getElementById('prev-btn');
 const waveformEl = document.getElementById('waveform');
-const timeCur = document.getElementById('time-cur');
-const timeDur = document.getElementById('time-dur');
-const volSlider = document.getElementById('vol-slider');
+const timeCur    = document.getElementById('time-cur');
+const timeDur    = document.getElementById('time-dur');
+const volSlider  = document.getElementById('vol-slider');
 
 let idx = 0;
 let started = false;
@@ -679,7 +689,6 @@ prevBtn.addEventListener('click', () => {
 audio.addEventListener('play', updatePlayPause);
 audio.addEventListener('pause', updatePlayPause);
 
-
 volSlider.addEventListener('input', e => { audio.volume = parseFloat(e.target.value); });
 audio.volume = parseFloat(volSlider.value);
 renderCues();
@@ -730,11 +739,6 @@ renderCues();
 
 /* ════════════════════════════════
    CORAL REEF — audio reactive
-   When music plays: stalk heights
-   driven by frequency bin data.
-   Low bins → left stalks,
-   High bins → right stalks.
-   Idle: organic sine fallback.
 ════════════════════════════════ */
 (function(){
   const c = document.getElementById('coral');
@@ -881,7 +885,6 @@ renderCues();
   }
   requestAnimationFrame(draw);
 })();
-
 
 /* ════════════════════════════════
    SNOW
