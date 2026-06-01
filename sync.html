@@ -233,29 +233,78 @@
   }
 
   .artist-name {
-    letter-spacing: .01em !important;
-    font-size: clamp(1.6rem, 2.6vw, 2.9rem);
-  }
+  letter-spacing: .18em !important;
+  text-transform: uppercase;
 
-  .about p {
-    color: rgba(245,245,245,.66);
-    line-height: 1.75;
-    font-size: 1rem;
-    margin-bottom: 18px;
-  }
+  font-size: clamp(.82rem, 1vw, .95rem);
 
-  .about p:last-child { margin-bottom: 0; }
+  color: rgba(245,245,245,.52);
 
-  .licensing {
+  font-weight: 500;
+}
+    .about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.portrait {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 24px;
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  filter:
+    grayscale(100%)
+    contrast(1.02)
+    brightness(.88);
+
+  opacity: .82;
+
+  box-shadow:
+    0 0 40px rgba(184,248,255,.05);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.portrait:hover {
+  opacity: .92;
+  transform: translateY(-2px);
+}
+
+.about p {
+  color: rgba(245,245,245,.66);
+  line-height: 1.75;
+  font-size: 1rem;
+  margin-bottom: 18px;
+}
+
+.about p:last-child { margin-bottom: 0; }
+
+.licensing {
     text-align: center;
     padding: 28px 42px 56px;
     font-size: 11px;
     letter-spacing: .14em;
     color: rgba(245,245,245,.22);
     line-height: 1.8;
-  }
+}
 
-  .contact {
+.contact {
     display: flex;
     justify-content: space-between;
     gap: 28px;
@@ -421,22 +470,33 @@
   </section>
 
   <section class="about" aria-labelledby="about-title">
-    <div>
-      <p class="section-label">About</p>
-      <h2 id="about-title" class="artist-name">Henry Still</h2>
-    </div>
-    <div>
-      <p>
-        Producer, composer, and audio engineer creating cinematic electronic music, ambient textures, rhythmic tension, and modern editorial sound design.
-      </p>
-      <p>
-        Underground electronic music culture, immersive listening environments, and a cinematic approach to tone, movement, and atmosphere shape my work.
-      </p>
-      <p>
-        Currently building a curated catalog for sync licensing across film, documentary, fashion, advertising, and digital media.
-      </p>
-    </div>
-  </section>
+
+  <div class="about-left">
+    <p class="section-label">About</p>
+
+    <img
+      class="portrait"
+      src="images/henry-sync.jpg"
+      alt="Henry Still">
+
+    <h2 id="about-title" class="artist-name">Henry Still</h2>
+  </div>
+
+  <div class="about-copy">
+    <p>
+      Producer, composer, and audio engineer creating cinematic electronic music, ambient textures, rhythmic tension, and modern editorial sound design.
+    </p>
+
+    <p>
+      Underground electronic music culture, immersive listening environments, and a cinematic approach to tone, movement, and atmosphere shape my work.
+    </p>
+
+    <p>
+      Currently building a curated catalog for sync licensing across film, documentary, fashion, advertising, and digital media.
+    </p>
+  </div>
+
+</section>
 
   <div class="licensing">
     Available for non-exclusive sync licensing.<br>
