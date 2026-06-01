@@ -232,15 +232,18 @@
     font-weight: 500;
   }
 
-  .artist-name {
-  letter-spacing: .18em !important;
+.artist-name {
+  font-size: .72rem;
+
+  letter-spacing: .28em !important;
+
   text-transform: uppercase;
 
-  font-size: clamp(.82rem, 1vw, .95rem);
-
-  color: rgba(245,245,245,.52);
+  color: rgba(245,245,245,.42);
 
   font-weight: 500;
+
+  line-height: 1.4;
 }
     .about-left {
   display: flex;
@@ -476,10 +479,12 @@
   <div class="about-left">
     <p class="section-label">About</p>
 
-    <img
-      class="portrait"
-      src="images/henry-sync.jpg"
-      alt="Henry Still">
+<h2 id="about-title" class="artist-name">Henry Still</h2>
+
+<img
+  class="portrait"
+  src="images/henry-sync.jpg"
+  alt="Henry Still">
 
     <h2 id="about-title" class="artist-name">Henry Still</h2>
   </div>
