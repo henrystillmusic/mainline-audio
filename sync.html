@@ -225,27 +225,16 @@
     margin-bottom: 40px;
   }
 
-  .about h2 {
-    font-size: clamp(2rem, 4vw, 4rem);
-    line-height: .95;
-    letter-spacing: -.065em;
-    font-weight: 500;
-  }
-
 .artist-name {
-  font-size: 8px;
-
+  font-size: 8px !important;
   letter-spacing: .42em;
-
   text-transform: uppercase;
-
   color: rgba(245,245,245,.26);
-
   font-weight: 500;
-
   line-height: 1.4;
 }
-    .about-left {
+
+.about-left {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -435,7 +424,8 @@
     .nav { flex-wrap: wrap; gap: 18px; }
     .cue-grid { grid-template-columns: 1fr; }
     .about { grid-template-columns: 1fr; padding: 28px; }
-    .about-left { gap: 18px; }
+
+.about-left { gap: 18px; }
     .portrait { max-width: 100%; }
     .contact { flex-direction: column; }
   }
@@ -467,6 +457,11 @@
     <p class="intro">
       A curated selection of atmospheric, rhythm-driven, and emotionally focused cues for film, documentary, fashion, advertising, digital media, and editorial content.
     </p>
+  </section>
+
+  <section aria-labelledby="cue-section">
+    <h2 class="section-label" id="cue-section">Selected Cues</h2>
+    <div class="cue-grid" id="cue-grid"></div>
   </section>
 
   <section class="about" aria-labelledby="about-title">
