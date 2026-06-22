@@ -185,45 +185,52 @@
     <a class="btn-outline" href="index.html">Return to Mainline</a>
   </main>
 
-  <script>
-    /* ════════════════════════════════════════════════════════════
-        BACKGROUND MATRIX ENGINE (ACTIVE HIGH-VELOCITY MODE)
-    ════════════════════════════════════════════════════════════ */
-    const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-    window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+ <script>
+/* ════════════════════════════════════════════════════════════
+    UNIFIED BACKGROUND ENGINE (ABSOLUTE BLACK STUDIO MODE)
+════════════════════════════════════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('canvas-layer');
+  const ctx = canvas.getContext('2d');
+  
+  function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+
+  const SNOW_COUNT = 100; 
+  const snowParticles = [];
+  for(let i = 0; i < SNOW_COUNT; i++){
+    snowParticles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: Math.random() * 1.5 + .4,
+      d: Math.random() * 0.8 + 0.4
+    });
+  }
+
+  function engineLoop(ts) {
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
     
-    const particles = [];
-    for (let i = 0; i < 160; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 2.5 + 1.0,
-        d: Math.random() * 2.2 + 1.2
-      });
-    }
+    // Flat, deep studio canvas base
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, W, H);
 
-    function snow() {
-      c.clearRect(0, 0, canvas.width, canvas.height);
-      c.fillStyle = "rgba(230,255,255,0.45)";
+    // Removed all background radial gradients and blue lighting beams 
+    // to maintain a stark, distraction-free field of absolute black.
 
-      particles.forEach(p => {
-        c.beginPath();
-        c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
-        c.fill();
+    // Pure, subtle drifting micro-particles over the black canvas
+    ctx.fillStyle = 'rgba(245, 245, 245, 0.22)'; // Locked into your exact font color tone
+    snowParticles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+      ctx.fill();
+      p.y += p.d;
+      p.x += Math.sin(p.y * 0.01) * 0.4;
+      if(p.y > H){ p.y = -10; p.x = Math.random() * W; }
+    });
 
-        p.y += p.d;
-        p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
-
-        if (p.y > canvas.height + 20) {
-          p.y = -20;
-          p.x = Math.random() * canvas.width;
-        }
-      });
-
-      requestAnimationFrame(snow);
-    }
-    snow();
-  </script>
-</body>
-</html>
+    requestAnimationFrame(engineLoop);
+  }
+  requestAnimationFrame(engineLoop);
+})();
+</script>
