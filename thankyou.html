@@ -35,53 +35,38 @@
       pointer-events: none;
     }
 
+    /* Stripped the frosted glass border container to let the text float cleanly over the dark space */
     .thank-you-container {
       position: relative;
       z-index: 10;
       text-align: center;
-      padding: 42px;
-      max-width: 460px;
-      width: min(460px, 90vw);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 34px;
-      background: rgba(255,255,255,.035);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-
-    .thank-you-container::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      background: radial-gradient(circle at 25% 0%, rgba(184,248,255,.11), transparent 34%),
-                  radial-gradient(circle at 90% 100%, rgba(255,224,255,.08), transparent 38%);
-      pointer-events: none;
-      border-radius: 34px;
+      padding: 0 48px;
+      max-width: 440px;
+      width: min(440px, 90vw);
     }
 
     .status-eyebrow {
       font-size: 10px;
-      letter-spacing: .32em;
+      font-weight: 500;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: rgba(184,248,255,.58);
-      margin-bottom: 24px;
+      color: rgba(245,245,245,0.22);
+      margin-bottom: 32px;
     }
 
     .thank-you-headline {
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
-      line-height: .95;
-      font-weight: 500;
-      letter-spacing: -.05em;
-      margin-bottom: 22px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #ffffff, #b8f8ff, #ffe0ff, #f0e8ff, #ffffff);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      display: block;
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
       background-size: 400%;
-      -webkit-background-clip: text; background-clip: text;
+      -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: flow 18s ease infinite;
+      animation: flow 24s linear infinite; /* Tuned to a smoother, intentional drift */
     }
 
     @keyframes flow {
@@ -90,11 +75,13 @@
       100% { background-position: 0% 50%; }
     }
 
-    .thank-you-message {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: rgba(245,245,245,.66);
-      margin-bottom: 38px;
+    .thank-you-sub {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(245,245,245,0.35);
+      letter-spacing: 0.07em;
+      line-height: 1.9;
+      margin-bottom: 48px;
     }
 
     .btn-outline {
@@ -126,16 +113,16 @@
 
 <main class="thank-you-container">
   <p class="status-eyebrow">Transmission Confirmed</p>
-  <h1 class="thank-you-headline gradient-text">Project<br>Received.</h1>
-  <p class="thank-you-message">
-    Your project information has been compiled. I will review the technical details along with any audio references and reach out within 24–48 hours.
-  </p>
+  <h1 class="thank-you-headline">Project<br />Received.</h1>
+  <div class="thank-you-sub">
+    <p>I will review the audio files and get back to you within 24 to 48 hours.</p>
+  </div>
   <a class="btn-outline" href="index.html">Return to Mainline</a>
 </main>
 
 <script>
 /* ════════════════════════════════════════════════════════════
-    UNIFIED BACKGROUND & COMPOSITION ARTWORK ENGINE (RELAXED MODE)
+    UNIFIED BACKGROUND ENGINE (MINIMALIST TRANSMISSION MODE)
 ════════════════════════════════════════════════════════════ */
 (function(){
   const canvas = document.getElementById('canvas-layer');
@@ -144,55 +131,15 @@
   function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
   resize(); window.addEventListener('resize', resize);
 
-  const SNOW_COUNT = 140;
+  const SNOW_COUNT = 100; // Slightly reduced to keep it ultra-clean
   const snowParticles = [];
   for(let i = 0; i < SNOW_COUNT; i++){
     snowParticles.push({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      r: Math.random() * 1.8 + .6,
-      d: Math.random() * 1.2 + .55
+      r: Math.random() * 1.5 + .4,
+      d: Math.random() * 0.8 + 0.4
     });
-  }
-
-  const CORAL_COUNT = 90;
-  const PALETTE = [
-    [8,  35, 42], [340,28, 45], [18, 30, 38], [185,25, 35],
-    [195,22, 40], [270,18, 38], [30, 25, 50], [0,  15, 52]
-  ];
-
-  const stalks = Array.from({length: CORAL_COUNT}, (_, i) => {
-    const [h, s, l] = PALETTE[Math.floor(Math.random() * PALETTE.length)];
-    const widthClass = Math.random();
-    const baseW = widthClass < 0.6 ? 0.4 + Math.random() * 0.6 : 1.2 + Math.random() * 1.8;
-    const heightBias = Math.random();
-    const maxFrac = heightBias < 0.55 ? 0.10 + Math.random() * 0.18 : heightBias < 0.82 ? 0.22 + Math.random() * 0.20 : 0.40 + Math.random() * 0.22;
-    return {
-      phase:  Math.random() * Math.PI * 2,
-      freq:   0.1 + Math.random() * 0.35,
-      amp:    0.15 + Math.random() * 0.55,
-      swayF:  0.00018 + Math.random() * 0.00022,
-      swayA:  2 + Math.random() * 8,
-      h, s, l, baseW, maxFrac,
-      branchStyle: Math.floor(Math.random() * 3),
-      lean: (Math.random() - 0.5) * 0.18,
-      current: 0.08,
-      target:  0.08,
-      fpos: i / (CORAL_COUNT - 1),
-    };
-  });
-
-  function drawBranch(ctx, x, y, angle, len, depth, h, s, l, alpha){
-    if(depth === 0 || len < 3) return;
-    const ex = x + Math.sin(angle) * len;
-    const ey = y - Math.cos(angle) * len;
-    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(ex, ey);
-    ctx.strokeStyle = `hsla(${h}, ${s}%, ${l + depth * 5}%, ${alpha})`;
-    ctx.lineWidth = Math.max(0.4, depth * 0.7);
-    ctx.stroke();
-    const spread = 0.3 + Math.random() * 0.25;
-    drawBranch(ctx, ex, ey, angle - spread, len * 0.62, depth - 1, h, s, l, alpha * 0.85);
-    drawBranch(ctx, ex, ey, angle + spread, len * 0.62, depth - 1, h, s, l, alpha * 0.85);
   }
 
   function engineLoop(ts) {
@@ -204,6 +151,7 @@
     const botH = 198 + Math.sin(tBg * .5) * 5;
     const coralH = 12 + Math.sin(tBg * .7) * 4;
     
+    // Deep studio atmosphere gradients
     const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
     bgGrad.addColorStop(0,   `hsl(${topH}, 48%, 4%)`);
     bgGrad.addColorStop(.45, `hsl(${topH-8}, 42%, 7%)`);
@@ -213,98 +161,34 @@
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, W, H);
 
+    // Subtle rhythmic background lighting beams
     for(let i = 0; i < 3; i++){
       const bx = (Math.sin(ts * (0.00024 + i * 0.00008) + i * 2.1) * .5 + .5) * W;
       const by = H * (0.04 + i * 0.07);
       const beam = ctx.createRadialGradient(bx, by, 0, bx, by, W * .52);
-      beam.addColorStop(0,  `rgba(184,248,255,${0.028 - i * 0.007})`);
+      beam.addColorStop(0,  `rgba(184,248,255,${0.025 - i * 0.005})`);
       beam.addColorStop(.7, 'rgba(0,0,0,0)');
       ctx.fillStyle = beam;
       ctx.fillRect(0, 0, W, H);
     }
 
+    // Outer vignette to focus eye on the center text
     const centralVig = ctx.createRadialGradient(W*.5, H*.38, H*.14, W*.5, H*.38, H*.9);
     centralVig.addColorStop(0, 'rgba(0,0,0,0)');
-    centralVig.addColorStop(1, 'rgba(0,0,0,.88)');
+    centralVig.addColorStop(1, 'rgba(0,0,0,.92)');
     ctx.fillStyle = centralVig;
     ctx.fillRect(0, 0, W, H);
 
-    const currentPhase = ts * 0.00016;
-    const tCoral = ts * 0.001;
-    const slotW = W / CORAL_COUNT;
+    // NOTE: Coral stalk loops have been cleanly bypassed to keep an elite, uncluttered workspace view
 
-    stalks.forEach((s, i) => {
-      const v = Math.sin(tCoral * s.freq + s.phase) * s.amp * .6 + 
-                Math.sin(tCoral * s.freq * 1.8 + s.phase * 1.3) * s.amp * .25 + 
-                Math.sin(tCoral * s.freq * 0.3 + s.phase * .7) * s.amp * .15;
-      s.target = Math.max(0.03, ((v + 1) / 2) * s.maxFrac);
-
-      s.current += (s.target - s.current) * 0.06;
-
-      const barH  = Math.max(4, s.current * H * 0.85);
-      const rootX = i * slotW + slotW / 2;
-      const tipY  = H - barH;
-
-      const shared    = Math.sin(currentPhase + i * 0.12) * 6;
-      const individual = Math.sin(ts * s.swayF + s.phase) * s.swayA;
-      const totalSway  = shared + individual;
-      const leanOffset = s.lean * barH;
-      const w2 = (slotW * s.baseW) * 0.5;
-
-      const rootW = w2 * 1.0;
-      const tipW  = w2 * 0.18;
-      const tipX  = rootX + totalSway + leanOffset;
-      const ctrlX = rootX + (totalSway + leanOffset) * 0.4;
-      const ctrlY = H - barH * 0.55;
-
-      const gr = ctx.createLinearGradient(rootX, H, tipX, tipY);
-      gr.addColorStop(0,    `hsla(${s.h}, ${s.s}%, ${s.l - 15}%, 0)`);
-      gr.addColorStop(0.08, `hsla(${s.h}, ${s.s}%, ${s.l - 10}%, 0.3)`);
-      gr.addColorStop(0.5,  `hsla(${s.h}, ${s.s}%, ${s.l}%,       0.65)`);
-      gr.addColorStop(1,    `hsla(${s.h}, ${s.s + 8}%, ${s.l + 12}%, 0.78)`);
-
-      ctx.beginPath();
-      ctx.moveTo(rootX - rootW, H);
-      ctx.quadraticCurveTo(ctrlX - tipW * 1.5, ctrlY, tipX - tipW, tipY);
-      ctx.lineTo(tipX + tipW, tipY);
-      ctx.quadraticCurveTo(ctrlX + tipW * 1.5, ctrlY, rootX + rootW, H);
-      ctx.closePath();
-      ctx.fillStyle = gr;
-      ctx.fill();
-
-      if(s.branchStyle === 1 && barH > H * 0.08){
-        ctx.save();
-        drawBranch(ctx, tipX, tipY + 2, 0, barH * 0.12, 2, s.h, s.s, s.l + 10, 0.55 * 0.92);
-        ctx.restore();
-      } else if(s.branchStyle === 2){
-        const dotCount = 3 + Math.floor(s.current * 4);
-        for(let d = 0; d < dotCount; d++){
-          const angle = (d / (dotCount - 1) - 0.5) * Math.PI * 0.7;
-          const dr = barH * 0.06;
-          const dx = tipX + Math.sin(angle) * dr * 3;
-          const dy = tipY - Math.cos(angle) * dr * 2;
-          const dotR = Math.max(0.6, w2 * 0.35 * (1 - Math.abs(d - dotCount/2) / dotCount));
-          ctx.beginPath();
-          ctx.arc(dx, dy, dotR, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${s.h + 10}, ${s.s + 10}%, ${s.l + 18}%, ${0.7 * 0.92})`;
-          ctx.fill();
-        }
-      }
-    });
-
-    const floorGrad = ctx.createLinearGradient(0, H - H * 0.1, 0, H);
-    floorGrad.addColorStop(0, 'rgba(0,0,0,0)');
-    floorGrad.addColorStop(1, 'rgba(4,7,12,.95)');
-    ctx.fillStyle = floorGrad;
-    ctx.fillRect(0, H - H * 0.1, W, H * 0.1);
-
-    ctx.fillStyle = 'rgba(230,255,255,' + (0.58 * 0.62) + ')';
+    // Slow cinematic floating dust/snow elements
+    ctx.fillStyle = 'rgba(230,255,255,' + (0.45 * 0.5) + ')';
     snowParticles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
       ctx.fill();
       p.y += p.d;
-      p.x += Math.sin(p.y * 0.01) * 0.55;
+      p.x += Math.sin(p.y * 0.01) * 0.4;
       if(p.y > H){ p.y = -10; p.x = Math.random() * W; }
     });
 
