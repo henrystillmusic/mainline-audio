@@ -291,16 +291,19 @@
   </div>
 </section>
 
-      <section class="contact" id="contact">
-        <p class="contact-label">Get in touch</p>
-        <form class="contact-form" action="https://formspree.io/f/xrejblzw" method="POST">
-          <div class="form-row"><input type="text" name="name" placeholder="Your name" /></div>
-          <div class="form-row"><input type="email" name="email" placeholder="Your email" /></div>
-          <div class="form-row"><input type="text" name="mix_link" placeholder="Link to your mix (Optional)" /></div>
-          <div class="form-row"><textarea name="message" placeholder="Tell me about your project"></textarea></div>
-          <button type="submit" class="btn-submit">Send message</button>
-        </form>
-      </section>
+<section class="contact" id="contact">
+  <p class="contact-label">Get in touch</p>
+  <form class="contact-form" action="https://formspree.io/f/xrejblzw" method="POST">
+    
+    <input type="hidden" name="_subject" value="New Audio Project from %{name}" />
+    <div class="form-row"><input type="text" name="name" placeholder="Your name" required /></div>
+    <div class="form-row"><input type="email" name="email" placeholder="Your email" required /></div>
+    <div class="form-row"><input type="text" name="Project_Audio_Link" placeholder="Link to your mix (Optional)" /></div>
+    <div class="form-row"><textarea name="Project_Details" placeholder="Tell me about your project" required></textarea></div>
+    
+    <button type="submit" class="btn-submit">Send message</button>
+  </form>
+</section>
 
       <footer><p class="footer-copy">© 2026 Mainline Audio</p></footer>
     </div>
