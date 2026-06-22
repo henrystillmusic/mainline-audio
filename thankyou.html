@@ -122,7 +122,7 @@
 
 <script>
 /* ════════════════════════════════════════════════════════════
-    UNIFIED BACKGROUND ENGINE (MINIMALIST TRANSMISSION MODE)
+    UNIFIED BACKGROUND ENGINE (ABSOLUTE BLACK STUDIO MODE)
 ════════════════════════════════════════════════════════════ */
 (function(){
   const canvas = document.getElementById('canvas-layer');
@@ -131,7 +131,7 @@
   function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
   resize(); window.addEventListener('resize', resize);
 
-  const SNOW_COUNT = 100; // Slightly reduced to keep it ultra-clean
+  const SNOW_COUNT = 100; 
   const snowParticles = [];
   for(let i = 0; i < SNOW_COUNT; i++){
     snowParticles.push({
@@ -145,44 +145,16 @@
   function engineLoop(ts) {
     const W = canvas.width, H = canvas.height;
     ctx.clearRect(0, 0, W, H);
-
-    const tBg = ts * 0.00013;
-    const topH = 222 + Math.sin(tBg) * 7;
-    const botH = 198 + Math.sin(tBg * .5) * 5;
-    const coralH = 12 + Math.sin(tBg * .7) * 4;
     
-    // Deep studio atmosphere gradients
-    const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
-    bgGrad.addColorStop(0,   `hsl(${topH}, 48%, 4%)`);
-    bgGrad.addColorStop(.45, `hsl(${topH-8}, 42%, 7%)`);
-    bgGrad.addColorStop(.72, `hsl(${botH}, 36%, 10%)`);
-    bgGrad.addColorStop(.92, `hsl(${coralH}, 42%, 11%)`);
-    bgGrad.addColorStop(1,   `hsl(${coralH-8}, 34%, 6%)`);
-    ctx.fillStyle = bgGrad;
+    // Flat, deep studio canvas base
+    ctx.fillStyle = '#0a0a0a';
     ctx.fillRect(0, 0, W, H);
 
-    // Subtle rhythmic background lighting beams
-    for(let i = 0; i < 3; i++){
-      const bx = (Math.sin(ts * (0.00024 + i * 0.00008) + i * 2.1) * .5 + .5) * W;
-      const by = H * (0.04 + i * 0.07);
-      const beam = ctx.createRadialGradient(bx, by, 0, bx, by, W * .52);
-      beam.addColorStop(0,  `rgba(184,248,255,${0.025 - i * 0.005})`);
-      beam.addColorStop(.7, 'rgba(0,0,0,0)');
-      ctx.fillStyle = beam;
-      ctx.fillRect(0, 0, W, H);
-    }
+    // Removed all background radial gradients and blue lighting beams 
+    // to maintain a stark, distraction-free field of absolute black.
 
-    // Outer vignette to focus eye on the center text
-    const centralVig = ctx.createRadialGradient(W*.5, H*.38, H*.14, W*.5, H*.38, H*.9);
-    centralVig.addColorStop(0, 'rgba(0,0,0,0)');
-    centralVig.addColorStop(1, 'rgba(0,0,0,.92)');
-    ctx.fillStyle = centralVig;
-    ctx.fillRect(0, 0, W, H);
-
-    // NOTE: Coral stalk loops have been cleanly bypassed to keep an elite, uncluttered workspace view
-
-    // Slow cinematic floating dust/snow elements
-    ctx.fillStyle = 'rgba(230,255,255,' + (0.45 * 0.5) + ')';
+    // Pure, subtle drifting micro-particles over the black canvas
+    ctx.fillStyle = 'rgba(245, 245, 245, 0.22)'; // Locked into your exact font color tone
     snowParticles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
@@ -197,5 +169,3 @@
   requestAnimationFrame(engineLoop);
 })();
 </script>
-</body>
-</html>
