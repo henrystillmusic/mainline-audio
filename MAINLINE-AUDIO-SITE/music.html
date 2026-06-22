@@ -80,23 +80,22 @@
       <div class="release-grid">
 
         <article class="release-card">
-  <div class="release-meta">
-    <p class="release-artist">Stasys</p>
-    <h2 class="release-title gradient-text">Melt</h2>
-    <p class="release-role">Mastered by Henry Still</p>
-  </div>
-
-  <iframe
-    class="spotify-player"
-    src="https://open.spotify.com/embed/track/1rrhzzZuVJTSkADSx62FMT?utm_source=generator&theme=0"
-    width="100%"
-    height="152"
-    frameborder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen"
-    loading="lazy">
-  </iframe>
-</article>
+          <div class="release-meta">
+            <p class="release-artist">Stasys</p>
+            <h2 class="release-title gradient-text">Melt</h2>
+            <p class="release-role">Mastered by Henry Still</p>
+          </div>
+          <iframe
+            class="spotify-player"
+            src="https://open.spotify.com/embed/track/1rrhzzZuVJTSkADSx62FMT?utm_source=generator&theme=0"
+            width="100%"
+            height="152"
+            frameborder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen"
+            loading="lazy">
+          </table>
+        </article>
 
         <article class="release-card">
           <div class="release-meta">
@@ -171,15 +170,41 @@
       localStorage.setItem("mainlineAudioPlaying", "false");
     });
 
-    // Snow
+    /* ════════════════════════════════════════════════════════════
+        BACKGROUND MATRIX ENGINE (ACTIVE HIGH-VELOCITY MODE)
+    ════════════════════════════════════════════════════════════ */
     const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
     canvas.width = window.innerWidth; canvas.height = window.innerHeight;
     window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+    
     const particles = [];
-    for (let i = 0; i < 220; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height - canvas.height, r: Math.random() * 2 + 1, d: Math.random() * 1.8 + 1 });
+    for (let i = 0; i < 160; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height, // Initial horizontal dispersion fixed across screen view
+        r: Math.random() * 2.5 + 1.0,     // Pixel brackets normalized for matrix density
+        d: Math.random() * 2.2 + 1.2      // High fall rate settings
+      });
+    }
+
     function snow() {
-      c.clearRect(0, 0, canvas.width, canvas.height); c.fillStyle = "rgba(230,255,255,0.8)";
-      particles.forEach(p => { c.beginPath(); c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false); c.fill(); p.y += p.d; p.x += Math.sin(p.y * 0.01) * 0.8; if (p.y > canvas.height) { p.y = -10; p.x = Math.random() * canvas.width; } });
+      c.clearRect(0, 0, canvas.width, canvas.height);
+      c.fillStyle = "rgba(230,255,255,0.45)";
+
+      particles.forEach(p => {
+        c.beginPath();
+        c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+        c.fill();
+
+        p.y += p.d;
+        p.x += Math.sin((p.y + p.x) * 0.002) * 0.08; // Minimal shift to maximize matrix flow lines
+
+        if (p.y > canvas.height + 20) {
+          p.y = -20;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+
       requestAnimationFrame(snow);
     }
     snow();
