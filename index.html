@@ -27,20 +27,20 @@
       }
       .site { position: relative; z-index: 1; }
       .gradient-text {
-  background: linear-gradient(
-    90deg,
-    #ffffff,
-    #dffcff,
-    #f7eaff,
-    #ece8ff,
-    #ffffff
-  );
-  background-size: 400%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: flow 90s linear infinite;
-}
+        background: linear-gradient(
+          90deg,
+          #ffffff,
+          #dffcff,
+          #f7eaff,
+          #ece8ff,
+          #ffffff
+        );
+        background-size: 400%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: flow 90s linear infinite;
+      }
       @keyframes flow {
         0%   { background-position: 0% 50%; }
         50%  { background-position: 100% 50%; }
@@ -284,27 +284,27 @@
       <div class="divider"></div>
 
       <section class="closer">
-  <p class="closer-byline">Henry Still</p>
-  <span class="closer-headline gradient-text">The Final<br />Word.</span>
-  <div class="closer-sub">
-    <p>Understanding what matters means letting go of what doesn’t.</p>
-  </div>
-</section>
+        <p class="closer-byline">Henry Still</p>
+        <span class="closer-headline gradient-text">The Final<br />Word.</span>
+        <div class="closer-sub">
+          <p>Understanding what matters means letting go of what doesn’t.</p>
+        </div>
+      </section>
 
-<section class="contact" id="contact">
-  <p class="contact-label">Get in touch</p>
-  
-  <form class="contact-form" id="mainline-contact-form">
-    <input type="hidden" name="_subject" value="New Audio Project from %{name}" />
-    
-    <div class="form-row"><input type="text" name="name" placeholder="Your name" required /></div>
-    <div class="form-row"><input type="email" name="email" placeholder="Your email" required /></div>
-    <div class="form-row"><input type="text" name="Project_Audio_Link" placeholder="Link to your mix (Optional)" /></div>
-    <div class="form-row"><textarea name="Project_Details" placeholder="Tell me about your project" required></textarea></div>
-    
-    <button type="submit" class="btn-submit" id="submit-btn">Send message</button>
-  </form>
-</section>
+      <section class="contact" id="contact">
+        <p class="contact-label">Get in touch</p>
+        
+        <form class="contact-form" id="mainline-contact-form">
+          <input type="hidden" name="_subject" value="New Audio Project from %{name}" />
+          
+          <div class="form-row"><input type="text" name="name" placeholder="Your name" required /></div>
+          <div class="form-row"><input type="email" name="email" placeholder="Your email" required /></div>
+          <div class="form-row"><input type="text" name="Project_Audio_Link" placeholder="Link to your mix (Optional)" /></div>
+          <div class="form-row"><textarea name="Project_Details" placeholder="Tell me about your project" required></textarea></div>
+          
+          <button type="submit" class="btn-submit" id="submit-btn">Send message</button>
+        </form>
+      </section>
 
       <footer><p class="footer-copy">© 2026 Mainline Audio</p></footer>
     </div>
@@ -345,7 +345,6 @@
           });
           
           if (response.ok) {
-            // Forces clean handoff straight to your custom thank you page
             window.location.href = 'thankyou.html';
           } else {
             alert('An error occurred. Please check your fields and try again.');
@@ -360,13 +359,14 @@
       });
 
       const playlist = [
-  { title: "Drift",                src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3" },
-  { title: "Draped",               src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3" },
-  { title: "Still Waters",         src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Still_Waters_Master_01.mp3" },
-  { title: "Weightless",           src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3" },
-  { title: "When the Mud Settles", src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_When_The_Mud_Settles.mp3" },
-  { title: "Run Free",             src: "/MAINLINE-AUDIO-SITE/MUSIC/Henry_Still_Run_Free.mp3" },
-];
+        { title: "Drift",                 src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3" },
+        { title: "Draped",                src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3" },
+        { title: "Still Waters",          src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Still_Waters_Master_01.mp3" },
+        { title: "Weightless",            src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3" },
+        { title: "When the Mud Settles",  src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_When_The_Mud_Settles.mp3" },
+        { title: "Run Free",              src: "/MAINLINE-AUDIO-SITE/MUSIC/Henry_Still_Run_Free.mp3" },
+      ];
+
       function shuffle(arr) {
         const s = [...arr];
         for (let i = s.length - 1; i > 0; i--) {
@@ -375,6 +375,7 @@
         }
         return s;
       }
+
       const audioWidget   = document.getElementById("audio-widget"),
             audio        = document.getElementById("bg-track"),
             muteBtn      = document.getElementById("mute-btn"),
@@ -383,23 +384,29 @@
             wave2        = document.getElementById("wave-2"),
             nowPlaying   = document.getElementById("now-playing"),
             volumeSlider = document.getElementById("volume-slider");
+
       let shuffled;
       try {
         const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
         shuffled = Array.isArray(s) && s.every(t => playlist.some(p => p.title === t.title)) ? s : shuffle(playlist);
       } catch { shuffled = shuffle(playlist); }
+
       let trackIndex = parseInt(localStorage.getItem("mainlineAudioIndex"), 10);
       if (Number.isNaN(trackIndex) || trackIndex < 0 || trackIndex >= shuffled.length) trackIndex = 0;
+
       let savedTime   = parseFloat(localStorage.getItem("mainlineAudioTime")) || 0,
           savedVolume = parseFloat(localStorage.getItem("mainlineAudioVolume"));
       if (Number.isNaN(savedVolume)) savedVolume = 0.65;
+
       audio.volume = savedVolume;
       audio.muted  = localStorage.getItem("mainlineAudioMuted") === "true";
       volumeSlider.value = savedVolume;
+
       function updateNowPlaying() {
         const t = shuffled[trackIndex];
         nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing";
       }
+
       function updateMuteIcon() {
         const dim = "rgba(245,245,245,0.2)", bright = "rgba(245,245,245,0.7)";
         wave1.setAttribute("stroke", audio.muted ? dim : bright);
@@ -407,7 +414,9 @@
         wave1.style.display = audio.muted ? "none" : "block";
         wave2.style.display = audio.muted ? "none" : "block";
       }
+
       function loadTrack(i) { audio.src = shuffled[i].src; audio.load(); updateNowPlaying(); }
+
       function saveAudioState() {
         localStorage.setItem("mainlineAudioOrder",  JSON.stringify(shuffled));
         localStorage.setItem("mainlineAudioIndex",  trackIndex);
@@ -415,14 +424,17 @@
         localStorage.setItem("mainlineAudioMuted",  audio.muted);
         localStorage.setItem("mainlineAudioVolume", audio.volume);
       }
+
       function nextTrack() {
         trackIndex++; savedTime = 0;
         if (trackIndex >= shuffled.length) { shuffled = shuffle(playlist); trackIndex = 0; }
         loadTrack(trackIndex); audio.play(); saveAudioState();
       }
+
       audio.addEventListener("ended",      nextTrack);
       audio.addEventListener("timeupdate", saveAudioState);
       audio.addEventListener("error",      nextTrack);
+
       let started = false;
       function startAudio() {
         if (started) return; started = true;
@@ -435,8 +447,10 @@
         document.removeEventListener("click", startAudio);
         document.removeEventListener("touchstart", startAudio);
       }
+
       document.addEventListener("click", startAudio);
       document.addEventListener("touchstart", startAudio);
+
       muteBtn.addEventListener("click", e => { e.stopPropagation(); audio.muted = !audio.muted; updateMuteIcon(); saveAudioState(); });
       skipBtn.addEventListener("click", e => { e.stopPropagation(); savedTime = 0; localStorage.setItem("mainlineAudioTime", 0); nextTrack(); });
       volumeSlider.addEventListener("click", e => e.stopPropagation());
@@ -445,51 +459,57 @@
         if (audio.volume > 0) audio.muted = false;
         updateMuteIcon(); saveAudioState();
       });
+
       window.addEventListener("beforeunload", () => {
         localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
         saveAudioState();
       });
+
+      /* ════════════════════════════════════════════════════════════
+          BACKGROUND MATRIX ENGINE (ACTIVE HIGH-VELOCITY MODE)
+      ════════════════════════════════════════════════════════════ */
       const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
       const particles = [];
+      // Maintained an active count to keep the landing page dynamic and alive
+      for (let i = 0; i < 160; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2.5 + 1.0, // Swapped to a slightly larger pixel bracket for matrix density
+          d: Math.random() * 2.2 + 1.2  // Accelerated downward flow to feel like a live data-stream
+        });
+      }
 
-for (let i = 0; i < 160; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height - canvas.height,
-    r: Math.random() * 2 + 1,
-    d: Math.random() * 1.8 + 1
-  });
-}
+      function snow() {
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        c.fillStyle = "rgba(230,255,255,0.45)";
 
-function snow() {
-  c.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          c.beginPath();
+          c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+          c.fill();
 
-  c.fillStyle = "rgba(230,255,255,0.45)";
+          p.y += p.d;
+          // Kept a strict downward trajectory with minimal horizontal drift to amplify the rain/matrix style
+          p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
 
-  particles.forEach(p => {
-    c.beginPath();
-    c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
-    c.fill();
+          if (p.y > canvas.height + 20) {
+            p.y = -20;
+            p.x = Math.random() * canvas.width;
+          }
+        });
 
-      p.y += p.d;
-    p.x += Math.sin((p.y + p.x) * 0.005) * 0.12;
-
-    if (p.y > canvas.height + 20) {
-  p.y = -20;
-}
-  });
-
-  requestAnimationFrame(snow);
-}
-
-snow();
+        requestAnimationFrame(snow);
+      }
+      snow();
     </script>
   </body>
 </html>
