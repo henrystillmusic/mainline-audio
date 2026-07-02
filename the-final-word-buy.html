@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buy The Final Word — Mainline Audio</title>
+<meta name="description" content="The Final Word is a true peak mastering limiter with five character modes, from clean and transparent to vintage tape and tube.">
+<link rel="icon" href="the-final-word-assets/img/logo.png">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="the-final-word-assets/style.css">
+</head>
+<body>
+<canvas id="snow"></canvas>
+<div class="site">
+
+  <nav>
+    <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
+    <span class="nav-tag">Not Yet Live</span>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Mainline Audio</p>
+    <h1 class="gradient-headline">The Final Word</h1>
+    <p class="hero-kicker">Mastering Limiter</p>
+    <p class="hero-sub">
+      True peak limiting with five character modes — from surgically clean and transparent
+      to vintage tape and tube warmth. Built for the last stage of the chain.
+    </p>
+    <div class="hero-cta">
+      <!--
+        SCAFFOLD ONLY — not wired for real checkout.
+        When ready to sell: create a Stripe Payment Link (or Checkout Session),
+        drop the URL into href below, and remove class="is-disabled" + the disabled attribute.
+      -->
+      <a class="btn-outline is-disabled" href="#" data-role="buy-link" aria-disabled="true">Buy Now — $149</a>
+      <a class="btn-text" href="#features">See what's inside ↓</a>
+    </div>
+  </section>
+
+  <section class="screenshot">
+    <div class="wrap">
+      <div class="screenshot-frame">
+        <img src="the-final-word-assets/img/final-word-screenshot.png" alt="The Final Word plugin interface">
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="process" id="features">
+    <div class="process-item">
+      <div class="process-num">01</div>
+      <div class="process-head">True Peak Limiting</div>
+      <p class="process-body">Up to 4x oversampling with lookahead detection catches inter-sample peaks before they clip on playback.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">02</div>
+      <div class="process-head">Five Character Modes</div>
+      <p class="process-body">Shape the sound of the limiting itself — from clean and transparent to vintage tape and tube — without leaving the plugin.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">03</div>
+      <div class="process-head">LUFS &amp; True Peak Metering</div>
+      <p class="process-body">Built-in loudness and true peak meters so you can hit streaming and club targets without reaching for a separate meter.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="closer">
+    <p class="closer-byline">Mainline Audio</p>
+    <span class="closer-headline gradient-text">Own It.</span>
+    <p class="buy-price">One-time purchase <strong>$149</strong></p>
+    <p class="closer-sub" style="margin-bottom: 28px;">
+      Instant delivery by email — download link and license key sent right after checkout.
+    </p>
+    <div class="hero-cta">
+      <a class="btn-outline is-disabled" href="#" data-role="buy-link" aria-disabled="true">Buy Now — $149</a>
+    </div>
+    <p class="buy-fine">Not yet available for purchase · VST3 &amp; AU · macOS · Intel &amp; Apple Silicon</p>
+  </section>
+
+  <section class="faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>How do I get the plugin after buying?</summary>
+      <p>Right after checkout you'll get an email with a download link and your license key.</p>
+    </details>
+    <details>
+      <summary>What formats are supported?</summary>
+      <p>VST3 and AU on macOS (Intel and Apple Silicon). Update this if Windows/AAX support is added.</p>
+    </details>
+    <details>
+      <summary>Do you offer refunds?</summary>
+      <p>Write your real refund policy here before launch.</p>
+    </details>
+  </section>
+
+  <footer>
+    <a class="footer-link" href="https://mainline-audio.com" target="_blank" rel="noopener">mainline-audio.com</a>
+    <p class="footer-copy" style="margin-top: 16px;">&copy; <span id="year"></span> Mainline Audio</p>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const canvas = document.getElementById('snow'), ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  const particles = [];
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2.2 + 1.0,
+      d: Math.random() * 2 + 1.0
+    });
+  }
+
+  function snow() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(230,255,255,0.4)';
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+      ctx.fill();
+      p.y += p.d;
+      p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
+      if (p.y > canvas.height + 20) {
+        p.y = -20;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+    requestAnimationFrame(snow);
+  }
+  snow();
+</script>
+</body>
+</html>
