@@ -72,14 +72,25 @@
   </section>
 
   <section class="signup" id="signup">
-    <p class="signup-label">Get early access</p>
+    <p class="signup-label">Apply for Beta Access</p>
     <form class="signup-form" id="beta-signup-form">
-      <input type="hidden" name="_subject" value="The Final Word — beta list signup">
-      <input type="hidden" name="message" value="Requesting early access to The Final Word beta and a copy when available.">
+      <input type="hidden" name="_subject" value="The Final Word — beta application">
       <div class="form-row"><input type="text" name="name" placeholder="Your name" required></div>
       <div class="form-row"><input type="email" name="email" placeholder="Your email" required></div>
-      <button type="submit" class="btn-submit" id="signup-submit">Join the Beta List</button>
-      <p class="signup-thanks" id="signup-thanks">You're on the list — we'll be in touch.</p>
+      <div class="form-row"><input type="text" name="daw" placeholder="What DAW do you use?" required></div>
+      <div class="form-row">
+        <select name="role" required>
+          <option value="" disabled selected>What's your role?</option>
+          <option value="Mixing Engineer">Mixing Engineer</option>
+          <option value="Mastering Engineer">Mastering Engineer</option>
+          <option value="Producer">Producer</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-row"><textarea name="current_project" placeholder="What are you working on right now?" required></textarea></div>
+      <div class="form-row"><input type="text" name="track_link" placeholder="Link to a track or mix (optional)"></div>
+      <button type="submit" class="btn-submit" id="signup-submit">Apply for Beta Access</button>
+      <p class="signup-thanks" id="signup-thanks">Application received — we'll follow up if it's a good fit.</p>
     </form>
   </section>
 

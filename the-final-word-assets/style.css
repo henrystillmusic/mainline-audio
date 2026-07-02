@@ -145,15 +145,19 @@ h1.gradient-headline {
 }
 .signup-form { display: flex; flex-direction: column; align-items: center; max-width: 360px; margin: 0 auto; }
 .form-row { width: 100%; margin-bottom: 20px; }
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], select, textarea {
   width: 100%; background: transparent; border: none;
   border-bottom: 1px solid rgba(245,245,245,0.2); color: #f5f5f5;
   font-family: inherit; font-size: 12px; font-weight: 400;
   letter-spacing: 0.06em; padding: 10px 0; outline: none;
   text-align: center; transition: border-color 0.2s; -webkit-appearance: none;
 }
-input:focus { border-bottom-color: rgba(245,245,245,0.5); }
-input::placeholder { color: rgba(245,245,245,0.28); }
+input:focus, select:focus, textarea:focus { border-bottom-color: rgba(245,245,245,0.5); }
+input::placeholder, textarea::placeholder { color: rgba(245,245,245,0.28); }
+select { text-align-last: center; cursor: pointer; }
+select:invalid { color: rgba(245,245,245,0.28); }
+select option { background: #0a0a0a; color: #f5f5f5; }
+textarea { resize: none; min-height: 60px; padding-top: 12px; }
 .btn-submit {
   background: transparent; border: 1px solid rgba(245,245,245,0.35);
   color: rgba(245,245,245,0.7); padding: 13px 34px;
