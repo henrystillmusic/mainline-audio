@@ -93,13 +93,27 @@ h1.gradient-headline {
   margin: 0 auto;
 }
 
-.screenshot { padding: 64px 0; }
-.screenshot-frame {
-  max-width: 760px; margin: 0 auto; padding: 8px;
-  border-radius: 6px; border: 1px solid rgba(245,245,245,0.08);
-  background: rgba(255,255,255,0.02);
+.screenshot { padding: 0; }
+.hero-render {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: hidden;
 }
-.screenshot-frame img { width: 100%; display: block; border-radius: 3px; }
+.hero-render img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, black 12%, black 78%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, black 12%, black 78%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
 
 .process { display: flex; justify-content: center; padding: 64px 48px; flex-wrap: wrap; }
 .process-item {
