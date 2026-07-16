@@ -43,6 +43,10 @@
     .nav-links a { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.28); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: #f5f5f5; }
     .nav-links a.current { color: rgba(245,245,245,0.1); pointer-events: none; }
+    .subnav { display: flex; justify-content: center; gap: 28px; padding: 0 48px 40px; margin-top: -78px; }
+    .subnav a { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.16); text-decoration: none; transition: color 0.2s; }
+    .subnav a:hover { color: rgba(245,245,245,0.5); }
+    .subnav a.current { color: rgba(245,245,245,0.4); pointer-events: none; }
 
     .hero { max-width: 760px; margin-bottom: 96px; }
     h1 { font-size: clamp(2.5rem, 7vw, 6rem); line-height: 1.02; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 34px; padding-right: 0.1em; overflow: visible; }
@@ -88,6 +92,7 @@
     @media (max-width: 760px) {
       nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; margin-bottom: 72px; }
       .nav-links { flex-wrap: wrap; gap: 24px; }
+      .subnav { gap: 20px; padding: 0 28px 28px; margin-top: -56px; }
       .inner { width: min(100%, 88%); }
       .hero { margin-bottom: 72px; }
       h1 { font-size: clamp(3.2rem, 17vw, 5.5rem); }
@@ -99,17 +104,19 @@
   <canvas id="snow"></canvas>
   <div class="site">
 <nav>
-      <a class="nav-home" href="/">Mainline Audio</a>
+      <a class="nav-home" href="index.html">Mainline Audio</a>
       <ul class="nav-links">
-        <li><a href="method.html" class="current">Method</a></li>
+        <li><a href="mastering.html" class="current">Mastering</a></li>
+        <li><a href="dsp.html">DSP</a></li>
         <li><a href="music.html">Music</a></li>
-        <li><a href="/sync">Sync</a></li>
-        <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Shop</a></li>
-        <li><a href="the-final-word.html">The Final Word</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
         <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </nav>
+    <div class="subnav">
+      <a href="mastering.html">Mastering</a>
+      <a href="method.html" class="current">Method</a>
+    </div>
     <div class="inner">
 
       <section class="hero">
@@ -185,7 +192,7 @@
       </section>
 
       <div class="method-cta">
-        <a class="btn-outline" href="/#contact">Start Your Project</a>
+        <a class="btn-outline" href="mastering.html#contact">Start Your Project</a>
       </div>
 
       <div class="closing">

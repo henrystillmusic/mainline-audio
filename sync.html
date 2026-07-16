@@ -49,8 +49,20 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 28px;
-    margin-bottom: 94px;
+    margin-bottom: 24px;
   }
+
+  .subnav {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 70px;
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .subnav a { color: rgba(245,245,245,.28); text-decoration: none; transition: color .2s; }
+  .subnav a:hover { color: rgba(245,245,245,.7); }
+  .subnav a.current { color: rgba(245,245,245,.12); pointer-events: none; }
 
   .brand {
     display: flex;
@@ -436,7 +448,8 @@
 
   @media (max-width: 760px) {
     body { padding: 28px 18px 220px; }
-    header { flex-direction: column; margin-bottom: 70px; }
+    header { flex-direction: column; margin-bottom: 20px; }
+    .subnav { margin-bottom: 50px; flex-wrap: wrap; }
     .nav { flex-wrap: wrap; gap: 18px; }
     .cue-grid { grid-template-columns: 1fr; }
     .about { grid-template-columns: 1fr; padding: 28px; }
@@ -460,14 +473,17 @@
   </a>
 </div>
     <nav class="nav" aria-label="Main navigation">
-      <a href="method.html">Method</a>
-      <a href="music.html">Music</a>
-      <a href="sync.html" style="color: rgba(245,245,245,.1); pointer-events: none;">Sync</a>
-      <a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Shop</a>
-      <a href="the-final-word.html">The Final Word</a>
-      <a href="#contact">Contact</a>
+      <a href="mastering.html">Mastering</a>
+      <a href="dsp.html">DSP</a>
+      <a href="music.html" style="color: rgba(245,245,245,.1); pointer-events: none;">Music</a>
+      <a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a>
+      <a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a>
     </nav>
   </header>
+  <div class="subnav">
+    <a href="music.html">Music</a>
+    <a href="sync.html" class="current">Sync</a>
+  </div>
   <section class="hero">
     <p class="eyebrow">Sync Portfolio</p>
     <h1 class="gradient-text">Electronic compositions for image and atmosphere.</h1>

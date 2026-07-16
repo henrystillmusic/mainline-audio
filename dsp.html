@@ -3,25 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mainline Audio — Mastering</title>
+    <title>Mainline Audio — DSP</title>
     <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
     <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mainline-audio.com/mastering.html" />
-    <meta property="og:title" content="Mainline Audio — Mastering" />
-    <meta property="og:description" content="Release-ready masters for streaming and club playback. Mastered by Henry Still" />
+    <meta property="og:url" content="https://mainline-audio.com/dsp.html" />
+    <meta property="og:title" content="Mainline Audio — DSP" />
+    <meta property="og:description" content="Professional mastering tools built with the same philosophy as the service." />
     <meta property="og:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://mainline-audio.com/mastering.html" />
-    <meta name="twitter:title" content="Mainline Audio — Mastering" />
-    <meta name="twitter:description" content="Release-ready masters for streaming and club playback. Mastered by Henry Still" />
+    <meta name="twitter:url" content="https://mainline-audio.com/dsp.html" />
+    <meta name="twitter:title" content="Mainline Audio — DSP" />
+    <meta name="twitter:description" content="Professional mastering tools built with the same philosophy as the service." />
     <meta name="twitter:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
 
-    <meta name="description" content="Release-ready masters for streaming and club playback. Mastered by Henry Still" />
+    <meta name="description" content="Professional mastering tools built with the same philosophy as the service — The Final Word, Fine Line, and Main Squeeze from Mainline Audio." />
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,14 +40,7 @@
       }
       .site { position: relative; z-index: 1; }
       .gradient-text {
-        background: linear-gradient(
-          90deg,
-          #ffffff,
-          #dffcff,
-          #f7eaff,
-          #ece8ff,
-          #ffffff
-        );
+        background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
         background-size: 400%;
         -webkit-background-clip: text;
         background-clip: text;
@@ -78,133 +71,81 @@
       }
       .nav-links a:hover { color: #f5f5f5; }
       .nav-links a.current { color: rgba(245,245,245,0.1); pointer-events: none; }
-      .subnav {
-        display: flex; justify-content: center; gap: 28px;
-        padding: 0 48px 22px; margin-top: -10px;
-      }
-      .subnav a {
-        font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
-        text-transform: uppercase; color: rgba(245,245,245,0.16);
-        text-decoration: none; transition: color 0.2s;
-      }
-      .subnav a:hover { color: rgba(245,245,245,0.5); }
-      .subnav a.current { color: rgba(245,245,245,0.4); pointer-events: none; }
+
       .hero {
         display: flex; flex-direction: column;
         align-items: center; text-align: center;
-        padding: 48px 48px 72px;
+        padding: 56px 48px 64px;
       }
       .hero-eyebrow {
         font-size: 10px; font-weight: 500; letter-spacing: 0.32em;
         text-transform: uppercase; color: rgba(245,245,245,0.18);
-        margin-bottom: 48px;
+        margin-bottom: 26px;
       }
-      .hero-logo {
-        width: 440px; max-width: 88%;
-        filter: drop-shadow(0 0 40px rgba(184,248,255,0.18));
-        opacity: 0.93; margin-bottom: 48px;
+      .hero h1 {
+        font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 700;
+        letter-spacing: -0.03em; line-height: 0.98; margin-bottom: 22px;
       }
       .hero-sub {
-        font-size: 12px; font-weight: 400; color: rgba(245,245,245,0.28);
-        letter-spacing: 0.1em; line-height: 1.9; margin-bottom: 10px;
+        font-size: 13px; font-weight: 400; color: rgba(245,245,245,0.3);
+        letter-spacing: 0.06em; line-height: 1.9; max-width: 480px;
       }
-      .hero-genre {
-        font-size: 11px; font-weight: 400; color: rgba(245,245,245,0.18);
-        letter-spacing: 0.12em; line-height: 1.9; margin-bottom: 48px; font-style: italic;
-      }
-      .hero-cta { display: flex; gap: 20px; align-items: center; }
-      .btn-outline {
-        background: transparent; border: 1px solid rgba(245,245,245,0.2);
-        color: rgba(245,245,245,0.6); padding: 13px 34px;
-        font-family: "Satoshi", sans-serif; font-size: 10px; font-weight: 700;
-        letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer;
-        text-decoration: none; display: inline-block; transition: all 0.2s;
-      }
-      .btn-outline:hover { border-color: rgba(245,245,245,0.55); color: #f5f5f5; }
-      .btn-text {
-        font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
-        text-transform: uppercase; color: rgba(245,245,245,0.22);
-        text-decoration: none; transition: color 0.2s;
-      }
-      .btn-text:hover { color: rgba(245,245,245,0.55); }
+
       .divider {
-        width: 1px; height: 64px;
+        width: 1px; height: 56px;
         background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
         margin: 0 auto;
       }
-      .process { display: flex; justify-content: center; padding: 56px 48px; }
-      .process-item {
-        text-align: center; padding: 0 52px;
-        border-right: 1px solid rgba(245,245,245,0.05);
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(245,245,245,0.06);
+        margin-top: 56px;
       }
-      .process-item:last-child { border-right: none; }
-      .process-num {
-        font-size: 9px; font-weight: 700; letter-spacing: 0.3em;
-        color: rgba(245,245,245,0.12); margin-bottom: 12px;
+      .product {
+        background: #0a0a0a;
+        padding: 44px 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 240px;
+        text-decoration: none;
+        color: inherit;
+        transition: background 0.2s;
       }
-      .process-head {
-        font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-        text-transform: uppercase; color: rgba(245,245,245,0.45); margin-bottom: 10px;
+      a.product:hover { background: #111; }
+      .product-status {
+        font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+        text-transform: uppercase; margin-bottom: 20px;
       }
-      .process-body {
-        font-size: 11px; font-weight: 400; color: rgba(245,245,245,0.18);
-        line-height: 1.85; letter-spacing: 0.03em; max-width: 150px;
+      .product-status.live { color: rgba(61,124,224,0.85); }
+      .product-status.soon { color: rgba(245,245,245,0.14); }
+      .product-title {
+        font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
+        margin-bottom: 12px; line-height: 1;
       }
-      .closer { text-align: center; padding: 72px 48px 56px; }
-      .closer-byline {
-        font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
-        text-transform: uppercase; color: rgba(245,245,245,0.14); margin-bottom: 20px;
+      .product.is-soon .product-title { color: rgba(245,245,245,0.35); }
+      .product-desc {
+        font-size: 11px; font-weight: 400; color: rgba(245,245,245,0.28);
+        letter-spacing: 0.04em; line-height: 1.8; margin-bottom: 24px; flex: 1;
       }
-      .closer-headline {
-        font-size: 76px; font-weight: 700; line-height: 0.92;
-        letter-spacing: -0.02em; margin-bottom: 26px; display: block;
+      .product.is-soon .product-desc { color: rgba(245,245,245,0.14); }
+      .product-cta {
+        font-size: 9px; font-weight: 700; letter-spacing: 0.22em;
+        text-transform: uppercase; color: rgba(245,245,245,0.2);
+        transition: color 0.2s;
       }
-      .closer-sub {
-        font-size: 12px; font-weight: 400; color: rgba(245,245,245,0.24);
-        letter-spacing: 0.07em; line-height: 1.9;
-      }
-      .closer-sub p { margin-bottom: 4px; }
-      .contact { text-align: center; padding: 56px 48px 80px; }
-      .contact-label {
-        font-size: 9px; font-weight: 500; letter-spacing: 0.32em;
-        text-transform: uppercase; color: rgba(245,245,245,0.35); margin-bottom: 22px;
-      }
-      .contact-email {
-        display: inline-block; font-size: 17px; font-weight: 500;
-        letter-spacing: 0.05em; text-decoration: none; margin-bottom: 44px;
-        transition: opacity 0.2s;
-      }
-      .contact-email:hover { opacity: 0.6; }
-      .contact-form {
-        display: flex; flex-direction: column;
-        align-items: center; max-width: 380px; margin: 0 auto;
-      }
-      .form-row { width: 100%; margin-bottom: 20px; }
-      input[type="text"], input[type="email"], textarea {
-        width: 100%; background: transparent; border: none;
-        border-bottom: 1px solid rgba(245,245,245,0.2); color: #f5f5f5;
-        font-family: "Satoshi", sans-serif; font-size: 12px; font-weight: 400;
-        letter-spacing: 0.06em; padding: 10px 0; outline: none;
-        text-align: center; transition: border-color 0.2s; -webkit-appearance: none;
-      }
-      input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
-        border-bottom-color: rgba(245,245,245,0.5);
-      }
-      input::placeholder, textarea::placeholder { color: rgba(245,245,245,0.28); }
-      textarea { resize: none; height: 64px; }
-      .btn-submit {
-        background: transparent; border: 1px solid rgba(245,245,245,0.35);
-        color: rgba(245,245,245,0.7); padding: 13px 34px;
-        font-family: "Satoshi", sans-serif; font-size: 10px; font-weight: 700;
-        letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer;
-        margin-top: 12px; transition: all 0.2s;
-      }
-      .btn-submit:hover { border-color: rgba(245,245,245,0.7); color: #f5f5f5; }
-      footer { text-align: center; padding: 0 48px 40px; }
+      a.product:hover .product-cta { color: rgba(245,245,245,0.55); }
+      .product.is-soon .product-cta { color: rgba(245,245,245,0.1); }
+
+      footer { text-align: center; padding: 72px 48px 44px; }
       .footer-copy {
         font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
         text-transform: uppercase; color: rgba(245,245,245,0.08);
       }
+
       .audio-widget {
         position: fixed; bottom: 32px; right: 32px;
         display: flex; align-items: center; gap: 12px;
@@ -244,95 +185,67 @@
         background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.12);
         color: rgba(245,245,245,0.72);
       }
-      @media (max-width: 640px) {
+
+      @media (max-width: 768px) {
         nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; }
-        .nav-links { gap: 24px; }
-        .subnav { gap: 20px; padding: 0 28px 18px; }
-        .hero { padding: 40px 28px 56px; }
-        .hero-logo { width: 280px; }
-        .process { flex-direction: column; align-items: center; gap: 36px; padding: 40px 28px; }
-        .process-item { border-right: none; border-bottom: 1px solid rgba(245,245,245,0.05); padding: 0 0 36px; }
-        .process-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .process-body { max-width: 220px; }
-        .closer { padding: 56px 28px 40px; }
-        .closer-headline { font-size: 52px; }
-        .contact { padding: 40px 28px 64px; }
-        footer { padding: 0 28px 36px; }
+        .nav-links { gap: 20px; flex-wrap: wrap; }
+        .hero { padding: 40px 28px 48px; }
+        .products { grid-template-columns: 1fr; margin-top: 40px; }
+        .product { min-height: 180px; padding: 32px 28px; }
+        footer { padding: 48px 28px 36px; }
       }
     </style>
   </head>
   <body>
     <canvas id="snow"></canvas>
     <div class="site">
-<nav>
-       <a class="nav-home" href="index.html">Mainline Audio</a>
+      <nav>
+        <a class="nav-home" href="index.html">Mainline Audio</a>
         <ul class="nav-links">
-          <li><a href="mastering.html" class="current">Mastering</a></li>
-          <li><a href="dsp.html">DSP</a></li>
+          <li><a href="mastering.html">Mastering</a></li>
+          <li><a href="dsp.html" class="current">DSP</a></li>
           <li><a href="music.html">Music</a></li>
           <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
           <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
       </nav>
-      <div class="subnav">
-        <a href="mastering.html" class="current">Mastering</a>
-        <a href="method.html">Method</a>
-      </div>
+
       <section class="hero">
-        <p class="hero-eyebrow">Mastering Engineer — Orlando, FL</p>
-        <img class="hero-logo" src="/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" alt="Mainline Audio" />
-        <p class="hero-sub">Release-ready masters for streaming and club systems.</p>
-        <p class="hero-genre">Electronic, hip-hop, indie, and experimental records.</p>
-        <div class="hero-cta">
-          <a class="btn-outline" href="method.html#submission">Start a project</a>
-          <a class="btn-text" href="music.html">Hear the work ↗</a>
-        </div>
+        <p class="hero-eyebrow">Mainline Audio</p>
+        <h1 class="gradient-text">DSP</h1>
+        <p class="hero-sub">Professional mastering tools built with the same philosophy as the service.</p>
       </section>
 
       <div class="divider"></div>
 
-      <section class="process">
-        <div class="process-item">
-          <div class="process-num">01</div>
-          <div class="process-head">Submit</div>
-          <p class="process-body">Send your stereo mix + references.</p>
+      <div class="products">
+        <a class="product" href="the-final-word.html">
+          <div>
+            <div class="product-status live">Closed Beta</div>
+            <div class="product-title">The Final Word</div>
+            <p class="product-desc">True peak limiting with five character modes — from surgically clean and transparent to vintage tape and tube warmth. Built for the last stage of the chain.</p>
+          </div>
+          <span class="product-cta">Enter The Final Word ↗</span>
+        </a>
+
+        <div class="product is-soon">
+          <div>
+            <div class="product-status soon">Coming Soon</div>
+            <div class="product-title">The Fine Line</div>
+            <p class="product-desc">A precise, restrained mastering EQ — exact numeric control, minimal visual noise.</p>
+          </div>
+          <span class="product-cta">In development</span>
         </div>
-        <div class="process-item">
-          <div class="process-num">02</div>
-          <div class="process-head">Master</div>
-          <p class="process-body">Delivered in 48–72 hours.<br />Stereo master · 24-bit WAV · Streaming-optimized versions.</p>
+
+        <div class="product is-soon">
+          <div>
+            <div class="product-status soon">Coming Soon</div>
+            <div class="product-title">Main Squeeze</div>
+            <p class="product-desc">Details to come.</p>
+          </div>
+          <span class="product-cta">In development</span>
         </div>
-        <div class="process-item">
-          <div class="process-num">03</div>
-          <div class="process-head">Refine</div>
-          <p class="process-body">One round of revisions included.</p>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="closer">
-        <p class="closer-byline">Henry Still</p>
-        <span class="closer-headline gradient-text">The Final<br />Word.</span>
-        <div class="closer-sub">
-          <p>Understanding what matters means letting go of what doesn’t.</p>
-        </div>
-      </section>
-
-      <section class="contact" id="contact">
-        <p class="contact-label">Get in touch</p>
-
-        <form class="contact-form" id="mainline-contact-form">
-          <input type="hidden" name="_subject" value="New Audio Project from %{name}" />
-
-          <div class="form-row"><input type="text" name="name" placeholder="Your name" required /></div>
-          <div class="form-row"><input type="email" name="email" placeholder="Your email" required /></div>
-          <div class="form-row"><input type="text" name="Project_Audio_Link" placeholder="Link to your mix (Optional)" /></div>
-          <div class="form-row"><textarea name="Project_Details" placeholder="Tell me about your project" required></textarea></div>
-
-          <button type="submit" class="btn-submit" id="submit-btn">Send message</button>
-        </form>
-      </section>
+      </div>
 
       <footer><p class="footer-copy">© 2026 Mainline Audio</p></footer>
     </div>
@@ -352,40 +265,6 @@
     </div>
 
     <script>
-      // Formspree AJAX Redirect Handler
-      document.getElementById('mainline-contact-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const form = e.target;
-        const button = document.getElementById('submit-btn');
-        const formData = new FormData(form);
-
-        button.textContent = "Sending...";
-        button.disabled = true;
-
-        try {
-          const response = await fetch('https://formspree.io/f/xrejblzw', {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
-
-          if (response.ok) {
-            window.location.href = 'thankyou.html';
-          } else {
-            alert('An error occurred. Please check your fields and try again.');
-            button.textContent = "Send message";
-            button.disabled = false;
-          }
-        } catch (error) {
-          alert('Network error. Please check your connection and try again.');
-          button.textContent = "Send message";
-          button.disabled = false;
-        }
-      });
-
       const playlist = [
         { title: "Drift",                 src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3" },
         { title: "Draped",                src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3" },
@@ -493,9 +372,6 @@
         saveAudioState();
       });
 
-      /* ════════════════════════════════════════════════════════════
-          BACKGROUND MATRIX ENGINE (ACTIVE HIGH-VELOCITY MODE)
-      ════════════════════════════════════════════════════════════ */
       const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -506,35 +382,26 @@
       });
 
       const particles = [];
-      // Maintained an active count to keep the landing page dynamic and alive
       for (let i = 0; i < 160; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          r: Math.random() * 2.5 + 1.0, // Swapped to a slightly larger pixel bracket for matrix density
-          d: Math.random() * 2.2 + 1.2  // Accelerated downward flow to feel like a live data-stream
+          r: Math.random() * 2.5 + 1.0,
+          d: Math.random() * 2.2 + 1.2
         });
       }
 
       function snow() {
         c.clearRect(0, 0, canvas.width, canvas.height);
         c.fillStyle = "rgba(230,255,255,0.45)";
-
         particles.forEach(p => {
           c.beginPath();
           c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
           c.fill();
-
           p.y += p.d;
-          // Kept a strict downward trajectory with minimal horizontal drift to amplify the rain/matrix style
           p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
-
-          if (p.y > canvas.height + 20) {
-            p.y = -20;
-            p.x = Math.random() * canvas.width;
-          }
+          if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
         });
-
         requestAnimationFrame(snow);
       }
       snow();
