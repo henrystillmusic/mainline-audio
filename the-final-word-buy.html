@@ -4,10 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Buy The Final Word — Mainline Audio</title>
-<meta name="description" content="The Final Word is a true peak mastering limiter with five character modes, from clean and transparent to vintage tape and tube.">
+<meta name="description" content="The Final Word is a true peak brickwall mastering limiter with five character modes, from clean and transparent to vintage tape and tube.">
 <link rel="icon" href="the-final-word-assets/img/logo.png">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="the-final-word-assets/style.css">
+<style>
+:root {
+  --tfw-bg:       #0a0a0a;
+  --tfw-surface:  #101010;
+  --tfw-surface2: #1a1b1c;
+  --tfw-border:   #262626;
+  --tfw-accent:   #3d7ce0;
+  --tfw-text:     #d8d8d5;
+  --tfw-muted:    #565654;
+  --tfw-mono:     'SF Mono', 'Fira Mono', 'Consolas', monospace;
+}
+.tfw-section { max-width: 900px; margin: 0 auto; padding: 64px 28px; }
+.tfw-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--tfw-accent); font-weight: 700; margin-bottom: 12px; }
+.tfw-heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--tfw-text); margin-bottom: 10px; line-height: 1.15; }
+.tfw-sub { font-size: 15px; color: var(--tfw-muted); line-height: 1.7; max-width: 600px; margin-bottom: 36px; }
+.tfw-char-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--tfw-border); border: 1px solid var(--tfw-border); border-radius: 8px; overflow: hidden; }
+@media (max-width: 680px) { .tfw-char-grid { grid-template-columns: 1fr 1fr; } .tfw-char-vintage { grid-column: 1 / -1; } }
+.tfw-char-card { background: var(--tfw-surface); padding: 22px 18px; transition: background 0.15s; }
+.tfw-char-card:hover { background: var(--tfw-surface2); }
+.tfw-pip { width: 7px; height: 7px; border-radius: 50%; margin-bottom: 14px; display: block; }
+.tfw-char-name { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; font-family: var(--tfw-mono); }
+.tfw-char-desc { font-size: 12px; color: var(--tfw-muted); line-height: 1.65; }
+.tfw-clean  .tfw-pip  { background: #ffffff; }
+.tfw-clean  .tfw-char-name { color: #ffffff; }
+.tfw-soft   .tfw-pip  { background: #3d7ce0; }
+.tfw-soft   .tfw-char-name { color: #3d7ce0; }
+.tfw-warm   .tfw-pip  { background: #f5e8d0; }
+.tfw-warm   .tfw-char-name { color: #f5e8d0; }
+.tfw-punchy .tfw-pip  { background: #ffe0ff; }
+.tfw-punchy .tfw-char-name { color: #ffe0ff; }
+.tfw-vintage .tfw-pip { background: #b8f8ff; }
+.tfw-vintage .tfw-char-name { color: #b8f8ff; }
+.tfw-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--tfw-border); border: 1px solid var(--tfw-border); border-radius: 8px; overflow: hidden; }
+@media (max-width: 560px) { .tfw-card-grid { grid-template-columns: 1fr; } }
+.tfw-card { background: var(--tfw-surface); padding: 24px 26px; transition: background 0.15s; }
+.tfw-card:hover { background: var(--tfw-surface2); }
+.tfw-card-name { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tfw-text); margin-bottom: 7px; font-family: var(--tfw-mono); }
+.tfw-card-desc { font-size: 13px; color: var(--tfw-muted); line-height: 1.65; }
+.tfw-meter-list { display: flex; flex-direction: column; gap: 1px; background: var(--tfw-border); border: 1px solid var(--tfw-border); border-radius: 8px; overflow: hidden; }
+.tfw-meter-row { background: var(--tfw-surface); padding: 16px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: start; transition: background 0.15s; }
+.tfw-meter-row:hover { background: var(--tfw-surface2); }
+@media (max-width: 560px) { .tfw-meter-row { grid-template-columns: 1fr; gap: 4px; } }
+.tfw-meter-name { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tfw-text); font-family: var(--tfw-mono); padding-top: 1px; }
+.tfw-meter-desc { font-size: 13px; color: var(--tfw-muted); line-height: 1.65; }
+.tfw-spec-wrap { overflow-x: auto; }
+.tfw-spec-table { width: 100%; border-collapse: collapse; border: 1px solid var(--tfw-border); border-radius: 8px; overflow: hidden; font-size: 13px; }
+.tfw-spec-table th { background: var(--tfw-surface2); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tfw-muted); font-weight: 600; padding: 11px 18px; text-align: left; border-bottom: 1px solid var(--tfw-border); }
+.tfw-spec-table td { padding: 11px 18px; border-bottom: 1px solid var(--tfw-border); vertical-align: top; color: var(--tfw-muted); }
+.tfw-spec-table tr:last-child td { border-bottom: none; }
+.tfw-spec-table tr:hover td { background: var(--tfw-surface); }
+.tfw-spec-param { color: var(--tfw-text); font-weight: 600; font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
+.tfw-spec-range { color: var(--tfw-accent); font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
+.tfw-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfw-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfw-muted); line-height: 1.6; }
+</style>
 </head>
 <body>
 <canvas id="snow"></canvas>
@@ -21,17 +75,12 @@
   <section class="hero">
     <p class="hero-eyebrow">Mainline Audio</p>
     <h1 class="gradient-headline">The Final Word</h1>
-    <p class="hero-kicker">Mastering Limiter</p>
+    <p class="hero-kicker">True Peak Brickwall Mastering Limiter</p>
     <p class="hero-sub">
-      True peak limiting with five character modes — from surgically clean and transparent
+      True peak ceiling enforcement with five character modes — from surgically clean and transparent
       to vintage tape and tube warmth. Built for the last stage of the chain.
     </p>
     <div class="hero-cta">
-      <!--
-        SCAFFOLD ONLY — not wired for real checkout.
-        When ready to sell: create a Stripe Payment Link (or Checkout Session),
-        drop the URL into href below, and remove class="is-disabled" + the disabled attribute.
-      -->
       <a class="btn-outline is-disabled" href="#" data-role="buy-link" aria-disabled="true">Buy Now — $149</a>
       <a class="btn-text" href="#features">See what's inside ↓</a>
     </div>
@@ -48,20 +97,150 @@
   <section class="process" id="features">
     <div class="process-item">
       <div class="process-num">01</div>
-      <div class="process-head">True Peak Limiting</div>
-      <p class="process-body">Up to 4x oversampling with lookahead detection catches inter-sample peaks before they clip on playback.</p>
+      <div class="process-head">True Peak Ceiling</div>
+      <p class="process-body">A dedicated 8× oversampled reconstruction stage enforces the true peak ceiling independently of the main oversampling setting — always on, always accurate. Up to 8× main oversampling with 0.5–10 ms lookahead.</p>
     </div>
     <div class="process-item">
       <div class="process-num">02</div>
       <div class="process-head">Five Character Modes</div>
-      <p class="process-body">Shape the sound of the limiting itself — from clean and transparent to vintage tape and tube — without leaving the plugin.</p>
+      <p class="process-body">Shape the sound of the limiting itself — from clean and transparent to vintage tape and tube — without leaving the plugin. Blend any character in parallel; the ceiling is always enforced on the result.</p>
     </div>
     <div class="process-item">
       <div class="process-num">03</div>
-      <div class="process-head">LUFS &amp; True Peak Metering</div>
-      <p class="process-body">Built-in loudness and true peak meters so you can hit streaming and club targets without reaching for a separate meter.</p>
+      <div class="process-head">Complete Metering</div>
+      <p class="process-body">True Peak, Integrated LUFS, Short-Term LUFS, PSR, LRA, and GR — everything needed to hit streaming and broadcast targets without a separate meter.</p>
     </div>
   </section>
+
+  <div class="divider"></div>
+
+  <div class="tfw-section">
+    <div class="tfw-label">Character</div>
+    <h2 class="tfw-heading">Five modes. One ceiling.</h2>
+    <p class="tfw-sub">Each character mode applies a distinct algorithm inside the oversampled limiting stage. Mix it in parallel — the ceiling is always enforced on the blend output.</p>
+    <div class="tfw-char-grid">
+      <div class="tfw-char-card tfw-clean">
+        <span class="tfw-pip"></span>
+        <div class="tfw-char-name">Clean</div>
+        <div class="tfw-char-desc">Transparent brickwall limiting with no additional character processing. The reference mode.</div>
+      </div>
+      <div class="tfw-char-card tfw-soft">
+        <span class="tfw-pip"></span>
+        <div class="tfw-char-name">Soft</div>
+        <div class="tfw-char-desc">C1-continuous soft-knee transition around the ceiling. Reduces transient hardness without asymmetric harmonic coloration.</div>
+      </div>
+      <div class="tfw-char-card tfw-warm">
+        <span class="tfw-pip"></span>
+        <div class="tfw-char-name">Warm</div>
+        <div class="tfw-char-desc">Asymmetric saturation modelled on triode valve behaviour. Dominant second-harmonic content with a drive-dependent low-shelf at 220 Hz.</div>
+      </div>
+      <div class="tfw-char-card tfw-punchy">
+        <span class="tfw-pip"></span>
+        <div class="tfw-char-name">Punchy</div>
+        <div class="tfw-char-desc">Transient-reactive saturation with dual-speed envelope tracking and 3 kHz presence emphasis on detected transients.</div>
+      </div>
+      <div class="tfw-char-card tfw-vintage tfw-char-vintage">
+        <span class="tfw-pip"></span>
+        <div class="tfw-char-name">Vintage</div>
+        <div class="tfw-char-desc">Level-dependent HF rolloff sweeping 16 kHz → 3.2 kHz as drive increases, nonlinear head-bump resonator (~60–80 Hz), and DC-biased tanh saturation.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="tfw-section">
+    <div class="tfw-label">Monitoring</div>
+    <h2 class="tfw-heading">Four ways to hear the truth</h2>
+    <p class="tfw-sub">Every monitoring tool is latency-compensated. Bypass, Gain Match, Delta, and A/B give you a complete and honest read of what the limiter is doing.</p>
+    <div class="tfw-card-grid">
+      <div class="tfw-card">
+        <div class="tfw-card-name">Bypass</div>
+        <div class="tfw-card-desc">Latency-compensated pass-through of the pre-trim source. True A/B against the unprocessed signal — Input Gain not applied. 512-sample equal-power crossfade, click-free.</div>
+      </div>
+      <div class="tfw-card">
+        <div class="tfw-card-name">Gain Match</div>
+        <div class="tfw-card-desc">All processing active, output RMS-matched to the pre-trim source. Removes the loudness bias from comparisons so you hear the character of the limiting, not its level.</div>
+      </div>
+      <div class="tfw-card">
+        <div class="tfw-card-name">Delta</div>
+        <div class="tfw-card-desc">Outputs the difference between the dry and processed signal. Silence means the limiter isn't acting. A true null test for limiting and character.</div>
+      </div>
+      <div class="tfw-card">
+        <div class="tfw-card-name">A / B</div>
+        <div class="tfw-card-desc">Two fully independent parameter snapshots. Switch between settings instantly with a click-free handoff — no artifacts at the crossover point.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="tfw-section">
+    <div class="tfw-label">Metering</div>
+    <h2 class="tfw-heading">Read what matters</h2>
+    <p class="tfw-sub">No blurred distinctions — sample peaks and true peaks are shown separately, and every meter tells you exactly what it's measuring.</p>
+    <div class="tfw-meter-list">
+      <div class="tfw-meter-row">
+        <div class="tfw-meter-name">Output L/R</div>
+        <div class="tfw-meter-desc">Sample-peak level bars in dBFS from the final output. Switches to Mid and Side in M/S mode. 2-second peak hold with clip indicator.</div>
+      </div>
+      <div class="tfw-meter-row">
+        <div class="tfw-meter-name">True Peak</div>
+        <div class="tfw-meter-desc">Oversampled inter-sample peak in dBTP. Ceiling enforcement uses a dedicated 8× stage independent of the main Oversampling setting. 2-second hold.</div>
+      </div>
+      <div class="tfw-meter-row">
+        <div class="tfw-meter-name">GR + Max GR</div>
+        <div class="tfw-meter-desc">Gain reduction bar (0 to −20 dB) and session-maximum numeric readout. Max GR captures peaks beyond the bar's display range.</div>
+      </div>
+      <div class="tfw-meter-row">
+        <div class="tfw-meter-name">Integrated LUFS</div>
+        <div class="tfw-meter-desc">Absolute-gated integrated loudness, K-weighted per BS.1770.</div>
+      </div>
+      <div class="tfw-meter-row">
+        <div class="tfw-meter-name">Short-Term LUFS</div>
+        <div class="tfw-meter-desc">3-second sliding window K-weighted loudness per EBU R128.</div>
+      </div>
+      <div class="tfw-meter-row">
+        <div class="tfw-meter-name">PSR</div>
+        <div class="tfw-meter-desc">Peak-to-Short-Term Loudness Ratio — True Peak minus Short-Term LUFS. Real-time dynamic headroom indicator.</div>
+      </div>
+      <div class="tfw-meter-row">
+        <div class="tfw-meter-name">LRA</div>
+        <div class="tfw-meter-desc">Loudness Range per EBU Tech 3342. 10th–95th percentile of the gated short-term distribution.</div>
+      </div>
+    </div>
+    <div class="tfw-note">In Delta mode, LUFS, PSR, LRA, and the waveform display all reflect the residual signal — what limiting and character are adding or removing.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="tfw-section">
+    <div class="tfw-label">Specifications</div>
+    <h2 class="tfw-heading">Technical details</h2>
+    <div class="tfw-spec-wrap">
+      <table class="tfw-spec-table">
+        <thead>
+          <tr><th>Parameter</th><th>Range</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="tfw-spec-param">Input Trim</td><td class="tfw-spec-range">−24 to +24 dB</td><td>Pre-limiting gain. Gain Match reference is pre-trim.</td></tr>
+          <tr><td class="tfw-spec-param">Ceiling</td><td class="tfw-spec-range">−24 to 0 dBTP · default −1.0</td><td>True peak output ceiling with internal 0.4 dB safety margin.</td></tr>
+          <tr><td class="tfw-spec-param">Attack</td><td class="tfw-spec-range">0.1 – 50 ms</td><td></td></tr>
+          <tr><td class="tfw-spec-param">Release</td><td class="tfw-spec-range">10 – 1000 ms</td><td>Dimmed when Auto Release is active.</td></tr>
+          <tr><td class="tfw-spec-param">Auto Release</td><td class="tfw-spec-range">Toggle</td><td>100 ms sparse → 600 ms dense. 500 ms density follower.</td></tr>
+          <tr><td class="tfw-spec-param">Detection</td><td class="tfw-spec-range">Peak / RMS</td><td>RMS uses 25 ms time constant.</td></tr>
+          <tr><td class="tfw-spec-param">Stereo Link</td><td class="tfw-spec-range">0 – 100%</td><td>In M/S mode, progressively couples Mid and Side gain reduction.</td></tr>
+          <tr><td class="tfw-spec-param">M/S</td><td class="tfw-spec-range">Toggle</td><td>Encodes to Mid/Side before limiting, decodes afterward.</td></tr>
+          <tr><td class="tfw-spec-param">Oversampling</td><td class="tfw-spec-range">Off / 2× / 4× / 8×</td><td>Off provides no ISP protection in the main stage.</td></tr>
+          <tr><td class="tfw-spec-param">Lookahead</td><td class="tfw-spec-range">0.5 / 1.0 / 2.0 / 5.0 / 10.0 ms</td><td>Reported to host as plugin latency.</td></tr>
+          <tr><td class="tfw-spec-param">Character Mix</td><td class="tfw-spec-range">0 – 100%</td><td>Parallel blend. Ceiling enforced on blend output.</td></tr>
+          <tr><td class="tfw-spec-param">Formats</td><td class="tfw-spec-range">AU · VST3</td><td>macOS · Apple Silicon</td></tr>
+          <tr><td class="tfw-spec-param">Window</td><td class="tfw-spec-range">800 – 1800 px wide · 510 px fixed</td><td>Free horizontal resizing. S / M / L / XL size presets.</td></tr>
+          <tr><td class="tfw-spec-param">Presets</td><td class="tfw-spec-range">User presets</td><td>No factory presets ship by design.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <div class="divider"></div>
 
@@ -75,7 +254,7 @@
     <div class="hero-cta">
       <a class="btn-outline is-disabled" href="#" data-role="buy-link" aria-disabled="true">Buy Now — $149</a>
     </div>
-    <p class="buy-fine">Not yet available for purchase · VST3 &amp; AU · macOS · Intel &amp; Apple Silicon</p>
+    <p class="buy-fine">Not yet available for purchase · VST3 &amp; AU · macOS · Apple Silicon</p>
   </section>
 
   <section class="faq">
@@ -86,11 +265,23 @@
     </details>
     <details>
       <summary>What formats are supported?</summary>
-      <p>VST3 and AU on macOS (Intel and Apple Silicon). Update this if Windows/AAX support is added.</p>
+      <p>VST3 and AU on macOS (Apple Silicon). AAX / Windows are not currently supported.</p>
+    </details>
+    <details>
+      <summary>How many computers can I install it on?</summary>
+      <p>Up to 3 computers that you own or control.</p>
+    </details>
+    <details>
+      <summary>Do you offer a trial?</summary>
+      <p>Yes — a free trial version is available with the same feature set. The trial version includes periodic audio interruptions and may not be used for commercial purposes.</p>
     </details>
     <details>
       <summary>Do you offer refunds?</summary>
-      <p>Write your real refund policy here before launch.</p>
+      <p>Refund requests may be made within 14 days of purchase, provided the license has not been activated. Once activated, purchases are generally non-refundable except where required by applicable law. Nothing in this policy limits any statutory rights under applicable consumer protection laws.</p>
+    </details>
+    <details>
+      <summary>Will there be updates?</summary>
+      <p>The plugin checks for updates automatically on launch. Future updates will be free for registered users.</p>
     </details>
   </section>
 
