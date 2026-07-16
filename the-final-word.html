@@ -61,6 +61,14 @@
 .tfw-spec-param { color: var(--tfw-text); font-weight: 600; font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
 .tfw-spec-range { color: var(--tfw-accent); font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
 .tfw-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfw-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfw-muted); line-height: 1.6; }
+.nav-logo-link { display: inline-flex; line-height: 0; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.28); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #f5f5f5; }
+.nav-links a.current { color: rgba(245,245,245,0.1); pointer-events: none; }
+@media (max-width: 640px) {
+  .nav-links { flex-wrap: wrap; gap: 20px; justify-content: center; }
+}
 </style>
 </head>
 <body>
@@ -68,8 +76,16 @@
 <div class="site">
 
   <nav>
-    <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
-    <span class="nav-tag">Coming Soon</span>
+    <a class="nav-logo-link" href="index.html">
+      <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
+    </a>
+    <ul class="nav-links">
+      <li><a href="mastering.html">Mastering</a></li>
+      <li><a href="dsp.html" class="current">DSP</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
+      <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
   </nav>
 
   <section class="hero">
@@ -261,24 +277,23 @@
   </section>
 
   <section class="signup" id="signup">
-    <p class="signup-label">Apply for Beta Access</p>
+    <p class="signup-label">Join the List</p>
     <form class="signup-form" id="beta-signup-form">
-      <input type="hidden" name="_subject" value="The Final Word — beta application">
+      <input type="hidden" name="_subject" value="The Final Word — mailing list signup">
       <div class="form-row"><input type="text" name="name" placeholder="Your name" required></div>
       <div class="form-row"><input type="email" name="email" placeholder="Your email" required></div>
-      <div class="form-row"><input type="text" name="daw" placeholder="What DAW do you use?" required></div>
+      <div class="form-row"><input type="text" name="daw" placeholder="What DAW do you use? (optional)"></div>
       <div class="form-row">
-        <select name="role" required>
-          <option value="" disabled selected>What's your role?</option>
+        <select name="role">
+          <option value="" disabled selected>What's your role? (optional)</option>
           <option value="Mixing Engineer">Mixing Engineer</option>
           <option value="Mastering Engineer">Mastering Engineer</option>
           <option value="Producer">Producer</option>
           <option value="Other">Other</option>
         </select>
       </div>
-      <div class="form-row"><textarea name="current_project" placeholder="What are you working on right now?" required></textarea></div>
       <div class="form-row"><input type="text" name="track_link" placeholder="Link to a track or mix (optional)"></div>
-      <button type="submit" class="btn-submit" id="signup-submit">Apply for Beta Access</button>
+      <button type="submit" class="btn-submit" id="signup-submit">Join the List</button>
     </form>
   </section>
 
@@ -340,12 +355,12 @@
         window.location.href = 'thankyou.html';
       } else {
         alert('Something went wrong. Please try again.');
-        button.textContent = 'Apply for Beta Access';
+        button.textContent = 'Join the List';
         button.disabled = false;
       }
     } catch (err) {
       alert('Network error. Please check your connection and try again.');
-      button.textContent = 'Apply for Beta Access';
+      button.textContent = 'Join the List';
       button.disabled = false;
     }
   });
