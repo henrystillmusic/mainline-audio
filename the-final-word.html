@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Final Word — Mastering Limiter | Mainline Audio</title>
-<meta name="description" content="The Final Word is a true peak brickwall mastering limiter with five character modes, from clean and transparent to vintage tape and tube. Coming soon.">
+<meta name="description" content="Transparent true peak limiting with optional character — built for the last stage of the mastering chain. Coming soon.">
 <link rel="icon" href="the-final-word-assets/img/logo.png">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="the-final-word-assets/style.css">
@@ -93,8 +93,7 @@
     <h1 class="gradient-headline">The Final Word</h1>
     <p class="hero-kicker">True Peak Brickwall Mastering Limiter</p>
     <p class="hero-sub">
-      True peak ceiling enforcement with five character modes — from surgically clean and transparent
-      to vintage tape and tube warmth. Built for the last stage of the chain.
+      Transparent true peak limiting with optional character when you want it. Built for the last stage of the chain.
     </p>
     <div class="hero-cta">
       <a class="btn-outline" href="#signup">Coming Soon</a>
@@ -114,12 +113,12 @@
     <div class="process-item">
       <div class="process-num">01</div>
       <div class="process-head">True Peak Ceiling</div>
-      <p class="process-body">A dedicated 8× oversampled reconstruction stage enforces the true peak ceiling independently of the main oversampling setting — always on, always accurate. Up to 8× main oversampling with 0.5–10 ms lookahead.</p>
+      <p class="process-body">Dedicated true peak ceiling protection remains active regardless of the selected oversampling setting. Up to 8× oversampling and adjustable lookahead provide precise control over transient handling and inter-sample peaks.</p>
     </div>
     <div class="process-item">
       <div class="process-num">02</div>
       <div class="process-head">Five Character Modes</div>
-      <p class="process-body">Shape the sound of the limiting itself — from clean and transparent to vintage tape and tube — without leaving the plugin. Blend any character in parallel; the ceiling is always enforced on the result.</p>
+      <p class="process-body">Shape the sound of the limiting itself — from clean and transparent to vintage tape and tube — without leaving the plugin. Blend any character amount in parallel without sacrificing output safety.</p>
     </div>
     <div class="process-item">
       <div class="process-num">03</div>
@@ -139,27 +138,27 @@
       <div class="tfw-char-card tfw-clean">
         <span class="tfw-pip"></span>
         <div class="tfw-char-name">Clean</div>
-        <div class="tfw-char-desc">Transparent brickwall limiting with no additional character processing. The reference mode.</div>
+        <div class="tfw-char-desc">Pure transparent brickwall limiting with no additional harmonic processing.</div>
       </div>
       <div class="tfw-char-card tfw-soft">
         <span class="tfw-pip"></span>
         <div class="tfw-char-name">Soft</div>
-        <div class="tfw-char-desc">C1-continuous soft-knee transition around the ceiling. Reduces transient hardness without asymmetric harmonic coloration.</div>
+        <div class="tfw-char-desc">Softens the transition into limiting for a gentler, less abrupt presentation while preserving the source material.</div>
       </div>
       <div class="tfw-char-card tfw-warm">
         <span class="tfw-pip"></span>
         <div class="tfw-char-name">Warm</div>
-        <div class="tfw-char-desc">Asymmetric saturation modelled on triode valve behaviour. Dominant second-harmonic content with a drive-dependent low-shelf at 220 Hz.</div>
+        <div class="tfw-char-desc">Introduces tube-inspired warmth and subtle harmonic enrichment that increases naturally with drive.</div>
       </div>
       <div class="tfw-char-card tfw-punchy">
         <span class="tfw-pip"></span>
         <div class="tfw-char-name">Punchy</div>
-        <div class="tfw-char-desc">Transient-reactive saturation with dual-speed envelope tracking and 3 kHz presence emphasis on detected transients.</div>
+        <div class="tfw-char-desc">Preserves transient energy while adding presence and impact where the material demands it.</div>
       </div>
       <div class="tfw-char-card tfw-vintage tfw-char-vintage">
         <span class="tfw-pip"></span>
         <div class="tfw-char-name">Vintage</div>
-        <div class="tfw-char-desc">Level-dependent HF rolloff sweeping 16 kHz → 3.2 kHz as drive increases, nonlinear head-bump resonator (~60–80 Hz), and DC-biased tanh saturation.</div>
+        <div class="tfw-char-desc">Introduces tape-inspired high-frequency softening and even-harmonic saturation that increases with drive.</div>
       </div>
     </div>
   </div>
@@ -213,7 +212,7 @@
       </div>
       <div class="tfw-meter-row">
         <div class="tfw-meter-name">Integrated LUFS</div>
-        <div class="tfw-meter-desc">Absolute-gated integrated loudness, K-weighted per BS.1770.</div>
+        <div class="tfw-meter-desc">Overall loudness across the full track, measured to broadcast standard.</div>
       </div>
       <div class="tfw-meter-row">
         <div class="tfw-meter-name">Short-Term LUFS</div>
@@ -225,7 +224,7 @@
       </div>
       <div class="tfw-meter-row">
         <div class="tfw-meter-name">LRA</div>
-        <div class="tfw-meter-desc">Loudness Range per EBU Tech 3342. 10th–95th percentile of the gated short-term distribution.</div>
+        <div class="tfw-meter-desc">How much the loudness varies across the track — from quiet passages to loud ones.</div>
       </div>
     </div>
     <div class="tfw-note">In Delta mode, LUFS, PSR, LRA, and the waveform display all reflect the residual signal — what limiting and character are adding or removing.</div>
@@ -236,27 +235,21 @@
   <!-- SPECS -->
   <div class="tfw-section">
     <div class="tfw-label">Specifications</div>
-    <h2 class="tfw-heading">Technical details</h2>
+    <h2 class="tfw-heading">Technical Specifications</h2>
     <div class="tfw-spec-wrap">
       <table class="tfw-spec-table">
         <thead>
-          <tr><th>Parameter</th><th>Range</th><th>Notes</th></tr>
+          <tr><th>Parameter</th><th>Range</th></tr>
         </thead>
         <tbody>
-          <tr><td class="tfw-spec-param">Input Trim</td><td class="tfw-spec-range">−24 to +24 dB</td><td>Pre-limiting gain. Gain Match reference is pre-trim.</td></tr>
-          <tr><td class="tfw-spec-param">Ceiling</td><td class="tfw-spec-range">−24 to 0 dBTP · default −1.0</td><td>True peak output ceiling with internal 0.4 dB safety margin.</td></tr>
-          <tr><td class="tfw-spec-param">Attack</td><td class="tfw-spec-range">0.1 – 50 ms</td><td></td></tr>
-          <tr><td class="tfw-spec-param">Release</td><td class="tfw-spec-range">10 – 1000 ms</td><td>Dimmed when Auto Release is active.</td></tr>
-          <tr><td class="tfw-spec-param">Auto Release</td><td class="tfw-spec-range">Toggle</td><td>100 ms sparse → 600 ms dense. 500 ms density follower.</td></tr>
-          <tr><td class="tfw-spec-param">Detection</td><td class="tfw-spec-range">Peak / RMS</td><td>RMS uses 25 ms time constant.</td></tr>
-          <tr><td class="tfw-spec-param">Stereo Link</td><td class="tfw-spec-range">0 – 100%</td><td>In M/S mode, progressively couples Mid and Side gain reduction.</td></tr>
-          <tr><td class="tfw-spec-param">M/S</td><td class="tfw-spec-range">Toggle</td><td>Encodes to Mid/Side before limiting, decodes afterward.</td></tr>
-          <tr><td class="tfw-spec-param">Oversampling</td><td class="tfw-spec-range">Off / 2× / 4× / 8×</td><td>Off provides no ISP protection in the main stage.</td></tr>
-          <tr><td class="tfw-spec-param">Lookahead</td><td class="tfw-spec-range">0.5 / 1.0 / 2.0 / 5.0 / 10.0 ms</td><td>Reported to host as plugin latency.</td></tr>
-          <tr><td class="tfw-spec-param">Character Mix</td><td class="tfw-spec-range">0 – 100%</td><td>Parallel blend. Ceiling enforced on blend output.</td></tr>
-          <tr><td class="tfw-spec-param">Formats</td><td class="tfw-spec-range">AU · VST3</td><td>macOS · Apple Silicon</td></tr>
-          <tr><td class="tfw-spec-param">Window</td><td class="tfw-spec-range">800 – 1800 px wide · 510 px fixed</td><td>Free horizontal resizing. S / M / L / XL size presets.</td></tr>
-          <tr><td class="tfw-spec-param">Presets</td><td class="tfw-spec-range">User presets</td><td>No factory presets ship by design.</td></tr>
+          <tr><td class="tfw-spec-param">Input Trim</td><td class="tfw-spec-range">−24 to +24 dB</td></tr>
+          <tr><td class="tfw-spec-param">Ceiling</td><td class="tfw-spec-range">−24 to 0 dBTP</td></tr>
+          <tr><td class="tfw-spec-param">Attack</td><td class="tfw-spec-range">0.1 – 50 ms</td></tr>
+          <tr><td class="tfw-spec-param">Release</td><td class="tfw-spec-range">10 – 1000 ms</td></tr>
+          <tr><td class="tfw-spec-param">Oversampling</td><td class="tfw-spec-range">Off / 2× / 4× / 8×</td></tr>
+          <tr><td class="tfw-spec-param">Lookahead</td><td class="tfw-spec-range">0.5 – 10 ms</td></tr>
+          <tr><td class="tfw-spec-param">Formats</td><td class="tfw-spec-range">AU / VST3</td></tr>
+          <tr><td class="tfw-spec-param">Platform</td><td class="tfw-spec-range">Apple Silicon</td></tr>
         </tbody>
       </table>
     </div>
@@ -301,7 +294,7 @@
     <h2>FAQ</h2>
     <details>
       <summary>What is The Final Word?</summary>
-      <p>A true peak mastering limiter with five character modes, oversampling and lookahead, and built-in LUFS/true peak metering — designed to be the last stage of your master chain.</p>
+      <p>A true peak mastering limiter designed for the final stage of the mastering chain, combining transparent limiting with optional character and integrated metering.</p>
     </details>
     <details>
       <summary>Can I get it now?</summary>
@@ -317,11 +310,11 @@
     </details>
     <details>
       <summary>Do you offer a trial?</summary>
-      <p>Yes — a free trial version is available with the same feature set. The trial version includes periodic audio interruptions and may not be used for commercial purposes.</p>
+      <p>A fully functional trial version is available with periodic audio interruptions for evaluation purposes.</p>
     </details>
     <details>
       <summary>Will there be updates?</summary>
-      <p>The plugin checks for updates automatically on launch. Future updates will be free for registered users.</p>
+      <p>The plugin checks for updates automatically on launch. All updates within the current major version are included with purchase.</p>
     </details>
   </section>
 
