@@ -61,6 +61,8 @@
 .tfw-spec-param { color: var(--tfw-text); font-weight: 600; font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
 .tfw-spec-range { color: var(--tfw-accent); font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
 .tfw-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfw-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfw-muted); line-height: 1.6; }
+.footer-links-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
+.footer-link-todo { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.14); cursor: default; }
 .nav-logo-link { display: inline-flex; line-height: 0; }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.28); text-decoration: none; transition: color 0.2s; }
@@ -309,16 +311,26 @@
       <p>Up to 3 computers that you own or control.</p>
     </details>
     <details>
+      <summary>Is educational licensing available?</summary>
+      <p>Yes. Educational and institutional licensing options are available for schools, labs, and training facilities. Contact Mainline Audio for details.</p>
+    </details>
+    <details>
       <summary>Do you offer a trial?</summary>
       <p>A fully functional trial version is available with periodic audio interruptions for evaluation purposes.</p>
     </details>
     <details>
       <summary>Will there be updates?</summary>
-      <p>The plugin checks for updates automatically on launch. All updates within the current major version are included with purchase.</p>
+      <p>The plugin checks for updates automatically on launch. All v1.x updates are included with purchase.</p>
     </details>
   </section>
 
   <footer>
+    <div class="footer-links-row">
+      <span class="footer-link-todo" title="Coming soon">Support</span>
+      <span class="footer-link-todo" title="Coming soon">License Agreement</span>
+      <span class="footer-link-todo" title="Coming soon">Refund Policy</span>
+      <span class="footer-link-todo" title="Coming soon">Privacy Policy</span>
+    </div>
     <a class="footer-link" href="https://mainline-audio.com" target="_blank" rel="noopener">mainline-audio.com</a>
     <p class="footer-copy" style="margin-top: 16px;">&copy; <span id="year"></span> Mainline Audio</p>
   </footer>
