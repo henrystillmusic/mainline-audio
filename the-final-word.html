@@ -396,6 +396,12 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  document.querySelectorAll('select').forEach(sel => {
+    const syncPlaceholderStyle = () => sel.classList.toggle('has-value', sel.value !== '');
+    sel.addEventListener('change', syncPlaceholderStyle);
+    syncPlaceholderStyle();
+  });
+
   document.getElementById('beta-signup-form').addEventListener('submit', async function (e) {
     e.preventDefault();
     const form = e.target;
