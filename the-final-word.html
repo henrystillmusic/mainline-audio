@@ -4,7 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Final Word — Mastering Limiter | Mainline Audio</title>
-<meta name="description" content="Transparent true peak limiting with optional character — built for the last stage of the mastering chain. Coming soon.">
+<meta name="description" content="Transparent true peak limiting with optional character — built for the last stage of the mastering chain. VST3 &amp; AU for macOS.">
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mainline-audio.com/the-final-word.html" />
+<meta property="og:title" content="The Final Word — Mastering Limiter | Mainline Audio" />
+<meta property="og:description" content="Transparent true peak limiting with optional character — built for the last stage of the mastering chain. VST3 &amp; AU for macOS." />
+<meta property="og:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mainline-audio.com/the-final-word.html" />
+<meta name="twitter:title" content="The Final Word — Mastering Limiter | Mainline Audio" />
+<meta name="twitter:description" content="Transparent true peak limiting with optional character — built for the last stage of the mastering chain. VST3 &amp; AU for macOS." />
+<meta name="twitter:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
 <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
 <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
@@ -22,6 +32,10 @@
   --tfw-muted:    #565654;
   --tfw-mono:     'SF Mono', 'Fira Mono', 'Consolas', monospace;
 }
+.price-block { margin: 24px 0 32px; text-align: center; }
+.price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.34); margin-bottom: 12px; }
+.price-value { font-size: clamp(2.4rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f5; line-height: 1; margin-bottom: 10px; }
+.price-regular { font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: rgba(245,245,245,0.36); }
 .tfw-section { max-width: 900px; margin: 0 auto; padding: 64px 28px; }
 .tfw-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--tfw-accent); font-weight: 700; margin-bottom: 12px; }
 .tfw-heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--tfw-text); margin-bottom: 10px; line-height: 1.15; }
@@ -65,7 +79,6 @@
 .tfw-spec-range { color: var(--tfw-accent); font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
 .tfw-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfw-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfw-muted); line-height: 1.6; }
 .footer-links-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
-.footer-link-todo { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.14); cursor: default; }
 .nav-logo-link { display: inline-flex; line-height: 0; }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.28); text-decoration: none; transition: color 0.2s; }
@@ -139,15 +152,21 @@
     <p class="hero-sub">
       Transparent true peak limiting with optional character when you want it. Built for the last stage of the chain.
     </p>
+    <div class="price-block">
+      <p class="price-label">Available Now · Introductory Price</p>
+      <p class="price-value">$99</p>
+      <p class="price-regular">Regular price $149</p>
+    </div>
     <div class="hero-cta">
-      <a class="btn-outline" href="#signup">Coming Soon</a>
+      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/b2790b04-5c7d-4d60-959f-b21d6b0f674c?checkout[discount_code]=LAUNCH99" target="_blank" rel="noopener">Buy Now — $99</a>
+      <a class="btn-text" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/29f10197-9cb9-4396-9a85-a5a7e5fd56c1" target="_blank" rel="noopener">Download 14-Day Demo</a>
       <a class="btn-text" href="#features">See what's inside ↓</a>
     </div>
   </section>
 
   <section class="screenshot">
     <div class="hero-render">
-      <img src="TheFinalWordConceptArt.png" alt="The Final Word plugin interface">
+      <img src="TheFinalWord_Product.png" alt="The Final Word mastering limiter plugin interface">
     </div>
   </section>
 
@@ -167,7 +186,7 @@
     <div class="process-item">
       <div class="process-num">03</div>
       <div class="process-head">Complete Metering</div>
-      <p class="process-body">True Peak, Integrated LUFS, Short-Term LUFS, PSR, LRA, and GR — everything needed to hit streaming and broadcast targets without a separate meter.</p>
+      <p class="process-body">True Peak, Integrated LUFS, Short-Term LUFS, PLR, LRA, and GR — everything needed to hit streaming and broadcast targets without a separate meter.</p>
     </div>
   </section>
 
@@ -263,15 +282,15 @@
         <div class="tfw-meter-desc">3-second sliding window K-weighted loudness per EBU R128.</div>
       </div>
       <div class="tfw-meter-row">
-        <div class="tfw-meter-name">PSR</div>
-        <div class="tfw-meter-desc">Peak-to-Short-Term Loudness Ratio — True Peak minus Short-Term LUFS. Real-time dynamic headroom indicator.</div>
+        <div class="tfw-meter-name">PLR</div>
+        <div class="tfw-meter-desc">Peak-to-Loudness Ratio — True Peak minus Short-Term LUFS. Real-time dynamic headroom indicator.</div>
       </div>
       <div class="tfw-meter-row">
         <div class="tfw-meter-name">LRA</div>
         <div class="tfw-meter-desc">How much the loudness varies across the track — from quiet passages to loud ones.</div>
       </div>
     </div>
-    <div class="tfw-note">In Delta mode, LUFS, PSR, LRA, and the waveform display all reflect the residual signal — what limiting and character are adding or removing.</div>
+    <div class="tfw-note">In Delta mode, LUFS, PLR, LRA, and the waveform display all reflect the residual signal — what limiting and character are adding or removing.</div>
   </div>
 
   <div class="divider"></div>
@@ -293,7 +312,7 @@
           <tr><td class="tfw-spec-param">Oversampling</td><td class="tfw-spec-range">Off / 2× / 4× / 8×</td></tr>
           <tr><td class="tfw-spec-param">Lookahead</td><td class="tfw-spec-range">0.5 – 10 ms</td></tr>
           <tr><td class="tfw-spec-param">Formats</td><td class="tfw-spec-range">AU / VST3</td></tr>
-          <tr><td class="tfw-spec-param">Platform</td><td class="tfw-spec-range">Apple Silicon</td></tr>
+          <tr><td class="tfw-spec-param">Platform</td><td class="tfw-spec-range">macOS · Apple Silicon &amp; Intel (Universal)</td></tr>
         </tbody>
       </table>
     </div>
@@ -303,14 +322,17 @@
 
   <section class="closer">
     <p class="closer-byline">Mainline Audio</p>
-    <span class="closer-headline gradient-text">Coming<br>Soon.</span>
-    <p class="closer-sub" style="margin-bottom: 28px;">
-      The Final Word is coming soon. Launch pricing to be announced — join the list to hear first.
-    </p>
-    <div class="hero-cta">
-      <a class="btn-outline" href="#signup">Coming Soon</a>
+    <span class="closer-headline gradient-text">Available<br>Now.</span>
+    <div class="price-block">
+      <p class="price-label">Introductory Price</p>
+      <p class="price-value">$99</p>
+      <p class="price-regular">Regular price $149</p>
     </div>
-    <p class="buy-fine">VST3 &amp; AU · macOS · Apple Silicon</p>
+    <div class="hero-cta">
+      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/b2790b04-5c7d-4d60-959f-b21d6b0f674c?checkout[discount_code]=LAUNCH99" target="_blank" rel="noopener">Buy Now — $99</a>
+      <a class="btn-text" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/29f10197-9cb9-4396-9a85-a5a7e5fd56c1" target="_blank" rel="noopener">Download 14-Day Demo</a>
+    </div>
+    <p class="buy-fine">VST3 &amp; AU · macOS · Apple Silicon &amp; Intel</p>
   </section>
 
   <section class="signup" id="signup">
@@ -342,23 +364,23 @@
     </details>
     <details>
       <summary>Can I get it now?</summary>
-      <p>Not yet — it's coming soon. Join the list above and you'll be first to know when it's available.</p>
+      <p>Yes — The Final Word is available now.</p>
     </details>
     <details>
       <summary>What formats are supported?</summary>
-      <p>VST3 and AU on macOS (Apple Silicon). AAX / Windows are not currently supported.</p>
+      <p>VST3 and AU on macOS (Apple Silicon &amp; Intel, Universal). AAX / Windows are not currently supported.</p>
     </details>
     <details>
       <summary>How many computers can I install it on?</summary>
-      <p>Up to 3 computers that you own or control.</p>
+      <p>Up to 2 computers that you own or control. Deactivate a machine at any time to free up an activation.</p>
     </details>
     <details>
       <summary>Is educational licensing available?</summary>
-      <p>Yes. Educational and institutional licensing options are available for schools, labs, and training facilities. Contact Mainline Audio for details.</p>
+      <p>Educational and institutional licensing may be available for schools, labs, and training facilities. Contact Mainline Audio for details.</p>
     </details>
     <details>
-      <summary>Do you offer a trial?</summary>
-      <p>A fully functional trial version is available with periodic audio interruptions for evaluation purposes.</p>
+      <summary>Do you offer a demo?</summary>
+      <p>Yes. A fully functional 14-day demo — the same AU/VST3 installer as the paid version — is available with no audio interruptions, muting, or feature restrictions. Get it through the free demo checkout above; you'll receive download access by email. Once installed, choose Start 14-Day Demo when you open The Final Word. No payment or license key required.</p>
     </details>
     <details>
       <summary>Will there be updates?</summary>
@@ -368,10 +390,10 @@
 
   <footer>
     <div class="footer-links-row">
-      <span class="footer-link-todo" title="Coming soon">Support</span>
-      <span class="footer-link-todo" title="Coming soon">License Agreement</span>
-      <span class="footer-link-todo" title="Coming soon">Refund Policy</span>
-      <span class="footer-link-todo" title="Coming soon">Privacy Policy</span>
+      <a class="footer-link" href="mailto:support@mainline-audio.com">Support</a>
+      <a class="footer-link" href="license-agreement.html">License Agreement</a>
+      <a class="footer-link" href="refund-policy.html">Refund Policy</a>
+      <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
     </div>
     <a class="footer-link" href="https://mainline-audio.com" target="_blank" rel="noopener">mainline-audio.com</a>
     <p class="footer-copy" style="margin-top: 16px;">&copy; <span id="year"></span> Mainline Audio</p>
