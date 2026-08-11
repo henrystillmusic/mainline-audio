@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fine Line — Mastering EQ | Mainline Audio</title>
+<meta name="description" content="A precise, restrained mastering EQ — exact numeric control, minimal visual noise. VST3 &amp; AU for macOS.">
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mainline-audio.com/the-fine-line.html" />
+<meta property="og:title" content="The Fine Line — Mastering EQ | Mainline Audio" />
+<meta property="og:description" content="A precise, restrained mastering EQ — exact numeric control, minimal visual noise. VST3 &amp; AU for macOS." />
+<meta property="og:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mainline-audio.com/the-fine-line.html" />
+<meta name="twitter:title" content="The Fine Line — Mastering EQ | Mainline Audio" />
+<meta name="twitter:description" content="A precise, restrained mastering EQ — exact numeric control, minimal visual noise. VST3 &amp; AU for macOS." />
+<meta name="twitter:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+<link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+<link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="the-final-word-assets/style.css">
+<style>
+:root {
+  --tfl-bg:       #0a0a0a;
+  --tfl-surface:  #101010;
+  --tfl-surface2: #1a1b1c;
+  --tfl-border:   #262626;
+  --tfl-accent:   #3d7ce0;
+  --tfl-text:     #e8e8e5;
+  --tfl-muted:    #6e6e6c;
+  --tfl-mono:     'SF Mono', 'Fira Mono', 'Consolas', monospace;
+}
+.price-block { margin: 24px 0 32px; text-align: center; }
+.price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.34); margin-bottom: 12px; }
+.price-value { font-size: clamp(2.4rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f5; line-height: 1; margin-bottom: 10px; }
+.price-regular { font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: rgba(245,245,245,0.36); }
+.tfl-section { max-width: 900px; margin: 0 auto; padding: 64px 28px; }
+.tfl-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--tfl-accent); font-weight: 700; margin-bottom: 12px; }
+.tfl-heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--tfl-text); margin-bottom: 10px; line-height: 1.15; }
+.tfl-sub { font-size: 15px; color: var(--tfl-muted); line-height: 1.7; max-width: 600px; margin-bottom: 36px; }
+.tfl-mode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
+@media (max-width: 680px) { .tfl-mode-grid { grid-template-columns: 1fr; } }
+.tfl-mode-card { background: var(--tfl-surface); padding: 22px 18px; transition: background 0.15s; }
+.tfl-mode-card:hover { background: var(--tfl-surface2); }
+.tfl-pip { width: 7px; height: 7px; border-radius: 50%; margin-bottom: 14px; display: block; }
+.tfl-mode-name { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; font-family: var(--tfl-mono); }
+.tfl-mode-desc { font-size: 12px; color: var(--tfl-muted); line-height: 1.65; }
+.tfl-minimum .tfl-pip  { background: #ffffff; }
+.tfl-minimum .tfl-mode-name { color: #ffffff; }
+.tfl-natural .tfl-pip  { background: #3d7ce0; }
+.tfl-natural .tfl-mode-name { color: #3d7ce0; }
+.tfl-linear  .tfl-pip  { background: #ffe0ff; }
+.tfl-linear  .tfl-mode-name { color: #ffe0ff; }
+.tfl-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
+@media (max-width: 560px) { .tfl-card-grid { grid-template-columns: 1fr; } }
+.tfl-card { background: var(--tfl-surface); padding: 24px 26px; transition: background 0.15s; }
+.tfl-card:hover { background: var(--tfl-surface2); }
+.tfl-card-name { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tfl-text); margin-bottom: 7px; font-family: var(--tfl-mono); }
+.tfl-card-desc { font-size: 13px; color: var(--tfl-muted); line-height: 1.65; }
+.tfl-meter-list { display: flex; flex-direction: column; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
+.tfl-meter-row { background: var(--tfl-surface); padding: 16px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: start; transition: background 0.15s; }
+.tfl-meter-row:hover { background: var(--tfl-surface2); }
+@media (max-width: 560px) { .tfl-meter-row { grid-template-columns: 1fr; gap: 4px; } }
+.tfl-meter-name { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tfl-text); font-family: var(--tfl-mono); padding-top: 1px; }
+.tfl-meter-desc { font-size: 13px; color: var(--tfl-muted); line-height: 1.65; }
+.tfl-spec-wrap { overflow-x: auto; }
+.tfl-spec-table { width: 100%; border-collapse: collapse; border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; font-size: 13px; }
+.tfl-spec-table th { background: var(--tfl-surface2); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tfl-muted); font-weight: 600; padding: 11px 18px; text-align: left; border-bottom: 1px solid var(--tfl-border); }
+.tfl-spec-table td { padding: 11px 18px; border-bottom: 1px solid var(--tfl-border); vertical-align: top; color: var(--tfl-muted); }
+.tfl-spec-table tr:last-child td { border-bottom: none; }
+.tfl-spec-table tr:hover td { background: var(--tfl-surface); }
+.tfl-spec-param { color: var(--tfl-text); font-weight: 600; font-family: var(--tfl-mono); font-size: 12px; white-space: nowrap; }
+.tfl-spec-range { color: var(--tfl-accent); font-family: var(--tfl-mono); font-size: 12px; white-space: nowrap; }
+.tfl-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfl-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfl-muted); line-height: 1.6; }
+.footer-links-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
+.nav-logo-link { display: inline-flex; line-height: 0; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.28); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #f5f5f5; }
+.nav-links a.current { color: rgba(245,245,245,0.1); pointer-events: none; }
+@media (max-width: 640px) {
+  .nav-links { flex-wrap: wrap; gap: 20px; justify-content: center; }
+}
+.audio-widget {
+  position: fixed; bottom: 32px; right: 32px;
+  display: flex; align-items: center; gap: 12px;
+  z-index: 50; opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.audio-widget.show { opacity: 1; transform: translateY(0); }
+.now-playing {
+  min-width: 190px; max-width: 240px; padding: 10px 14px;
+  background: rgba(255,255,255,0.055); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px; color: rgba(245,245,245,0.55); font-size: 9px;
+  font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.volume-slider {
+  width: 82px; accent-color: rgba(245,245,245,0.7);
+  opacity: 0.45; cursor: pointer;
+}
+#mute-btn {
+  width: 48px; height: 48px; background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.2s;
+  border: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+}
+#mute-btn:hover { background: rgba(255,255,255,0.12); }
+#skip-btn {
+  width: 48px; height: 48px; background: rgba(255,255,255,0.045);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+  border: 1px solid rgba(255,255,255,0.06); color: rgba(245,245,245,0.38);
+  font-size: 18px; font-weight: 400; line-height: 1; flex-shrink: 0; user-select: none;
+}
+#skip-btn:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.12);
+  color: rgba(245,245,245,0.72);
+}
+</style>
+</head>
+<body>
+<canvas id="snow"></canvas>
+<div class="site">
+
+  <nav>
+    <a class="nav-logo-link" href="index.html">
+      <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
+    </a>
+    <ul class="nav-links">
+      <li><a href="mastering.html">Mastering</a></li>
+      <li><a href="dsp.html" class="current">DSP</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
+      <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Mainline Audio</p>
+    <h1 class="gradient-headline">The Fine Line</h1>
+    <p class="hero-kicker">Precision Mastering Equalizer</p>
+    <p class="hero-sub">
+      A precise, restrained mastering EQ — exact numeric control, minimal visual noise.
+    </p>
+    <div class="price-block">
+      <p class="price-label">Pricing To Be Announced</p>
+      <p class="price-value">TBD</p>
+    </div>
+    <div class="hero-cta">
+      <a class="btn-outline is-disabled" href="#" aria-disabled="true">Buy Now</a>
+      <a class="btn-text" href="#features">See what's inside ↓</a>
+    </div>
+  </section>
+
+  <section class="screenshot">
+    <div class="hero-render">
+      <img src="TheFineLine_LaunchPic.png" alt="The Fine Line mastering EQ plugin interface">
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="process" id="features">
+    <div class="process-item">
+      <div class="process-num">01</div>
+      <div class="process-head">Six-Band Precision</div>
+      <p class="process-body">Six bands with proportional Q that widens as gain increases, so every move stays a broad, confident mastering gesture rather than a surgical mixing cut.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">02</div>
+      <div class="process-head">Three Phase Engines</div>
+      <p class="process-body">Minimum, Natural, and Linear phase — genuinely different processing engines, not one algorithm with a mode switch bolted on. Choose the one the material calls for.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">03</div>
+      <div class="process-head">Tilt &amp; Contour</div>
+      <p class="process-body">A global tilt macro for fast broad tonal moves, plus Contour's Transparent and Smooth voicing — reach for the whole curve without touching a single band.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PHASE -->
+  <div class="tfl-section">
+    <div class="tfl-label">Phase</div>
+    <h2 class="tfl-heading">Three engines. One curve.</h2>
+    <p class="tfl-sub">Each phase engine processes the same six-band curve through a genuinely different signal path. Switch engines to match the mastering situation, not just the sound.</p>
+    <div class="tfl-mode-grid">
+      <div class="tfl-mode-card tfl-minimum">
+        <span class="tfl-pip"></span>
+        <div class="tfl-mode-name">Minimum</div>
+        <div class="tfl-mode-desc">The default engine. Zero added latency, classic minimum-phase EQ response.</div>
+      </div>
+      <div class="tfl-mode-card tfl-natural">
+        <span class="tfl-pip"></span>
+        <div class="tfl-mode-name">Natural</div>
+        <div class="tfl-mode-desc">A continuous, always-live engine that trades Minimum's zero-latency immediacy for a more natural phase response.</div>
+      </div>
+      <div class="tfl-mode-card tfl-linear">
+        <span class="tfl-pip"></span>
+        <div class="tfl-mode-name">Linear</div>
+        <div class="tfl-mode-desc">Full linear-phase precision — uncompromising accuracy for a small, fixed amount of added latency.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MONITORING -->
+  <div class="tfl-section">
+    <div class="tfl-label">Monitoring</div>
+    <h2 class="tfl-heading">Four ways to work the curve</h2>
+    <p class="tfl-sub">Every comparison tool is built to answer one question honestly: what is this specific move actually doing.</p>
+    <div class="tfl-card-grid">
+      <div class="tfl-card">
+        <div class="tfl-card-name">Bypass</div>
+        <div class="tfl-card-desc">Instant, click-free bypass — registered as the plugin's own host-visible bypass parameter for reliable A/B against your DAW's own compare tools.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Audition</div>
+        <div class="tfl-card-desc">Solo any band's contribution directly on the curve and in the signal — every other band recedes so you can hear and see exactly what one move is doing.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Isolate</div>
+        <div class="tfl-card-desc">Press and hold to preview a band in isolation — a fast way to confirm you're reaching for the right frequency before you commit.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">A / B</div>
+        <div class="tfl-card-desc">Two full parameter snapshots, one click apart. Flip between them instantly while you decide.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- METERING -->
+  <div class="tfl-section">
+    <div class="tfl-label">Metering</div>
+    <h2 class="tfl-heading">See the curve, not just hear it</h2>
+    <p class="tfl-sub">A light, honest read of what's happening — not a second metering suite bolted onto an EQ.</p>
+    <div class="tfl-meter-list">
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Spectrum Analyzer</div>
+        <div class="tfl-meter-desc">Off, Pre, Post, or Pre + Post, with an opacity control that keeps the curve the hero, not the noise floor underneath it.</div>
+      </div>
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Output Level</div>
+        <div class="tfl-meter-desc">A basic peak/level meter paired with Output Trim, plus Auto Gain's own compensation readout, so you always know exactly what's leaving the plugin.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SPECS -->
+  <div class="tfl-section">
+    <div class="tfl-label">Specifications</div>
+    <h2 class="tfl-heading">Technical Specifications</h2>
+    <div class="tfl-spec-wrap">
+      <table class="tfl-spec-table">
+        <thead>
+          <tr><th>Parameter</th><th>Range</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="tfl-spec-param">Band Frequency</td><td class="tfl-spec-range">20 Hz – 20 kHz</td></tr>
+          <tr><td class="tfl-spec-param">Band Gain</td><td class="tfl-spec-range">&plusmn;18 dB</td></tr>
+          <tr><td class="tfl-spec-param">Band Q</td><td class="tfl-spec-range">0.1 – 10</td></tr>
+          <tr><td class="tfl-spec-param">HP / LP Slope</td><td class="tfl-spec-range">6 / 12 / 18 / 24 / 36 / 48 / 96 dB/oct</td></tr>
+          <tr><td class="tfl-spec-param">Tilt Frequency</td><td class="tfl-spec-range">20 Hz – 20 kHz</td></tr>
+          <tr><td class="tfl-spec-param">Tilt Gain</td><td class="tfl-spec-range">&plusmn;6 dB</td></tr>
+          <tr><td class="tfl-spec-param">Output Trim</td><td class="tfl-spec-range">&plusmn;24 dB</td></tr>
+          <tr><td class="tfl-spec-param">Phase</td><td class="tfl-spec-range">Minimum / Natural / Linear</td></tr>
+          <tr><td class="tfl-spec-param">Quality</td><td class="tfl-spec-range">Standard / High / Ultra</td></tr>
+          <tr><td class="tfl-spec-param">Contour</td><td class="tfl-spec-range">Transparent / Smooth</td></tr>
+          <tr><td class="tfl-spec-param">Formats</td><td class="tfl-spec-range">AU / VST3</td></tr>
+          <tr><td class="tfl-spec-param">Platform</td><td class="tfl-spec-range">macOS · Apple Silicon &amp; Intel (Universal)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="closer">
+    <p class="closer-byline">Mainline Audio</p>
+    <span class="closer-headline gradient-text">Coming<br>Soon.</span>
+    <div class="price-block">
+      <p class="price-label">Pricing To Be Announced</p>
+      <p class="price-value">TBD</p>
+    </div>
+    <div class="hero-cta">
+      <a class="btn-outline is-disabled" href="#" aria-disabled="true">Buy Now</a>
+    </div>
+    <p class="buy-fine">VST3 &amp; AU · macOS · Apple Silicon &amp; Intel</p>
+  </section>
+
+  <section class="signup" id="signup">
+    <p class="signup-label">Join the List</p>
+    <form class="signup-form" id="beta-signup-form">
+      <input type="hidden" name="_subject" value="The Fine Line — mailing list signup">
+      <div class="form-row"><input type="text" name="name" placeholder="Your name" required></div>
+      <div class="form-row"><input type="email" name="email" placeholder="Your email" required></div>
+      <div class="form-row"><input type="text" name="daw" placeholder="What DAW do you use? (optional)"></div>
+      <div class="form-row">
+        <select name="role">
+          <option value="" disabled selected>What's your role? (optional)</option>
+          <option value="Mixing Engineer">Mixing Engineer</option>
+          <option value="Mastering Engineer">Mastering Engineer</option>
+          <option value="Producer">Producer</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-row"><input type="text" name="track_link" placeholder="Link to a track or mix (optional)"></div>
+      <button type="submit" class="btn-submit" id="signup-submit">Join the List</button>
+    </form>
+  </section>
+
+  <section class="faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>What is The Fine Line?</summary>
+      <p>A precise, restrained mastering equalizer built for exact numeric control with minimal visual noise — six bands, three phase engines, Tilt, and Contour.</p>
+    </details>
+    <details>
+      <summary>Can I get it now?</summary>
+      <p>The Fine Line is completing final release preparation. Pricing and availability will be announced soon.</p>
+    </details>
+    <details>
+      <summary>What formats are supported?</summary>
+      <p>VST3 and AU on macOS (Apple Silicon &amp; Intel, Universal). AAX / Windows are not currently supported.</p>
+    </details>
+    <details>
+      <summary>How many computers can I install it on?</summary>
+      <p>Up to 3 computers that you own or control.</p>
+    </details>
+    <details>
+      <summary>Is educational licensing available?</summary>
+      <p>Educational and institutional licensing may be available for schools, labs, and training facilities. Contact Mainline Audio for details.</p>
+    </details>
+    <details>
+      <summary>Do you offer a demo?</summary>
+      <p>A trial mechanism is built into the plugin. Availability of a public demo build will be announced closer to release.</p>
+    </details>
+    <details>
+      <summary>Will there be updates?</summary>
+      <p>Mainline Audio may provide updates for The Fine Line at its discretion. There is no automatic in-app update check today.</p>
+    </details>
+  </section>
+
+  <footer>
+    <div class="footer-links-row">
+      <a class="footer-link" href="mailto:support@mainline-audio.com">Support</a>
+      <a class="footer-link" href="license-agreement.html">License Agreement</a>
+      <a class="footer-link" href="refund-policy.html">Refund Policy</a>
+      <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <a class="footer-link" href="https://mainline-audio.com" target="_blank" rel="noopener">mainline-audio.com</a>
+    <p class="footer-copy" style="margin-top: 16px;">&copy; <span id="year"></span> Mainline Audio</p>
+  </footer>
+
+</div>
+
+<audio id="bg-track" preload="auto"></audio>
+<div class="audio-widget" id="audio-widget">
+  <div class="now-playing" id="now-playing">Loading...</div>
+  <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+  <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+  <div id="mute-btn" title="Toggle music">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+      <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+      <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+    </svg>
+  </div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('select').forEach(sel => {
+    const syncPlaceholderStyle = () => sel.classList.toggle('has-value', sel.value !== '');
+    sel.addEventListener('change', syncPlaceholderStyle);
+    syncPlaceholderStyle();
+  });
+
+  document.getElementById('beta-signup-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const button = document.getElementById('signup-submit');
+    const formData = new FormData(form);
+
+    button.textContent = 'Sending...';
+    button.disabled = true;
+
+    try {
+      const response = await fetch('https://formspree.io/f/xrejblzw', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        window.location.href = 'thankyou.html';
+      } else {
+        alert('Something went wrong. Please try again.');
+        button.textContent = 'Join the List';
+        button.disabled = false;
+      }
+    } catch (err) {
+      alert('Network error. Please check your connection and try again.');
+      button.textContent = 'Join the List';
+      button.disabled = false;
+    }
+  });
+
+  const playlist = [
+    { title: "Drift",                 src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3" },
+    { title: "Draped",                src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3" },
+    { title: "Still Waters",          src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Still_Waters_Master_01.mp3" },
+    { title: "Weightless",            src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3" },
+    { title: "When the Mud Settles",  src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_When_The_Mud_Settles.mp3" },
+    { title: "Run Free",              src: "/MAINLINE-AUDIO-SITE/MUSIC/Henry_Still_Run_Free.mp3" },
+  ];
+
+  function shuffle(arr) {
+    const s = [...arr];
+    for (let i = s.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [s[i], s[j]] = [s[j], s[i]]; }
+    return s;
+  }
+
+  const audioWidget  = document.getElementById("audio-widget"),
+        audio        = document.getElementById("bg-track"),
+        muteBtn      = document.getElementById("mute-btn"),
+        skipBtn      = document.getElementById("skip-btn"),
+        wave1        = document.getElementById("wave-1"),
+        wave2        = document.getElementById("wave-2"),
+        nowPlaying   = document.getElementById("now-playing"),
+        volumeSlider = document.getElementById("volume-slider");
+
+  let shuffled;
+  try {
+    const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
+    shuffled = Array.isArray(s) && s.every(t => playlist.some(p => p.title === t.title)) ? s : shuffle(playlist);
+  } catch { shuffled = shuffle(playlist); }
+
+  let trackIndex = parseInt(localStorage.getItem("mainlineAudioIndex"), 10);
+  if (Number.isNaN(trackIndex) || trackIndex < 0 || trackIndex >= shuffled.length) trackIndex = 0;
+
+  let savedTime = parseFloat(localStorage.getItem("mainlineAudioTime")) || 0,
+      savedVolume = parseFloat(localStorage.getItem("mainlineAudioVolume"));
+  if (Number.isNaN(savedVolume)) savedVolume = 0.65;
+
+  audio.volume = savedVolume;
+  audio.muted  = localStorage.getItem("mainlineAudioMuted") === "true";
+  volumeSlider.value = savedVolume;
+
+  function updateNowPlaying() { const t = shuffled[trackIndex]; nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing"; }
+  function updateMuteIcon() {
+    const dim = "rgba(245,245,245,0.2)", bright = "rgba(245,245,245,0.7)";
+    wave1.setAttribute("stroke", audio.muted ? dim : bright); wave2.setAttribute("stroke", audio.muted ? dim : bright);
+    wave1.style.display = audio.muted ? "none" : "block"; wave2.style.display = audio.muted ? "none" : "block";
+  }
+
+  function loadTrack(i) { audio.src = shuffled[i].src; audio.load(); updateNowPlaying(); }
+  function saveAudioState() {
+    localStorage.setItem("mainlineAudioOrder", JSON.stringify(shuffled));
+    localStorage.setItem("mainlineAudioIndex", trackIndex);
+    localStorage.setItem("mainlineAudioTime",  audio.currentTime || 0);
+    localStorage.setItem("mainlineAudioMuted", audio.muted);
+    localStorage.setItem("mainlineAudioVolume", audio.volume);
+  }
+
+  function nextTrack() {
+    trackIndex++; savedTime = 0;
+    if (trackIndex >= shuffled.length) { shuffled = shuffle(playlist); trackIndex = 0; }
+    loadTrack(trackIndex); audio.play(); saveAudioState();
+  }
+
+  audio.addEventListener("ended", nextTrack);
+  audio.addEventListener("timeupdate", saveAudioState);
+  audio.addEventListener("error", nextTrack);
+
+  const wasPlaying = localStorage.getItem("mainlineAudioPlaying") === "true";
+  function initPlayer(autoplay) {
+    loadTrack(trackIndex);
+    audio.addEventListener("loadedmetadata", () => {
+      if (savedTime > 0 && savedTime < audio.duration) audio.currentTime = savedTime;
+      if (autoplay) audio.play();
+      saveAudioState();
+    }, { once: true });
+    audioWidget.classList.add("show"); updateMuteIcon(); updateNowPlaying();
+  }
+
+  if (wasPlaying) {
+    initPlayer(true);
+  } else {
+    function startAudio() {
+      initPlayer(true);
+      document.removeEventListener("click", startAudio);
+      document.removeEventListener("touchstart", startAudio);
+    }
+    audioWidget.classList.add("show"); updateNowPlaying();
+    document.addEventListener("click", startAudio);
+    document.addEventListener("touchstart", startAudio);
+  }
+
+  muteBtn.addEventListener("click", e => { e.stopPropagation(); audio.muted = !audio.muted; updateMuteIcon(); saveAudioState(); });
+  skipBtn.addEventListener("click", e => { e.stopPropagation(); savedTime = 0; localStorage.setItem("mainlineAudioTime", 0); nextTrack(); });
+  volumeSlider.addEventListener("click", e => e.stopPropagation());
+  volumeSlider.addEventListener("input", e => { audio.volume = parseFloat(e.target.value); if (audio.volume > 0) audio.muted = false; updateMuteIcon(); saveAudioState(); });
+  window.addEventListener("beforeunload", () => {
+    localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
+    saveAudioState();
+  });
+
+  const canvas = document.getElementById('snow'), ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  const particles = [];
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2.2 + 1.0,
+      d: Math.random() * 2 + 1.0
+    });
+  }
+
+  function snow() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(230,255,255,0.4)';
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+      ctx.fill();
+      p.y += p.d;
+      p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
+      if (p.y > canvas.height + 20) {
+        p.y = -20;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+    requestAnimationFrame(snow);
+  }
+  snow();
+</script>
+</body>
+</html>
