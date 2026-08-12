@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mainline-audio.com/sitemap.xml
