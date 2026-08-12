@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Notes | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mainline-audio.com/notes.html" />
+  <meta property="og:title" content="Technical Notes | Mainline Audio" />
+  <meta property="og:description" content="Technical notes on mastering, signal processing, and the decisions behind Mainline Audio tools." />
+  <meta property="og:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/notes.html" />
+  <meta name="twitter:title" content="Technical Notes | Mainline Audio" />
+  <meta name="twitter:description" content="Technical notes on mastering, signal processing, and the decisions behind Mainline Audio tools." />
+  <meta name="twitter:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+
+  <meta name="description" content="Technical notes on mastering, signal processing, and the decisions behind Mainline Audio tools." />
+  <link rel="canonical" href="https://mainline-audio.com/notes.html" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a0a0a;
+      color: #f5f5f5;
+      font-family: "Satoshi", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    #snow {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .site { position: relative; z-index: 1; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+    @keyframes flow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 56px;
+    }
+    .nav-home {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(245,245,245,0.28);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #f5f5f5; }
+
+    .hero {
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding: 56px 48px 64px;
+    }
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.32em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+      margin-bottom: 26px;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 700;
+      letter-spacing: -0.03em; line-height: 0.98; margin-bottom: 22px;
+    }
+    .hero-sub {
+      font-size: 13px; font-weight: 400; color: rgba(245,245,245,0.3);
+      letter-spacing: 0.06em; line-height: 1.9; max-width: 480px;
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    .notes-list {
+      width: min(680px, 100%);
+      margin: 56px auto 0;
+      padding: 0 28px;
+    }
+    .note-row {
+      display: block;
+      border: 1px solid rgba(245,245,245,0.1);
+      border-radius: 8px;
+      padding: 40px 44px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .note-row:hover { background: #111; border-color: rgba(245,245,245,0.2); }
+    .note-meta {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 18px;
+    }
+    .note-eyebrow {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+    }
+    .note-date {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+    }
+    .note-title {
+      font-size: 21px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3; margin-bottom: 14px;
+    }
+    .note-desc {
+      font-size: 12.5px; font-weight: 400; color: rgba(245,245,245,0.32);
+      letter-spacing: 0.02em; line-height: 1.8; margin-bottom: 26px;
+      max-width: 520px;
+    }
+    .note-cta {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(245,245,245,0.24);
+      transition: color 0.2s;
+    }
+    .note-row:hover .note-cta { color: rgba(245,245,245,0.6); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+    .footer-copy {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(245,245,245,0.08);
+    }
+    .footer-link {
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(245,245,245,0.22); text-decoration: none;
+    }
+    .footer-link:hover { color: rgba(245,245,245,0.5); }
+
+    .audio-widget {
+      position: fixed; bottom: 32px; right: 32px;
+      display: flex; align-items: center; gap: 12px;
+      z-index: 50; opacity: 0; transform: translateY(8px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .audio-widget.show { opacity: 1; transform: translateY(0); }
+    .now-playing {
+      min-width: 190px; max-width: 240px; padding: 10px 14px;
+      background: rgba(255,255,255,0.055); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px; color: rgba(245,245,245,0.55); font-size: 9px;
+      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .volume-slider {
+      width: 82px; accent-color: rgba(245,245,245,0.7);
+      opacity: 0.45; cursor: pointer;
+    }
+    #mute-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
+      border: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+    }
+    #mute-btn:hover { background: rgba(255,255,255,0.12); }
+    #skip-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border: 1px solid rgba(255,255,255,0.06); color: rgba(245,245,245,0.38);
+      font-size: 18px; font-weight: 400; line-height: 1; flex-shrink: 0; user-select: none;
+    }
+    #skip-btn:hover {
+      background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.12);
+      color: rgba(245,245,245,0.72);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; }
+      .nav-links { gap: 20px; flex-wrap: wrap; }
+      .hero { padding: 40px 28px 48px; }
+      .notes-list { margin-top: 40px; }
+      .note-row { padding: 28px 24px; }
+      .note-title { font-size: 18px; }
+      footer { padding: 48px 28px 36px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav>
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+      <ul class="nav-links">
+        <li><a href="mastering.html">Mastering</a></li>
+        <li><a href="dsp.html">DSP</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
+        <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <p class="hero-eyebrow">Mainline Audio</p>
+      <h1 class="gradient-text">Technical Notes</h1>
+      <p class="hero-sub">Notes on mastering, signal processing, and the decisions behind the tools.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="notes-list">
+      <a class="note-row" href="true-peak.html">
+        <div class="note-meta">
+          <span class="note-eyebrow">Technical Note</span>
+          <time class="note-date" datetime="2026-08">August 2026</time>
+        </div>
+        <h2 class="note-title">True Peak Is a Constraint, Not a Target</h2>
+        <p class="note-desc">Why inter-sample peaks matter — and why the goal is transparent protection, not another number to chase.</p>
+        <span class="note-cta">Read the note ↗</span>
+      </a>
+    </div>
+
+    <footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a><p class="footer-copy" style="margin-top: 10px;">© 2026 Mainline Audio</p></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const playlist = [
+      { title: "Drift",                src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3" },
+      { title: "Draped",               src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3" },
+      { title: "Still Waters",         src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Still_Waters_Master_01.mp3" },
+      { title: "Weightless",           src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3" },
+      { title: "When the Mud Settles", src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_When_The_Mud_Settles.mp3" },
+      { title: "Run Free",             src: "/MAINLINE-AUDIO-SITE/MUSIC/Henry_Still_Run_Free.mp3" },
+    ];
+
+    function shuffle(arr) {
+      const s = [...arr];
+      for (let i = s.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [s[i], s[j]] = [s[j], s[i]];
+      }
+      return s;
+    }
+
+    const audioWidget   = document.getElementById("audio-widget"),
+          audio         = document.getElementById("bg-track"),
+          muteBtn       = document.getElementById("mute-btn"),
+          skipBtn       = document.getElementById("skip-btn"),
+          wave1         = document.getElementById("wave-1"),
+          wave2         = document.getElementById("wave-2"),
+          nowPlaying    = document.getElementById("now-playing"),
+          volumeSlider  = document.getElementById("volume-slider");
+
+    let shuffled;
+    try {
+      const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
+      shuffled = Array.isArray(s) && s.every(t => playlist.some(p => p.title === t.title)) ? s : shuffle(playlist);
+    } catch { shuffled = shuffle(playlist); }
+
+    let trackIndex = parseInt(localStorage.getItem("mainlineAudioIndex"), 10);
+    if (Number.isNaN(trackIndex) || trackIndex < 0 || trackIndex >= shuffled.length) trackIndex = 0;
+
+    let savedTime   = parseFloat(localStorage.getItem("mainlineAudioTime")) || 0,
+        savedVolume = parseFloat(localStorage.getItem("mainlineAudioVolume"));
+    if (Number.isNaN(savedVolume)) savedVolume = 0.65;
+
+    audio.volume = savedVolume;
+    audio.muted  = localStorage.getItem("mainlineAudioMuted") === "true";
+    volumeSlider.value = savedVolume;
+
+    function updateNowPlaying() {
+      const t = shuffled[trackIndex];
+      nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing";
+    }
+
+    function updateMuteIcon() {
+      const dim = "rgba(245,245,245,0.2)", bright = "rgba(245,245,245,0.7)";
+      wave1.setAttribute("stroke", audio.muted ? dim : bright);
+      wave2.setAttribute("stroke", audio.muted ? dim : bright);
+      wave1.style.display = audio.muted ? "none" : "block";
+      wave2.style.display = audio.muted ? "none" : "block";
+    }
+
+    function loadTrack(i) { audio.src = shuffled[i].src; audio.load(); updateNowPlaying(); }
+
+    function saveAudioState() {
+      localStorage.setItem("mainlineAudioOrder",  JSON.stringify(shuffled));
+      localStorage.setItem("mainlineAudioIndex",  trackIndex);
+      localStorage.setItem("mainlineAudioTime",   audio.currentTime || 0);
+      localStorage.setItem("mainlineAudioMuted",  audio.muted);
+      localStorage.setItem("mainlineAudioVolume", audio.volume);
+    }
+
+    function nextTrack() {
+      trackIndex++; savedTime = 0;
+      if (trackIndex >= shuffled.length) { shuffled = shuffle(playlist); trackIndex = 0; }
+      loadTrack(trackIndex); audio.play(); saveAudioState();
+    }
+
+    audio.addEventListener("ended",      nextTrack);
+    audio.addEventListener("timeupdate", saveAudioState);
+    audio.addEventListener("error",      nextTrack);
+
+    let started = false;
+    function startAudio() {
+      if (started) return; started = true;
+      loadTrack(trackIndex);
+      audio.addEventListener("loadedmetadata", () => {
+        if (savedTime > 0 && savedTime < audio.duration) audio.currentTime = savedTime;
+        audio.play(); saveAudioState();
+      }, { once: true });
+      audioWidget.classList.add("show"); updateMuteIcon(); updateNowPlaying();
+      document.removeEventListener("click", startAudio);
+      document.removeEventListener("touchstart", startAudio);
+    }
+
+    document.addEventListener("click", startAudio);
+    document.addEventListener("touchstart", startAudio);
+
+    muteBtn.addEventListener("click", e => { e.stopPropagation(); audio.muted = !audio.muted; updateMuteIcon(); saveAudioState(); });
+    skipBtn.addEventListener("click", e => { e.stopPropagation(); savedTime = 0; localStorage.setItem("mainlineAudioTime", 0); nextTrack(); });
+    volumeSlider.addEventListener("click", e => e.stopPropagation());
+    volumeSlider.addEventListener("input", e => {
+      audio.volume = parseFloat(e.target.value);
+      if (audio.volume > 0) audio.muted = false;
+      updateMuteIcon(); saveAudioState();
+    });
+
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
+      saveAudioState();
+    });
+
+    const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    for (let i = 0; i < 160; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2.5 + 1.0,
+        d: Math.random() * 2.2 + 1.2
+      });
+    }
+
+    function snow() {
+      c.clearRect(0, 0, canvas.width, canvas.height);
+      c.fillStyle = "rgba(230,255,255,0.45)";
+      particles.forEach(p => {
+        c.beginPath();
+        c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+        c.fill();
+        p.y += p.d;
+        p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
+        if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
+      });
+      requestAnimationFrame(snow);
+    }
+    snow();
+  </script>
+</body>
+</html>

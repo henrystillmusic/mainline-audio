@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>True Peak Is a Constraint, Not a Target | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta name="description" content="What true peak actually measures, why inter-sample peaks matter, and why transparent protection matters more than chasing a number." />
+  <link rel="canonical" href="https://mainline-audio.com/true-peak.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mainline-audio.com/true-peak.html" />
+  <meta property="og:title" content="True Peak Is a Constraint, Not a Target | Mainline Audio" />
+  <meta property="og:description" content="What true peak actually measures, why inter-sample peaks matter, and why transparent protection matters more than chasing a number." />
+  <meta property="og:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+  <meta property="article:published_time" content="2026-08-12" />
+  <meta property="article:author" content="Henry Still" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/true-peak.html" />
+  <meta name="twitter:title" content="True Peak Is a Constraint, Not a Target | Mainline Audio" />
+  <meta name="twitter:description" content="What true peak actually measures, why inter-sample peaks matter, and why transparent protection matters more than chasing a number." />
+  <meta name="twitter:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://mainline-audio.com/true-peak.html#article",
+    "headline": "True Peak Is a Constraint, Not a Target",
+    "description": "What true peak actually measures, why inter-sample peaks matter, and why transparent protection matters more than chasing a number.",
+    "datePublished": "2026-08-12",
+    "author": {
+      "@type": "Person",
+      "name": "Henry Still"
+    },
+    "publisher": { "@id": "https://mainline-audio.com/#organization" },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mainline-audio.com/true-peak.html"
+    }
+  }
+  </script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a0a0a;
+      color: #f5f5f5;
+      font-family: "Satoshi", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    #snow {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .site { position: relative; z-index: 1; }
+    a { color: inherit; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+    @keyframes flow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 32px 56px;
+    }
+    .nav-home {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(245,245,245,0.28);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #f5f5f5; }
+
+    /* ── ARTICLE HEADER ── */
+    .note-header {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 40px 28px 56px;
+    }
+    .note-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 24px;
+    }
+    .note-header h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.12;
+      max-width: 780px; margin-bottom: 22px;
+    }
+    .note-subtitle {
+      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
+      margin-bottom: 18px;
+    }
+    .note-pubdate {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 64px 28px 8px;
+    }
+    .prose h2 {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3;
+      margin-top: 56px; margin-bottom: 22px;
+    }
+    .prose > h2:first-child { margin-top: 0; }
+    .prose p {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .prose ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(245,245,245,0.1);
+    }
+    .prose ul li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 2px 0;
+    }
+
+    /* ── CLOSING ── */
+    .note-closing {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 8px 28px 24px;
+      text-align: center;
+    }
+    .note-closing .divider { margin: 64px auto 40px; }
+    .note-author {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      color: rgba(245,245,245,0.7); margin-bottom: 6px;
+    }
+    .note-author-role {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+    }
+    .note-links {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-text {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-text:hover { color: rgba(245,245,245,0.65); }
+
+    .note-references {
+      text-align: left;
+      border-top: 1px solid rgba(245,245,245,0.08);
+      padding-top: 28px;
+    }
+    .note-references-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      margin-bottom: 14px;
+    }
+    .note-references ol {
+      list-style: decimal; padding-left: 18px;
+    }
+    .note-references li {
+      font-size: 11.5px; font-weight: 400; color: rgba(245,245,245,0.28);
+      letter-spacing: 0.02em; line-height: 1.7; margin-bottom: 8px;
+    }
+    .note-references li a {
+      color: rgba(245,245,245,0.4); text-decoration: underline;
+      text-decoration-color: rgba(245,245,245,0.15);
+      text-underline-offset: 2px;
+    }
+    .note-references li a:hover { color: rgba(245,245,245,0.7); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+    .footer-copy {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(245,245,245,0.08);
+    }
+    .footer-link {
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(245,245,245,0.22); text-decoration: none;
+    }
+    .footer-link:hover { color: rgba(245,245,245,0.5); }
+
+    .audio-widget {
+      position: fixed; bottom: 32px; right: 32px;
+      display: flex; align-items: center; gap: 12px;
+      z-index: 50; opacity: 0; transform: translateY(8px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .audio-widget.show { opacity: 1; transform: translateY(0); }
+    .now-playing {
+      min-width: 190px; max-width: 240px; padding: 10px 14px;
+      background: rgba(255,255,255,0.055); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px; color: rgba(245,245,245,0.55); font-size: 9px;
+      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .volume-slider {
+      width: 82px; accent-color: rgba(245,245,245,0.7);
+      opacity: 0.45; cursor: pointer;
+    }
+    #mute-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
+      border: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+    }
+    #mute-btn:hover { background: rgba(255,255,255,0.12); }
+    #skip-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border: 1px solid rgba(255,255,255,0.06); color: rgba(245,245,245,0.38);
+      font-size: 18px; font-weight: 400; line-height: 1; flex-shrink: 0; user-select: none;
+    }
+    #skip-btn:hover {
+      background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.12);
+      color: rgba(245,245,245,0.72);
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; }
+      .nav-links { gap: 20px; flex-wrap: wrap; }
+      .note-header { padding: 28px 24px 40px; }
+      .prose { padding: 48px 24px 8px; }
+      .prose h2 { font-size: 17px; margin-top: 44px; }
+      .prose p, .prose ul li { font-size: 14px; }
+      .note-closing { padding: 8px 24px 24px; }
+      .note-links { gap: 20px; }
+      footer { padding: 48px 24px 36px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav>
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+      <ul class="nav-links">
+        <li><a href="mastering.html">Mastering</a></li>
+        <li><a href="dsp.html">DSP</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
+        <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+
+    <article>
+      <header class="note-header">
+        <p class="note-eyebrow">Technical Note</p>
+        <h1 class="gradient-text">True Peak Is a Constraint, Not a Target</h1>
+        <p class="note-subtitle">Why inter-sample peaks matter — and why the goal is transparent protection, not another number to chase.</p>
+        <time class="note-pubdate" datetime="2026-08">August 2026</time>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="prose">
+        <p>A digital peak meter tells us the level of the samples in a file.</p>
+        <p>It does not necessarily tell us the highest level the signal can reach when those samples are reconstructed into a continuous waveform.</p>
+        <p>That difference is the reason true-peak measurement exists.</p>
+        <p>It is also the source of a surprising amount of confusion.</p>
+        <p>True peak is sometimes treated as another mastering target: stay below a particular number and the job is done. At the other extreme, true-peak limiting is dismissed as unnecessary because the peaks it detects do not necessarily exist as individual samples in the original file.</p>
+        <p>I don't find either position particularly useful.</p>
+        <p>For me, true peak is something to account for. It is a delivery consideration — not a measure of whether a master sounds good, and certainly not a number worth damaging a record to satisfy.</p>
+
+        <h2>The Peak Between the Samples</h2>
+        <p>Digital PCM audio represents a continuous signal as a sequence of discrete sample values.</p>
+        <p>A conventional sample-peak meter examines those values and reports the highest one. If the highest stored sample is below 0 dBFS, the meter can truthfully tell us that no individual sample exceeds full scale.</p>
+        <p>But the samples are not the final analog waveform.</p>
+        <p>During reconstruction, filtering restores the continuous waveform represented by those samples. Its maximum amplitude can occur between the original sampling instants and can be higher than any individual stored sample.</p>
+        <p>These reconstructed excursions are commonly called inter-sample peaks.</p>
+        <p>They are not imaginary peaks invented by a meter.</p>
+        <p>But neither is a true-peak reading a literal prediction of what every converter, codec, playback device, and analog output stage will produce.</p>
+        <p>It is a standardized estimate of reconstructed peak level.</p>
+        <p>That distinction matters.</p>
+
+        <h2>What a True-Peak Meter Is Actually Doing</h2>
+        <p>A sample-peak meter asks:</p>
+        <p>How high are the samples?</p>
+        <p>A true-peak meter asks:</p>
+        <p>How high might the waveform represented by those samples actually reach?</p>
+        <p>To answer that second question, true-peak measurement reconstructs the signal at a higher temporal resolution and examines the resulting peaks.</p>
+        <p>The measurement is commonly expressed in dBTP.</p>
+        <p>The important point is not simply the oversampling factor used by a particular implementation.</p>
+        <p>It is that true-peak measurement attempts to expose a condition that ordinary sample-peak metering cannot see.</p>
+        <p>That condition becomes increasingly relevant as more of a master is pushed toward digital full scale.</p>
+        <p>Filtering, sample-rate conversion, encoding, decoding and D/A reconstruction can all create conditions where peak behavior differs from what a sample-peak meter showed in the original file.</p>
+        <p>That is why I don't consider inter-sample overs a purely academic problem.</p>
+        <p>I've encountered them in masters prepared for streaming.</p>
+
+        <h2>Measurement Is Not Limiting</h2>
+        <p>This is probably the most important distinction.</p>
+        <p>True-peak metering measures a condition.</p>
+        <p>True-peak limiting changes the signal in response to that condition.</p>
+        <p>Those two things are often discussed as though they are inseparable.</p>
+        <p>They aren't.</p>
+        <p>You can monitor true peak and decide that a small excursion does not justify additional processing.</p>
+        <p>You can leave additional headroom rather than force a limiter to contain every reconstructed peak.</p>
+        <p>You can also use true-peak limiting when the protection can be achieved transparently.</p>
+        <p>Turning off true-peak limiting does not make inter-sample peaks disappear.</p>
+        <p>But detecting one does not automatically mean that it must be eliminated at any cost.</p>
+        <p>The meter gives us information.</p>
+        <p>The mastering engineer still has to make the decision.</p>
+
+        <h2>The Cost of Control</h2>
+        <p>Every limiter changes the waveform when it acts.</p>
+        <p>That is not a criticism of limiting. It is what a limiter does.</p>
+        <p>The question is whether the change is useful, acceptable, or audible.</p>
+        <p>I've heard masters suffer from too much limiting.</p>
+        <p>Transients can lose definition. Punch can disappear. The upper edge of a kick or snare can become flatter than the music wants it to be.</p>
+        <p>I don't think that problem belongs uniquely to true-peak limiters.</p>
+        <p>Any limiting process can be asked to do too much.</p>
+        <p>And this is where I become cautious about absolute rules.</p>
+        <p>If eliminating a tiny true-peak over requires audibly damaging the transient that caused it, we have to ask whether we solved the right problem.</p>
+        <p>But the opposite argument matters too.</p>
+        <p>If a reconstructed peak can be controlled without audibly changing the master, why would I deliberately leave the risk unaddressed?</p>
+        <p>For me, the objective isn't simply:</p>
+        <p>No inter-sample peaks.</p>
+        <p>It is:</p>
+        <p>No unnecessary damage while controlling the final output.</p>
+
+        <h2>Why I Usually Leave Some Room</h2>
+        <p>Earlier in my mastering work, I was comfortable working considerably closer to full scale.</p>
+        <p>Depending on the project, I might use ceilings around -0.5 dB or even -0.1 dB.</p>
+        <p>As more of my mastering became focused on streaming delivery, I became more conservative.</p>
+        <p>For Apple Music delivery in particular, Apple's published guidance has influenced my practice, and I generally leave approximately 1 dB of final true-peak margin rather than pushing every last fraction of a decibel toward full scale.<sup><a href="#ref-2">2</a></sup></p>
+        <p>That is not because I believe -1 dBTP is a magic number.</p>
+        <p>It isn't.</p>
+        <p>It is margin.</p>
+        <p>The appropriate ceiling still depends on the material, the destination, the desired loudness, and what the processing is doing to the music.</p>
+        <p>A number should inform the decision, not become the decision.</p>
+
+        <h2>Headroom Is Not Wasted Space</h2>
+        <p>There is a tendency — particularly with loud masters — to think of anything below full scale as unused territory.</p>
+        <p>I don't think that is a very productive way to look at it.</p>
+        <p>Headroom can be protection.</p>
+        <p>It gives reconstruction, encoding, sample-rate conversion, and playback processes somewhere to go without immediately running into a hard boundary.</p>
+        <p>Giving up a fraction of a decibel at the ceiling is rarely the thing that determines whether a master feels powerful.</p>
+        <p>Transient shape, density, spectral balance, dynamics, and perceived loudness matter far more.</p>
+        <p>The last decimal place on the peak meter is not the record.</p>
+
+        <h2>True Peak Does Not Tell You Whether a Master Is Good</h2>
+        <p>A true-peak reading tells us something very specific.</p>
+        <p>It does not tell us whether the record is loud enough.</p>
+        <p>It does not tell us whether it has punch.</p>
+        <p>It does not tell us whether the tonal balance is right.</p>
+        <p>It does not tell us whether the dynamics are appropriate.</p>
+        <p>It does not tell us whether a limiter is being pushed too hard.</p>
+        <p>And it certainly does not tell us whether the music feels right.</p>
+        <p>That narrowness is a strength.</p>
+        <p>True peak is useful precisely because it answers a narrow technical question.</p>
+        <p>Problems start when we ask that measurement to become an aesthetic judgment.</p>
+
+        <h2>Why I Built The Final Word This Way</h2>
+        <p>This question eventually became part of the reason I built The Final Word.</p>
+        <p>I had delivered masters that produced inter-sample overs.</p>
+        <p>I wanted true-peak protection that I could trust at the end of a mastering chain without feeling that I had to continually second-guess what was happening above the sample peaks.</p>
+        <p>But I did not want the solution to simply be more aggressive limiting.</p>
+        <p>The main limiting stage should do the musical work.</p>
+        <p>The final protection should stay out of the way.</p>
+        <p>The Final Word therefore uses a dedicated true-peak ceiling stage after its main limiting path.</p>
+        <p>During normal processing, that stage analyzes an independent 8× oversampled reconstruction of the output and applies proportional gain reduction when the reconstructed peak would otherwise exceed the set ceiling.</p>
+        <p>It operates independently of the user-selected main Oversampling setting.</p>
+        <p>A separate final true-peak measurement then evaluates the signal that actually leaves the plugin.</p>
+        <p>The goal is not more limiting.</p>
+        <p>It is to make the last layer of protection as unobtrusive as possible.</p>
+        <p>That architecture reflects how I think about true peak generally:</p>
+        <ul>
+          <li>Acknowledge the problem.</li>
+          <li>Measure it accurately.</li>
+          <li>Control it when necessary.</li>
+        </ul>
+        <p>And do as little damage as possible in the process.</p>
+
+        <h2>Not a Rule. A Responsibility.</h2>
+        <p>I am cautious about using the word always in mastering.</p>
+        <ul>
+          <li>Always use true-peak limiting.</li>
+          <li>Always leave -1 dBTP.</li>
+          <li>Always master to a particular LUFS value.</li>
+          <li>Always use a clipper before a limiter.</li>
+        </ul>
+        <p>Rules like these can be useful starting points.</p>
+        <p>They can also become substitutes for listening.</p>
+        <p>I value knowing what is happening to a signal beyond the samples themselves.</p>
+        <p>I've seen inter-sample overs occur in real delivery, so I am not comfortable pretending the issue does not exist.</p>
+        <p>But I am equally uninterested in sacrificing transient integrity simply to make a meter display a prettier number.</p>
+        <p>That leaves us with the same responsibility we have everywhere else in mastering:</p>
+        <p>Understand the measurement.</p>
+        <p>Understand the consequence.</p>
+        <p>Then make the decision that serves the record.</p>
+        <p>True peak is not something to chase.</p>
+        <p>It is something to account for.</p>
+      </div>
+
+      <footer class="note-closing">
+        <div class="divider"></div>
+        <p class="note-author">Henry Still</p>
+        <p class="note-author-role">Mastering Engineer · Founder, Mainline Audio</p>
+        <div class="note-links">
+          <a class="btn-text" href="the-final-word.html">The Final Word →</a>
+          <a class="btn-text" href="notes.html">Technical Notes →</a>
+        </div>
+        <div class="note-references">
+          <p class="note-references-label">References</p>
+          <ol>
+            <li id="ref-1">International Telecommunication Union, Recommendation <a href="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.1770-5-202311-I!!PDF-E.pdf" target="_blank" rel="noopener">ITU-R BS.1770-5</a> — Algorithms to measure audio programme loudness and true-peak audio level.</li>
+            <li id="ref-2">Apple, <a href="https://www.apple.com/apple-music/apple-digital-masters/docs/apple-digital-masters.pdf" target="_blank" rel="noopener">Apple Digital Masters: Music as the Artist and Sound Engineer Intended</a>.</li>
+          </ol>
+        </div>
+      </footer>
+    </article>
+
+    <footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a><p class="footer-copy" style="margin-top: 10px;">© 2026 Mainline Audio</p></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const playlist = [
+      { title: "Drift",                src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3" },
+      { title: "Draped",               src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3" },
+      { title: "Still Waters",         src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Still_Waters_Master_01.mp3" },
+      { title: "Weightless",           src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3" },
+      { title: "When the Mud Settles", src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_When_The_Mud_Settles.mp3" },
+      { title: "Run Free",             src: "/MAINLINE-AUDIO-SITE/MUSIC/Henry_Still_Run_Free.mp3" },
+    ];
+
+    function shuffle(arr) {
+      const s = [...arr];
+      for (let i = s.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [s[i], s[j]] = [s[j], s[i]];
+      }
+      return s;
+    }
+
+    const audioWidget   = document.getElementById("audio-widget"),
+          audio         = document.getElementById("bg-track"),
+          muteBtn       = document.getElementById("mute-btn"),
+          skipBtn       = document.getElementById("skip-btn"),
+          wave1         = document.getElementById("wave-1"),
+          wave2         = document.getElementById("wave-2"),
+          nowPlaying    = document.getElementById("now-playing"),
+          volumeSlider  = document.getElementById("volume-slider");
+
+    let shuffled;
+    try {
+      const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
+      shuffled = Array.isArray(s) && s.every(t => playlist.some(p => p.title === t.title)) ? s : shuffle(playlist);
+    } catch { shuffled = shuffle(playlist); }
+
+    let trackIndex = parseInt(localStorage.getItem("mainlineAudioIndex"), 10);
+    if (Number.isNaN(trackIndex) || trackIndex < 0 || trackIndex >= shuffled.length) trackIndex = 0;
+
+    let savedTime   = parseFloat(localStorage.getItem("mainlineAudioTime")) || 0,
+        savedVolume = parseFloat(localStorage.getItem("mainlineAudioVolume"));
+    if (Number.isNaN(savedVolume)) savedVolume = 0.65;
+
+    audio.volume = savedVolume;
+    audio.muted  = localStorage.getItem("mainlineAudioMuted") === "true";
+    volumeSlider.value = savedVolume;
+
+    function updateNowPlaying() {
+      const t = shuffled[trackIndex];
+      nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing";
+    }
+
+    function updateMuteIcon() {
+      const dim = "rgba(245,245,245,0.2)", bright = "rgba(245,245,245,0.7)";
+      wave1.setAttribute("stroke", audio.muted ? dim : bright);
+      wave2.setAttribute("stroke", audio.muted ? dim : bright);
+      wave1.style.display = audio.muted ? "none" : "block";
+      wave2.style.display = audio.muted ? "none" : "block";
+    }
+
+    function loadTrack(i) { audio.src = shuffled[i].src; audio.load(); updateNowPlaying(); }
+
+    function saveAudioState() {
+      localStorage.setItem("mainlineAudioOrder",  JSON.stringify(shuffled));
+      localStorage.setItem("mainlineAudioIndex",  trackIndex);
+      localStorage.setItem("mainlineAudioTime",   audio.currentTime || 0);
+      localStorage.setItem("mainlineAudioMuted",  audio.muted);
+      localStorage.setItem("mainlineAudioVolume", audio.volume);
+    }
+
+    function nextTrack() {
+      trackIndex++; savedTime = 0;
+      if (trackIndex >= shuffled.length) { shuffled = shuffle(playlist); trackIndex = 0; }
+      loadTrack(trackIndex); audio.play(); saveAudioState();
+    }
+
+    audio.addEventListener("ended",      nextTrack);
+    audio.addEventListener("timeupdate", saveAudioState);
+    audio.addEventListener("error",      nextTrack);
+
+    let started = false;
+    function startAudio() {
+      if (started) return; started = true;
+      loadTrack(trackIndex);
+      audio.addEventListener("loadedmetadata", () => {
+        if (savedTime > 0 && savedTime < audio.duration) audio.currentTime = savedTime;
+        audio.play(); saveAudioState();
+      }, { once: true });
+      audioWidget.classList.add("show"); updateMuteIcon(); updateNowPlaying();
+      document.removeEventListener("click", startAudio);
+      document.removeEventListener("touchstart", startAudio);
+    }
+
+    document.addEventListener("click", startAudio);
+    document.addEventListener("touchstart", startAudio);
+
+    muteBtn.addEventListener("click", e => { e.stopPropagation(); audio.muted = !audio.muted; updateMuteIcon(); saveAudioState(); });
+    skipBtn.addEventListener("click", e => { e.stopPropagation(); savedTime = 0; localStorage.setItem("mainlineAudioTime", 0); nextTrack(); });
+    volumeSlider.addEventListener("click", e => e.stopPropagation());
+    volumeSlider.addEventListener("input", e => {
+      audio.volume = parseFloat(e.target.value);
+      if (audio.volume > 0) audio.muted = false;
+      updateMuteIcon(); saveAudioState();
+    });
+
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
+      saveAudioState();
+    });
+
+    const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    for (let i = 0; i < 160; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2.5 + 1.0,
+        d: Math.random() * 2.2 + 1.2
+      });
+    }
+
+    function snow() {
+      c.clearRect(0, 0, canvas.width, canvas.height);
+      c.fillStyle = "rgba(230,255,255,0.45)";
+      particles.forEach(p => {
+        c.beginPath();
+        c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+        c.fill();
+        p.y += p.d;
+        p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
+        if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
+      });
+      requestAnimationFrame(snow);
+    }
+    snow();
+  </script>
+</body>
+</html>
