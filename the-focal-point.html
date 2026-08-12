@@ -40,7 +40,7 @@
 .tfl-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--tfl-accent); font-weight: 700; margin-bottom: 12px; }
 .tfl-heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--tfl-text); margin-bottom: 10px; line-height: 1.15; }
 .tfl-sub { font-size: 15px; color: var(--tfl-muted); line-height: 1.7; max-width: 600px; margin-bottom: 36px; }
-.tfl-mode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
+.tfl-mode-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
 @media (max-width: 680px) { .tfl-mode-grid { grid-template-columns: 1fr; } }
 .tfl-mode-card { background: var(--tfl-surface); padding: 22px 18px; transition: background 0.15s; }
 .tfl-mode-card:hover { background: var(--tfl-surface2); }
@@ -185,8 +185,8 @@
   <!-- MOTION -->
   <div class="tfl-section">
     <div class="tfl-label">Motion</div>
-    <h2 class="tfl-heading">Three macros. One evolving shape.</h2>
-    <p class="tfl-sub">Focus and Spread set where the eight stages sit relative to each other. Drift adds a slow, continuous wobble modeled on tape and vinyl movement.</p>
+    <h2 class="tfl-heading">Four macros. One evolving shape.</h2>
+    <p class="tfl-sub">Focus and Spread set where the eight stages sit relative to each other. Motion scales how strongly that formation moves, while Drift adds its own slow, continuous wobble modeled on tape and vinyl movement, independent of Motion.</p>
     <div class="tfl-mode-grid">
       <div class="tfl-mode-card">
         <span class="tfl-pip"></span>
@@ -197,6 +197,11 @@
         <span class="tfl-pip"></span>
         <div class="tfl-mode-name">Spread</div>
         <div class="tfl-mode-desc">Sets how far the eight stages fan out from Focus, from tightly clustered to widely spaced.</div>
+      </div>
+      <div class="tfl-mode-card">
+        <span class="tfl-pip"></span>
+        <div class="tfl-mode-name">Motion</div>
+        <div class="tfl-mode-desc">Scales how strongly Motion 1, Motion 2, and Sidechain move the formation — from fully removed to beyond their authored depth. Drift is unaffected.</div>
       </div>
       <div class="tfl-mode-card">
         <span class="tfl-pip"></span>
@@ -215,12 +220,12 @@
     <p class="tfl-sub">Beyond static filtering, two independent motion generators and per-stage mix control let the eight-stage formation move and blend in real time.</p>
     <div class="tfl-card-grid">
       <div class="tfl-card">
-        <div class="tfl-card-name">Motion</div>
+        <div class="tfl-card-name">Motion 1</div>
         <div class="tfl-card-desc">The first of two independent motion generators, modulating stage frequency for continuous, musical movement.</div>
       </div>
       <div class="tfl-card">
         <div class="tfl-card-name">Motion 2</div>
-        <div class="tfl-card-desc">A second, independent motion generator — layer it against Motion for more complex, less repetitive movement.</div>
+        <div class="tfl-card-desc">A second, independent motion generator — layer it against Motion 1 for more complex, less repetitive movement.</div>
       </div>
       <div class="tfl-card">
         <div class="tfl-card-name">Stage Mix</div>
@@ -239,11 +244,11 @@
   <div class="tfl-section">
     <div class="tfl-label">Sync &amp; Offset</div>
     <h2 class="tfl-heading">Lock it to the groove, or don't</h2>
-    <p class="tfl-sub">Motion and Drift can run free or lock to the host tempo, with per-stage phase offset for movement that unfolds across the eight stages rather than all at once.</p>
+    <p class="tfl-sub">Motion 1 and Motion 2 can run free or lock to the host tempo, with per-stage phase offset for movement that unfolds across the eight stages rather than all at once. Drift runs independently.</p>
     <div class="tfl-meter-list">
       <div class="tfl-meter-row">
         <div class="tfl-meter-name">Tempo Sync</div>
-        <div class="tfl-meter-desc">Motion and Motion 2 can each free-run or lock to host tempo, independently, per stage or globally.</div>
+        <div class="tfl-meter-desc">Motion 1 and Motion 2 can each free-run or lock to host tempo, independently, per stage or globally.</div>
       </div>
       <div class="tfl-meter-row">
         <div class="tfl-meter-name">Phase Offset</div>
