@@ -111,6 +111,7 @@
       color: inherit;
       transition: background 0.2s, border-color 0.2s;
     }
+    .note-row + .note-row { margin-top: 24px; }
     .note-row:hover { background: #111; border-color: rgba(245,245,245,0.2); }
     .note-meta {
       display: flex; align-items: center; gap: 14px;
@@ -225,6 +226,15 @@
     <div class="divider"></div>
 
     <div class="notes-list">
+      <a class="note-row" href="minimum-natural-linear-phase-eq.html">
+        <div class="note-meta">
+          <span class="note-eyebrow">Technical Note</span>
+          <time class="note-date" datetime="2026-08-13">August 13, 2026</time>
+        </div>
+        <h2 class="note-title">Minimum, Natural and Linear Phase EQ — What Actually Changes?</h2>
+        <p class="note-desc">The curve can look the same while the filter behaves differently in time.</p>
+        <span class="note-cta">Read the note ↗</span>
+      </a>
       <a class="note-row" href="true-peak.html">
         <div class="note-meta">
           <span class="note-eyebrow">Technical Note</span>

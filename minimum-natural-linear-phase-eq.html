@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimum, Natural & Linear Phase EQ | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta name="description" content="What changes between minimum, natural, and linear-phase EQ — and why the audible difference can be smaller than the labels suggest." />
+  <link rel="canonical" href="https://mainline-audio.com/minimum-natural-linear-phase-eq.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mainline-audio.com/minimum-natural-linear-phase-eq.html" />
+  <meta property="og:title" content="Minimum, Natural & Linear Phase EQ | Mainline Audio" />
+  <meta property="og:description" content="What changes between minimum, natural, and linear-phase EQ — and why the audible difference can be smaller than the labels suggest." />
+  <meta property="og:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+  <meta property="article:published_time" content="2026-08-13" />
+  <meta property="article:author" content="Henry Still" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/minimum-natural-linear-phase-eq.html" />
+  <meta name="twitter:title" content="Minimum, Natural & Linear Phase EQ | Mainline Audio" />
+  <meta name="twitter:description" content="What changes between minimum, natural, and linear-phase EQ — and why the audible difference can be smaller than the labels suggest." />
+  <meta name="twitter:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://mainline-audio.com/minimum-natural-linear-phase-eq.html#article",
+    "headline": "Minimum, Natural and Linear Phase EQ — What Actually Changes?",
+    "description": "What changes between minimum, natural, and linear-phase EQ — and why the audible difference can be smaller than the labels suggest.",
+    "datePublished": "2026-08-13",
+    "dateModified": "2026-08-13",
+    "author": {
+      "@type": "Person",
+      "name": "Henry Still"
+    },
+    "publisher": { "@id": "https://mainline-audio.com/#organization" },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mainline-audio.com/minimum-natural-linear-phase-eq.html"
+    }
+  }
+  </script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a0a0a;
+      color: #f5f5f5;
+      font-family: "Satoshi", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    #snow {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .site { position: relative; z-index: 1; }
+    a { color: inherit; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+    @keyframes flow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 32px 56px;
+    }
+    .nav-home {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(245,245,245,0.28);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #f5f5f5; }
+
+    /* ── ARTICLE HEADER ── */
+    .note-header {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 40px 28px 56px;
+    }
+    .note-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 24px;
+    }
+    .note-header h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.12;
+      max-width: 780px; margin-bottom: 22px;
+    }
+    .note-subtitle {
+      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
+      margin-bottom: 18px;
+    }
+    .note-pubdate {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 64px 28px 8px;
+    }
+    .prose h2 {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3;
+      margin-top: 56px; margin-bottom: 22px;
+    }
+    .prose > h2:first-child { margin-top: 0; }
+    .prose p {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .prose ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(245,245,245,0.1);
+    }
+    .prose ul li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 2px 0;
+    }
+
+    /* ── READING QUIET ZONE ──
+       Shared Technical Note treatment (originated in true-peak.html).
+       Invisible feathered scrim (same color as the page background)
+       sitting between the snow canvas and the
+       article text, to subdue snow directly behind the reading column while
+       leaving the hero and outer margins untouched. No panel, no border —
+       just a soft alpha gradient that reads as calmer air, not a box. */
+    .reading-quiet-zone { position: relative; }
+    .reading-quiet-zone::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: min(920px, 100%);
+      transform: translateX(-50%);
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(10,10,10,0)    0%,
+        rgba(10,10,10,0.7) 22%,
+        rgba(10,10,10,0.7) 78%,
+        rgba(10,10,10,0)  100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+    }
+
+    /* ── CLOSING ── */
+    .note-closing {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 8px 28px 24px;
+      text-align: center;
+    }
+    .note-closing .divider { margin: 64px auto 40px; }
+    .note-author {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      color: rgba(245,245,245,0.7); margin-bottom: 6px;
+    }
+    .note-author-role {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+    }
+    .note-links {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-text {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-text:hover { color: rgba(245,245,245,0.65); }
+
+    .note-references {
+      text-align: left;
+      border-top: 1px solid rgba(245,245,245,0.08);
+      padding-top: 28px;
+    }
+    .note-references-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      margin-bottom: 14px;
+    }
+    .note-references ol {
+      list-style: decimal; padding-left: 18px;
+    }
+    .note-references li {
+      font-size: 11.5px; font-weight: 400; color: rgba(245,245,245,0.28);
+      letter-spacing: 0.02em; line-height: 1.7; margin-bottom: 8px;
+    }
+    .note-references li a {
+      color: rgba(245,245,245,0.4); text-decoration: underline;
+      text-decoration-color: rgba(245,245,245,0.15);
+      text-underline-offset: 2px;
+    }
+    .note-references li a:hover { color: rgba(245,245,245,0.7); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+    .footer-copy {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(245,245,245,0.08);
+    }
+    .footer-link {
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(245,245,245,0.22); text-decoration: none;
+    }
+    .footer-link:hover { color: rgba(245,245,245,0.5); }
+
+    .audio-widget {
+      position: fixed; bottom: 32px; right: 32px;
+      display: flex; align-items: center; gap: 12px;
+      z-index: 50; opacity: 0; transform: translateY(8px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .audio-widget.show { opacity: 1; transform: translateY(0); }
+    .now-playing {
+      min-width: 190px; max-width: 240px; padding: 10px 14px;
+      background: rgba(255,255,255,0.055); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px; color: rgba(245,245,245,0.55); font-size: 9px;
+      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .volume-slider {
+      width: 82px; accent-color: rgba(245,245,245,0.7);
+      opacity: 0.45; cursor: pointer;
+    }
+    #mute-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
+      border: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+    }
+    #mute-btn:hover { background: rgba(255,255,255,0.12); }
+    #skip-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border: 1px solid rgba(255,255,255,0.06); color: rgba(245,245,245,0.38);
+      font-size: 18px; font-weight: 400; line-height: 1; flex-shrink: 0; user-select: none;
+    }
+    #skip-btn:hover {
+      background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.12);
+      color: rgba(245,245,245,0.72);
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; }
+      .nav-links { gap: 20px; flex-wrap: wrap; }
+      .note-header { padding: 28px 24px 40px; }
+      .prose { padding: 48px 24px 8px; }
+      .prose h2 { font-size: 17px; margin-top: 44px; }
+      .prose p, .prose ul li { font-size: 14px; }
+      .note-closing { padding: 8px 24px 24px; }
+      .note-links { gap: 20px; }
+      footer { padding: 48px 24px 36px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav>
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+      <ul class="nav-links">
+        <li><a href="mastering.html">Mastering</a></li>
+        <li><a href="dsp.html">DSP</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
+        <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+
+    <article>
+      <header class="note-header">
+        <p class="note-eyebrow">Technical Note</p>
+        <h1 class="gradient-text">Minimum, Natural and Linear Phase EQ — What Actually Changes?</h1>
+        <p class="note-subtitle">The curve can look the same while the filter behaves differently in time.</p>
+        <time class="note-pubdate" datetime="2026-08-13">August 13, 2026</time>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="reading-quiet-zone">
+      <div class="prose">
+        <p>An EQ graph makes equalization look deceptively simple.</p>
+        <p>Choose a frequency. Set the gain. Adjust the Q. The curve moves, and the result appears to be right there on the screen.</p>
+        <p>But the curve only describes part of what the filter is doing.</p>
+        <p>Two filters can target essentially the same frequency response while treating the signal differently in time. That difference is where minimum-phase and linear-phase processing begin to separate.</p>
+        <p>And it leads to a point that is easy to lose in a list of processing modes:</p>
+        <p>Phase mode is not a quality setting.</p>
+        <p>Minimum, Natural and Linear are not three steps from basic to better to best. They represent different engineering tradeoffs.</p>
+
+        <h2>The Curve Is Only Part of the Filter</h2>
+        <p>When an EQ boosts or cuts part of the spectrum, we usually think first about magnitude: how much energy is being added or removed at a given frequency.</p>
+        <p>A conventional minimum-phase filter also changes the phase relationship of frequencies around that adjustment. That phase behavior is not an additional defect laid on top of the EQ. It is part of the filter itself.</p>
+        <p>In The Fine Line, Minimum uses ordinary causal IIR filters. The phase shift follows naturally from the magnitude response being created. There is no additional all-pass correction attempting to straighten it afterward.</p>
+        <p>That distinction matters because phase shift is not automatically a problem.</p>
+        <p>It is one of the consequences of making the filter causal and immediate.</p>
+
+        <h2>Minimum Phase Is Not the Lesser Option</h2>
+        <p>Minimum phase can sometimes be treated as the conventional option that exists until a more sophisticated linear-phase mode is available.</p>
+        <p>That framing misses the point.</p>
+        <p>A minimum-phase EQ has several useful properties. Processing happens immediately. There is no long FIR kernel waiting for future samples, and there is no symmetric impulse response extending before a transient.</p>
+        <p>In The Fine Line, the Minimum engine itself adds zero samples of latency. Its filters operate directly on the incoming signal using the causal IIR response associated with the selected EQ curve.</p>
+        <p>The tradeoff is that changing magnitude also changes phase in a frequency-dependent way.</p>
+        <p>But calling that "lower quality" would misunderstand what the filter is doing.</p>
+        <p>Sometimes that is simply the right behavior.</p>
+
+        <h2>What "Natural" Means Here</h2>
+        <p>The word Natural deserves clarification because it does not describe one universal EQ topology.</p>
+        <p>In The Fine Line, Natural is not an analog emulation, and it is not a blend between Minimum and Linear.</p>
+        <p>It is actually much more closely related to Linear.</p>
+        <p>Both Natural and Linear reconstruct the target EQ response using the same linear-phase FIR approach. Natural uses a much shorter kernel: 1024 taps instead of Linear's 8192.</p>
+        <p>That gives Natural considerably lower latency and a much shorter impulse response while retaining constant group delay across the spectrum.</p>
+        <p>So Natural is not "half minimum phase, half linear phase."</p>
+        <p>It is better understood as a shorter linear-phase implementation: coarser frequency resolution than the full Linear engine, but substantially less latency and a much shorter possible pre-/post-ring extent.</p>
+        <p>That is an engineering tradeoff rather than a hierarchy.</p>
+
+        <h2>Linear Phase Solves a Different Problem</h2>
+        <p>Linear phase removes the frequency-dependent phase rotation associated with a minimum-phase EQ.</p>
+        <p>It does that by changing the way the filter exists in time.</p>
+        <p>The Fine Line's Linear engine uses an 8192-tap symmetric FIR reconstruction. Its group delay remains constant across frequency, but the price is substantial latency: 9216 samples across the complete processing topology, or roughly 192–209 milliseconds at 44.1 and 48 kHz.</p>
+        <p>Its impulse response is symmetric.</p>
+        <p>That means energy associated with a sufficiently sharp filter can exist both before and after the event being filtered. This is where pre- and post-ringing come from.</p>
+        <p>Steep filters, narrow high-Q moves and strong low-frequency corrections are the kinds of conditions where that behavior becomes more relevant. The Fine Line uses windowing to control ringing, but it cannot eliminate a property inherent to the underlying FIR approach.</p>
+        <p>So linear phase does not eliminate compromise.</p>
+        <p>It moves the compromise.</p>
+        <p>Instead of frequency-dependent phase rotation, you accept latency, more convolution work and a different temporal response.</p>
+        <p>Whether that trade is useful depends on the material and the job.</p>
+
+        <h2>The Same Curve, Three Different Paths</h2>
+        <p>The interesting part is that all three modes are aiming at the same EQ curve.</p>
+        <p>Natural and Linear build their FIR kernels from the same per-band magnitude math that defines the Minimum engine's own response. The longer Linear kernel can reproduce sharp spectral features with greater resolution, while the shorter Natural kernel necessarily has coarser resolution.</p>
+        <p>There is not currently a test that proves perfect numerical parity between all three modes at every frequency and every possible setting, so I would not claim they are mathematically identical.</p>
+        <p>But structurally, they are designed around the same magnitude target.</p>
+        <p>That helps explain something that becomes apparent when actually listening:</p>
+        <p>The difference can be real without being dramatic.</p>
+        <p>On broad, restrained mastering moves, it can be surprisingly difficult to distinguish the three modes.</p>
+        <p>That does not necessarily mean nothing is changing.</p>
+        <p>It can simply mean the EQ move itself is gentle enough that the different filter architectures have very little to disagree about.</p>
+
+        <h2>Listening Instead of Looking</h2>
+        <p>While comparing the modes myself, I found Linear could sometimes feel slightly fuller and a little more spread.</p>
+        <p>But the difference was subtle.</p>
+        <p>I would not describe "fuller" or "wider" as an inherent property of linear-phase EQ based on that experience. The architecture does not support such a universal claim, and another piece of material may produce a different impression.</p>
+        <p>What matters more is that the difference was not obvious.</p>
+        <p>Broad bells, modest shelves and restrained mastering corrections produce smooth magnitude responses. Those are also the situations where finite-kernel reconstruction differences are relatively small and minimum-phase rotation is comparatively gentle.</p>
+        <p>If I have to strain to identify a mode in a normal mastering move, I do not consider that a failure of the EQ.</p>
+        <p>It may simply mean the move does not demand a different solution.</p>
+
+        <h2>When the Difference Matters More</h2>
+        <p>If I want to expose the differences, I would not start with a one-decibel shelf across a dense finished mix.</p>
+        <p>I would push the filters into situations where their architectures have a reason to diverge.</p>
+        <p>A steep high-pass filter in the low end is one example. A narrow high-Q correction is another. Transient-heavy material can make the temporal behavior of a longer FIR easier to investigate. Stronger or more numerous filter moves can compound the differences as well.</p>
+        <p>Those are useful tests because they reveal the boundaries of the processing.</p>
+        <p>They are not necessarily instructions for how a master should be EQ'd.</p>
+        <p>There is little value in creating an extreme test, proving that two algorithms eventually sound different, and then treating that difference as representative of everyday work.</p>
+        <p>The more useful question is:</p>
+        <p>Does the difference matter at the settings the music actually needs?</p>
+
+        <h2>Choosing a Mode</h2>
+        <p>I do not think the answer needs to be a chart telling you to use Minimum for one genre, Natural for another and Linear for something else.</p>
+        <p>The decision can be simpler.</p>
+        <p>Minimum keeps the processing immediate and avoids FIR-convolution latency. Its phase behavior is the natural consequence of the causal filter.</p>
+        <p>Natural uses a much shorter linear-phase FIR path, reducing the latency and temporal extent compared with the full Linear engine.</p>
+        <p>Linear extends that same approach much further, buying greater frequency resolution at the cost of significantly more latency and a longer symmetric impulse response.</p>
+        <p>Those are engineering differences.</p>
+        <p>Whether they become meaningful sonic differences depends on the material, the filter shape and what you are trying to accomplish.</p>
+        <p>And sometimes the correct conclusion after comparing them is simply:</p>
+        <p>I cannot reliably hear enough difference here to care.</p>
+        <p>There is nothing unprofessional about that answer.</p>
+        <p>The purpose of having multiple processing modes is not to force a preference. It is to make the appropriate behavior available when the situation calls for it.</p>
+
+        <h2>The Decision Is Still Musical</h2>
+        <p>An EQ display tells you where the magnitude response changed.</p>
+        <p>It cannot tell you everything about how the filter produced that change.</p>
+        <p>Minimum, Natural and Linear can point toward nearly the same visible curve while taking materially different paths through time.</p>
+        <p>That distinction is worth understanding.</p>
+        <p>It is not something that needs to be exaggerated.</p>
+        <p>If you cannot reliably hear the difference, you do not need to invent one.</p>
+        <p>The graph tells you what frequencies you changed.</p>
+        <p>The phase mode helps determine how that change exists in time.</p>
+      </div>
+
+      <footer class="note-closing">
+        <div class="divider"></div>
+        <p class="note-author">Henry Still</p>
+        <p class="note-author-role">Mastering Engineer · Founder, Mainline Audio</p>
+        <div class="note-links">
+          <a class="btn-text" href="the-fine-line.html">The Fine Line →</a>
+          <a class="btn-text" href="notes.html">Technical Notes →</a>
+        </div>
+        <div class="note-references">
+          <p class="note-references-label">References</p>
+          <ol>
+            <li id="ref-1">Julius O. Smith III, <a href="https://ccrma.stanford.edu/~jos/filters/Definition_Minimum_Phase_Filters.html" target="_blank" rel="noopener">Introduction to Digital Filters — Definition of Minimum Phase Filters</a>, Center for Computer Research in Music and Acoustics (CCRMA), Stanford University.</li>
+            <li id="ref-2">V. Bruschi, V. Välimäki, J. Liski, and S. Cecchi, <a href="https://doi.org/10.17743/jaes.2022.0014" target="_blank" rel="noopener">"Linear-Phase Octave Graphic Equalizer"</a>, Journal of the Audio Engineering Society, vol. 70, no. 6, pp. 435–445, June 2022.</li>
+          </ol>
+        </div>
+      </footer>
+      </div>
+    </article>
+
+    <footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a><p class="footer-copy" style="margin-top: 10px;">© 2026 Mainline Audio</p></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const playlist = [
+      { title: "Drift",                src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3" },
+      { title: "Draped",               src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3" },
+      { title: "Still Waters",         src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Still_Waters_Master_01.mp3" },
+      { title: "Weightless",           src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3" },
+      { title: "When the Mud Settles", src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_When_The_Mud_Settles.mp3" },
+      { title: "Run Free",             src: "/MAINLINE-AUDIO-SITE/MUSIC/Henry_Still_Run_Free.mp3" },
+    ];
+
+    function shuffle(arr) {
+      const s = [...arr];
+      for (let i = s.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [s[i], s[j]] = [s[j], s[i]];
+      }
+      return s;
+    }
+
+    const audioWidget   = document.getElementById("audio-widget"),
+          audio         = document.getElementById("bg-track"),
+          muteBtn       = document.getElementById("mute-btn"),
+          skipBtn       = document.getElementById("skip-btn"),
+          wave1         = document.getElementById("wave-1"),
+          wave2         = document.getElementById("wave-2"),
+          nowPlaying    = document.getElementById("now-playing"),
+          volumeSlider  = document.getElementById("volume-slider");
+
+    let shuffled;
+    try {
+      const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
+      shuffled = Array.isArray(s) && s.every(t => playlist.some(p => p.title === t.title)) ? s : shuffle(playlist);
+    } catch { shuffled = shuffle(playlist); }
+
+    let trackIndex = parseInt(localStorage.getItem("mainlineAudioIndex"), 10);
+    if (Number.isNaN(trackIndex) || trackIndex < 0 || trackIndex >= shuffled.length) trackIndex = 0;
+
+    let savedTime   = parseFloat(localStorage.getItem("mainlineAudioTime")) || 0,
+        savedVolume = parseFloat(localStorage.getItem("mainlineAudioVolume"));
+    if (Number.isNaN(savedVolume)) savedVolume = 0.65;
+
+    audio.volume = savedVolume;
+    audio.muted  = localStorage.getItem("mainlineAudioMuted") === "true";
+    volumeSlider.value = savedVolume;
+
+    function updateNowPlaying() {
+      const t = shuffled[trackIndex];
+      nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing";
+    }
+
+    function updateMuteIcon() {
+      const dim = "rgba(245,245,245,0.2)", bright = "rgba(245,245,245,0.7)";
+      wave1.setAttribute("stroke", audio.muted ? dim : bright);
+      wave2.setAttribute("stroke", audio.muted ? dim : bright);
+      wave1.style.display = audio.muted ? "none" : "block";
+      wave2.style.display = audio.muted ? "none" : "block";
+    }
+
+    function loadTrack(i) { audio.src = shuffled[i].src; audio.load(); updateNowPlaying(); }
+
+    function saveAudioState() {
+      localStorage.setItem("mainlineAudioOrder",  JSON.stringify(shuffled));
+      localStorage.setItem("mainlineAudioIndex",  trackIndex);
+      localStorage.setItem("mainlineAudioTime",   audio.currentTime || 0);
+      localStorage.setItem("mainlineAudioMuted",  audio.muted);
+      localStorage.setItem("mainlineAudioVolume", audio.volume);
+    }
+
+    function nextTrack() {
+      trackIndex++; savedTime = 0;
+      if (trackIndex >= shuffled.length) { shuffled = shuffle(playlist); trackIndex = 0; }
+      loadTrack(trackIndex); audio.play(); saveAudioState();
+    }
+
+    audio.addEventListener("ended",      nextTrack);
+    audio.addEventListener("timeupdate", saveAudioState);
+    audio.addEventListener("error",      nextTrack);
+
+    let started = false;
+    function startAudio() {
+      if (started) return; started = true;
+      loadTrack(trackIndex);
+      audio.addEventListener("loadedmetadata", () => {
+        if (savedTime > 0 && savedTime < audio.duration) audio.currentTime = savedTime;
+        audio.play(); saveAudioState();
+      }, { once: true });
+      audioWidget.classList.add("show"); updateMuteIcon(); updateNowPlaying();
+      document.removeEventListener("click", startAudio);
+      document.removeEventListener("touchstart", startAudio);
+    }
+
+    document.addEventListener("click", startAudio);
+    document.addEventListener("touchstart", startAudio);
+
+    muteBtn.addEventListener("click", e => { e.stopPropagation(); audio.muted = !audio.muted; updateMuteIcon(); saveAudioState(); });
+    skipBtn.addEventListener("click", e => { e.stopPropagation(); savedTime = 0; localStorage.setItem("mainlineAudioTime", 0); nextTrack(); });
+    volumeSlider.addEventListener("click", e => e.stopPropagation());
+    volumeSlider.addEventListener("input", e => {
+      audio.volume = parseFloat(e.target.value);
+      if (audio.volume > 0) audio.muted = false;
+      updateMuteIcon(); saveAudioState();
+    });
+
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
+      saveAudioState();
+    });
+
+    const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    for (let i = 0; i < 160; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2.5 + 1.0,
+        d: Math.random() * 2.2 + 1.2
+      });
+    }
+
+    function snow() {
+      c.clearRect(0, 0, canvas.width, canvas.height);
+      c.fillStyle = "rgba(230,255,255,0.45)";
+      particles.forEach(p => {
+        c.beginPath();
+        c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+        c.fill();
+        p.y += p.d;
+        p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
+        if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
+      });
+      requestAnimationFrame(snow);
+    }
+    snow();
+  </script>
+</body>
+</html>
