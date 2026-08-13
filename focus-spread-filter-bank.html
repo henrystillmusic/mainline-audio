@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus, Spread & Filter Bank Geometry | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta name="description" content="How Focus and Spread reshape an eight-stage filter bank through shared octave geometry — without turning independent filters into one system." />
+  <link rel="canonical" href="https://mainline-audio.com/focus-spread-filter-bank.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mainline-audio.com/focus-spread-filter-bank.html" />
+  <meta property="og:title" content="Focus, Spread & Filter Bank Geometry | Mainline Audio" />
+  <meta property="og:description" content="How Focus and Spread reshape an eight-stage filter bank through shared octave geometry — without turning independent filters into one system." />
+  <meta property="og:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+  <meta property="article:published_time" content="2026-08-13" />
+  <meta property="article:author" content="Henry Still" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/focus-spread-filter-bank.html" />
+  <meta name="twitter:title" content="Focus, Spread & Filter Bank Geometry | Mainline Audio" />
+  <meta name="twitter:description" content="How Focus and Spread reshape an eight-stage filter bank through shared octave geometry — without turning independent filters into one system." />
+  <meta name="twitter:image" content="https://mainline-audio.com/MAINLINE-AUDIO-SITE/mainline_logo_transparent.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://mainline-audio.com/focus-spread-filter-bank.html#article",
+    "headline": "Focus, Spread, and the Shape of a Filter Bank",
+    "description": "How Focus and Spread reshape an eight-stage filter bank through shared octave geometry — without turning independent filters into one system.",
+    "datePublished": "2026-08-13",
+    "dateModified": "2026-08-13",
+    "author": {
+      "@type": "Person",
+      "name": "Henry Still"
+    },
+    "publisher": { "@id": "https://mainline-audio.com/#organization" },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mainline-audio.com/focus-spread-filter-bank.html"
+    }
+  }
+  </script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a0a0a;
+      color: #f5f5f5;
+      font-family: "Satoshi", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    #snow {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .site { position: relative; z-index: 1; }
+    a { color: inherit; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+    @keyframes flow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 32px 56px;
+    }
+    .nav-home {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(245,245,245,0.28);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #f5f5f5; }
+
+    /* ── ARTICLE HEADER ── */
+    .note-header {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 40px 28px 56px;
+    }
+    .note-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 24px;
+    }
+    .note-header h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.12;
+      max-width: 780px; margin-bottom: 22px;
+    }
+    .note-subtitle {
+      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
+      margin-bottom: 18px;
+    }
+    .note-pubdate {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 64px 28px 8px;
+    }
+    .prose h2 {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3;
+      margin-top: 56px; margin-bottom: 22px;
+    }
+    .prose > h2:first-child { margin-top: 0; }
+    .prose p {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .prose ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(245,245,245,0.1);
+    }
+    .prose ul li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 2px 0;
+    }
+
+    /* ── READING QUIET ZONE ──
+       Shared Technical Note treatment (originated in true-peak.html).
+       Invisible feathered scrim (same color as the page background)
+       sitting between the snow canvas and the
+       article text, to subdue snow directly behind the reading column while
+       leaving the hero and outer margins untouched. No panel, no border —
+       just a soft alpha gradient that reads as calmer air, not a box. */
+    .reading-quiet-zone { position: relative; }
+    .reading-quiet-zone::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: min(920px, 100%);
+      transform: translateX(-50%);
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(10,10,10,0)    0%,
+        rgba(10,10,10,0.7) 22%,
+        rgba(10,10,10,0.7) 78%,
+        rgba(10,10,10,0)  100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+    }
+
+    /* ── CLOSING ── */
+    .note-closing {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 8px 28px 24px;
+      text-align: center;
+    }
+    .note-closing .divider { margin: 64px auto 40px; }
+    .note-author {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      color: rgba(245,245,245,0.7); margin-bottom: 6px;
+    }
+    .note-author-role {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+    }
+    .note-links {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-text {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-text:hover { color: rgba(245,245,245,0.65); }
+
+    .note-references {
+      text-align: left;
+      border-top: 1px solid rgba(245,245,245,0.08);
+      padding-top: 28px;
+    }
+    .note-references-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      margin-bottom: 14px;
+    }
+    .note-references ol {
+      list-style: decimal; padding-left: 18px;
+    }
+    .note-references li {
+      font-size: 11.5px; font-weight: 400; color: rgba(245,245,245,0.28);
+      letter-spacing: 0.02em; line-height: 1.7; margin-bottom: 8px;
+    }
+    .note-references li a {
+      color: rgba(245,245,245,0.4); text-decoration: underline;
+      text-decoration-color: rgba(245,245,245,0.15);
+      text-underline-offset: 2px;
+    }
+    .note-references li a:hover { color: rgba(245,245,245,0.7); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+    .footer-copy {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(245,245,245,0.08);
+    }
+    .footer-link {
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(245,245,245,0.22); text-decoration: none;
+    }
+    .footer-link:hover { color: rgba(245,245,245,0.5); }
+
+    .audio-widget {
+      position: fixed; bottom: 32px; right: 32px;
+      display: flex; align-items: center; gap: 12px;
+      z-index: 50; opacity: 0; transform: translateY(8px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .audio-widget.show { opacity: 1; transform: translateY(0); }
+    .now-playing {
+      min-width: 190px; max-width: 240px; padding: 10px 14px;
+      background: rgba(255,255,255,0.055); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px; color: rgba(245,245,245,0.55); font-size: 9px;
+      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .volume-slider {
+      width: 82px; accent-color: rgba(245,245,245,0.7);
+      opacity: 0.45; cursor: pointer;
+    }
+    #mute-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
+      border: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+    }
+    #mute-btn:hover { background: rgba(255,255,255,0.12); }
+    #skip-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border: 1px solid rgba(255,255,255,0.06); color: rgba(245,245,245,0.38);
+      font-size: 18px; font-weight: 400; line-height: 1; flex-shrink: 0; user-select: none;
+    }
+    #skip-btn:hover {
+      background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.12);
+      color: rgba(245,245,245,0.72);
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; }
+      .nav-links { gap: 20px; flex-wrap: wrap; }
+      .note-header { padding: 28px 24px 40px; }
+      .prose { padding: 48px 24px 8px; }
+      .prose h2 { font-size: 17px; margin-top: 44px; }
+      .prose p, .prose ul li { font-size: 14px; }
+      .note-closing { padding: 8px 24px 24px; }
+      .note-links { gap: 20px; }
+      footer { padding: 48px 24px 36px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav>
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+      <ul class="nav-links">
+        <li><a href="mastering.html">Mastering</a></li>
+        <li><a href="dsp.html">DSP</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
+        <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+
+    <article>
+      <header class="note-header">
+        <p class="note-eyebrow">Technical Note</p>
+        <h1 class="gradient-text">Focus, Spread, and the Shape of a Filter Bank</h1>
+        <p class="note-subtitle">What eight filters have in common when you move them together</p>
+        <time class="note-pubdate" datetime="2026-08-13">August 2026</time>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="reading-quiet-zone">
+      <div class="prose">
+        <p>Eight filters can look like eight separate decisions.</p>
+        <p>Choose a type. Set a frequency. Adjust resonance. Move to the next stage.</p>
+        <p>That is one way to build a filter bank.</p>
+        <p>But there is another way to think about it.</p>
+        <p>Instead of treating every frequency as an isolated coordinate, you can treat the distances between them as part of a larger structure.</p>
+        <p>That is the idea behind Focus and Spread in The Focal Point.</p>
+        <p>Focus and Spread don't retune eight filters independently. They reshape the geometry that connects them.</p>
+        <p>The filters themselves remain separate stages. What changes is the relationship that determines where each one sits.</p>
+
+        <h2>A Filter Bank Has a Shape</h2>
+        <p>Suppose several filters are positioned across the spectrum.</p>
+        <p>One might sit below the center frequency. Another might sit an octave above it. Another might be two octaves away.</p>
+        <p>Those positions can be treated as eight unrelated frequency values.</p>
+        <p>Or they can be described relative to a common point.</p>
+        <p>The Focal Point takes the second approach.</p>
+        <p>Each stage has an octave offset from a shared frequency called Focus. Spread scales that offset.</p>
+        <p>The relationship is:</p>
+        <p>f<sub>i</sub> = Focus × 2<sup>(offset<sub>i</sub> × Spread)</sup></p>
+        <p>Focus establishes the pivot.</p>
+        <p>Each filter keeps an offset from that pivot.</p>
+        <p>Spread determines how strongly those offsets are expressed.</p>
+        <p>At rest, the entire bank can therefore be described as one geometric arrangement rather than eight unrelated numbers.</p>
+
+        <h2>Why Octaves Matter</h2>
+        <p>Frequency does not behave perceptually like a ruler marked in equal numbers of hertz.</p>
+        <p>The difference between 100 Hz and 200 Hz is an octave.</p>
+        <p>So is the difference between 1 kHz and 2 kHz.</p>
+        <p>The numerical distance is completely different, but the musical relationship is the same.</p>
+        <p>That makes octave spacing useful when the goal is to move a spectral structure without destroying the relationships inside it.</p>
+        <p>If a stage sits one octave above Focus, doubling Focus doubles that stage's frequency too.</p>
+        <p>A stage one octave below Focus doubles by the same factor. It also moves upward from a lower starting point, so it remains below Focus.</p>
+        <p>Every stage moves proportionally with the pivot rather than receiving the same fixed number of hertz.</p>
+        <p>That is fundamentally different from adding the same amount to every frequency.</p>
+
+        <h2>Focus Moves the Structure</h2>
+        <p>Focus is the shared pivot frequency.</p>
+        <p>Changing it moves the entire filter structure through the spectrum.</p>
+        <p>A stage that is above Focus stays above it.</p>
+        <p>A stage below it stays below it.</p>
+        <p>The individual filters are not being given identical frequencies, and their offsets are not being discarded. They are recalculated from the same common reference.</p>
+        <p>So moving Focus is not equivalent to grabbing eight frequency knobs and moving them by an arbitrary amount.</p>
+        <p>It is closer to relocating the coordinate system those filters are positioned within.</p>
+        <p>The shape moves.</p>
+
+        <h2>Spread Changes the Distances</h2>
+        <p>Spread does something different.</p>
+        <p>Instead of relocating the center of the structure, it changes the distances between the stages and that center.</p>
+        <p>Reduce Spread and the filter bank contracts toward Focus.</p>
+        <p>Increase it and the bank expands away from Focus.</p>
+        <p>The offsets are not fixed distances in hertz. They are scaled relationships in octaves.</p>
+        <p>That gives Spread a useful property:</p>
+        <p>it can make the structure narrower or wider without requiring every stage to be repositioned independently.</p>
+        <p>This is where the idea stops being merely a faster way to move eight knobs.</p>
+        <p>It becomes a different way of thinking about the bank itself.</p>
+
+        <h2>The Filters Are Still Independent</h2>
+        <p>There is an important distinction here.</p>
+        <p>Focus and Spread create a shared relationship between the stage frequencies.</p>
+        <p>They do not make the eight filters mathematically merge into one new filter.</p>
+        <p>In the linear filtering case, the stages remain independent sections arranged in a serial cascade. Their responses multiply in the linear domain — equivalently, their magnitudes add in dB — and the order of those linear filters does not change the resulting composite response.</p>
+        <p>That matters because it would be easy to romanticize the system and claim that the eight stages somehow become one emergent DSP object.</p>
+        <p>They do not.</p>
+        <p>The deeper structure lies in how the filters are positioned, not in a hidden interaction between their linear transfer functions.</p>
+        <p>The geometry is shared.</p>
+        <p>The filters remain filters.</p>
+        <p>That statement applies to the linear filtering itself. Once nonlinear processing is introduced, a different boundary applies.</p>
+
+        <h2>One Curve Can Hide a Lot of Structure</h2>
+        <p>Once multiple stages are active, the display shows their combined response.</p>
+        <p>That combined curve may look simple.</p>
+        <p>But a smooth-looking result does not necessarily tell you how many filters created it, what types they were, or where each stage sits relative to Focus.</p>
+        <p>Multiple responses combine into the final magnitude curve, and different internal arrangements can contribute to something that appears visually straightforward.</p>
+        <p>That leads to a useful distinction:</p>
+        <p>The curve is the result. The structure describes how you got there.</p>
+        <p>In a purely linear, static system, that statement needs qualification. The composite transfer function does mathematically characterize the resulting filter system.</p>
+        <p>But once the system includes movement or nonlinear processing, a static magnitude response stops telling the whole story.</p>
+        <p>The Focal Point deliberately draws that boundary.</p>
+
+        <h2>What the Graph Shows — and What It Does Not</h2>
+        <p>The response graph is designed to represent the linear filter response.</p>
+        <p>It accounts for the enabled stages, their base positions, resonance and filter types.</p>
+        <p>It does not pretend to represent everything happening after or around those filters.</p>
+        <p>Per-stage Drive feeds a saturation stage, and that saturation is nonlinear and level-dependent — so it is intentionally excluded from the response curve.</p>
+        <p>Motion is time-varying, so the main combined curve is built from each stage's base, settled frequency rather than chasing modulation directly. Live modulated behavior is shown separately in the interface, keeping the structural view distinct.</p>
+        <p>That is not missing information by accident.</p>
+        <p>It is a decision about what the graph is actually claiming to represent.</p>
+        <p>A useful display does not necessarily show everything the processor can do.</p>
+        <p>It shows the part of the system that can be represented truthfully by that particular view.</p>
+
+        <h2>Geometry While Moving</h2>
+        <p>There is another boundary worth being explicit about.</p>
+        <p>At rest, the Focus/Spread relationship is exact.</p>
+        <p>Each stage settles at the frequency determined by the shared geometric formula.</p>
+        <p>While the structure is moving, however, each stage's cutoff frequency is independently smoothed over time.</p>
+        <p>That smoothing happens linearly in hertz.</p>
+        <p>The ideal Focus/Spread relationship is logarithmic.</p>
+        <p>So during a transition, the exact geometric relationship between the stages can momentarily bend before all of them arrive at their new positions.</p>
+        <p>Once the smoothing settles, the intended relationship is restored.</p>
+        <p>I think that is worth saying plainly.</p>
+        <p>A musical control does not have to preserve a perfect equation at every intermediate sample to be useful.</p>
+        <p>Sometimes the practical engineering decision is to make movement stable and smooth, then allow the ideal relationship to resolve at the destination.</p>
+
+        <h2>Structure Instead of Micromanagement</h2>
+        <p>The reason I find Focus and Spread useful is not that they eliminate individual control.</p>
+        <p>Every stage still has its own identity.</p>
+        <p>Its filter type, resonance, drive, modulation routing and enable state remain independent. Focus and Spread affect frequency positioning rather than flattening the entire bank into one global control.</p>
+        <p>That distinction is important.</p>
+        <p>A macro becomes less useful when it replaces all the detail underneath it.</p>
+        <p>The more interesting case is when the macro gives that detail a structure.</p>
+        <p>You can still tune individual stages.</p>
+        <p>But once those stages have meaningful relationships to one another, the whole bank can also be moved as a shape.</p>
+
+        <h2>Why Focus and Spread Work This Way</h2>
+        <p>The Focal Point has eight filter stages, but the number eight is not really the interesting part.</p>
+        <p>Eight independent frequency controls would still just be eight independent frequency controls.</p>
+        <p>Focus and Spread give those stages a common frame of reference.</p>
+        <p>Focus decides where that frame sits.</p>
+        <p>Spread decides how far its components extend from the center.</p>
+        <p>The stages themselves retain their individual filter types and behavior.</p>
+        <p>That allows Focus and Spread to support two related ways of working:</p>
+        <p>editing individual filters</p>
+        <p>and</p>
+        <p>shaping the structure those filters belong to.</p>
+        <p>That is one of the central ideas behind Focus and Spread.</p>
+
+        <h2>The Shape Is the Useful Part</h2>
+        <p>A filter bank does not have to be understood only as a collection of unrelated frequencies.</p>
+        <p>It can also be understood through the relationships between them.</p>
+        <p>Once those relationships are expressed geometrically, moving the bank becomes something different from retuning every filter independently.</p>
+        <p>You are no longer asking only:</p>
+        <p>Where should this filter go?</p>
+        <p>You can also ask:</p>
+        <p>Where should this whole structure live?</p>
+        <p>And:</p>
+        <p>How tightly or loosely should it occupy the spectrum?</p>
+        <p>That is what Focus and Spread are meant to answer.</p>
+        <p>The filters remain independent. The shape is what connects them.</p>
+        <p>And sometimes changing the shape is more useful than changing every point inside it.</p>
+      </div>
+
+      <footer class="note-closing">
+        <div class="divider"></div>
+        <p class="note-author">Henry Still</p>
+        <p class="note-author-role">Mastering Engineer · Founder, Mainline Audio</p>
+        <div class="note-links">
+          <a class="btn-text" href="the-focal-point.html">The Focal Point →</a>
+          <a class="btn-text" href="notes.html">Technical Notes →</a>
+        </div>
+        <div class="note-references">
+          <p class="note-references-label">References</p>
+          <ol>
+            <li id="ref-1">David Abbott, <a href="https://phys.libretexts.org/Bookshelves/Waves_and_Acoustics/Understanding_Sound_(Abbot)/02:_Perception_of_sound/2.05:_Frequency_ratios_and_pitch_perception" target="_blank" rel="noopener">"Frequency Ratios and Pitch Perception,"</a> <em>Understanding Sound</em>, Physics LibreTexts.</li>
+            <li id="ref-2">Julius O. Smith III, <a href="https://ccrma.stanford.edu/~jos/filters/Series_Combination_Commutative.html" target="_blank" rel="noopener">"Series Combination is Commutative"</a>, Introduction to Digital Filters, Center for Computer Research in Music and Acoustics (CCRMA), Stanford University.</li>
+          </ol>
+        </div>
+      </footer>
+      </div>
+    </article>
+
+    <footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a><p class="footer-copy" style="margin-top: 10px;">© 2026 Mainline Audio</p></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const playlist = [
+      { title: "Drift",                src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Drift_Master_01.mp3" },
+      { title: "Draped",               src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Draped_Master_01.mp3" },
+      { title: "Still Waters",         src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Still_Waters_Master_01.mp3" },
+      { title: "Weightless",           src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_Weightless_Master_01.mp3" },
+      { title: "When the Mud Settles", src: "/MAINLINE-AUDIO-SITE/MUSIC/SRS_When_The_Mud_Settles.mp3" },
+      { title: "Run Free",             src: "/MAINLINE-AUDIO-SITE/MUSIC/Henry_Still_Run_Free.mp3" },
+    ];
+
+    function shuffle(arr) {
+      const s = [...arr];
+      for (let i = s.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [s[i], s[j]] = [s[j], s[i]];
+      }
+      return s;
+    }
+
+    const audioWidget   = document.getElementById("audio-widget"),
+          audio         = document.getElementById("bg-track"),
+          muteBtn       = document.getElementById("mute-btn"),
+          skipBtn       = document.getElementById("skip-btn"),
+          wave1         = document.getElementById("wave-1"),
+          wave2         = document.getElementById("wave-2"),
+          nowPlaying    = document.getElementById("now-playing"),
+          volumeSlider  = document.getElementById("volume-slider");
+
+    let shuffled;
+    try {
+      const s = JSON.parse(localStorage.getItem("mainlineAudioOrder"));
+      shuffled = Array.isArray(s) && s.every(t => playlist.some(p => p.title === t.title)) ? s : shuffle(playlist);
+    } catch { shuffled = shuffle(playlist); }
+
+    let trackIndex = parseInt(localStorage.getItem("mainlineAudioIndex"), 10);
+    if (Number.isNaN(trackIndex) || trackIndex < 0 || trackIndex >= shuffled.length) trackIndex = 0;
+
+    let savedTime   = parseFloat(localStorage.getItem("mainlineAudioTime")) || 0,
+        savedVolume = parseFloat(localStorage.getItem("mainlineAudioVolume"));
+    if (Number.isNaN(savedVolume)) savedVolume = 0.65;
+
+    audio.volume = savedVolume;
+    audio.muted  = localStorage.getItem("mainlineAudioMuted") === "true";
+    volumeSlider.value = savedVolume;
+
+    function updateNowPlaying() {
+      const t = shuffled[trackIndex];
+      nowPlaying.textContent = t ? `Now playing — ${t.title}` : "Now playing";
+    }
+
+    function updateMuteIcon() {
+      const dim = "rgba(245,245,245,0.2)", bright = "rgba(245,245,245,0.7)";
+      wave1.setAttribute("stroke", audio.muted ? dim : bright);
+      wave2.setAttribute("stroke", audio.muted ? dim : bright);
+      wave1.style.display = audio.muted ? "none" : "block";
+      wave2.style.display = audio.muted ? "none" : "block";
+    }
+
+    function loadTrack(i) { audio.src = shuffled[i].src; audio.load(); updateNowPlaying(); }
+
+    function saveAudioState() {
+      localStorage.setItem("mainlineAudioOrder",  JSON.stringify(shuffled));
+      localStorage.setItem("mainlineAudioIndex",  trackIndex);
+      localStorage.setItem("mainlineAudioTime",   audio.currentTime || 0);
+      localStorage.setItem("mainlineAudioMuted",  audio.muted);
+      localStorage.setItem("mainlineAudioVolume", audio.volume);
+    }
+
+    function nextTrack() {
+      trackIndex++; savedTime = 0;
+      if (trackIndex >= shuffled.length) { shuffled = shuffle(playlist); trackIndex = 0; }
+      loadTrack(trackIndex); audio.play(); saveAudioState();
+    }
+
+    audio.addEventListener("ended",      nextTrack);
+    audio.addEventListener("timeupdate", saveAudioState);
+    audio.addEventListener("error",      nextTrack);
+
+    let started = false;
+    function startAudio() {
+      if (started) return; started = true;
+      loadTrack(trackIndex);
+      audio.addEventListener("loadedmetadata", () => {
+        if (savedTime > 0 && savedTime < audio.duration) audio.currentTime = savedTime;
+        audio.play(); saveAudioState();
+      }, { once: true });
+      audioWidget.classList.add("show"); updateMuteIcon(); updateNowPlaying();
+      document.removeEventListener("click", startAudio);
+      document.removeEventListener("touchstart", startAudio);
+    }
+
+    document.addEventListener("click", startAudio);
+    document.addEventListener("touchstart", startAudio);
+
+    muteBtn.addEventListener("click", e => { e.stopPropagation(); audio.muted = !audio.muted; updateMuteIcon(); saveAudioState(); });
+    skipBtn.addEventListener("click", e => { e.stopPropagation(); savedTime = 0; localStorage.setItem("mainlineAudioTime", 0); nextTrack(); });
+    volumeSlider.addEventListener("click", e => e.stopPropagation());
+    volumeSlider.addEventListener("input", e => {
+      audio.volume = parseFloat(e.target.value);
+      if (audio.volume > 0) audio.muted = false;
+      updateMuteIcon(); saveAudioState();
+    });
+
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("mainlineAudioPlaying", !audio.paused && !audio.muted ? "true" : "false");
+      saveAudioState();
+    });
+
+    const canvas = document.getElementById("snow"), c = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    for (let i = 0; i < 160; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2.5 + 1.0,
+        d: Math.random() * 2.2 + 1.2
+      });
+    }
+
+    function snow() {
+      c.clearRect(0, 0, canvas.width, canvas.height);
+      c.fillStyle = "rgba(230,255,255,0.45)";
+      particles.forEach(p => {
+        c.beginPath();
+        c.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+        c.fill();
+        p.y += p.d;
+        p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
+        if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
+      });
+      requestAnimationFrame(snow);
+    }
+    snow();
+  </script>
+</body>
+</html>
