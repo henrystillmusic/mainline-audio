@@ -87,6 +87,10 @@
 @media (max-width: 640px) {
   .nav-links { justify-content: center; }
 }
+/* Keep The Focal Point's four feature cards balanced at tablet widths. */
+@media (min-width: 641px) and (max-width: 975px) {
+  .process-item { flex-basis: 40%; }
+}
 </style>
 </head>
 <body data-page="dsp">
@@ -135,13 +139,18 @@
     <div class="process-item">
       <div class="process-num">02</div>
       <div class="process-head">Focus, Spread &amp; Motion</div>
-      <p class="process-body">A macro system for the relationship between stages: Focus sets the center, Spread sets the distance, and two independent Motion generators plus Drift bring the whole shape to life.</p>
+      <p class="process-body">A macro system for the relationship between stages: Focus sets the center, Spread sets the distance, and two independent Motion generators bring the whole shape to life.</p>
       <p class="process-body" style="margin-top: 10px;"><a class="btn-text" href="focus-spread-filter-bank.html">Learn more about Focus and Spread →</a></p>
     </div>
     <div class="process-item">
       <div class="process-num">03</div>
       <div class="process-head">Sidechain &amp; Sync</div>
-      <p class="process-body">Independent Sidechain lets external or internal signal drive the motion, and Tempo Sync locks Motion and Drift to the host tempo when you want the movement to lock to the groove.</p>
+      <p class="process-body">Independent Sidechain lets external or internal signal drive the motion, and Tempo Sync locks Motion 1 and Motion 2 to the host tempo when you want the movement to lock to the groove.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">04</div>
+      <div class="process-head">Tape &amp; Vinyl Drift</div>
+      <p class="process-body">A dedicated free-running drift engine, independent of Motion. Tape adds irregular wow and flutter; Vinyl creates a repeating eccentric wobble — from barely perceptible movement to obvious warble.</p>
     </div>
   </section>
 
@@ -209,7 +218,7 @@
   <div class="tfl-section">
     <div class="tfl-label">Sync &amp; Offset</div>
     <h2 class="tfl-heading">Lock it to the groove, or don't</h2>
-    <p class="tfl-sub">Motion 1 and Motion 2 can run free or lock to the host tempo, with per-stage phase offset for movement that unfolds across the eight stages rather than all at once. Drift runs independently.</p>
+    <p class="tfl-sub">Motion 1 and Motion 2 can run free or lock to the host tempo, with per-stage phase offset for movement that unfolds across the eight stages rather than all at once. Drift is always free-running: it has its own Rate in Hz and never locks to tempo.</p>
     <div class="tfl-meter-list">
       <div class="tfl-meter-row">
         <div class="tfl-meter-name">Tempo Sync</div>
