@@ -83,7 +83,6 @@
 .tfl-spec-param { color: var(--tfl-text); font-weight: 600; font-family: var(--tfl-mono); font-size: 12px; white-space: nowrap; }
 .tfl-spec-range { color: var(--tfl-accent); font-family: var(--tfl-mono); font-size: 12px; white-space: nowrap; }
 .tfl-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfl-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfl-muted); line-height: 1.6; }
-.footer-links-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
 .nav-logo-link { display: inline-flex; line-height: 0; }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.28); text-decoration: none; transition: color 0.2s; }
@@ -157,12 +156,12 @@
     <p class="hero-sub">
       An eight-stage spectral motion processor for precise filtering, resonant movement, and evolving tonal shape. Shape each stage independently, then control the relationship between them with Focus, Spread, Motion, Drift, tempo sync, and sidechain control.
     </p>
-    <div class="price-block">
+    <div class="price-block" id="hero-price">
       <p class="price-label">Available Now · Introductory Price</p>
       <p class="price-value">$99</p>
       <p class="price-regular">Regular price $149</p>
     </div>
-    <div class="hero-cta">
+    <div class="hero-cta" id="hero-cta">
       <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/4572da55-ea78-457d-8dc5-96124d570e93?checkout[discount_code]=FOCALPOINT99" target="_blank" rel="noopener">Buy Now — $99</a>
       <a class="btn-text" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/e2eca719-3eea-458e-9eca-52fdb3abaf87" target="_blank" rel="noopener">Download 14-Day Demo</a>
       <a class="btn-text" href="#features">See what's inside ↓</a>
@@ -311,17 +310,37 @@
   <section class="closer">
     <p class="closer-byline">Mainline Audio</p>
     <span class="closer-headline gradient-text">Available<br>Now.</span>
-    <div class="price-block">
-      <p class="price-label">Introductory Price</p>
-      <p class="price-value">$99</p>
-      <p class="price-regular">Regular price $149</p>
-    </div>
-    <div class="hero-cta">
-      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/4572da55-ea78-457d-8dc5-96124d570e93?checkout[discount_code]=FOCALPOINT99" target="_blank" rel="noopener">Buy Now — $99</a>
-      <a class="btn-text" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/e2eca719-3eea-458e-9eca-52fdb3abaf87" target="_blank" rel="noopener">Download 14-Day Demo</a>
-    </div>
+    <div id="closer-price" data-price-label="Introductory Price"></div>
+    <div id="closer-cta"></div>
     <p class="buy-fine">VST3 &amp; AU · macOS · Apple Silicon &amp; Intel</p>
   </section>
+
+  <script>
+    /* The hero price/checkout block above is the single manually maintained source
+       of this page's commercial values. The closing CTA mirrors it at runtime so the
+       two can never drift apart. Runs synchronously here, after the closer markup. */
+    (function () {
+      try {
+        var heroPrice   = document.getElementById("hero-price");
+        var heroCta     = document.getElementById("hero-cta");
+        var closerPrice = document.getElementById("closer-price");
+        var closerCta   = document.getElementById("closer-cta");
+        if (!heroPrice || !heroCta || !closerPrice || !closerCta) return;
+
+        var price = heroPrice.cloneNode(true);
+        price.removeAttribute("id");
+        var label = price.querySelector(".price-label");
+        var closerLabel = closerPrice.getAttribute("data-price-label");
+        if (label && closerLabel) label.textContent = closerLabel;
+        closerPrice.replaceWith(price);
+
+        var cta = heroCta.cloneNode(true);
+        cta.removeAttribute("id");
+        Array.prototype.forEach.call(cta.querySelectorAll('a[href^="#"]'), function (a) { a.remove(); });
+        closerCta.replaceWith(cta);
+      } catch (e) { /* closer CTA is a mirror; hero purchase path is static and unaffected */ }
+    })();
+  </script>
 
   <section class="signup" id="signup">
     <p class="signup-label">Join the List</p>

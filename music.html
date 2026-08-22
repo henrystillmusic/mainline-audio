@@ -221,7 +221,7 @@
         <a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a>
         <a href="privacy-policy.html">Privacy Policy</a>
       </div>
-      <p class="footer-copy">© 2026 Mainline Audio</p>
+      <p class="footer-copy">© <span id="year"></span> Mainline Audio</p>
     </footer>
   </div>
 
@@ -270,5 +270,6 @@
     }
     snow();
   </script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

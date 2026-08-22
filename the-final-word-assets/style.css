@@ -38,12 +38,6 @@ nav {
   padding: 32px 56px;
 }
 .nav-logo { height: 20px; width: auto; opacity: 0.9; }
-.nav-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
-  text-transform: uppercase; color: rgba(245,245,245,0.28);
-  border: 1px solid rgba(245,245,245,0.18); padding: 6px 14px;
-  border-radius: 999px;
-}
 
 .hero {
   display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -148,8 +142,6 @@ h1.gradient-headline {
   letter-spacing: 0.05em; line-height: 1.9; max-width: 480px; margin: 0 auto;
 }
 
-.buy-price { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; color: rgba(245,245,245,0.4); margin-bottom: 8px; }
-.buy-price strong { color: #f5f5f5; font-size: 1.6em; font-weight: 700; }
 .buy-fine { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,245,245,0.18); margin-top: 20px; }
 
 .signup { padding: 64px 48px 88px; text-align: center; }
@@ -187,7 +179,6 @@ textarea { resize: none; min-height: 60px; padding-top: 12px; }
   margin-top: 12px; transition: all 0.2s;
 }
 .btn-submit:hover { border-color: rgba(245,245,245,0.7); color: #f5f5f5; }
-.signup-thanks { font-size: 12px; letter-spacing: 0.05em; color: rgba(245,245,245,0.5); display: none; }
 
 .faq { padding: 56px 48px 88px; max-width: 640px; margin: 0 auto; }
 .faq h2 {
@@ -199,15 +190,10 @@ summary { cursor: pointer; font-weight: 500; font-size: 13px; letter-spacing: 0.
 details p { margin-top: 12px; font-size: 12px; color: rgba(245,245,245,0.3); letter-spacing: 0.02em; line-height: 1.8; }
 
 footer { text-align: center; padding: 0 48px 40px; }
+.footer-links-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
 .footer-copy { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.1); }
 .footer-link { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.22); text-decoration: none; }
 .footer-link:hover { color: rgba(245,245,245,0.5); }
-
-.badge-beta {
-  display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
-  text-transform: uppercase; color: #0a0a0a; background: rgba(245,245,245,0.7);
-  padding: 5px 12px; border-radius: 999px; margin-bottom: 20px;
-}
 
 @media (max-width: 640px) {
   nav { padding: 24px 28px; }

@@ -216,7 +216,7 @@
         <p class="closing-line">Understanding what matters means letting go of what doesn't.</p>
       </div>
 
-      <footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a><p class="footer-copy" style="margin-top: 10px;">© 2026 Mainline Audio</p></footer>
+      <footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a><p class="footer-copy" style="margin-top: 10px;">© <span id="year"></span> Mainline Audio</p></footer>
 
     </div>
   </div>
@@ -375,5 +375,6 @@
     }
     snow();
   </script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -371,7 +371,7 @@
     <!-- FOOTER -->
     <footer>
       <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
-      <p class="footer-copy" style="margin-top: 10px;">© 2026 Mainline Audio</p>
+      <p class="footer-copy" style="margin-top: 10px;">© <span id="year"></span> Mainline Audio</p>
     </footer>
 
   </div><!-- /.site -->
@@ -469,21 +469,29 @@
     audio.addEventListener("timeupdate", saveAudioState);
     audio.addEventListener("error",      nextTrack);
 
-    let started = false;
-    function startAudio() {
-      if (started) return; started = true;
+    const wasPlaying = localStorage.getItem("mainlineAudioPlaying") === "true";
+    function initPlayer(autoplay) {
       loadTrack(trackIndex);
       audio.addEventListener("loadedmetadata", () => {
         if (savedTime > 0 && savedTime < audio.duration) audio.currentTime = savedTime;
-        audio.play(); saveAudioState();
+        if (autoplay) audio.play();
+        saveAudioState();
       }, { once: true });
       audioWidget.classList.add("show"); updateMuteIcon(); updateNowPlaying();
-      document.removeEventListener("click", startAudio);
-      document.removeEventListener("touchstart", startAudio);
     }
 
-    document.addEventListener("click", startAudio);
-    document.addEventListener("touchstart", startAudio);
+    if (wasPlaying) {
+      initPlayer(true);
+    } else {
+      function startAudio() {
+        initPlayer(true);
+        document.removeEventListener("click", startAudio);
+        document.removeEventListener("touchstart", startAudio);
+      }
+      audioWidget.classList.add("show"); updateNowPlaying();
+      document.addEventListener("click", startAudio);
+      document.addEventListener("touchstart", startAudio);
+    }
 
     muteBtn.addEventListener("click", e => { e.stopPropagation(); audio.muted = !audio.muted; updateMuteIcon(); saveAudioState(); });
     skipBtn.addEventListener("click", e => { e.stopPropagation(); savedTime = 0; localStorage.setItem("mainlineAudioTime", 0); nextTrack(); });
@@ -535,5 +543,6 @@
     snow();
   </script>
 
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
