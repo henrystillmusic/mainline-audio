@@ -1,0 +1,97 @@
+/* Mainline Audio — shared base visual system.
+ *
+ * Only rules that were verified byte-identical across every page that used them
+ * live here. Anything that legitimately differs per page (nav padding, divider
+ * height, footer padding, .gradient-text palette, .hero, buttons) stays in that
+ * page's own <style> block, and product/legal pages layer
+ * the-final-word-assets/style.css on top of this file.
+ */
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #0a0a0a;
+  color: #f5f5f5;
+  font-family: "Satoshi", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Shell ── */
+#snow {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+.site { position: relative; z-index: 1; }
+
+/* ── Gradient text animation ──
+   The keyframes are shared; the .gradient-text gradient itself is not — the
+   music/sync/thankyou pages use a deliberately different colour ramp, so each
+   page keeps its own .gradient-text rule. */
+@keyframes flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Navigation primitives ──
+   The nav element itself and .nav-links gap differ per page group; these
+   primitives do not. */
+.nav-logo { height: 20px; width: auto; opacity: 0.9; }
+.nav-logo-link { display: inline-flex; line-height: 0; }
+.nav-links a {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(245,245,245,0.28);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: #f5f5f5; }
+.nav-links a.current { color: rgba(245,245,245,0.1); pointer-events: none; }
+
+/* ── Footer primitives ──
+   footer padding and .footer-copy alpha differ per page; these do not. */
+.footer-links-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
+.footer-link { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.22); text-decoration: none; }
+.footer-link:hover { color: rgba(245,245,245,0.5); }
+
+/* ── Background player widget ── */
+.audio-widget {
+  position: fixed; bottom: 32px; right: 32px;
+  display: flex; align-items: center; gap: 12px;
+  z-index: 50; opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.audio-widget.show { opacity: 1; transform: translateY(0); }
+.now-playing {
+  min-width: 190px; max-width: 240px; padding: 10px 14px;
+  background: rgba(255,255,255,0.055); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px; color: rgba(245,245,245,0.55); font-size: 9px;
+  font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.volume-slider {
+  width: 82px; accent-color: rgba(245,245,245,0.7);
+  opacity: 0.45; cursor: pointer;
+}
+#mute-btn {
+  width: 48px; height: 48px; background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.2s;
+  border: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+}
+#mute-btn:hover { background: rgba(255,255,255,0.12); }
+#skip-btn {
+  width: 48px; height: 48px; background: rgba(255,255,255,0.045);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+  border: 1px solid rgba(255,255,255,0.06); color: rgba(245,245,245,0.38);
+  font-size: 18px; font-weight: 400; line-height: 1; flex-shrink: 0; user-select: none;
+}
+#skip-btn:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.12);
+  color: rgba(245,245,245,0.72);
+}
