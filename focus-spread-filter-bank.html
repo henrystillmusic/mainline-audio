@@ -60,17 +60,6 @@
       animation: flow 90s linear infinite;
     }
 
-    nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 32px 56px;
-    }
-    .nav-home {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
-      text-transform: uppercase; color: rgba(245,245,245,0.18);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-
     /* ── ARTICLE HEADER ── */
     .note-header {
       display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -209,14 +198,8 @@
     .note-references li a:hover { color: rgba(245,245,245,0.7); }
 
     footer { text-align: center; padding: 72px 48px 44px; }
-    .footer-copy {
-      font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(245,245,245,0.08);
-    }
 
     @media (max-width: 640px) {
-      nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; }
-      .nav-links { gap: 20px; flex-wrap: wrap; }
       .note-header { padding: 28px 24px 40px; }
       .prose { padding: 48px 24px 8px; }
       .prose h2 { font-size: 17px; margin-top: 44px; }
@@ -227,18 +210,11 @@
     }
   </style>
 </head>
-<body>
+<body data-page="dsp">
   <canvas id="snow"></canvas>
   <div class="site">
-    <nav>
+    <nav data-site-nav aria-label="Main navigation">
       <a class="nav-home" href="index.html">Mainline Audio</a>
-      <ul class="nav-links">
-        <li><a href="mastering.html">Mastering</a></li>
-        <li><a href="dsp.html">DSP</a></li>
-        <li><a href="music.html">Music</a></li>
-        <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
-        <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
-      </ul>
     </nav>
 
     <article>
@@ -412,7 +388,7 @@
       </div>
     </article>
 
-    <footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a><p class="footer-copy" style="margin-top: 10px;">© <span id="year"></span> Mainline Audio</p></footer>
+    <footer data-site-footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a></footer>
   </div>
 
   <audio id="bg-track" preload="auto"></audio>
@@ -429,8 +405,8 @@
     </div>
   </div>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script src="/assets/player.js"></script>
 <script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
 </body>
 </html>

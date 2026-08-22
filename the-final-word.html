@@ -94,27 +94,19 @@
 .tfw-spec-param { color: var(--tfw-text); font-weight: 600; font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
 .tfw-spec-range { color: var(--tfw-accent); font-family: var(--tfw-mono); font-size: 12px; white-space: nowrap; }
 .tfw-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfw-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfw-muted); line-height: 1.6; }
-.nav-links { display: flex; gap: 32px; list-style: none; }
 @media (max-width: 640px) {
-  .nav-links { flex-wrap: wrap; gap: 20px; justify-content: center; }
+  .nav-links { justify-content: center; }
 }
 </style>
 </head>
-<body>
+<body data-page="dsp">
 <canvas id="snow" data-count="120" data-opacity="0.4" data-radius="1.0,3.2" data-speed="1.0,3.0"></canvas>
 <div class="site">
 
-  <nav>
+  <nav data-site-nav aria-label="Main navigation">
     <a class="nav-logo-link" href="index.html">
       <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
     </a>
-    <ul class="nav-links">
-      <li><a href="mastering.html">Mastering</a></li>
-      <li><a href="dsp.html">DSP</a></li>
-      <li><a href="music.html">Music</a></li>
-      <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
-      <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
-    </ul>
   </nav>
 
   <section class="hero">
@@ -404,7 +396,7 @@
     </details>
   </section>
 
-  <footer>
+  <footer data-site-footer>
     <div class="footer-links-row">
       <span class="footer-link">Also in Mainline Audio DSP:</span>
       <a class="footer-link" href="the-fine-line.html">The Fine Line</a>
@@ -417,7 +409,6 @@
       <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
     </div>
     <a class="footer-link" href="https://mainline-audio.com" target="_blank" rel="noopener">mainline-audio.com</a>
-    <p class="footer-copy" style="margin-top: 16px;">&copy; <span id="year"></span> Mainline Audio</p>
   </footer>
 
 </div>
@@ -437,7 +428,6 @@
 </div>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
 
   document.querySelectorAll('select').forEach(sel => {
     const syncPlaceholderStyle = () => sel.classList.toggle('has-value', sel.value !== '');
@@ -479,5 +469,6 @@
 </script>
 <script src="/assets/player.js"></script>
 <script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
 </body>
 </html>

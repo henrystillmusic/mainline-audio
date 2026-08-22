@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="the-final-word-assets/style.css">
 <style>
-.nav-links { display: flex; gap: 32px; list-style: none; }
-@media (max-width: 640px) { .nav-links { flex-wrap: wrap; gap: 20px; justify-content: center; } }
+@media (max-width: 640px) { .nav-links { justify-content: center; }
+}
 .legal-hero { padding: 48px 28px 20px; text-align: center; }
 .legal-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(245,245,245,0.32); margin-bottom: 18px; }
 .legal-title { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; }
@@ -28,18 +28,13 @@
 .legal-note { margin-top: 28px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: #101010; border-radius: 0 4px 4px 0; font-size: 12px; color: rgba(245,245,245,0.4); line-height: 1.7; }
 </style>
 </head>
-<body>
+<body data-page="" data-nav="minimal">
 <div class="site">
 
-  <nav>
+  <nav data-site-nav aria-label="Main navigation">
     <a class="nav-logo-link" href="index.html">
       <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
     </a>
-    <ul class="nav-links">
-      <li><a href="mastering.html">Mastering</a></li>
-      <li><a href="dsp.html">DSP</a></li>
-      <li><a href="music.html">Music</a></li>
-    </ul>
   </nav>
 
   <section class="legal-hero">
@@ -106,7 +101,7 @@
     <p>Questions about this policy: <a href="mailto:support@mainline-audio.com">support@mainline-audio.com</a>.</p>
   </div>
 
-  <footer>
+  <footer data-site-footer>
     <div class="footer-links-row">
       <a class="footer-link" href="mailto:support@mainline-audio.com">Support</a>
       <a class="footer-link" href="license-agreement.html">License Agreement</a>
@@ -114,10 +109,9 @@
       <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
     </div>
     <a class="footer-link" href="dsp.html">← DSP</a>
-    <p class="footer-copy" style="margin-top: 16px;">&copy; <span id="year"></span> Mainline Audio</p>
   </footer>
 
 </div>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/assets/site-chrome.js"></script>
 </body>
 </html>

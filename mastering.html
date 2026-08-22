@@ -54,18 +54,6 @@
         -webkit-text-fill-color: transparent;
         animation: flow 90s linear infinite;
       }
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 32px 56px;
-      }
-      .nav-home {
-        font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
-        text-transform: uppercase; color: rgba(245,245,245,0.18);
-        text-decoration: none;
-      }
-      .nav-links { display: flex; gap: 40px; list-style: none; }
       .subnav {
         display: flex; justify-content: center; gap: 28px;
         padding: 0 48px 22px; margin-top: -10px;
@@ -196,13 +184,7 @@
       }
       .btn-submit:hover { border-color: rgba(245,245,245,0.7); color: #f5f5f5; }
       footer { text-align: center; padding: 0 48px 40px; }
-      .footer-copy {
-        font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
-        text-transform: uppercase; color: rgba(245,245,245,0.08);
-      }
       @media (max-width: 640px) {
-        nav { padding: 24px 28px; flex-wrap: wrap; gap: 16px; }
-        .nav-links { gap: 24px; }
         .subnav { gap: 20px; padding: 0 28px 18px; }
         .hero { padding: 40px 28px 56px; }
         .hero-logo { width: 280px; }
@@ -217,19 +199,12 @@
       }
     </style>
   </head>
-  <body>
+  <body data-page="mastering">
     <canvas id="snow"></canvas>
     <div class="site">
-<nav>
+<nav data-site-nav aria-label="Main navigation">
        <a class="nav-home" href="index.html">Mainline Audio</a>
-        <ul class="nav-links">
-          <li><a href="mastering.html" class="current">Mastering</a></li>
-          <li><a href="dsp.html">DSP</a></li>
-          <li><a href="music.html">Music</a></li>
-          <li><a href="https://mainline-audio-shop.fourthwall.com/" target="_blank" rel="noopener">Apparel</a></li>
-          <li><a href="https://www.instagram.com/henrystill/" target="_blank" rel="noopener">Instagram</a></li>
-        </ul>
-      </nav>
+</nav>
       <div class="subnav">
         <a href="mastering.html" class="current">Mastering</a>
         <a href="method.html">Method</a>
@@ -290,7 +265,7 @@
         </form>
       </section>
 
-      <footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a><p class="footer-copy" style="margin-top: 10px;">© <span id="year"></span> Mainline Audio</p></footer>
+      <footer data-site-footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a></footer>
     </div>
 
     <audio id="bg-track" preload="auto"></audio>
@@ -342,8 +317,8 @@
         }
       });
   </script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/assets/player.js"></script>
   <script src="/assets/snow.js"></script>
+  <script src="/assets/site-chrome.js"></script>
   </body>
 </html>
