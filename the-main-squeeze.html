@@ -54,6 +54,15 @@
 .price-value { font-size: clamp(2.4rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f5; line-height: 1; margin-bottom: 10px; }
 .price-regular { font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: rgba(245,245,245,0.36); }
 .tfl-section { max-width: 900px; margin: 0 auto; padding: 64px 28px; }
+/* Hero title/kicker clearance. "The Main Squeeze" is the only product name
+   in the catalog with a descender (the q), and the shared
+   h1.gradient-headline uses line-height 0.95 -- tighter than the font size --
+   so the q's tail reaches through the shared 8px margin and touches
+   FEED-FORWARD MASTERING COMPRESSOR below it. Scaled in em so it tracks the
+   title's own clamp() across breakpoints. Page-local on purpose: the other
+   three product pages have no descender and need no extra space, and that
+   stylesheet is shared by seven pages. */
+h1.gradient-headline { margin-bottom: 0.26em; }
 .tfl-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--tfl-accent); font-weight: 700; margin-bottom: 12px; }
 .tfl-heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--tfl-text); margin-bottom: 10px; line-height: 1.15; }
 .tfl-sub { font-size: 15px; color: var(--tfl-muted); line-height: 1.7; max-width: 600px; margin-bottom: 36px; }
