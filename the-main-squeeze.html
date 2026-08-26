@@ -64,6 +64,19 @@
 .tfl-pip { width: 7px; height: 7px; border-radius: 50%; margin-bottom: 14px; display: block; background: var(--tfl-accent); }
 .tfl-mode-name { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; font-family: var(--tfl-mono); color: var(--tfl-accent); }
 .tfl-mode-desc { font-size: 12px; color: var(--tfl-muted); line-height: 1.65; }
+/* Contour mode colours, taken verbatim from the plugin's own constants in
+   Source/GUI/MainSqueezePalette.h so the page cannot drift from the product:
+     contourTransparent = textPrimary (MainlineGUIPalette) = #e8e8e5
+     contourCohesive    = brandPink   (MainlineGUIPalette) = #ffe0ff
+     contourDeep                                           = #96b5e3
+   Only the mode title and its pip are tinted; card fill, border, spacing,
+   typography and the body copy are untouched. */
+.tfl-mode-card.is-transparent .tfl-mode-name { color: #e8e8e5; }
+.tfl-mode-card.is-transparent .tfl-pip { background: #e8e8e5; }
+.tfl-mode-card.is-cohesive .tfl-mode-name { color: #ffe0ff; }
+.tfl-mode-card.is-cohesive .tfl-pip { background: #ffe0ff; }
+.tfl-mode-card.is-deep .tfl-mode-name { color: #96b5e3; }
+.tfl-mode-card.is-deep .tfl-pip { background: #96b5e3; }
 .tfl-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
 @media (max-width: 560px) { .tfl-card-grid { grid-template-columns: 1fr; } }
 .tfl-card { background: var(--tfl-surface); padding: 24px 26px; transition: background 0.15s; }
@@ -162,17 +175,17 @@
     <h2 class="tfl-heading">Three ways to let go.</h2>
     <p class="tfl-sub">Release is the control most compressors leave to a single number. Contour adds a second, slower envelope that tracks recent program activity and stretches recovery in proportion to it &mdash; so an isolated peak releases at close to the nominal rate, while a peak landing on top of sustained loudness recovers more slowly. The same Release setting will not feel identical across the three modes.</p>
     <div class="tfl-mode-grid" style="grid-template-columns: repeat(3, 1fr);">
-      <div class="tfl-mode-card">
+      <div class="tfl-mode-card is-transparent">
         <span class="tfl-pip"></span>
         <div class="tfl-mode-name">Transparent</div>
         <div class="tfl-mode-desc">Your Release setting, unmodified. The neutral core &mdash; no added program dependence.</div>
       </div>
-      <div class="tfl-mode-card">
+      <div class="tfl-mode-card is-cohesive">
         <span class="tfl-pip"></span>
         <div class="tfl-mode-name">Cohesive</div>
         <div class="tfl-mode-desc">Moderate program dependence. Successive events influence one another, and the mix moves more as one system.</div>
       </div>
-      <div class="tfl-mode-card">
+      <div class="tfl-mode-card is-deep">
         <span class="tfl-pip"></span>
         <div class="tfl-mode-name">Deep</div>
         <div class="tfl-mode-desc">The same mechanism reaching further: memory persists longer and engages with less headroom, for denser, longer-term movement.</div>
