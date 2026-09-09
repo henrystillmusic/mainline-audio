@@ -144,7 +144,7 @@
     <div class="process-item">
       <div class="process-num">01</div>
       <div class="process-head">True Peak Ceiling</div>
-      <p class="process-body">Dedicated true peak ceiling protection remains active regardless of the selected oversampling setting. Up to 8× oversampling and adjustable lookahead provide precise control over transient handling and inter-sample peaks.</p>
+      <p class="process-body">A dedicated true peak ceiling stage works independently of the selected oversampling setting. With True Peak on, the Ceiling is enforced against reconstructed inter-sample peaks; with it off, the Ceiling applies to sample peaks alone. Up to 8× oversampling and adjustable lookahead provide precise control over transient handling.</p>
       <p class="process-body" style="margin-top: 10px;"><a class="btn-text" href="true-peak.html">Learn more about true peak →</a></p>
     </div>
     <div class="process-item">
@@ -155,7 +155,7 @@
     <div class="process-item">
       <div class="process-num">03</div>
       <div class="process-head">Complete Metering</div>
-      <p class="process-body">True Peak, Integrated LUFS, Short-Term LUFS, PLR, LRA, and GR — everything needed to hit streaming and broadcast targets without a separate meter.</p>
+      <p class="process-body">True Peak, Integrated LUFS, Short-Term LUFS, PSR, LRA, and GR — everything needed to hit streaming and broadcast targets without a separate meter.</p>
     </div>
     <div class="process-item">
       <div class="process-num">04</div>
@@ -231,7 +231,7 @@
     <div class="tfw-card-grid">
       <div class="tfw-card">
         <div class="tfw-card-name">Bypass</div>
-        <div class="tfw-card-desc">Latency-compensated pass-through of the pre-trim source. True A/B against the unprocessed signal — Input Gain not applied. 512-sample equal-power crossfade, click-free.</div>
+        <div class="tfw-card-desc">Latency-compensated pass-through of the pre-trim source. True A/B against the unprocessed signal — Trim not applied. Smooth 512-sample crossfade, click-free.</div>
       </div>
       <div class="tfw-card">
         <div class="tfw-card-name">Gain Match</div>
@@ -262,7 +262,7 @@
       </div>
       <div class="tfw-meter-row">
         <div class="tfw-meter-name">True Peak</div>
-        <div class="tfw-meter-desc">Oversampled inter-sample peak in dBTP. Ceiling enforcement uses a dedicated 8× stage independent of the main Oversampling setting. 2-second hold.</div>
+        <div class="tfw-meter-desc">Reconstructed final-output true peak in dBTP, including inter-sample peaks. Remains a true-peak meter whether True Peak protection is on or off. 2-second hold.</div>
       </div>
       <div class="tfw-meter-row">
         <div class="tfw-meter-name">GR + Max GR</div>
@@ -277,15 +277,15 @@
         <div class="tfw-meter-desc">3-second sliding window K-weighted loudness per EBU R128.</div>
       </div>
       <div class="tfw-meter-row">
-        <div class="tfw-meter-name">PLR</div>
-        <div class="tfw-meter-desc">Peak-to-Loudness Ratio — True Peak minus Short-Term LUFS. Real-time dynamic headroom indicator.</div>
+        <div class="tfw-meter-name">PSR</div>
+        <div class="tfw-meter-desc">Peak-to-Short-term Loudness Ratio — True Peak minus Short-Term LUFS. Real-time dynamic headroom indicator.</div>
       </div>
       <div class="tfw-meter-row">
         <div class="tfw-meter-name">LRA</div>
         <div class="tfw-meter-desc">How much the loudness varies across the track — from quiet passages to loud ones.</div>
       </div>
     </div>
-    <div class="tfw-note">In Delta mode, LUFS, PLR, LRA, and the waveform display all reflect the residual signal — what limiting and character are adding or removing.</div>
+    <div class="tfw-note">In Delta mode, LUFS, PSR, LRA, and the waveform display all reflect the residual signal — what limiting and character are adding or removing.</div>
   </div>
 
   <div class="divider"></div>
@@ -302,10 +302,13 @@
         <tbody>
           <tr><td class="tfw-spec-param">Input Trim</td><td class="tfw-spec-range">−24 to +24 dB</td></tr>
           <tr><td class="tfw-spec-param">Ceiling</td><td class="tfw-spec-range">−24 to 0 dBTP</td></tr>
-          <tr><td class="tfw-spec-param">Attack</td><td class="tfw-spec-range">0.1 – 50 ms</td></tr>
+          <tr><td class="tfw-spec-param">True Peak</td><td class="tfw-spec-range">On / Off</td></tr>
+          <tr><td class="tfw-spec-param">Attack</td><td class="tfw-spec-range">0.1 – 10 ms</td></tr>
           <tr><td class="tfw-spec-param">Release</td><td class="tfw-spec-range">10 – 1000 ms</td></tr>
+          <tr><td class="tfw-spec-param">Auto Release</td><td class="tfw-spec-range">Adaptive 100 – 600 ms</td></tr>
+          <tr><td class="tfw-spec-param">Detection</td><td class="tfw-spec-range">Peak / RMS</td></tr>
           <tr><td class="tfw-spec-param">Oversampling</td><td class="tfw-spec-range">Off / 2× / 4× / 8×</td></tr>
-          <tr><td class="tfw-spec-param">Lookahead</td><td class="tfw-spec-range">0.5 – 10 ms</td></tr>
+          <tr><td class="tfw-spec-param">Lookahead</td><td class="tfw-spec-range">0.5 / 1 / 2 / 5 / 10 ms</td></tr>
           <tr><td class="tfw-spec-param">Formats</td><td class="tfw-spec-range">AU / VST3</td></tr>
           <tr><td class="tfw-spec-param">Platform</td><td class="tfw-spec-range">macOS · Apple Silicon &amp; Intel (Universal)</td></tr>
         </tbody>
