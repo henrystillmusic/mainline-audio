@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Final Word User Guide | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta name="description" content="The official guide to The Final Word mastering limiter — controls, true peak, dynamics, Character modes, metering, monitoring tools, oversampling, lookahead, and workflows." />
+  <link rel="canonical" href="https://mainline-audio.com/the-final-word-user-guide.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mainline-audio.com/the-final-word-user-guide.html" />
+  <meta property="og:title" content="The Final Word User Guide | Mainline Audio" />
+  <meta property="og:description" content="The official guide to The Final Word mastering limiter — controls, true peak, dynamics, Character modes, metering, monitoring tools, oversampling, lookahead, and workflows." />
+  <meta property="og:image" content="https://mainline-audio.com/TheFinalWord_Product.png" />
+  <meta property="article:published_time" content="2026-09-08" />
+  <meta property="article:author" content="Henry Still" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/the-final-word-user-guide.html" />
+  <meta name="twitter:title" content="The Final Word User Guide | Mainline Audio" />
+  <meta name="twitter:description" content="The official guide to The Final Word mastering limiter — controls, true peak, dynamics, Character modes, metering, monitoring tools, oversampling, lookahead, and workflows." />
+  <meta name="twitter:image" content="https://mainline-audio.com/TheFinalWord_Product.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://mainline-audio.com/the-final-word-user-guide.html#article",
+    "headline": "The Final Word User Guide",
+    "description": "The official guide to The Final Word mastering limiter — controls, true peak, dynamics, Character modes, metering, monitoring tools, oversampling, lookahead, and workflows.",
+    "datePublished": "2026-09-08",
+    "dateModified": "2026-09-08",
+    "author": { "@id": "https://mainline-audio.com/#person" },
+    "publisher": { "@id": "https://mainline-audio.com/#organization" },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mainline-audio.com/the-final-word-user-guide.html"
+    }
+  }
+  </script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    a { color: inherit; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .note-header {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 40px 28px 56px;
+    }
+    .note-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 24px;
+    }
+    .note-header h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.12;
+      max-width: 780px; margin-bottom: 22px;
+    }
+    .note-subtitle {
+      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
+      margin-bottom: 18px;
+    }
+    .note-pubdate {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 64px 28px 8px;
+    }
+    .prose h2 {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3;
+      margin-top: 56px; margin-bottom: 22px;
+      scroll-margin-top: 24px;
+    }
+    .prose > h2:first-child { margin-top: 0; }
+    .prose h3 {
+      font-size: 16px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.35;
+      margin-top: 36px; margin-bottom: 14px;
+    }
+    .prose h4 {
+      font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em;
+      text-transform: uppercase; color: rgba(245,245,245,0.4);
+      margin-top: 24px; margin-bottom: 10px;
+    }
+    .prose p {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .prose ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(245,245,245,0.1);
+    }
+    .prose ul li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 2px 0;
+    }
+    .prose ol {
+      margin: 0 0 20px;
+      padding-left: 22px;
+    }
+    .prose ol li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 4px 0;
+    }
+    .prose ol li strong,
+    .prose p strong { color: rgba(245,245,245,0.72); font-weight: 700; }
+
+    /* ── TABLE OF CONTENTS ── */
+    .guide-toc {
+      border: 1px solid rgba(245,245,245,0.1);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 8px 0 48px;
+    }
+    .guide-toc-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      margin-bottom: 14px;
+    }
+    .guide-toc ol {
+      list-style: none; padding: 0; margin: 0;
+      columns: 2; column-gap: 28px;
+    }
+    .guide-toc li { margin-bottom: 8px; break-inside: avoid; padding: 0; }
+    .guide-toc a {
+      font-size: 12.5px; color: rgba(245,245,245,0.42);
+      text-decoration: none; line-height: 1.6;
+    }
+    .guide-toc a:hover { color: rgba(245,245,245,0.75); }
+
+    /* ── TECHNICAL NOTE CALLOUTS ──
+       Deliberately quieter than the main prose: smaller type, more muted
+       colour, left-border accent instead of a heading-weight treatment — a
+       reference aside, not another lesson. */
+    .tech-note {
+      margin: 32px 0 36px;
+      padding: 18px 22px;
+      border-left: 2px solid rgba(61,124,224,0.5);
+      background: rgba(255,255,255,0.02);
+      border-radius: 0 6px 6px 0;
+    }
+    .tech-note-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 10px;
+    }
+    .tech-note h3 {
+      font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.3;
+      margin: 0 0 12px;
+    }
+    .tech-note p {
+      font-size: 13px; font-weight: 400; color: rgba(245,245,245,0.4);
+      letter-spacing: 0.01em; line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .tech-note p:last-child { margin-bottom: 0; }
+
+    /* ── READING QUIET ZONE ──
+       Shared treatment across the site's long-form article pages: a soft
+       feathered scrim between the snow canvas and the reading column so the
+       article text sits in calmer air without a visible panel or border. */
+    .reading-quiet-zone { position: relative; }
+    .reading-quiet-zone::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: min(920px, 100%);
+      transform: translateX(-50%);
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(10,10,10,0)    0%,
+        rgba(10,10,10,0.7) 22%,
+        rgba(10,10,10,0.7) 78%,
+        rgba(10,10,10,0)  100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+    }
+
+    /* ── CLOSING ── */
+    .note-closing {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 8px 28px 24px;
+      text-align: center;
+    }
+    .note-closing .divider { margin: 64px auto 40px; }
+    .note-author {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      color: rgba(245,245,245,0.7); margin-bottom: 6px;
+    }
+    .note-author-role {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+    }
+    .note-links {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-text {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-text:hover { color: rgba(245,245,245,0.65); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+
+    @media (max-width: 640px) {
+      .note-header { padding: 28px 24px 40px; }
+      .prose { padding: 48px 24px 8px; }
+      .prose h2 { font-size: 17px; margin-top: 44px; }
+      .prose h3 { font-size: 15px; }
+      .prose p, .prose ul li, .prose ol li { font-size: 14px; }
+      .guide-toc { padding: 20px 22px; }
+      .guide-toc ol { columns: 1; }
+      .note-closing { padding: 8px 24px 24px; }
+      .note-links { gap: 20px; }
+      footer { padding: 48px 24px 36px; }
+    }
+  </style>
+</head>
+<body data-page="">
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav data-site-nav aria-label="Main navigation">
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+    </nav>
+
+    <article>
+      <header class="note-header">
+        <p class="note-eyebrow">User Guide</p>
+        <h1 class="gradient-text">The Final Word User Guide</h1>
+        <p class="note-subtitle">Controls, true peak, dynamics, Character modes, metering, monitoring tools, oversampling, lookahead, and practical workflows.</p>
+        <time class="note-pubdate" datetime="2026-09-08">September 2026</time>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="reading-quiet-zone">
+      <div class="prose">
+        <p><strong>The Final Word</strong> is a mastering limiter designed to control peak level, increase usable loudness, and preserve the character of the source while giving you precise control over how limiting behaves.</p>
+        <p>At its simplest, you can set a Ceiling, increase Trim until you reach the amount of limiting you want, and let Auto Release handle recovery. At a deeper level, <strong>The Final Word</strong> gives you control over transient behavior, detection, stereo linking, Mid/Side processing, true-peak protection and optional Character processing.</p>
+        <p>The interface is intentionally divided between processing controls and monitoring tools. The controls determine what happens to the audio; the meters and analysis tools help you understand the result.</p>
+
+        <nav class="guide-toc" aria-label="Guide contents">
+          <p class="guide-toc-label">Contents</p>
+          <ol>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#input-ceiling">Input &amp; Ceiling</a></li>
+            <li><a href="#dynamics">Dynamics</a></li>
+            <li><a href="#character">Character</a></li>
+            <li><a href="#monitoring-analysis">Monitoring &amp; Analysis</a></li>
+            <li><a href="#monitoring-tools">Monitoring Tools</a></li>
+            <li><a href="#advanced-controls">Advanced Controls</a></li>
+            <li><a href="#practical-workflows">Practical Workflows</a></li>
+            <li><a href="#updates-licensing-support">Updates, Licensing &amp; Support</a></li>
+            <li><a href="#final-perspective">Final Perspective</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="quick-start">Quick Start</h2>
+        <p>For a clean mastering-limiter starting point:</p>
+        <ol>
+          <li><strong>Leave Character on CLEAN.</strong> This keeps the limiter free of additional saturation or tonal coloration.</li>
+          <li><strong>Set the Ceiling.</strong> For example, −1.0 dB is a useful starting point when true-peak delivery headroom is desired.</li>
+          <li><strong>Leave True Peak enabled.</strong> The limiter will then enforce the Ceiling against reconstructed true peaks, including inter-sample peaks.</li>
+          <li><strong>Increase Trim.</strong> Trim controls how hard the signal enters the limiter. Raise it until you reach the loudness and gain reduction you want.</li>
+          <li><strong>Start with Auto Release enabled.</strong> Auto Release continuously adjusts the release time between 100 and 600 ms according to the program. You can disable it when you want to choose a fixed Release value manually.</li>
+          <li><strong>Watch gain reduction, but listen first.</strong> The GR meter tells you how much level the limiter is removing. There is no universally correct amount—what matters is whether the master retains the transient impact, movement and tonal balance you want.</li>
+          <li><strong>Use Gain Match when comparing.</strong> Gain Match compensates for the level increase after processing so you can evaluate what the limiter is actually doing without automatically preferring the louder version.</li>
+        </ol>
+
+        <h2 id="input-ceiling">Input &amp; Ceiling</h2>
+        <p>The first stage of <strong>The Final Word</strong> answers two fundamental questions:</p>
+        <p>How hard should the limiter be driven? That is the job of Trim.</p>
+        <p>What is the highest level the output should be allowed to reach? That is the job of Ceiling.</p>
+        <p>These controls work together, but they do very different things.</p>
+
+        <h3>Trim</h3>
+        <p>Trim controls the level entering the limiter.</p>
+        <p>Increasing Trim pushes more of the signal into limiting, which generally produces more gain reduction and greater perceived loudness. Reducing Trim backs the signal away from the limiter and allows more of the original dynamics to pass through.</p>
+        <p>This makes Trim the primary control for deciding how hard <strong>The Final Word</strong> is working.</p>
+        <p>It is useful to think of it as driving the limiter rather than simply turning the output up. If you add 4 dB of Trim, the limiter receives a signal that is 4 dB hotter and must respond accordingly.</p>
+        <p>Trim does not change the Ceiling. If the Ceiling is set to −1.0 dB, increasing Trim does not move that target upward—it simply causes more of the program to encounter the limiter on its way toward it.</p>
+        <p>In practice, a simple approach is to raise Trim while listening to the relationship between loudness, gain reduction, transient impact, movement and dynamics, and any tonal or textural change.</p>
+        <p>The goal is not to reach a particular gain-reduction number. The appropriate amount depends on the material and the result you want.</p>
+
+        <h3>Ceiling</h3>
+        <p>Ceiling sets the maximum level the limiter is designed to allow through.</p>
+        <p>For example, with a Ceiling of −1.0 dB, <strong>The Final Word</strong> limits the signal toward that maximum rather than allowing peaks to reach 0 dBFS.</p>
+        <p>Ceiling is an output constraint, not a loudness control.</p>
+        <p>This distinction is important:</p>
+        <p>Trim determines how hard you drive the limiter. Ceiling determines where the limiter stops the peaks.</p>
+        <p>A lower Ceiling can be useful when additional delivery headroom is wanted, particularly when a master will later be encoded to a lossy format or passed through another distribution stage.</p>
+        <p>There is no single Ceiling value that is correct for every release. The appropriate setting depends on the intended delivery format, downstream processing and your priorities for the master.</p>
+
+        <h3>True Peak</h3>
+        <p>Digital audio is stored as a sequence of individual samples. A conventional sample-peak meter measures the highest value reached by those stored samples.</p>
+        <p>But the continuous waveform reconstructed during playback can sometimes reach a higher level between those samples. These are commonly called inter-sample peaks, and their reconstructed level is expressed in dBTP—decibels true peak.</p>
+        <p>The True Peak control determines how <strong>The Final Word</strong> applies the Ceiling.</p>
+
+        <h4>True Peak On</h4>
+        <p>With True Peak enabled, the limiter also considers the reconstructed waveform between samples.</p>
+        <p>The Ceiling is therefore enforced against reconstructed true peaks, not only the individual digital sample values.</p>
+        <p>This is the more conservative mode when you specifically need true-peak control.</p>
+
+        <h4>True Peak Off</h4>
+        <p>With True Peak disabled, the Ceiling is enforced against sample peaks only.</p>
+        <p>This means every individual sample can remain within the Ceiling while the reconstructed waveform between those samples rises above it.</p>
+        <p>That does not disable true-peak metering.</p>
+        <p>The blue True Peak meters continue to show the reconstructed true peak of the final output whether True Peak protection is on or off.</p>
+        <p>Useful distinction:</p>
+        <p>True Peak control = what the limiter enforces.</p>
+        <p>True Peak meters = what the reconstructed output actually measures.</p>
+
+        <h3>Reading Trim, Ceiling and True Peak Together</h3>
+        <p>Trim → Ceiling → True Peak</p>
+        <p>Trim determines how much signal reaches the limiter.</p>
+        <p>Ceiling establishes the maximum target.</p>
+        <p>True Peak determines whether that target applies only to the stored digital samples or also to reconstructed inter-sample peaks.</p>
+        <p>For a straightforward transparent master:</p>
+        <p>CLEAN Character → True Peak On → choose a Ceiling → raise Trim until the desired amount of limiting is reached.</p>
+
+        <h2 id="dynamics">Dynamics</h2>
+        <p>Once Trim and Ceiling establish how much limiting is happening and where the peak boundary is, the Dynamics section determines how the limiter reacts to the program.</p>
+
+        <h3>Attack</h3>
+        <p>Attack controls how quickly gain reduction develops when the signal exceeds the Ceiling.</p>
+        <p>A faster Attack allows the limiter to respond more quickly, catching more of a peak before it passes through.</p>
+        <p>A slower Attack allows more of the transient's leading edge to develop before full gain reduction takes effect.</p>
+        <p>The useful question is usually not:</p>
+        <p>“What is the correct Attack time?”</p>
+        <p>but:</p>
+        <p>“How much of this transient do I want to preserve?”</p>
+
+        <h3>Release</h3>
+        <p>Release controls how quickly gain returns after limiting.</p>
+        <p>A shorter Release allows the gain to recover rapidly. This can preserve energy and make the limiter feel responsive, but if recovery repeatedly follows the waveform too closely it can create audible pumping or movement.</p>
+        <p>A longer Release allows gain reduction to recover more gradually.</p>
+        <p>Manual Release provides a deliberately broad range so you can choose anything from very fast recovery to a much slower response when the material calls for it.</p>
+
+        <h3>Auto Release</h3>
+        <p>Auto Release lets <strong>The Final Word</strong> choose the Release time continuously according to the program.</p>
+        <p>Rather than using one fixed value, it operates between 100 and 600 ms.</p>
+        <p>Sparse or transient material tends toward faster recovery. Dense, sustained material causes the limiter to hold gain reduction for longer.</p>
+        <p>This range is intentionally narrower than the full manual Release range.</p>
+        <p>Manual control allows deliberately extreme choices. Auto Release stays within a more conservative adaptive operating window.</p>
+        <p>While Auto Release is enabled, the manual Release knob is not used. The value shown beneath it displays the release time currently being selected by Auto Release.</p>
+
+        <h3>Peak and RMS Detection</h3>
+        <p><strong>The Final Word</strong> can decide how strongly to react to the signal in two different ways: Peak or RMS detection.</p>
+        <p>Peak Detection responds to instantaneous sample values.</p>
+        <p>RMS Detection responds to the signal's running average level and therefore reflects short-term signal energy rather than individual sample peaks.</p>
+        <p>A simple way to think about the difference is:</p>
+        <p>Peak asks, “How high did this moment get?”</p>
+        <p>RMS asks, “How much energy is present over this short period?”</p>
+
+        <h3>Stereo Link</h3>
+        <p>Stereo Link determines how much the gain reduction of the two active channels is tied together.</p>
+        <p>At 0%, each side can respond independently.</p>
+        <p>At 100%, both sides follow whichever channel currently requires more gain reduction.</p>
+        <p>Values in between create a continuous blend.</p>
+        <p>With less Link, channel independence is preserved more strongly, but large differences in gain reduction may move the stereo image.</p>
+        <p>With more Link, both sides move together more strongly, which tends to stabilize the image.</p>
+
+        <h3>Stereo and M/S Processing</h3>
+        <p><strong>The Final Word</strong> can work in either conventional Left/Right stereo or Mid/Side (M/S).</p>
+        <p>In M/S mode, the stereo signal is temporarily converted into:</p>
+        <p>Mid — derived from the sum of the Left and Right channels</p>
+        <p>Side — derived from the difference between the Left and Right channels</p>
+        <p>The Mid channel represents information shared between Left and Right and therefore contains much of what appears in the center of the stereo image.</p>
+        <p>The Side channel represents the differences between Left and Right and therefore contains much of the stereo width information.</p>
+        <p>The limiter processes Mid and Side as the active pair before converting the signal back to normal Left/Right stereo.</p>
+        <p>M/S does not make the signal mono and does not remove stereo information. It changes the coordinate system the limiter uses while processing.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <h3>M/S Encoding</h3>
+          <p><strong>The Final Word</strong> uses a normalized, reversible Mid/Side transform:</p>
+          <p>M = (L + R) / 2<br>S = (L − R) / 2</p>
+          <p>with reconstruction:</p>
+          <p>L = M + S<br>R = M − S</p>
+          <p>The scaling prevents the Mid signal from simply gaining level when correlated Left and Right content is summed while preserving exact reconstruction of the stereo signal.</p>
+        </aside>
+
+        <h2 id="character">Character</h2>
+        <p>The Character section changes the way <strong>The Final Word</strong> feels and sounds once the basic limiting behavior is established.</p>
+        <p>The five modes are:</p>
+        <p>Clean · Soft · Warm · Punchy · Vintage</p>
+        <p>A useful approach is to establish the master first in Clean, then explore Character modes only if the material benefits from them.</p>
+        <p>Character is optional.</p>
+
+        <h3>Clean</h3>
+        <p>Clean is the transparent reference mode.</p>
+        <p>It applies the core brickwall limiting behavior without adding additional saturation or harmonic coloration.</p>
+        <p>When Clean is selected, Character Mix is disabled because there is no additional Character processing to blend into the signal.</p>
+        <p>If Clean gives you the result you need, there is no reason to move away from it.</p>
+
+        <h3>Soft</h3>
+        <p>Soft uses a gentler transition into limiting.</p>
+        <p>It changes the shape of the limiting response rather than adding a separate saturation character.</p>
+
+        <h3>Warm</h3>
+        <p>Warm adds harmonic saturation and a low-frequency lift that becomes more pronounced as the signal approaches the Ceiling.</p>
+        <p>The effect is level-dependent.</p>
+        <p>It can add weight, density, harmonic richness and a fuller low end.</p>
+
+        <h3>Punchy</h3>
+        <p>Punchy is designed to emphasize transient character.</p>
+        <p>It applies stronger saturation and presence to transient events while leaving sustained material comparatively less affected.</p>
+        <p>The goal is not necessarily to make every transient louder. It is to influence the texture and presence of the attack.</p>
+
+        <h3>Vintage</h3>
+        <p>Vintage adds tape-style saturation and progressively softens the high-frequency range as the signal approaches the Ceiling.</p>
+        <p>As stronger material approaches the limiting region, the tonal character becomes darker and smoother.</p>
+
+        <h3>Character Mix</h3>
+        <p>Character Mix determines how much of the selected Character mode is blended into the limited signal.</p>
+        <p>At lower settings, the Character effect can be used subtly.</p>
+        <p>At higher settings, more of the selected mode becomes part of the final sound.</p>
+        <p>This separates two decisions:</p>
+        <p>Which Character do I want? How much of it do I want?</p>
+
+        <h3>Choosing a Character Mode</h3>
+        <p>Start with Clean.</p>
+        <p>Set Trim, Ceiling and Dynamics until the limiter is behaving the way you want.</p>
+        <p>Then switch through the Character modes.</p>
+        <p>Listen for transient shape, low-frequency weight, high-frequency texture, harmonic density, aggression or smoothness, and whether the master still feels like the same record.</p>
+        <p>The Character modes are not genre presets.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <h3>Character Processing</h3>
+          <p>Character processing takes place after the core limiting stage and is blended with the clean limited signal using Character Mix.</p>
+          <p>In Clean mode there is no alternate Character signal to blend, so Character Mix is intentionally disengaged.</p>
+          <p>Soft replaces the harder transition into limiting with a smooth knee that begins above roughly 65% of the Ceiling while adding no harmonic coloration.</p>
+          <p>Warm uses asymmetric saturation inspired by triode behavior. The asymmetry produces predominantly even-order harmonic content, especially the second harmonic, together with a level-dependent low-frequency lift centered around 220 Hz.</p>
+          <p>Punchy compares fast and slow envelope followers to identify transient activity. As their responses diverge, the processing moves toward a more aggressive saturation curve with additional presence around 3 kHz, while sustained material receives much less emphasis.</p>
+          <p>Vintage combines level-dependent saturation with progressive high-frequency softening. Its low-pass behavior moves from roughly 16 kHz toward 3.2 kHz as drive increases, while a DC-biased nonlinear stage introduces additional even-order harmonic content.</p>
+        </aside>
+
+        <h2 id="monitoring-analysis">Monitoring &amp; Analysis</h2>
+        <p><strong>The Final Word</strong> is designed so you can hear what the limiter is doing and see enough information to understand why it sounds the way it does.</p>
+        <p>The monitoring section is not there to tell you whether a master is “good.”</p>
+        <p>Meters describe the signal. They do not make the decision for you.</p>
+
+        <h3>Output Meters</h3>
+        <p>The Output meters show the sample-peak level of the final Left and Right output channels in dBFS.</p>
+        <p>Sample peaks are important, but they are not the same thing as true peaks.</p>
+
+        <h3>Gain Reduction</h3>
+        <p>The GR meter shows how much gain the limiter is currently reducing.</p>
+        <p>Gain reduction should not become a target by itself.</p>
+        <p>A better question is:</p>
+        <p>“What happens to the record when I reach this amount of gain reduction?”</p>
+
+        <h3>GR Readout</h3>
+        <p>The numeric GR readout holds the deepest recent reduction briefly before returning toward zero, making short events easier to read.</p>
+
+        <h3>MAX GR</h3>
+        <p>MAX GR records the deepest gain reduction reached since the meters were last reset.</p>
+
+        <h3>True Peak Metering</h3>
+        <p>The blue True Peak meters show the reconstructed peak level of the final output in dBTP.</p>
+        <p>The True Peak meters remain true-peak meters whether True Peak protection is enabled or disabled.</p>
+        <p>The control changes what the limiter enforces.</p>
+        <p>The meters continue to show what the reconstructed output is doing.</p>
+
+        <h3>Ceiling Reference Line</h3>
+        <p>The horizontal line across the True Peak meters represents the current Ceiling setting.</p>
+
+        <h3>CLIP Indicators</h3>
+        <p>The Left and Right CLIP indicators respond independently.</p>
+        <p>They illuminate when the reconstructed final-output true peak on that channel reaches or exceeds 0 dBTP.</p>
+        <p>The CLIP indicator is an absolute true-peak warning, not a “Ceiling exceeded” light.</p>
+
+        <h3>Integrated LUFS</h3>
+        <p>Integrated LUFS represents the overall loudness accumulated since the last reset.</p>
+        <p>LUFS stands for Loudness Units relative to Full Scale.</p>
+        <p>Integrated loudness uses perceptual weighting and gating so extremely quiet material does not distort the result.</p>
+
+        <h3>Short-Term Loudness</h3>
+        <p>Short-term loudness looks at a much smaller window of the program.</p>
+        <p>Instead of:</p>
+        <p>“How loud has this whole song been?”</p>
+        <p>it answers something closer to:</p>
+        <p>“How loud does the program feel right now?”</p>
+        <p><strong>The Final Word</strong> uses this shorter-term view when calculating PSR.</p>
+
+        <h3>PSR</h3>
+        <p>PSR stands for Peak-to-Short-term Loudness Ratio.</p>
+        <p>It compares True Peak with Short-Term LUFS.</p>
+        <p>A higher PSR generally means there is more peak-to-loudness contrast.</p>
+        <p>A lower PSR means short-term loudness is sitting closer to the peak level.</p>
+        <p>PSR is not a score.</p>
+
+        <h3>LRA</h3>
+        <p>LRA stands for Loudness Range.</p>
+        <p>It describes how much the loudness varies between quieter and louder parts of the program over time.</p>
+        <p>A higher value indicates greater variation.</p>
+        <p>A lower value indicates a more consistently loud program.</p>
+        <p>LRA needs enough varied material before it becomes meaningful.</p>
+
+        <h3>Waveform and Oscilloscope Views</h3>
+        <p>The center display can switch between Waveform and Oscilloscope views.</p>
+        <p>Both show a continuously updating view of recent output activity. They use the same underlying peak information but present it differently.</p>
+        <p>The display is intended as an immediate visual companion to the meters rather than a detailed analysis tool or a view of the entire program.</p>
+
+        <h4>Waveform</h4>
+        <p>The Waveform view presents recent peak activity as a filled, mirrored shape around the center line.</p>
+        <p>It provides an immediate visual impression of transient activity, changes in density, how consistently peaks are approaching the Ceiling, and how output level is moving from moment to moment.</p>
+        <p>The display is a rolling window, not a view of the entire song.</p>
+        <p>It is an amplitude envelope rather than a literal sample-by-sample waveform.</p>
+
+        <h4>Oscilloscope</h4>
+        <p>The Oscilloscope view presents the same recent peak information as a simpler trace rather than the filled, mirrored Waveform display.</p>
+        <p>It is another perspective on the same recent output activity.</p>
+        <p>It should not be interpreted as a traditional laboratory oscilloscope displaying the signed audio waveform sample by sample.</p>
+        <p>Neither view has a measurement advantage over the other.</p>
+        <p>Use whichever presentation you prefer.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <h3>Peak, Loudness and Dynamics Are Different Measurements</h3>
+          <p>Sample Peak measures the maximum value of the stored digital samples.</p>
+          <p>True Peak estimates the maximum of the reconstructed waveform between and at those samples.</p>
+          <p>Gain Reduction measures how much level the limiter is removing.</p>
+          <p>LUFS describes perceived loudness over a defined period.</p>
+          <p>PSR compares peak level against short-term loudness.</p>
+          <p>LRA describes longer-term variation in loudness.</p>
+          <p>None replaces the others.</p>
+        </aside>
+
+        <h2 id="monitoring-tools">Monitoring Tools</h2>
+
+        <h3>Gain Match</h3>
+        <p>Louder often sounds better at first.</p>
+        <p>Gain Match reduces that comparison bias.</p>
+        <p>It compares the processed output against the original source level and compensates the monitoring level so you can hear the effect of the processing without the loudness increase dominating the comparison.</p>
+        <p>Gain Match does not bypass the limiter.</p>
+        <p>Limiting, Character processing and True Peak processing remain active.</p>
+        <p>Useful distinction:</p>
+        <p>Gain Match Off: “What does the finished louder master feel like?”</p>
+        <p>Gain Match On: “What did the processing itself actually change?”</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <h3>Gain Match Signal Path</h3>
+          <p>Gain Match compares the processed output against source RMS measured before Trim.</p>
+          <p>The compensation is applied after the complete processing chain, including limiting, Character processing and True Peak enforcement.</p>
+          <p>Gain Match does not feed back into the limiter.</p>
+          <p>Because compensation happens after Ceiling enforcement, the monitored Gain Match signal can temporarily exceed the selected Ceiling.</p>
+          <p>That is intentional.</p>
+          <p>Gain Match is a monitoring path, not another limiting stage.</p>
+        </aside>
+
+        <h3>Mono</h3>
+        <p>Mono combines the Left and Right channels into a mono signal.</p>
+        <p>It is useful for checking translation and revealing cancellation caused by phase differences between Left and Right.</p>
+
+        <h3>Delta</h3>
+        <p>Delta lets you hear the difference between the processed output and the signal entering the limiter after Trim.</p>
+        <p>It isolates what the processing is changing.</p>
+        <p>If <strong>The Final Word</strong> is doing nothing to the signal, Delta produces silence.</p>
+        <p>Its purpose is diagnostic:</p>
+        <p>“What exactly am I changing?”</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <h3>Delta Reference</h3>
+          <p>Delta uses the latency-compensated post-Trim signal as its reference.</p>
+          <p>This is deliberate.</p>
+          <p>Trim is considered part of the level being presented to the limiter, so Delta isolates the difference created by limiter and Character processing rather than treating the Trim increase itself as processing.</p>
+        </aside>
+
+        <h3>Reset</h3>
+        <p>Reset clears accumulated meter readings and peak holds.</p>
+        <p>It does not change processing parameters.</p>
+
+        <h2 id="advanced-controls">Advanced Controls</h2>
+
+        <h3>Oversampling</h3>
+        <p>Oversampling allows the main limiting and Character stages to operate at a higher internal sample rate.</p>
+        <p>Available settings:</p>
+        <p>Off · 2× · 4× · 8×</p>
+        <p>Higher settings can reduce aliasing at the cost of greater CPU usage and additional latency.</p>
+        <p>The highest setting is not automatically the correct setting for every session.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <h3>Oversampling and True Peak</h3>
+          <p>The user-selectable Oversampling control applies to the main limiting and Character processing stage.</p>
+          <p>True Peak protection uses its own independent reconstruction path.</p>
+          <p>Disabling main Oversampling does not disable True Peak detection or True Peak protection.</p>
+        </aside>
+
+        <h3>Lookahead</h3>
+        <p>Lookahead gives <strong>The Final Word</strong> advance knowledge of an incoming transient by delaying the audio slightly while the detector reacts ahead of it.</p>
+        <p>Available values:</p>
+        <p>0.5 · 1 · 2 · 5 · 10 ms</p>
+        <p>More Lookahead gives the limiter more time to control an incoming transient at the cost of additional latency.</p>
+        <p>The useful question is not:</p>
+        <p>“Which value is highest quality?”</p>
+        <p>It is:</p>
+        <p>“Which value gives the best transient behavior for this material?”</p>
+        <p>Changing Lookahead may cause a brief interruption while <strong>The Final Word</strong> rebuilds its processing delay.</p>
+        <p>This is normal.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <h3>Lookahead and Latency</h3>
+          <p>When Lookahead changes, <strong>The Final Word</strong> rebuilds the delay structure and reports the new latency to the host.</p>
+          <p>The short dropout that can occur is a consequence of reconfiguring the processing path, not a fault in the audio engine.</p>
+        </aside>
+
+        <h2 id="practical-workflows">Practical Workflows</h2>
+        <p>These are starting points rather than recipes.</p>
+
+        <h3>Transparent Limiting</h3>
+        <ol>
+          <li>Select Clean.</li>
+          <li>Enable True Peak if reconstructed peak control is required.</li>
+          <li>Set the Ceiling.</li>
+          <li>Start with Auto Release.</li>
+          <li>Raise Trim gradually.</li>
+          <li>Listen to transient impact, low-frequency movement, vocal presence, stereo stability and density.</li>
+          <li>Use Gain Match regularly.</li>
+        </ol>
+        <p>Stop increasing Trim when the extra loudness no longer justifies what the limiter is changing.</p>
+
+        <h3>Increasing Loudness Without Losing the Record</h3>
+        <p>Begin by deciding what must survive.</p>
+        <p>That might be kick impact, snare attack, vocal articulation, bass movement, stereo width or contrast between sections.</p>
+        <p>If those qualities begin to disappear, the answer is not always simply less Trim.</p>
+        <p>You may also adjust Attack, Release, Peak/RMS detection, Stereo Link or M/S processing.</p>
+
+        <h3>Using Character</h3>
+        <p>Establish the master in Clean first.</p>
+        <p>Then audition Soft, Warm, Punchy and Vintage.</p>
+        <p>If a mode improves the direction, use Character Mix to determine how much belongs in the final result.</p>
+        <p>Character is an optional layer of tone and texture.</p>
+
+        <h3>True Peak Delivery</h3>
+        <p>When controlled reconstructed peak level is required:</p>
+        <ol>
+          <li>Enable True Peak.</li>
+          <li>Choose the required Ceiling.</li>
+          <li>Watch the True Peak meters, not only the Output meters.</li>
+        </ol>
+        <p>Output meters show sample peaks. True Peak meters show reconstructed peaks.</p>
+
+        <h3>Comparing Settings</h3>
+        <p>The A/B system allows two parameter states to be stored and compared directly.</p>
+        <p>Try to change only the variables relevant to the decision you are making.</p>
+        <p>Gain Match can make these comparisons significantly more reliable.</p>
+
+        <h3>Listening With Delta</h3>
+        <p>Engage Delta briefly and listen to what is being altered.</p>
+        <p>Then return to normal output.</p>
+        <p>The goal is not to minimize the Delta signal.</p>
+        <p>The purpose is to understand what kind of change is happening.</p>
+
+        <h2 id="updates-licensing-support">Updates, Licensing &amp; Support</h2>
+
+        <h3>Updates</h3>
+        <p><strong>The Final Word</strong> can notify you when a newer version is available.</p>
+        <p>Selecting the update notification opens the <strong>The Final Word</strong> product page, where current release information and downloads can be provided.</p>
+        <p>Updates are not silently installed.</p>
+
+        <h3>Licensing</h3>
+        <p>A valid license enables the full version of <strong>The Final Word</strong>.</p>
+        <p>License status and related controls are available from the plugin interface.</p>
+
+        <h3>Crash Logs</h3>
+        <p>If <strong>The Final Word</strong> encounters a crash, the About area provides access to the crash-log location in Finder.</p>
+        <p>If support asks for a crash report, attach the relevant log.</p>
+
+        <h3>Support</h3>
+        <p><a href="mailto:support@mainline-audio.com">support@mainline-audio.com</a></p>
+        <p>When reporting a problem, useful information includes:</p>
+        <ul>
+          <li><strong>The Final Word</strong> version</li>
+          <li>DAW and version</li>
+          <li>macOS version</li>
+          <li>plugin format (AU or VST3)</li>
+          <li>sample rate</li>
+          <li>what you were doing when the problem occurred</li>
+          <li>whether it can be reproduced</li>
+          <li>crash log if one exists</li>
+        </ul>
+
+        <h2 id="final-perspective">Final Perspective</h2>
+        <p>A mastering limiter sits at a sensitive point in the signal chain.</p>
+        <p>Small changes can affect loudness, transients, tonal balance, stereo movement and the overall emotional weight of a record.</p>
+        <p><strong>The Final Word</strong> is designed to make those decisions controllable without forcing one particular mastering style.</p>
+        <p>You can use it as a transparent limiter.</p>
+        <p>You can let it adapt through Auto Release.</p>
+        <p>You can shape how it reacts through Attack, detection and linking.</p>
+        <p>You can work in Stereo or M/S.</p>
+        <p>You can add Character when the material benefits from it.</p>
+        <p>And you can use the monitoring tools to understand what those decisions are actually doing.</p>
+        <p>The meters provide information.</p>
+        <p>The controls provide options.</p>
+        <p>The final decision still comes from listening.</p>
+      </div>
+
+      <footer class="note-closing">
+        <div class="divider"></div>
+        <p class="note-author">Henry Still</p>
+        <p class="note-author-role">Mastering Engineer · Founder, Mainline Audio</p>
+        <div class="note-links">
+          <a class="btn-text" href="the-final-word.html">The Final Word →</a>
+          <a class="btn-text" href="notes.html">Technical Notes →</a>
+        </div>
+      </footer>
+      </div>
+    </article>
+
+    <footer data-site-footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+<script src="/assets/player.js"></script>
+<script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
+</body>
+</html>
