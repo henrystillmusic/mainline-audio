@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Parallax — Three-Band Stereo Enhancer | Mainline Audio</title>
+<meta name="description" content="A three-band stereo enhancer with independent Low, Mid and High width, a Perspective master control, and Integrity correlation restraint. VST3 &amp; AU for macOS.">
+<link rel="canonical" href="https://mainline-audio.com/the-parallax.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://mainline-audio.com/the-parallax.html#software",
+  "name": "The Parallax",
+  "url": "https://mainline-audio.com/the-parallax.html",
+  "description": "A three-band stereo enhancer with independent Low, Mid and High width, a Perspective master control, and Integrity correlation restraint. VST3 & AU for macOS.",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "macOS",
+  "softwareVersion": "1.0.0",
+  "image": "https://mainline-audio.com/TheParallax_LaunchPic.png",
+  "publisher": { "@id": "https://mainline-audio.com/#organization" }
+}
+</script>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mainline-audio.com/the-parallax.html" />
+<meta property="og:title" content="The Parallax — Three-Band Stereo Enhancer | Mainline Audio" />
+<meta property="og:description" content="A three-band stereo enhancer with independent Low, Mid and High width, a Perspective master control, and Integrity correlation restraint. VST3 &amp; AU for macOS." />
+<meta property="og:image" content="https://mainline-audio.com/TheParallax_LaunchPic.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mainline-audio.com/the-parallax.html" />
+<meta name="twitter:title" content="The Parallax — Three-Band Stereo Enhancer | Mainline Audio" />
+<meta name="twitter:description" content="A three-band stereo enhancer with independent Low, Mid and High width, a Perspective master control, and Integrity correlation restraint. VST3 &amp; AU for macOS." />
+<meta name="twitter:image" content="https://mainline-audio.com/TheParallax_LaunchPic.png" />
+<link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+<link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="the-final-word-assets/style.css">
+<style>
+:root {
+  --tfl-bg:       #0a0a0a;
+  --tfl-surface:  #101010;
+  --tfl-surface2: #1a1b1c;
+  --tfl-border:   #262626;
+  --tfl-accent:   #3d7ce0;
+  --tfl-text:     #e8e8e5;
+  --tfl-muted:    #6e6e6c;
+  --tfl-mono:     'SF Mono', 'Fira Mono', 'Consolas', monospace;
+}
+.price-block { margin: 24px 0 32px; text-align: center; }
+.price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.34); margin-bottom: 12px; }
+.price-value { font-size: clamp(2.4rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f5; line-height: 1; margin-bottom: 10px; }
+.tfl-section { max-width: 900px; margin: 0 auto; padding: 64px 28px; }
+/* Hero title/kicker clearance, the same fix The Main Squeeze needed: the shared
+   h1.gradient-headline uses line-height 0.95, tighter than the font size, so the
+   lowercase p's descender in "Parallax" reaches through the shared 8px margin and
+   touches THREE-BAND STEREO ENHANCER below it. Scaled in em so it tracks the
+   title's own clamp() across breakpoints. Page-local on purpose. */
+h1.gradient-headline { margin-bottom: 0.26em; }
+.tfl-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--tfl-accent); font-weight: 700; margin-bottom: 12px; }
+.tfl-heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--tfl-text); margin-bottom: 10px; line-height: 1.15; }
+.tfl-sub { font-size: 15px; color: var(--tfl-muted); line-height: 1.7; max-width: 600px; margin-bottom: 36px; }
+.tfl-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
+@media (max-width: 560px) { .tfl-card-grid { grid-template-columns: 1fr; } }
+.tfl-card { background: var(--tfl-surface); padding: 24px 26px; transition: background 0.15s; }
+.tfl-card:hover { background: var(--tfl-surface2); }
+.tfl-card-name { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tfl-text); margin-bottom: 7px; font-family: var(--tfl-mono); }
+.tfl-card-desc { font-size: 13px; color: var(--tfl-muted); line-height: 1.65; }
+.tfl-meter-list { display: flex; flex-direction: column; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
+.tfl-meter-row { background: var(--tfl-surface); padding: 16px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: start; transition: background 0.15s; }
+.tfl-meter-row:hover { background: var(--tfl-surface2); }
+@media (max-width: 560px) { .tfl-meter-row { grid-template-columns: 1fr; gap: 4px; } }
+.tfl-meter-name { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tfl-text); font-family: var(--tfl-mono); padding-top: 1px; }
+.tfl-meter-desc { font-size: 13px; color: var(--tfl-muted); line-height: 1.65; }
+/* The three curve colours are the plugin's own: blue is the band setting, pink is
+   the resulting width, grey is the input spectrum underlay. */
+.tfl-meter-row.is-set .tfl-meter-name { color: #3d7ce0; }
+.tfl-meter-row.is-result .tfl-meter-name { color: #ffe0ff; }
+.tfl-meter-row.is-input .tfl-meter-name { color: #6e6e6c; }
+.tfl-spec-wrap { overflow-x: auto; }
+.tfl-spec-table { width: 100%; border-collapse: collapse; border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; font-size: 13px; }
+.tfl-spec-table td { padding: 11px 18px; border-bottom: 1px solid var(--tfl-border); vertical-align: top; color: var(--tfl-muted); }
+.tfl-spec-table tr:last-child td { border-bottom: none; }
+.tfl-spec-table tr:hover td { background: var(--tfl-surface); }
+.tfl-spec-param { color: var(--tfl-text); font-weight: 600; font-family: var(--tfl-mono); font-size: 12px; white-space: nowrap; }
+.tfl-spec-range { color: var(--tfl-accent); font-family: var(--tfl-mono); font-size: 12px; white-space: nowrap; }
+.tfl-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfl-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfl-muted); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-links { justify-content: center; }
+}
+/* Keep the four feature cards balanced at tablet widths. */
+@media (min-width: 641px) and (max-width: 975px) {
+  .process-item { flex-basis: 40%; }
+}
+</style>
+</head>
+<body data-page="">
+<canvas id="snow" data-count="120" data-opacity="0.4" data-radius="1.0,3.2" data-speed="1.0,3.0"></canvas>
+<div class="site">
+
+  <nav data-site-nav aria-label="Main navigation">
+    <a class="nav-logo-link" href="index.html">
+      <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
+    </a>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Mainline Audio</p>
+    <h1 class="gradient-headline">The Parallax</h1>
+    <p class="hero-kicker">Three-Band Stereo Enhancer</p>
+    <p class="hero-sub">
+      Stereo width, handled by frequency region rather than all at once. Low, Mid and High each get their own width control, Perspective scales all three together, and Integrity watches stereo correlation and pulls widened bands back when the image starts to work against itself.
+    </p>
+    <div class="price-block" id="hero-price">
+      <p class="price-label">Available Now</p>
+      <p class="price-value">$49</p>
+    </div>
+    <div class="hero-cta" id="hero-cta">
+      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/593a3028-6556-4670-b540-deffdbe27411" target="_blank" rel="noopener">Buy Now &mdash; $49</a>
+      <a class="btn-text" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/d6b50d0d-bc0d-4be8-879d-eec15df272e2" target="_blank" rel="noopener">Download 14-Day Demo</a>
+      <a class="btn-text" href="#features">See what's inside &darr;</a>
+    </div>
+  </section>
+
+  <section class="screenshot">
+    <div class="hero-render">
+      <img src="TheParallax_LaunchPic.png" width="1429" height="950" alt="The Parallax three-band stereo enhancer plugin interface">
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="process" id="features">
+    <div class="process-item">
+      <div class="process-num">01</div>
+      <div class="process-head">Three Bands</div>
+      <p class="process-body">Low, Mid and High each carry their own width control, split by two crossovers you set yourself. Narrow the low end and open the top without one decision forcing the other.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">02</div>
+      <div class="process-head">Perspective</div>
+      <p class="process-body">One control that scales all three bands at once, for pulling the whole image in or pushing it out after the balance between bands is already set.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">03</div>
+      <div class="process-head">Integrity</div>
+      <p class="process-body">A correlation-driven restraint. As stereo correlation falls, Integrity pulls widened bands back toward their original width, and the ring around the knob brightens as it applies more.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">04</div>
+      <div class="process-head">Built for Working</div>
+      <p class="process-body">A width-response display that shows what you set against what is actually being applied, a factory preset bank, A/B comparison between two full parameter snapshots, and undo/redo across every control.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BANDS -->
+  <div class="tfl-section">
+    <div class="tfl-label">Three Bands</div>
+    <h2 class="tfl-heading">Width belongs to a frequency range.</h2>
+    <p class="tfl-sub">A single width control treats a kick drum and a cymbal as the same problem. The Parallax splits the signal at two crossover points you choose &mdash; Low/Mid anywhere from 60&nbsp;Hz to 1&nbsp;kHz, Mid/High from 1&nbsp;kHz to 12&nbsp;kHz &mdash; and gives each region its own width. Keep the low end tight while the top opens up, or widen the mids alone and leave everything else exactly as it came in. Each band runs from 0% to 200%: 100% is unchanged, 0% collapses that band to mono, and 200% doubles its stereo difference (Side) signal.</p>
+    <div class="tfl-card-grid">
+      <div class="tfl-card">
+        <div class="tfl-card-name">Low / Mid / High</div>
+        <div class="tfl-card-desc">Independent width per band, 0% to 200%, defaulting to 100% so an inserted instance starts from the source image.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Low Split &amp; High Split</div>
+        <div class="tfl-card-desc">The two crossover frequencies, 60&nbsp;Hz&ndash;1&nbsp;kHz and 1&nbsp;kHz&ndash;12&nbsp;kHz, defaulting to 300&nbsp;Hz and 3&nbsp;kHz.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Perspective</div>
+        <div class="tfl-card-desc">A master multiplier over all three bands, 0% to 200%. A band set to 0% stays at 0% no matter where Perspective sits.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Mono</div>
+        <div class="tfl-card-desc">Takes every band to 0% width. Part of the processed signal, so it is recorded and rendered, and neither Perspective nor Integrity overrides it.</div>
+      </div>
+    </div>
+    <p class="tfl-note">The crossovers are Linkwitz-Riley, 24&nbsp;dB per octave, so the bands overlap through the transition rather than switching at a hard frequency split.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- INTEGRITY -->
+  <div class="tfl-section">
+    <div class="tfl-label">Integrity</div>
+    <h2 class="tfl-heading">Widening, with a limit that listens.</h2>
+    <p class="tfl-sub">Widening is easy to overdo, and the moment it stops working is usually audible before it is visible. Integrity measures stereo correlation and pulls widened bands back toward their original width as correlation falls, so the further a passage drifts out of phase, the less extra width survives. Bands at or below 100% after Perspective are left alone. At 0% Integrity does nothing; at higher settings the restraint grows, and the pink ring around the knob brightens as more of it is being applied.</p>
+    <div class="tfl-card-grid">
+      <div class="tfl-card">
+        <div class="tfl-card-name">What it acts on</div>
+        <div class="tfl-card-desc">Only width above 100% after Perspective. Restraint pulls toward 100% and never below it.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">What drives it</div>
+        <div class="tfl-card-desc">Measured stereo correlation of the processed signal, updated once per block and read on the next one.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DISPLAY -->
+  <div class="tfl-section">
+    <div class="tfl-label">The Display</div>
+    <h2 class="tfl-heading">What you set, and what you get.</h2>
+    <p class="tfl-sub">The width-response display draws three things at once, so the difference between your settings and the result is visible while you work.</p>
+    <div class="tfl-meter-list">
+      <div class="tfl-meter-row is-set">
+        <div class="tfl-meter-name">Blue</div>
+        <div class="tfl-meter-desc">The Low, Mid and High width settings, exactly as you have them.</div>
+      </div>
+      <div class="tfl-meter-row is-result">
+        <div class="tfl-meter-name">Pink</div>
+        <div class="tfl-meter-desc">The resulting width across frequency, after crossover blending, Perspective, Integrity and Mono.</div>
+      </div>
+      <div class="tfl-meter-row is-input">
+        <div class="tfl-meter-name">Grey</div>
+        <div class="tfl-meter-desc">The input signal's spectrum, to help place the split frequencies. It does not affect processing.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SPECS -->
+  <div class="tfl-section">
+    <div class="tfl-label">Specifications</div>
+    <h2 class="tfl-heading">The details.</h2>
+    <div class="tfl-spec-wrap">
+      <table class="tfl-spec-table">
+        <tbody>
+          <tr><td class="tfl-spec-param">Low / Mid / High Width</td><td class="tfl-spec-range">0% &ndash; 200% (default 100%)</td></tr>
+          <tr><td class="tfl-spec-param">Perspective</td><td class="tfl-spec-range">0% &ndash; 200% (default 100%)</td></tr>
+          <tr><td class="tfl-spec-param">Integrity</td><td class="tfl-spec-range">0% &ndash; 100% (default 50%)</td></tr>
+          <tr><td class="tfl-spec-param">Low/Mid Crossover</td><td class="tfl-spec-range">60 Hz &ndash; 1 kHz (default 300 Hz)</td></tr>
+          <tr><td class="tfl-spec-param">Mid/High Crossover</td><td class="tfl-spec-range">1 kHz &ndash; 12 kHz (default 3 kHz)</td></tr>
+          <tr><td class="tfl-spec-param">Mono</td><td class="tfl-spec-range">All bands to 0% width</td></tr>
+          <tr><td class="tfl-spec-param">Crossovers</td><td class="tfl-spec-range">Linkwitz-Riley, 24 dB / octave</td></tr>
+          <tr><td class="tfl-spec-param">Display</td><td class="tfl-spec-range">Width response, set vs. applied, with input spectrum</td></tr>
+          <tr><td class="tfl-spec-param">Workflow</td><td class="tfl-spec-range">Factory presets, user presets, A/B compare, undo/redo</td></tr>
+          <tr><td class="tfl-spec-param">Latency</td><td class="tfl-spec-range">Zero &mdash; no lookahead or oversampling</td></tr>
+          <tr><td class="tfl-spec-param">Channels</td><td class="tfl-spec-range">Mono and stereo</td></tr>
+          <tr><td class="tfl-spec-param">Formats</td><td class="tfl-spec-range">AU / VST3</td></tr>
+          <tr><td class="tfl-spec-param">Platform</td><td class="tfl-spec-range">macOS &middot; Apple Silicon &amp; Intel (Universal)</td></tr>
+          <tr><td class="tfl-spec-param">Version</td><td class="tfl-spec-range">1.0.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="closer">
+    <p class="closer-byline">Mainline Audio</p>
+    <span class="closer-headline gradient-text">Available<br>Now.</span>
+    <div id="closer-price" data-price-label="Price"></div>
+    <div id="closer-cta"></div>
+    <p class="buy-fine">VST3 &amp; AU &middot; macOS &middot; Apple Silicon &amp; Intel</p>
+  </section>
+
+  <script>
+    /* The hero price/checkout block above is the single manually maintained source
+       of this page's commercial values. The closing CTA mirrors it at runtime so the
+       two can never drift apart. Runs synchronously here, after the closer markup. */
+    (function () {
+      try {
+        var heroPrice   = document.getElementById("hero-price");
+        var heroCta     = document.getElementById("hero-cta");
+        var closerPrice = document.getElementById("closer-price");
+        var closerCta   = document.getElementById("closer-cta");
+        if (!heroPrice || !heroCta || !closerPrice || !closerCta) return;
+
+        var price = heroPrice.cloneNode(true);
+        price.removeAttribute("id");
+        var label = price.querySelector(".price-label");
+        var closerLabel = closerPrice.getAttribute("data-price-label");
+        if (label && closerLabel) label.textContent = closerLabel;
+        closerPrice.replaceWith(price);
+
+        var cta = heroCta.cloneNode(true);
+        cta.removeAttribute("id");
+        Array.prototype.forEach.call(cta.querySelectorAll('a[href^="#"]'), function (a) { a.remove(); });
+        closerCta.replaceWith(cta);
+      } catch (e) { /* closer CTA is a mirror; hero purchase path is static and unaffected */ }
+    })();
+  </script>
+
+  <section class="signup" id="signup">
+    <p class="signup-label">Join the List</p>
+    <form class="signup-form" id="beta-signup-form">
+      <input type="hidden" name="_subject" value="The Parallax — mailing list signup">
+      <div class="form-row"><input type="text" name="name" placeholder="Your name" required></div>
+      <div class="form-row"><input type="email" name="email" placeholder="Your email" required></div>
+      <div class="form-row"><input type="text" name="daw" placeholder="What DAW do you use? (optional)"></div>
+      <div class="form-row">
+        <select name="role">
+          <option value="" disabled selected>What's your role? (optional)</option>
+          <option value="Mixing Engineer">Mixing Engineer</option>
+          <option value="Mastering Engineer">Mastering Engineer</option>
+          <option value="Producer">Producer</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-row"><input type="text" name="track_link" placeholder="Link to a track or mix (optional)"></div>
+      <button type="submit" class="btn-submit" id="signup-submit">Join the List</button>
+    </form>
+  </section>
+
+  <section class="faq">
+    <details>
+      <summary>What is The Parallax?</summary>
+      <p>A three-band stereo enhancer. The signal is split into Low, Mid and High at two crossover points you set, each band gets its own width control, Perspective scales all three together, and Integrity restrains widened bands as stereo correlation falls.</p>
+    </details>
+    <details>
+      <summary>Why three bands instead of one width control?</summary>
+      <p>Because low and high frequencies rarely want the same treatment. Three bands let you keep the low end tight while opening the top, or widen the mids alone, without one decision forcing the other.</p>
+    </details>
+    <details>
+      <summary>What does Integrity do?</summary>
+      <p>It measures stereo correlation and pulls widened bands back toward their original width as correlation falls. It acts only on width above 100% after Perspective, pulls toward 100% and never below it, and does nothing at 0%. The ring around the knob brightens as more restraint is applied.</p>
+    </details>
+    <details>
+      <summary>Is Mono a monitoring control?</summary>
+      <p>No. Mono takes every band to 0% width as part of the processed signal, so it is recorded and rendered like any other setting. Neither Perspective nor Integrity overrides it.</p>
+    </details>
+    <details>
+      <summary>Does the spectrum in the display affect the sound?</summary>
+      <p>No. The grey spectrum is drawn from the input signal to help you place the split frequencies. Only the blue band settings and the pink resulting width describe processing.</p>
+    </details>
+    <details>
+      <summary>What formats are supported?</summary>
+      <p>VST3 and AU on macOS (Apple Silicon &amp; Intel, Universal). AAX / Windows are not currently supported.</p>
+    </details>
+    <details>
+      <summary>How many computers can I install it on?</summary>
+      <p>Up to 2 computers that you own or control.</p>
+    </details>
+    <details>
+      <summary>Is educational licensing available?</summary>
+      <p>Educational and institutional licensing may be available for schools, labs, and training facilities. Contact Mainline Audio for details.</p>
+    </details>
+    <details>
+      <summary>Do you offer a demo?</summary>
+      <p>Yes. A fully functional 14-day demo &mdash; the same AU/VST3 installer as the paid version &mdash; runs with no audio interruptions, muting, or feature restrictions. Get it through the free demo checkout above; you&rsquo;ll receive download access by email. Once installed, choose Start 14-Day Demo when you open The Parallax. No payment or license key required.</p>
+    </details>
+    <details>
+      <summary>Will there be updates?</summary>
+      <p>Mainline Audio may provide updates for The Parallax at its discretion.</p>
+    </details>
+  </section>
+
+  <footer data-site-footer>
+    <div class="footer-links-row">
+      <span class="footer-link">Also in Mainline Audio DSP:</span>
+      <a class="footer-link" href="the-final-word.html">The Final Word</a>
+      <a class="footer-link" href="the-fine-line.html">The Fine Line</a>
+      <a class="footer-link" href="the-focal-point.html">The Focal Point</a>
+      <a class="footer-link" href="the-main-squeeze.html">The Main Squeeze</a>
+    </div>
+    <div class="footer-links-row">
+      <a class="footer-link" href="mailto:support@mainline-audio.com">Support</a>
+      <a class="footer-link" href="license-agreement.html">License Agreement</a>
+      <a class="footer-link" href="refund-policy.html">Refund Policy</a>
+      <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <a class="footer-link" href="https://mainline-audio.com" target="_blank" rel="noopener">mainline-audio.com</a>
+  </footer>
+
+</div>
+
+<audio id="bg-track" preload="auto"></audio>
+<div class="audio-widget" id="audio-widget">
+  <div class="now-playing" id="now-playing">Loading...</div>
+  <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+  <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+  <div id="mute-btn" title="Toggle music">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+      <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+      <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+    </svg>
+  </div>
+</div>
+
+<script>
+
+  document.querySelectorAll('select').forEach(sel => {
+    const syncPlaceholderStyle = () => sel.classList.toggle('has-value', sel.value !== '');
+    sel.addEventListener('change', syncPlaceholderStyle);
+    syncPlaceholderStyle();
+  });
+
+  document.getElementById('beta-signup-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const button = document.getElementById('signup-submit');
+    const formData = new FormData(form);
+
+    button.textContent = 'Sending...';
+    button.disabled = true;
+
+    try {
+      const response = await fetch('https://formspree.io/f/xrejblzw', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        window.location.href = 'thankyou.html';
+      } else {
+        alert('Something went wrong. Please try again.');
+        button.textContent = 'Join the List';
+        button.disabled = false;
+      }
+    } catch (err) {
+      alert('Network error. Please check your connection and try again.');
+      button.textContent = 'Join the List';
+      button.disabled = false;
+    }
+  });
+
+
+</script>
+<script src="/assets/player.js"></script>
+<script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
+</body>
+</html>
