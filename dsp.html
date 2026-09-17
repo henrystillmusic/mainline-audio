@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Professional mastering tools built with the same philosophy as the service." />
     <meta name="twitter:image" content="https://mainline-audio.com/MainlineAudio_DSP_Share_Squeeze.jpg" />
 
-    <meta name="description" content="Professional mastering tools built with the same philosophy as the service — The Final Word, The Fine Line, The Main Squeeze, The Parallax, and The Last Look from Mainline Audio." />
+    <meta name="description" content="Professional mastering tools built with the same philosophy as the service — The Final Word, The Fine Line, The Focal Point, The Main Squeeze, The Parallax, and The Main Drift from Mainline Audio." />
     <link rel="canonical" href="https://mainline-audio.com/dsp.html" />
     <script type="application/ld+json">
     {
@@ -39,7 +39,7 @@
       "mainEntity": {
         "@type": "ItemList",
         "itemListOrder": "https://schema.org/ItemListOrderAscending",
-        "numberOfItems": 4,
+        "numberOfItems": 6,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -62,8 +62,20 @@
           {
             "@type": "ListItem",
             "position": 4,
+            "url": "https://mainline-audio.com/the-main-squeeze.html",
+            "item": { "@id": "https://mainline-audio.com/the-main-squeeze.html#software" }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
             "url": "https://mainline-audio.com/the-parallax.html",
             "item": { "@id": "https://mainline-audio.com/the-parallax.html#software" }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "url": "https://mainline-audio.com/the-main-drift.html",
+            "item": { "@id": "https://mainline-audio.com/the-main-drift.html#software" }
           }
         ]
       }
@@ -125,6 +137,9 @@
         transition: background 0.2s;
       }
       a.product:hover { background: #111; }
+      /* An odd card count leaves the last card alone on its row; let it span the
+         row so the grid background doesn't show through the empty cell. */
+      .products > .product:last-child:nth-child(odd) { grid-column: 1 / -1; }
       .product-status {
         font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
         text-transform: uppercase; margin-bottom: 20px;
@@ -147,6 +162,8 @@
       }
       /* Wider source aspect: extra width gives height parity with the others. */
       .product-render.is-wide { max-width: 476px; }
+      /* Taller source aspect (26:21): less width keeps it level with the 3:2 renders. */
+      .product-render.is-tall { max-width: 310px; }
       .product-cta {
         font-size: 9px; font-weight: 700; letter-spacing: 0.22em;
         text-transform: uppercase; color: rgba(245,245,245,0.2);
@@ -237,6 +254,16 @@
             <img class="product-render" src="TheParallax_LaunchPic.png" width="1429" height="950" loading="lazy" alt="The Parallax three-band stereo enhancer plugin interface">
           </div>
           <span class="product-cta">Enter The Parallax ↗</span>
+        </a>
+
+        <a class="product" href="the-main-drift.html">
+          <div>
+            <div class="product-status live">Available Now</div>
+            <h2 class="product-title">The Main Drift</h2>
+            <p class="product-desc">A creative drift processor — tape- and vinyl-style pitch and timing movement with Speed, Flutter, Width and Mix. Free.</p>
+            <img class="product-render is-tall" src="TheMainDrift_LaunchPic.png" width="1036" height="836" loading="lazy" alt="The Main Drift creative drift processor plugin interface">
+          </div>
+          <span class="product-cta">Enter The Main Drift ↗</span>
         </a>
 
         <div class="product is-soon">

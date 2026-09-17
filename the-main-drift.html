@@ -3,34 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Parallax — Three-Band Stereo Enhancer | Mainline Audio</title>
-<meta name="description" content="Three-band stereo enhancement with independent width controls, Perspective scaling, and correlation-aware Integrity processing. AU and VST3 for macOS.">
-<link rel="canonical" href="https://mainline-audio.com/the-parallax.html">
+<title>The Main Drift — Creative Drift Processor | Mainline Audio</title>
+<meta name="description" content="Tape and vinyl-style pitch and timing drift with Speed, Flutter, Width and Mix, fixed reported latency, and aligned bypass. Free AU and VST3 for macOS.">
+<link rel="canonical" href="https://mainline-audio.com/the-main-drift.html">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "@id": "https://mainline-audio.com/the-parallax.html#software",
-  "name": "The Parallax",
-  "url": "https://mainline-audio.com/the-parallax.html",
-  "description": "Three-band stereo enhancement with independent width controls, Perspective scaling, and correlation-aware Integrity processing. AU and VST3 for macOS.",
+  "@id": "https://mainline-audio.com/the-main-drift.html#software",
+  "name": "The Main Drift",
+  "url": "https://mainline-audio.com/the-main-drift.html",
+  "description": "Tape and vinyl-style pitch and timing drift with Speed, Flutter, Width and Mix, fixed reported latency, and aligned bypass. Free AU and VST3 for macOS.",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "macOS",
   "softwareVersion": "1.0.0",
-  "image": "https://mainline-audio.com/TheParallax_LaunchPic.png",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "image": "https://mainline-audio.com/TheMainDrift_LaunchPic.png",
   "publisher": { "@id": "https://mainline-audio.com/#organization" }
 }
 </script>
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://mainline-audio.com/the-parallax.html" />
-<meta property="og:title" content="The Parallax — Three-Band Stereo Enhancer | Mainline Audio" />
-<meta property="og:description" content="Three-band stereo enhancement with independent width controls, Perspective scaling, and correlation-aware Integrity processing. AU and VST3 for macOS." />
-<meta property="og:image" content="https://mainline-audio.com/TheParallax_LaunchPic.png" />
+<meta property="og:url" content="https://mainline-audio.com/the-main-drift.html" />
+<meta property="og:title" content="The Main Drift — Creative Drift Processor | Mainline Audio" />
+<meta property="og:description" content="Tape and vinyl-style pitch and timing drift with Speed, Flutter, Width and Mix, fixed reported latency, and aligned bypass. Free AU and VST3 for macOS." />
+<meta property="og:image" content="https://mainline-audio.com/TheMainDrift_LaunchPic.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://mainline-audio.com/the-parallax.html" />
-<meta name="twitter:title" content="The Parallax — Three-Band Stereo Enhancer | Mainline Audio" />
-<meta name="twitter:description" content="Three-band stereo enhancement with independent width controls, Perspective scaling, and correlation-aware Integrity processing. AU and VST3 for macOS." />
-<meta name="twitter:image" content="https://mainline-audio.com/TheParallax_LaunchPic.png" />
+<meta name="twitter:url" content="https://mainline-audio.com/the-main-drift.html" />
+<meta name="twitter:title" content="The Main Drift — Creative Drift Processor | Mainline Audio" />
+<meta name="twitter:description" content="Tape and vinyl-style pitch and timing drift with Speed, Flutter, Width and Mix, fixed reported latency, and aligned bypass. Free AU and VST3 for macOS." />
+<meta name="twitter:image" content="https://mainline-audio.com/TheMainDrift_LaunchPic.png" />
 <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
 <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
@@ -53,15 +54,14 @@
 .price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.34); margin-bottom: 12px; }
 .price-value { font-size: clamp(2.4rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f5; line-height: 1; margin-bottom: 10px; }
 .tfl-section { max-width: 900px; margin: 0 auto; padding: 64px 28px; }
-/* Hero title/kicker clearance, the same fix The Main Squeeze needed: the shared
-   h1.gradient-headline uses line-height 0.95, tighter than the font size, so the
-   lowercase p's descender in "Parallax" reaches through the shared 8px margin and
-   touches THREE-BAND STEREO ENHANCER below it. Scaled in em so it tracks the
-   title's own clamp() across breakpoints. Page-local on purpose. */
+/* Hero title/kicker clearance, as on The Main Squeeze and The Parallax pages: the
+   shared h1.gradient-headline uses line-height 0.95, so a descender can reach the
+   kicker below it. Scaled in em so it tracks the title's own clamp(). */
 h1.gradient-headline { margin-bottom: 0.26em; }
 .tfl-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--tfl-accent); font-weight: 700; margin-bottom: 12px; }
 .tfl-heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--tfl-text); margin-bottom: 10px; line-height: 1.15; }
 .tfl-sub { font-size: 15px; color: var(--tfl-muted); line-height: 1.7; max-width: 600px; margin-bottom: 36px; }
+.tfl-sub a { color: var(--tfl-text); }
 .tfl-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
 @media (max-width: 560px) { .tfl-card-grid { grid-template-columns: 1fr; } }
 .tfl-card { background: var(--tfl-surface); padding: 24px 26px; transition: background 0.15s; }
@@ -69,16 +69,11 @@ h1.gradient-headline { margin-bottom: 0.26em; }
 .tfl-card-name { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tfl-text); margin-bottom: 7px; font-family: var(--tfl-mono); }
 .tfl-card-desc { font-size: 13px; color: var(--tfl-muted); line-height: 1.65; }
 .tfl-meter-list { display: flex; flex-direction: column; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
-.tfl-meter-row { background: var(--tfl-surface); padding: 16px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: start; transition: background 0.15s; }
+.tfl-meter-row { background: var(--tfl-surface); padding: 16px 24px; display: grid; grid-template-columns: 190px 1fr; gap: 20px; align-items: start; transition: background 0.15s; }
 .tfl-meter-row:hover { background: var(--tfl-surface2); }
 @media (max-width: 560px) { .tfl-meter-row { grid-template-columns: 1fr; gap: 4px; } }
 .tfl-meter-name { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tfl-text); font-family: var(--tfl-mono); padding-top: 1px; }
 .tfl-meter-desc { font-size: 13px; color: var(--tfl-muted); line-height: 1.65; }
-/* The three curve colours are the plugin's own: blue is the band setting, pink is
-   the resulting width, grey is the input spectrum underlay. */
-.tfl-meter-row.is-set .tfl-meter-name { color: #3d7ce0; }
-.tfl-meter-row.is-result .tfl-meter-name { color: #ffe0ff; }
-.tfl-meter-row.is-input .tfl-meter-name { color: #6e6e6c; }
 .tfl-spec-wrap { overflow-x: auto; }
 .tfl-spec-table { width: 100%; border-collapse: collapse; border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; font-size: 13px; }
 .tfl-spec-table td { padding: 11px 18px; border-bottom: 1px solid var(--tfl-border); vertical-align: top; color: var(--tfl-muted); }
@@ -90,6 +85,9 @@ h1.gradient-headline { margin-bottom: 0.26em; }
 @media (max-width: 640px) {
   .nav-links { justify-content: center; }
 }
+/* The launch image is 1036 px wide, narrower than the shared 1100 px hero frame;
+   cap it at its native width so it is never enlarged. */
+.hero-render img { max-width: 1036px; margin: 0 auto; }
 /* Keep the four feature cards balanced at tablet widths. */
 @media (min-width: 641px) and (max-width: 975px) {
   .process-item { flex-basis: 40%; }
@@ -108,25 +106,24 @@ h1.gradient-headline { margin-bottom: 0.26em; }
 
   <section class="hero">
     <p class="hero-eyebrow">Mainline Audio</p>
-    <h1 class="gradient-headline">The Parallax</h1>
-    <p class="hero-kicker">Three-Band Stereo Enhancer</p>
+    <h1 class="gradient-headline">The Main Drift</h1>
+    <p class="hero-kicker">Creative Drift Processor</p>
     <p class="hero-sub">
-      Stereo width, handled by frequency region rather than all at once. Low, Mid and High each get their own width control, Perspective scales all three together, and Integrity watches stereo correlation and pulls widened bands back when the image starts to work against itself.
+      Slow, continuous movement in pitch and timing, from a barely-there wobble to obvious warping. Choose Tape or Vinyl motion, set how far and how fast it drifts, add Flutter, spread it across the stereo field, and blend it back in with Mix.
     </p>
     <div class="price-block" id="hero-price">
       <p class="price-label">Available Now</p>
-      <p class="price-value">$49</p>
+      <p class="price-value">Free</p>
     </div>
     <div class="hero-cta" id="hero-cta">
-      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/593a3028-6556-4670-b540-deffdbe27411" target="_blank" rel="noopener">Buy Now &mdash; $49</a>
-      <a class="btn-text" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/d6b50d0d-bc0d-4be8-879d-eec15df272e2" target="_blank" rel="noopener">Download 14-Day Demo</a>
+      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/bb2c12fc-b7da-4b02-b8e8-c1837a0d17de" target="_blank" rel="noopener">Download &mdash; Free</a>
       <a class="btn-text" href="#features">See what's inside &darr;</a>
     </div>
   </section>
 
   <section class="screenshot">
     <div class="hero-render">
-      <img src="TheParallax_LaunchPic.png" width="1429" height="950" alt="The Parallax three-band stereo enhancer plugin interface">
+      <img src="TheMainDrift_LaunchPic.png" width="1036" height="836" alt="The Main Drift creative drift processor plugin interface">
     </div>
   </section>
 
@@ -135,94 +132,93 @@ h1.gradient-headline { margin-bottom: 0.26em; }
   <section class="process" id="features">
     <div class="process-item">
       <div class="process-num">01</div>
-      <div class="process-head">Three Bands</div>
-      <p class="process-body">Low, Mid and High each carry their own width control, split by two crossovers you set yourself. Narrow the low end and open the top without one decision forcing the other.</p>
+      <div class="process-head">Tape &amp; Vinyl</div>
+      <p class="process-body">Two kinds of motion. Vinyl is a steady, repeating wobble with an uneven rise and fall. Tape is mostly slow, irregular wander, with more flutter and less repetition.</p>
     </div>
     <div class="process-item">
       <div class="process-num">02</div>
-      <div class="process-head">Perspective</div>
-      <p class="process-body">One control that scales all three bands at once, for pulling the whole image in or pushing it out after the balance between bands is already set.</p>
+      <div class="process-head">Drift, Speed, Flutter</div>
+      <p class="process-body">Drift sets how far pitch and timing move, weighted toward fine adjustment at low settings. Speed sets the main cycle from 0.05 to 3&nbsp;Hz, and Flutter adds a faster, irregular wobble on top.</p>
     </div>
     <div class="process-item">
       <div class="process-num">03</div>
-      <div class="process-head">Integrity</div>
-      <p class="process-body">A correlation-driven restraint. As stereo correlation falls, Integrity pulls widened bands back toward their original width, and the ring around the knob brightens as it applies more.</p>
+      <div class="process-head">Width</div>
+      <p class="process-body">Lets the left and right channels drift differently, from moving together at 0% to each following its own pattern at 100%.</p>
     </div>
     <div class="process-item">
       <div class="process-num">04</div>
-      <div class="process-head">Workflow</div>
-      <p class="process-body">A width-response display that shows what you set against what is actually being applied, a factory preset bank, A/B comparison between two full parameter snapshots, and undo/redo across every control.</p>
+      <div class="process-head">Mix</div>
+      <p class="process-body">Blends delayed dry with drift. In between, the delayed dry and drifting paths move in and out of phase, creating chorus- and flanging-like movement on purpose. 0% is delayed dry; 100% is pure drift.</p>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- BANDS -->
+  <!-- MODES -->
   <div class="tfl-section">
-    <div class="tfl-label">Three Bands</div>
-    <h2 class="tfl-heading">Width belongs to a frequency range.</h2>
-    <p class="tfl-sub">A single width control treats a kick drum and a cymbal as the same problem. The Parallax splits the signal at two crossover points you choose &mdash; Low/Mid anywhere from 60&nbsp;Hz to 1&nbsp;kHz, Mid/High from 1&nbsp;kHz to 12&nbsp;kHz &mdash; and gives each region its own width. Keep the low end tight while the top opens up, or widen the mids alone and leave everything else exactly as it came in. Each band runs from 0% to 200%: 100% is unchanged, 0% collapses that band to mono, and 200% doubles its stereo difference (Side) signal.</p>
+    <div class="tfl-label">Motion</div>
+    <h2 class="tfl-heading">Two ways to drift.</h2>
+    <p class="tfl-sub">Both modes move pitch and timing together, the way a transport that isn&rsquo;t quite steady does. They differ in how predictable that movement is.</p>
     <div class="tfl-card-grid">
       <div class="tfl-card">
-        <div class="tfl-card-name">Low / Mid / High</div>
-        <div class="tfl-card-desc">Independent width per band, 0% to 200%, defaulting to 100% so an inserted instance starts from the source image.</div>
+        <div class="tfl-card-name">Vinyl</div>
+        <div class="tfl-card-desc">A repeating wobble at the Speed rate with an uneven rise and fall, plus a little slow wander and light flutter. The default mode.</div>
       </div>
       <div class="tfl-card">
-        <div class="tfl-card-name">Low Split &amp; High Split</div>
-        <div class="tfl-card-desc">The two crossover frequencies, 60&nbsp;Hz&ndash;1&nbsp;kHz and 1&nbsp;kHz&ndash;12&nbsp;kHz, defaulting to 300&nbsp;Hz and 3&nbsp;kHz.</div>
-      </div>
-      <div class="tfl-card">
-        <div class="tfl-card-name">Perspective</div>
-        <div class="tfl-card-desc">A master multiplier over all three bands, 0% to 200%. A band set to 0% stays at 0% no matter where Perspective sits.</div>
-      </div>
-      <div class="tfl-card">
-        <div class="tfl-card-name">Mono</div>
-        <div class="tfl-card-desc">Takes every band to 0% width. Part of the processed signal, so it is recorded and rendered, and neither Perspective nor Integrity overrides it.</div>
+        <div class="tfl-card-name">Tape</div>
+        <div class="tfl-card-desc">Mostly slow, irregular wander that Speed does not control, plus a wobble near the Speed rate whose timing varies, and more flutter than Vinyl.</div>
       </div>
     </div>
-    <p class="tfl-note">The crossovers are Linkwitz-Riley, 24&nbsp;dB per octave, so the bands overlap through the transition rather than switching at a hard frequency split.</p>
+    <p class="tfl-note">Flutter&rsquo;s rate follows Speed and its depth follows Drift, so at 0% Drift nothing moves at all.</p>
   </div>
 
   <div class="divider"></div>
 
-  <!-- INTEGRITY -->
+  <!-- TIMING -->
   <div class="tfl-section">
-    <div class="tfl-label">Integrity</div>
-    <h2 class="tfl-heading">Widening, with a limit that listens.</h2>
-    <p class="tfl-sub">Widening is easy to overdo, and the moment it stops working is usually audible before it is visible. Integrity measures stereo correlation and pulls widened bands back toward their original width as correlation falls, so the less correlated a passage becomes, the less extra width survives. Bands at or below 100% after Perspective are left alone. At 0% Integrity does nothing; at higher settings the restraint grows, and the pink ring around the knob brightens as more of it is being applied.</p>
-    <div class="tfl-card-grid">
-      <div class="tfl-card">
-        <div class="tfl-card-name">What it acts on</div>
-        <div class="tfl-card-desc">Only width above 100% after Perspective. Restraint pulls toward 100% and never below it.</div>
-      </div>
-      <div class="tfl-card">
-        <div class="tfl-card-name">What drives it</div>
-        <div class="tfl-card-desc">Measured stereo correlation of the processed signal.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- DISPLAY -->
-  <div class="tfl-section">
-    <div class="tfl-label">The Display</div>
-    <h2 class="tfl-heading">What you set, and what you get.</h2>
-    <p class="tfl-sub">The width-response display draws three things at once, so the difference between your settings and the result is visible while you work.</p>
+    <div class="tfl-label">Timing</div>
+    <h2 class="tfl-heading">Movement without misalignment.</h2>
+    <p class="tfl-sub">Drifting audio has to be delayed so it can move both earlier and later. The Main Drift uses one fixed delay, about 42&nbsp;ms, and reports it to your DAW so plug-in delay compensation keeps the track in time with everything else. The delay never changes with any setting.</p>
     <div class="tfl-meter-list">
-      <div class="tfl-meter-row is-set">
-        <div class="tfl-meter-name">Blue</div>
-        <div class="tfl-meter-desc">The Low, Mid and High width settings, exactly as you have them.</div>
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Mix</div>
+        <div class="tfl-meter-desc">The dry copy it blends is delayed by the same amount, so the blend is built around the same centre the drift moves around.</div>
       </div>
-      <div class="tfl-meter-row is-result">
-        <div class="tfl-meter-name">Pink</div>
-        <div class="tfl-meter-desc">The resulting width across frequency, after crossover blending, Perspective, Integrity and Mono.</div>
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Bypass</div>
+        <div class="tfl-meter-desc">Keeps the same delay, so bypassing never shifts the track against the rest of the session. It switches with a short crossfade and is also the plug-in&rsquo;s host bypass.</div>
       </div>
-      <div class="tfl-meter-row is-input">
-        <div class="tfl-meter-name">Grey</div>
-        <div class="tfl-meter-desc">The input signal's spectrum, to help place the split frequencies. It does not affect processing.</div>
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Drift 0%</div>
+        <div class="tfl-meter-desc">The same fixed delay with no movement, so automating Drift up from zero doesn&rsquo;t cause a jump in timing.</div>
       </div>
     </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ORIGIN -->
+  <div class="tfl-section">
+    <div class="tfl-label">Origin</div>
+    <h2 class="tfl-heading">From The Focal Point.</h2>
+    <p class="tfl-sub">The drift engine comes from <a href="the-focal-point.html">The Focal Point</a>, where Drift is a free-running tape- and vinyl-style pitch and timing wobble alongside its eight-stage spectral filter. The Main Drift gives that engine a plug-in of its own, and adds the fixed reported delay, aligned dry path, Mix and aligned bypass around it.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRESETS -->
+  <div class="tfl-section">
+    <div class="tfl-label">Presets</div>
+    <h2 class="tfl-heading">Five starting points.</h2>
+    <p class="tfl-sub">Click the preset name for the list or step through it with the arrows. Recalling a preset never changes Bypass.</p>
+    <div class="tfl-meter-list">
+      <div class="tfl-meter-row"><div class="tfl-meter-name">Default Vinyl</div><div class="tfl-meter-desc">Vinyl, Drift 30%, Speed 0.55&nbsp;Hz, Flutter 15%, Width 15%.</div></div>
+      <div class="tfl-meter-row"><div class="tfl-meter-name">Gentle Tape</div><div class="tfl-meter-desc">Tape, Drift 16%, Speed 0.28&nbsp;Hz, Flutter 4%, Width 10%.</div></div>
+      <div class="tfl-meter-row"><div class="tfl-meter-name">Slow Deep</div><div class="tfl-meter-desc">Tape, Drift 70%, Speed 0.12&nbsp;Hz, Flutter 15%, Width 60%.</div></div>
+      <div class="tfl-meter-row"><div class="tfl-meter-name">Fast Vinyl</div><div class="tfl-meter-desc">Vinyl, Drift 25%, Speed 2.00&nbsp;Hz, Flutter 30%, Width 30%.</div></div>
+      <div class="tfl-meter-row"><div class="tfl-meter-name">Broken Transmission</div><div class="tfl-meter-desc">Vinyl, Drift 85%, Speed 1.20&nbsp;Hz, Flutter 70%, Width 65%.</div></div>
+    </div>
+    <p class="tfl-note">Every factory preset uses Mix 100%.</p>
   </div>
 
   <div class="divider"></div>
@@ -234,19 +230,18 @@ h1.gradient-headline { margin-bottom: 0.26em; }
     <div class="tfl-spec-wrap">
       <table class="tfl-spec-table">
         <tbody>
-          <tr><td class="tfl-spec-param">Low / Mid / High Width</td><td class="tfl-spec-range">0% &ndash; 200% (default 100%)</td></tr>
-          <tr><td class="tfl-spec-param">Perspective</td><td class="tfl-spec-range">0% &ndash; 200% (default 100%)</td></tr>
-          <tr><td class="tfl-spec-param">Integrity</td><td class="tfl-spec-range">0% &ndash; 100% (default 50%)</td></tr>
-          <tr><td class="tfl-spec-param">Low/Mid Crossover</td><td class="tfl-spec-range">60 Hz &ndash; 1 kHz (default 300 Hz)</td></tr>
-          <tr><td class="tfl-spec-param">Mid/High Crossover</td><td class="tfl-spec-range">1 kHz &ndash; 12 kHz (default 3 kHz)</td></tr>
-          <tr><td class="tfl-spec-param">Mono</td><td class="tfl-spec-range">All bands to 0% width</td></tr>
-          <tr><td class="tfl-spec-param">Crossovers</td><td class="tfl-spec-range">Linkwitz-Riley, 24 dB / octave</td></tr>
-          <tr><td class="tfl-spec-param">Display</td><td class="tfl-spec-range">Width response, set vs. applied, with input spectrum</td></tr>
-          <tr><td class="tfl-spec-param">Workflow</td><td class="tfl-spec-range">Factory presets, user presets, A/B compare, undo/redo</td></tr>
-          <tr><td class="tfl-spec-param">Latency</td><td class="tfl-spec-range">Zero &mdash; no lookahead or oversampling</td></tr>
+          <tr><td class="tfl-spec-param">Mode</td><td class="tfl-spec-range">Vinyl / Tape (default Vinyl)</td></tr>
+          <tr><td class="tfl-spec-param">Drift</td><td class="tfl-spec-range">0% &ndash; 100% (default 30%)</td></tr>
+          <tr><td class="tfl-spec-param">Speed</td><td class="tfl-spec-range">0.05 Hz &ndash; 3 Hz (default 0.55 Hz)</td></tr>
+          <tr><td class="tfl-spec-param">Flutter</td><td class="tfl-spec-range">0% &ndash; 100% (default 15%)</td></tr>
+          <tr><td class="tfl-spec-param">Width</td><td class="tfl-spec-range">0% &ndash; 100% (default 15%)</td></tr>
+          <tr><td class="tfl-spec-param">Mix</td><td class="tfl-spec-range">0% &ndash; 100% (default 100%)</td></tr>
+          <tr><td class="tfl-spec-param">Bypass</td><td class="tfl-spec-range">Delay-aligned, crossfaded, host bypass</td></tr>
+          <tr><td class="tfl-spec-param">Presets</td><td class="tfl-spec-range">5 factory presets</td></tr>
+          <tr><td class="tfl-spec-param">Latency</td><td class="tfl-spec-range">Fixed, about 42 ms, reported to the host</td></tr>
           <tr><td class="tfl-spec-param">Channels</td><td class="tfl-spec-range">Mono and stereo</td></tr>
           <tr><td class="tfl-spec-param">Formats</td><td class="tfl-spec-range">AU / VST3</td></tr>
-          <tr><td class="tfl-spec-param">Platform</td><td class="tfl-spec-range">macOS &middot; Apple Silicon &amp; Intel (Universal)</td></tr>
+          <tr><td class="tfl-spec-param">Platform</td><td class="tfl-spec-range">macOS 11 or later &middot; Apple Silicon &amp; Intel (Universal)</td></tr>
           <tr><td class="tfl-spec-param">Version</td><td class="tfl-spec-range">1.0.0</td></tr>
         </tbody>
       </table>
@@ -286,14 +281,14 @@ h1.gradient-headline { margin-bottom: 0.26em; }
         cta.removeAttribute("id");
         Array.prototype.forEach.call(cta.querySelectorAll('a[href^="#"]'), function (a) { a.remove(); });
         closerCta.replaceWith(cta);
-      } catch (e) { /* closer CTA is a mirror; hero purchase path is static and unaffected */ }
+      } catch (e) { /* closer CTA is a mirror; hero download path is static and unaffected */ }
     })();
   </script>
 
   <section class="signup" id="signup">
     <p class="signup-label">Join the List</p>
     <form class="signup-form" id="beta-signup-form">
-      <input type="hidden" name="_subject" value="The Parallax — mailing list signup">
+      <input type="hidden" name="_subject" value="The Main Drift — mailing list signup">
       <div class="form-row"><input type="text" name="name" placeholder="Your name" required></div>
       <div class="form-row"><input type="email" name="email" placeholder="Your email" required></div>
       <div class="form-row"><input type="text" name="daw" placeholder="What DAW do you use? (optional)"></div>
@@ -313,44 +308,36 @@ h1.gradient-headline { margin-bottom: 0.26em; }
 
   <section class="faq">
     <details>
-      <summary>What is The Parallax?</summary>
-      <p>A three-band stereo enhancer. The signal is split into Low, Mid and High at two crossover points you set, each band gets its own width control, Perspective scales all three together, and Integrity restrains widened bands as stereo correlation falls.</p>
+      <summary>What is The Main Drift?</summary>
+      <p>A creative drift processor. It moves pitch and timing slowly and continuously in Tape or Vinyl style, with Drift, Speed, Flutter, Width and Mix controls and five factory presets.</p>
     </details>
     <details>
-      <summary>Why three bands instead of one width control?</summary>
-      <p>Because low and high frequencies rarely want the same treatment. Three bands let you keep the low end tight while opening the top, or widen the mids alone, without one decision forcing the other.</p>
+      <summary>Is Mix a normal wet/dry control?</summary>
+      <p>Not quite. It blends the delayed dry signal with the drifting signal. Between 0% and 100%, the two paths move in and out of phase, creating chorus- and flanging-like movement on purpose. 0% is delayed dry; 100% is pure drift.</p>
     </details>
     <details>
-      <summary>What does Integrity do?</summary>
-      <p>It measures stereo correlation and pulls widened bands back toward their original width as correlation falls. It acts only on width above 100% after Perspective, pulls toward 100% and never below it, and does nothing at 0%. The ring around the knob brightens as more restraint is applied.</p>
+      <summary>Why does it add latency?</summary>
+      <p>Drift needs room to move audio both earlier and later, so the signal is held back by a fixed amount, about 42&nbsp;ms. The Main Drift reports that delay to your DAW, which compensates for it, and the delay stays the same whatever the settings, including Bypass.</p>
     </details>
     <details>
-      <summary>Is Mono a monitoring control?</summary>
-      <p>No. Mono takes every band to 0% width as part of the processed signal, so it is recorded and rendered like any other setting. Neither Perspective nor Integrity overrides it.</p>
+      <summary>Does Width work on mono tracks?</summary>
+      <p>No. Width makes the left and right channels drift differently, so a mono track has nothing for it to act on. Wide settings can also sound phasey when a stereo track is summed to mono.</p>
     </details>
     <details>
-      <summary>Does the spectrum in the display affect the sound?</summary>
-      <p>No. The grey spectrum is drawn from the input signal to help you place the split frequencies. Only the blue band settings and the pink resulting width describe processing.</p>
+      <summary>How is it related to The Focal Point?</summary>
+      <p>The drift engine comes from The Focal Point&rsquo;s Drift section. The Main Drift gives it a plug-in of its own, with a fixed reported delay, an aligned dry path, Mix and aligned bypass. Its presets are its own and aren&rsquo;t compatible with Focal Point preset files.</p>
     </details>
     <details>
       <summary>What formats are supported?</summary>
-      <p>VST3 and AU on macOS (Apple Silicon &amp; Intel, Universal). AAX / Windows are not currently supported.</p>
+      <p>VST3 and AU on macOS 11 or later (Apple Silicon &amp; Intel, Universal). AAX / Windows are not currently supported.</p>
     </details>
     <details>
-      <summary>How many computers can I install it on?</summary>
-      <p>Up to 2 computers that you own or control.</p>
-    </details>
-    <details>
-      <summary>Is educational licensing available?</summary>
-      <p>Educational and institutional licensing may be available for schools, labs, and training facilities. Contact Mainline Audio for details.</p>
-    </details>
-    <details>
-      <summary>Do you offer a demo?</summary>
-      <p>Yes. A fully functional 14-day demo &mdash; the same AU/VST3 installer as the paid version &mdash; runs with no audio interruptions, muting, or feature restrictions. Get it through the free demo checkout above; you&rsquo;ll receive download access by email. Once installed, choose Start 14-Day Demo when you open The Parallax. No payment or license key required.</p>
+      <summary>Do I need a license key?</summary>
+      <p>No. There&rsquo;s no license key, activation or trial. Get it through the checkout above and you&rsquo;ll receive download access by email.</p>
     </details>
     <details>
       <summary>Will there be updates?</summary>
-      <p>The Parallax checks once, shortly after you open it, for a newer stable version. If one is available, an UPDATE AVAILABLE badge appears; clicking it opens this page. The checker only reads the public version manifest&mdash;it never downloads or installs software and does not transmit license, project, or usage data. If the check cannot be completed, nothing appears.</p>
+      <p>The Main Drift checks once, shortly after you open it, for a newer stable version. If one is available, an UPDATE AVAILABLE badge appears; clicking it opens this page. The checker only reads the public version manifest&mdash;it never downloads or installs software and does not transmit project or usage data. If the check cannot be completed, nothing appears.</p>
     </details>
   </section>
 
@@ -360,8 +347,8 @@ h1.gradient-headline { margin-bottom: 0.26em; }
       <a class="footer-link" href="the-final-word.html">The Final Word</a>
       <a class="footer-link" href="the-fine-line.html">The Fine Line</a>
       <a class="footer-link" href="the-focal-point.html">The Focal Point</a>
-      <a class="footer-link" href="the-main-drift.html">The Main Drift</a>
       <a class="footer-link" href="the-main-squeeze.html">The Main Squeeze</a>
+      <a class="footer-link" href="the-parallax.html">The Parallax</a>
     </div>
     <div class="footer-links-row">
       <a class="footer-link" href="mailto:support@mainline-audio.com">Support</a>
