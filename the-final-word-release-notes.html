@@ -269,13 +269,33 @@
         <p class="note-eyebrow">Release Notes</p>
         <h1 class="gradient-text">The Final Word Release Notes</h1>
         <p class="note-subtitle">What changed in each version of the mastering limiter, and what it means when you are working.</p>
-        <time class="note-pubdate" datetime="2026-09-08">September 2026</time>
+        <time class="note-pubdate" datetime="2026-09-18">September 2026</time>
       </header>
 
       <div class="divider"></div>
 
       <div class="reading-quiet-zone">
       <div class="prose">
+        <h2>1.1.1</h2>
+        <p class="note-pubdate" style="margin-bottom: 26px;">Released 18 September 2026</p>
+
+        <p>A maintenance update to metering accuracy and monitoring behavior. Normal limiter processing is unchanged.</p>
+
+        <ul>
+          <li><strong>Loudness metering.</strong> Corrected Integrated and Short-Term LUFS, including stereo summation, overlapping measurement blocks, relative gating and K-weighting. Readings now match The Last Look on the same material.</li>
+          <li><strong>TRUE PEAK.</strong> Corrected the TRUE PEAK readout so that no detector result is skipped. It now shows the same audio-timed 3&nbsp;second maximum The Last Look shows.</li>
+          <li><strong>PSR.</strong> Now derived from that same 3&nbsp;second true-peak value, without the separate display smoothing it used before, so PSR agrees with what the meters are showing.</li>
+          <li><strong>Host bypass.</strong> Your DAW's own bypass button is now latency-aligned, so switching it in and out no longer shifts timing against the rest of the session.</li>
+          <li><strong>Delta.</strong> Corrected alignment at 4&times; and 8&times; oversampling, so the difference signal is accurate at every Oversampling setting.</li>
+          <li><strong>Licensing.</strong> More reliable transitions when the licence state changes, with cleaner fades and no timing shift.</li>
+        </ul>
+
+        <p>Limiter audio, parameters, presets and saved sessions are unchanged &mdash; existing projects open and sound exactly as before.</p>
+
+        <p>Existing owners can download 1.1.1 from the original Lemon Squeezy download link in their purchase email.</p>
+
+        <div class="divider"></div>
+
         <h2>1.1.0</h2>
         <p class="note-pubdate" style="margin-bottom: 26px;">Released 8 September 2026</p>
 
