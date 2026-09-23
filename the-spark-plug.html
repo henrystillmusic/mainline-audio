@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Spark Plug &mdash; Three-Band Harmonic Saturation | Mainline Audio</title>
+<meta name="description" content="Shape weight, presence, and texture across three independently driven bands.">
+<link rel="canonical" href="https://mainline-audio.com/the-spark-plug.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://mainline-audio.com/the-spark-plug.html#software",
+  "name": "The Spark Plug",
+  "url": "https://mainline-audio.com/the-spark-plug.html",
+  "description": "Shape weight, presence, and texture across three independently driven bands.",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "macOS",
+  "softwareVersion": "1.0.0",
+  "publisher": { "@id": "https://mainline-audio.com/#organization" }
+}
+</script>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mainline-audio.com/the-spark-plug.html" />
+<meta property="og:title" content="The Spark Plug &mdash; Three-Band Harmonic Saturation | Mainline Audio" />
+<meta property="og:description" content="Shape weight, presence, and texture across three independently driven bands." />
+<!-- Share card: the catalog's own Mainline Audio DSP artwork. This page has no
+     product image of its own yet, and the site does not carry a stand-in for one. -->
+<meta property="og:image" content="https://mainline-audio.com/MainlineAudio_DSP_Share.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Mainline Audio DSP &mdash; precision tools for mixing &amp; mastering" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://mainline-audio.com/the-spark-plug.html" />
+<meta name="twitter:title" content="The Spark Plug &mdash; Three-Band Harmonic Saturation | Mainline Audio" />
+<meta name="twitter:description" content="Shape weight, presence, and texture across three independently driven bands." />
+<meta name="twitter:image" content="https://mainline-audio.com/MainlineAudio_DSP_Share.jpg" />
+<link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+<link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="the-final-word-assets/style.css">
+<style>
+:root {
+  --tfl-bg:       #0a0a0a;
+  --tfl-surface:  #101010;
+  --tfl-surface2: #1a1b1c;
+  --tfl-border:   #262626;
+  --tfl-accent:   #3d7ce0;
+  --tfl-text:     #e8e8e5;
+  --tfl-muted:    #6e6e6c;
+  --tfl-mono:     'SF Mono', 'Fira Mono', 'Consolas', monospace;
+}
+.price-block { margin: 24px 0 32px; text-align: center; }
+.price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,245,245,0.34); margin-bottom: 12px; }
+.price-value { font-size: clamp(2.4rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f5; line-height: 1; margin-bottom: 10px; }
+/* Second line under the price. This is the first Mainline product page to carry a
+   launch price alongside a regular one, so the class is page-local until a second
+   page needs it. Deliberately quiet: the regular price is context, not the offer. */
+.price-note { font-size: 12px; letter-spacing: 0.08em; color: rgba(245,245,245,0.34); margin-top: -4px; }
+.tfl-section { max-width: 900px; margin: 0 auto; padding: 64px 28px; }
+/* Hero title/kicker clearance, the same fix The Main Squeeze and The Parallax
+   needed: the shared h1.gradient-headline uses line-height 0.95, tighter than the
+   font size, so the lowercase p's descender in "Spark Plug" reaches through the
+   shared 8px margin and touches THREE-BAND HARMONIC SATURATION below it. Scaled
+   in em so it tracks the title's own clamp() across breakpoints. Page-local. */
+h1.gradient-headline { margin-bottom: 0.26em; }
+.tfl-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--tfl-accent); font-weight: 700; margin-bottom: 12px; }
+.tfl-heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; color: var(--tfl-text); margin-bottom: 10px; line-height: 1.15; }
+.tfl-sub { font-size: 15px; color: var(--tfl-muted); line-height: 1.7; max-width: 600px; margin-bottom: 36px; }
+.tfl-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
+@media (max-width: 560px) { .tfl-card-grid { grid-template-columns: 1fr; } }
+.tfl-card { background: var(--tfl-surface); padding: 24px 26px; transition: background 0.15s; }
+.tfl-card:hover { background: var(--tfl-surface2); }
+.tfl-card-name { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tfl-text); margin-bottom: 7px; font-family: var(--tfl-mono); }
+.tfl-card-desc { font-size: 13px; color: var(--tfl-muted); line-height: 1.65; }
+.tfl-meter-list { display: flex; flex-direction: column; gap: 1px; background: var(--tfl-border); border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; }
+.tfl-meter-row { background: var(--tfl-surface); padding: 16px 24px; display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: start; transition: background 0.15s; }
+.tfl-meter-row:hover { background: var(--tfl-surface2); }
+@media (max-width: 560px) { .tfl-meter-row { grid-template-columns: 1fr; gap: 4px; } }
+.tfl-meter-name { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tfl-text); font-family: var(--tfl-mono); padding-top: 1px; }
+.tfl-meter-desc { font-size: 13px; color: var(--tfl-muted); line-height: 1.65; }
+/* The character-mode rows carry no color coding: all four modes are peers, and
+   tinting one would imply a hierarchy the plugin does not have. */
+.tfl-spec-wrap { overflow-x: auto; }
+.tfl-spec-table { width: 100%; border-collapse: collapse; border: 1px solid var(--tfl-border); border-radius: 8px; overflow: hidden; font-size: 13px; }
+.tfl-spec-table td { padding: 11px 18px; border-bottom: 1px solid var(--tfl-border); vertical-align: top; color: var(--tfl-muted); }
+.tfl-spec-table tr:last-child td { border-bottom: none; }
+.tfl-spec-table tr:hover td { background: var(--tfl-surface); }
+.tfl-spec-param { color: var(--tfl-text); font-weight: 600; font-family: var(--tfl-mono); font-size: 12px; white-space: nowrap; }
+.tfl-spec-range { color: var(--tfl-accent); font-family: var(--tfl-mono); font-size: 12px; white-space: nowrap; }
+.tfl-note { margin-top: 20px; padding: 13px 16px; border-left: 2px solid #2a5eb8; background: var(--tfl-surface); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--tfl-muted); line-height: 1.6; }
+@media (max-width: 640px) {
+  .nav-links { justify-content: center; }
+}
+/* Keep the four feature cards balanced at tablet widths. */
+@media (min-width: 641px) and (max-width: 975px) {
+  .process-item { flex-basis: 40%; }
+}
+</style>
+</head>
+<body data-page="">
+<canvas id="snow" data-count="120" data-opacity="0.4" data-radius="1.0,3.2" data-speed="1.0,3.0"></canvas>
+<div class="site">
+
+  <nav data-site-nav aria-label="Main navigation">
+    <a class="nav-logo-link" href="index.html">
+      <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
+    </a>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Mainline Audio</p>
+    <h1 class="gradient-headline">The Spark Plug</h1>
+    <p class="hero-kicker">Three-Band Harmonic Saturation</p>
+    <p class="hero-sub">
+      Shape weight, presence, and texture across three independently driven bands. Low, Mid and High each get their own character, drive and blend, split at two crossover points you set, so the harmonics you add to the low end have nothing to do with the ones you add on top.
+    </p>
+    <div class="price-block" id="hero-price">
+      <p class="price-label">Launch Price</p>
+      <p class="price-value">$49</p>
+      <p class="price-note">$79 regular</p>
+    </div>
+    <div class="hero-cta" id="hero-cta">
+      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/4b9b684c-8562-4fc3-a120-a07669b23e21" target="_blank" rel="noopener">Buy Now &mdash; $49</a>
+      <a class="btn-text" href="#features">See what's inside &darr;</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="process" id="features">
+    <div class="process-item">
+      <div class="process-num">01</div>
+      <div class="process-head">Three Bands</div>
+      <p class="process-body">Low, Mid and High each carry their own character mode, drive and blend, split by two crossovers you set yourself. Thicken the low end without dulling the top, or bite the highs alone.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">02</div>
+      <div class="process-head">Four Characters</div>
+      <p class="process-body">Soft, Warm, Punchy and Vintage &mdash; four harmonic curves, chosen per band rather than once for the whole signal. Each band can run a different one at the same time.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">03</div>
+      <div class="process-head">Auto Gain</div>
+      <p class="process-body">Optional level matching, off by default, so a band can be judged by its tone rather than by how much louder drive made it. It never writes to your Output Trim.</p>
+    </div>
+    <div class="process-item">
+      <div class="process-num">04</div>
+      <div class="process-head">Workflow</div>
+      <p class="process-body">A factory preset bank, user presets, A/B comparison between two full parameter snapshots, undo and redo across every control, and a host-visible bypass.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BANDS -->
+  <div class="tfl-section">
+    <div class="tfl-label">Three Bands</div>
+    <h2 class="tfl-heading">Saturation belongs to a frequency range.</h2>
+    <p class="tfl-sub">Drive a full-range signal and the low end decides how much harmonic content everything else gets. The Spark Plug splits the signal at two crossover points you choose &mdash; Low/Mid anywhere from 60&nbsp;Hz to 900&nbsp;Hz, Mid/High from 1.1&nbsp;kHz to 12&nbsp;kHz &mdash; and gives each region its own character mode, its own drive, and its own blend against its own dry signal. Weight in the lows, presence in the mids, air or bite on top, each decided on its own terms.</p>
+    <div class="tfl-card-grid">
+      <div class="tfl-card">
+        <div class="tfl-card-name">Character</div>
+        <div class="tfl-card-desc">One of four harmonic curves per band &mdash; Soft, Warm, Punchy or Vintage. Three bands can run three different curves at once.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Drive</div>
+        <div class="tfl-card-desc">0 to 24&nbsp;dB into that band's curve. How hard the band is pushed, and nothing else in the plug-in changes with it.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Mix</div>
+        <div class="tfl-card-desc">0% to 100% per band, blending that band's saturated signal against its own dry contribution. Parallel saturation, three times over.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Solo</div>
+        <div class="tfl-card-desc">Hear one band, or any combination, while you set it. The dry blend steps aside while a solo is active, so you hear the band and not the mix under it.</div>
+      </div>
+    </div>
+    <p class="tfl-note">The crossovers are Linkwitz-Riley, 24&nbsp;dB per octave, so the bands overlap through the transition rather than switching at a hard frequency split. They default to 250&nbsp;Hz and 3&nbsp;kHz, and the frequency printed on each divider is the control &mdash; drag it, or right-click to type an exact value.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CHARACTER -->
+  <div class="tfl-section">
+    <div class="tfl-label">Character</div>
+    <h2 class="tfl-heading">Four curves, not four presets.</h2>
+    <p class="tfl-sub">Each mode is a different harmonic transfer curve, and each is normalized so that at 0&nbsp;dB Drive it is not quietly making the band louder. What you hear when you change modes is the harmonic content changing, not the level.</p>
+    <div class="tfl-meter-list">
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Soft</div>
+        <div class="tfl-meter-desc">A gentle symmetric round-off. Linear through the middle of its range, so at low drive it leaves the band alone and only begins to shape the signal as you push it.</div>
+      </div>
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Warm</div>
+        <div class="tfl-meter-desc">An asymmetric curve with even-harmonic content that grows with level and fades as the signal falls away, rather than sitting at a fixed amount regardless of what you feed it.</div>
+      </div>
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Punchy</div>
+        <div class="tfl-meter-desc">Transient-reactive. It crossfades between a gentle and a more aggressive curve according to what the signal is doing, with added presence, so attacks keep their edge.</div>
+      </div>
+      <div class="tfl-meter-row">
+        <div class="tfl-meter-name">Vintage</div>
+        <div class="tfl-meter-desc">Even-harmonic tape-style saturation with high-frequency softening and a nonlinear low-end resonance, for thickness that darkens slightly as it builds.</div>
+      </div>
+    </div>
+    <p class="tfl-note">All nonlinear processing runs oversampled, at a factor fixed by your session's sample rate, so the harmonics the curves generate stay where they belong instead of folding back down the spectrum.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- OUTPUT -->
+  <div class="tfl-section">
+    <div class="tfl-label">The Output</div>
+    <h2 class="tfl-heading">Level stays your decision.</h2>
+    <p class="tfl-sub">Drive is a gain into a curve, so a band that sounds right is usually louder than the one you started with. The Spark Plug gives you two separate answers to that, and keeps them separate.</p>
+    <div class="tfl-card-grid">
+      <div class="tfl-card">
+        <div class="tfl-card-name">Auto Gain</div>
+        <div class="tfl-card-desc">Off by default. When on, it measures the processed signal against the unprocessed band sum and compensates the difference, so you can judge drive and character by tone rather than by loudness.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Output Trim</div>
+        <div class="tfl-card-desc">&plusmn;24&nbsp;dB, applied after Auto Gain and never touched by it. The number in the field is always the one you set &mdash; nothing rewrites it behind you.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Global Mix</div>
+        <div class="tfl-card-desc">0% to 100% over the whole plug-in, blending the unprocessed signal against everything the three bands did. Independent of the per-band Mix controls, which stay exactly as you set them.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Metering</div>
+        <div class="tfl-card-desc">Stereo peak meters on the input and the output, with peak hold. A channel that went over keeps a red marker on its own well until you click to clear it.</div>
+      </div>
+    </div>
+    <p class="tfl-note">A fixed output stage holds the plug-in's own output at full scale so a hard drive setting cannot leave the plug-in above 0&nbsp;dBFS. It has no control, never touches a signal below &minus;1&nbsp;dBFS, and is protection rather than a mastering limiter &mdash; the clip indicator lights exactly when it is doing anything at all.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WORKFLOW -->
+  <div class="tfl-section">
+    <div class="tfl-label">Workflow</div>
+    <h2 class="tfl-heading">Built to be used, not admired.</h2>
+    <p class="tfl-sub">The header carries the things you reach for while you work, in the same arrangement as the rest of the Mainline Audio line.</p>
+    <div class="tfl-card-grid">
+      <div class="tfl-card">
+        <div class="tfl-card-name">Presets</div>
+        <div class="tfl-card-desc">A factory bank &mdash; Init plus five voiced starting points &mdash; alongside your own saved presets, with save, rename and delete.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">A/B</div>
+        <div class="tfl-card-desc">Two independent parameter snapshots. Edits apply to whichever side is active, so a comparison is a real second version rather than an undo step.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Undo &amp; Redo</div>
+        <div class="tfl-card-desc">One gesture is one step, across every control &mdash; a drag, a typed value, a reset or a preset recall.</div>
+      </div>
+      <div class="tfl-card">
+        <div class="tfl-card-name">Bypass</div>
+        <div class="tfl-card-desc">A host-visible bypass parameter, so your DAW's own bypass and the plug-in's own control are the same thing. Bypassed output is the input, delayed by exactly the reported latency.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SPECS -->
+  <div class="tfl-section">
+    <div class="tfl-label">Specifications</div>
+    <h2 class="tfl-heading">The details.</h2>
+    <div class="tfl-spec-wrap">
+      <table class="tfl-spec-table">
+        <tbody>
+          <tr><td class="tfl-spec-param">Bands</td><td class="tfl-spec-range">Low / Mid / High, independently driven</td></tr>
+          <tr><td class="tfl-spec-param">Character (per band)</td><td class="tfl-spec-range">Soft / Warm / Punchy / Vintage</td></tr>
+          <tr><td class="tfl-spec-param">Drive (per band)</td><td class="tfl-spec-range">0 dB &ndash; 24 dB (default 0 dB)</td></tr>
+          <tr><td class="tfl-spec-param">Mix (per band)</td><td class="tfl-spec-range">0% &ndash; 100% (default 100%)</td></tr>
+          <tr><td class="tfl-spec-param">Solo (per band)</td><td class="tfl-spec-range">Any combination</td></tr>
+          <tr><td class="tfl-spec-param">Low/Mid Crossover</td><td class="tfl-spec-range">60 Hz &ndash; 900 Hz (default 250 Hz)</td></tr>
+          <tr><td class="tfl-spec-param">Mid/High Crossover</td><td class="tfl-spec-range">1.1 kHz &ndash; 12 kHz (default 3 kHz)</td></tr>
+          <tr><td class="tfl-spec-param">Crossovers</td><td class="tfl-spec-range">Linkwitz-Riley, 24 dB / octave</td></tr>
+          <tr><td class="tfl-spec-param">Global Mix</td><td class="tfl-spec-range">0% &ndash; 100% (default 100%)</td></tr>
+          <tr><td class="tfl-spec-param">Auto Gain</td><td class="tfl-spec-range">Off by default &middot; never alters Output Trim</td></tr>
+          <tr><td class="tfl-spec-param">Output Trim</td><td class="tfl-spec-range">&plusmn;24 dB (default 0 dB)</td></tr>
+          <tr><td class="tfl-spec-param">Metering</td><td class="tfl-spec-range">Input and output stereo peak, per-channel clip indication</td></tr>
+          <tr><td class="tfl-spec-param">Workflow</td><td class="tfl-spec-range">Factory presets, user presets, A/B compare, undo/redo, host bypass</td></tr>
+          <tr><td class="tfl-spec-param">Processing</td><td class="tfl-spec-range">Oversampled nonlinear stage, factor fixed by sample rate</td></tr>
+          <tr><td class="tfl-spec-param">Latency</td><td class="tfl-spec-range">Under 1.5 ms &middot; reported to the host and compensated</td></tr>
+          <tr><td class="tfl-spec-param">Channels</td><td class="tfl-spec-range">Mono and stereo</td></tr>
+          <tr><td class="tfl-spec-param">Formats</td><td class="tfl-spec-range">AU / VST3</td></tr>
+          <tr><td class="tfl-spec-param">Platform</td><td class="tfl-spec-range">macOS &middot; Apple Silicon &amp; Intel (Universal)</td></tr>
+          <tr><td class="tfl-spec-param">Version</td><td class="tfl-spec-range">1.0.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="closer">
+    <p class="closer-byline">Mainline Audio</p>
+    <span class="closer-headline gradient-text">Three Bands.<br>Four Characters.</span>
+    <div id="closer-price" data-price-label="Launch Price"></div>
+    <div id="closer-cta"></div>
+    <p class="buy-fine">VST3 &amp; AU &middot; macOS &middot; Apple Silicon &amp; Intel</p>
+  </section>
+
+  <script>
+    /* The hero price/checkout block above is the single manually maintained source
+       of this page's commercial values. The closing CTA mirrors it at runtime so the
+       two can never drift apart. Runs synchronously here, after the closer markup. */
+    (function () {
+      try {
+        var heroPrice   = document.getElementById("hero-price");
+        var heroCta     = document.getElementById("hero-cta");
+        var closerPrice = document.getElementById("closer-price");
+        var closerCta   = document.getElementById("closer-cta");
+        if (!heroPrice || !heroCta || !closerPrice || !closerCta) return;
+
+        var price = heroPrice.cloneNode(true);
+        price.removeAttribute("id");
+        var label = price.querySelector(".price-label");
+        var closerLabel = closerPrice.getAttribute("data-price-label");
+        if (label && closerLabel) label.textContent = closerLabel;
+        closerPrice.replaceWith(price);
+
+        var cta = heroCta.cloneNode(true);
+        cta.removeAttribute("id");
+        Array.prototype.forEach.call(cta.querySelectorAll('a[href^="#"]'), function (a) { a.remove(); });
+        closerCta.replaceWith(cta);
+      } catch (e) { /* closer CTA is a mirror; hero purchase path is static and unaffected */ }
+    })();
+  </script>
+
+  <section class="signup" id="signup">
+    <p class="signup-label">Join the List</p>
+    <form class="signup-form" id="beta-signup-form">
+      <input type="hidden" name="_subject" value="The Spark Plug — mailing list signup">
+      <div class="form-row"><input type="text" name="name" placeholder="Your name" required></div>
+      <div class="form-row"><input type="email" name="email" placeholder="Your email" required></div>
+      <div class="form-row"><input type="text" name="daw" placeholder="What DAW do you use? (optional)"></div>
+      <div class="form-row">
+        <select name="role">
+          <option value="" disabled selected>What's your role? (optional)</option>
+          <option value="Mixing Engineer">Mixing Engineer</option>
+          <option value="Mastering Engineer">Mastering Engineer</option>
+          <option value="Producer">Producer</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-row"><input type="text" name="track_link" placeholder="Link to a track or mix (optional)"></div>
+      <button type="submit" class="btn-submit" id="signup-submit">Join the List</button>
+    </form>
+  </section>
+
+  <section class="faq">
+    <details>
+      <summary>What is The Spark Plug?</summary>
+      <p>A three-band harmonic saturator. The signal is split into Low, Mid and High at two crossover points you set, and each band gets its own character mode, drive amount and dry/wet blend, so the harmonics added to one region are independent of the others.</p>
+    </details>
+    <details>
+      <summary>Why three bands instead of one saturator?</summary>
+      <p>Because a full-range drive lets the loudest part of the signal, usually the low end, decide how much harmonic content everything else receives. Three bands let you add weight down low without dulling the top, or add bite on top without thickening the bass.</p>
+    </details>
+    <details>
+      <summary>What is the difference between the four character modes?</summary>
+      <p>Each is a different harmonic transfer curve. Soft is a gentle symmetric round-off that stays out of the way at low drive. Warm is asymmetric, with even-harmonic content that grows with level. Punchy reacts to transients, crossfading toward a more aggressive curve with added presence. Vintage is tape-style even-harmonic saturation with high-frequency softening and a nonlinear low-end resonance.</p>
+    </details>
+    <details>
+      <summary>Does Auto Gain change my Output Trim?</summary>
+      <p>No. Auto Gain measures the processed signal against the unprocessed band sum and applies its compensation before Output Trim, so the number in the Output Trim field is always the one you set. It is off by default, and switching it off returns the plug-in to exactly the level it had without it.</p>
+    </details>
+    <details>
+      <summary>Is the output stage a limiter?</summary>
+      <p>No. It is a fixed safety stage that keeps the plug-in's own output from exceeding full scale at extreme drive settings. It has no control, it never touches a signal below &minus;1&nbsp;dBFS, and the clip indicator lights exactly when it is doing anything. It is not a mastering limiter and is not intended as one.</p>
+    </details>
+    <details>
+      <summary>Does it add latency?</summary>
+      <p>Yes, a small fixed amount from the oversampled nonlinear stage. It is reported to the host, which compensates for it, and bypassed output is the input delayed by exactly that amount so a bypass comparison stays aligned.</p>
+    </details>
+    <details>
+      <summary>What formats are supported?</summary>
+      <p>VST3 and AU on macOS (Apple Silicon &amp; Intel, Universal). AAX / Windows are not currently supported.</p>
+    </details>
+    <details>
+      <summary>How many computers can I install it on?</summary>
+      <p>Up to 2 computers that you own or control.</p>
+    </details>
+    <details>
+      <summary>Is educational licensing available?</summary>
+      <p>Educational and institutional licensing may be available for schools, labs, and training facilities. Contact Mainline Audio for details.</p>
+    </details>
+    <details>
+      <summary>Do you offer a demo?</summary>
+      <p>Yes. A fully functional 14-day demo &mdash; the same AU/VST3 installer as the paid version &mdash; runs with no audio interruptions, muting, or feature restrictions. Once installed, choose Start 14-Day Demo when you open The Spark Plug. No payment or license key required.</p>
+    </details>
+    <details>
+      <summary>Will there be updates?</summary>
+      <p>The Spark Plug checks once, shortly after you open it, for a newer stable version. If one is available, an UPDATE AVAILABLE badge appears; clicking it opens this page. The checker only reads the public version manifest&mdash;it never downloads or installs software and does not transmit license, project, or usage data. If the check cannot be completed, nothing appears.</p>
+    </details>
+  </section>
+
+  <footer data-site-footer>
+    <div class="footer-links-row">
+      <span class="footer-link">Also in Mainline Audio DSP:</span>
+      <a class="footer-link" href="the-final-word.html">The Final Word</a>
+      <a class="footer-link" href="the-fine-line.html">The Fine Line</a>
+      <a class="footer-link" href="the-focal-point.html">The Focal Point</a>
+      <a class="footer-link" href="the-main-drift.html">The Main Drift</a>
+      <a class="footer-link" href="the-main-squeeze.html">The Main Squeeze</a>
+      <a class="footer-link" href="the-parallax.html">The Parallax</a>
+    </div>
+    <div class="footer-links-row">
+      <a class="footer-link" href="mailto:support@mainline-audio.com">Support</a>
+      <a class="footer-link" href="license-agreement.html">License Agreement</a>
+      <a class="footer-link" href="refund-policy.html">Refund Policy</a>
+      <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <a class="footer-link" href="https://mainline-audio.com" target="_blank" rel="noopener">mainline-audio.com</a>
+  </footer>
+
+</div>
+
+<audio id="bg-track" preload="auto"></audio>
+<div class="audio-widget" id="audio-widget">
+  <div class="now-playing" id="now-playing">Loading...</div>
+  <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+  <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+  <div id="mute-btn" title="Toggle music">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+      <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+      <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+    </svg>
+  </div>
+</div>
+
+<script>
+
+  document.querySelectorAll('select').forEach(sel => {
+    const syncPlaceholderStyle = () => sel.classList.toggle('has-value', sel.value !== '');
+    sel.addEventListener('change', syncPlaceholderStyle);
+    syncPlaceholderStyle();
+  });
+
+  document.getElementById('beta-signup-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const button = document.getElementById('signup-submit');
+    const formData = new FormData(form);
+
+    button.textContent = 'Sending...';
+    button.disabled = true;
+
+    try {
+      const response = await fetch('https://formspree.io/f/xrejblzw', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        window.location.href = 'thankyou.html';
+      } else {
+        alert('Something went wrong. Please try again.');
+        button.textContent = 'Join the List';
+        button.disabled = false;
+      }
+    } catch (err) {
+      alert('Network error. Please check your connection and try again.');
+      button.textContent = 'Join the List';
+      button.disabled = false;
+    }
+  });
+
+
+</script>
+<script src="/assets/player.js"></script>
+<script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
+</body>
+</html>
