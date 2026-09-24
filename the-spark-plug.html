@@ -148,7 +148,7 @@ h1.gradient-headline { margin-bottom: 0.26em; }
     <div class="process-item">
       <div class="process-num">03</div>
       <div class="process-head">Auto Gain</div>
-      <p class="process-body">Optional level matching, off by default, so a band can be judged by its tone rather than by how much louder drive made it. It never writes to your Output Trim.</p>
+      <p class="process-body">Optional level matching for the whole signal, off by default. It compensates the net level change the saturation makes across all three bands, so Drive and Character can be judged by tone rather than loudness. It is applied before Output Trim and never changes your Output Trim setting.</p>
     </div>
     <div class="process-item">
       <div class="process-num">04</div>
@@ -191,7 +191,7 @@ h1.gradient-headline { margin-bottom: 0.26em; }
   <div class="tfl-section">
     <div class="tfl-label">Character</div>
     <h2 class="tfl-heading">Four curves, not four presets.</h2>
-    <p class="tfl-sub">Each mode is a different harmonic transfer curve, and each is normalized so that at 0&nbsp;dB Drive it is not quietly making the band louder. What you hear when you change modes is the harmonic content changing, not the level.</p>
+    <p class="tfl-sub">Each mode is a different harmonic transfer curve. Soft, Warm and Vintage are level-matched at 0&nbsp;dB Drive, so at that setting a change of mode is a change in harmonic content, not in level. Punchy is transient-reactive by design, so its level follows the material slightly.</p>
     <div class="tfl-meter-list">
       <div class="tfl-meter-row">
         <div class="tfl-meter-name">Soft</div>
@@ -238,7 +238,7 @@ h1.gradient-headline { margin-bottom: 0.26em; }
         <div class="tfl-card-desc">Stereo peak meters on the input and the output, with peak hold. A channel that went over keeps a red marker on its own well until you click to clear it.</div>
       </div>
     </div>
-    <p class="tfl-note">A fixed output stage holds the plug-in's own output at full scale so a hard drive setting cannot leave the plug-in above 0&nbsp;dBFS. It has no control, never touches a signal below &minus;1&nbsp;dBFS, and is protection rather than a mastering limiter &mdash; the clip indicator lights exactly when it is doing anything at all.</p>
+    <p class="tfl-note">A fixed output stage holds the plug-in's own output at full scale so a hard drive setting cannot leave the plug-in above 0&nbsp;dBFS. It has no control, never touches a signal below &minus;1&nbsp;dBFS, and is protection rather than a mastering limiter. The output meter&rsquo;s clip marker lights whenever the output would otherwise have gone over 0&nbsp;dBFS.</p>
   </div>
 
   <div class="divider"></div>
@@ -378,7 +378,7 @@ h1.gradient-headline { margin-bottom: 0.26em; }
     </details>
     <details>
       <summary>Is the output stage a limiter?</summary>
-      <p>No. It is a fixed safety stage that keeps the plug-in's own output from exceeding full scale at extreme drive settings. It has no control, it never touches a signal below &minus;1&nbsp;dBFS, and the clip indicator lights exactly when it is doing anything. It is not a mastering limiter and is not intended as one.</p>
+      <p>No. It is a fixed safety stage that keeps the plug-in's own output from exceeding full scale at extreme drive settings. It has no control and it never touches a signal below &minus;1&nbsp;dBFS. It is not a mastering limiter and is not intended as one. The output meter&rsquo;s clip marker lights whenever the output would otherwise have gone over 0&nbsp;dBFS.</p>
     </details>
     <details>
       <summary>Does it add latency?</summary>
@@ -402,7 +402,7 @@ h1.gradient-headline { margin-bottom: 0.26em; }
     </details>
     <details>
       <summary>Will there be updates?</summary>
-      <p>The Spark Plug checks once, shortly after you open it, for a newer stable version. If one is available, an UPDATE AVAILABLE badge appears; clicking it opens this page. The checker only reads the public version manifest&mdash;it never downloads or installs software and does not transmit license, project, or usage data. If the check cannot be completed, nothing appears.</p>
+      <p>Mainline Audio may provide updates for The Spark Plug at its discretion.</p>
     </details>
   </section>
 
