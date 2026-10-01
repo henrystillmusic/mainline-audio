@@ -34,7 +34,7 @@
     "headline": "The Final Word Release Notes",
     "description": "Release notes for The Final Word mastering limiter — what changed in each version, and what it means when you are working.",
     "datePublished": "2026-09-08",
-    "dateModified": "2026-09-08",
+    "dateModified": "2026-10-01",
     "author": { "@id": "https://mainline-audio.com/#person" },
     "publisher": { "@id": "https://mainline-audio.com/#organization" },
     "mainEntityOfPage": {
@@ -269,13 +269,48 @@
         <p class="note-eyebrow">Release Notes</p>
         <h1 class="gradient-text">The Final Word Release Notes</h1>
         <p class="note-subtitle">What changed in each version of the mastering limiter, and what it means when you are working.</p>
-        <time class="note-pubdate" datetime="2026-09-18">September 2026</time>
+        <time class="note-pubdate" datetime="2026-10-01">October 2026</time>
       </header>
 
       <div class="divider"></div>
 
       <div class="reading-quiet-zone">
       <div class="prose">
+        <h2>1.1.3</h2>
+        <p class="note-pubdate" style="margin-bottom: 26px;">Released 1 October 2026</p>
+
+        <p>A maintenance release refining true-peak accuracy and peak-mode limiting.</p>
+
+        <ul>
+          <li><strong>True Peak.</strong> True-peak protection is now continuous and ceiling-accurate at every block size, replacing a prior design that could step briefly on sustained low-frequency material at a host's block boundary. The Ceiling shown is the true-peak limit actually enforced.</li>
+          <li><strong>Peak-mode limiting.</strong> In Peak detection mode, the limiter now looks ahead using its own Lookahead setting to anticipate the gain reduction a sustained tone will need, instead of reacting only after the signal arrives &mdash; removing unnecessary safety-stage clipping on sustained material.</li>
+          <li><strong>Input handling.</strong> Protection against invalid (NaN/Infinity) input now covers all non-finite values, extending 1.1.2's NaN-only containment.</li>
+          <li><strong>Latency.</strong> Reported plug-in latency increases by 78 samples versus 1.1.2, at every Lookahead/Oversampling/True Peak setting &mdash; a small, fixed increase from the improved True Peak stage. Sessions using automatic delay compensation re-latch on their own; if you've manually offset tracks around The Final Word's latency, re-check that offset.</li>
+        </ul>
+
+        <p>Parameters, presets and saved-session compatibility are unchanged. Existing projects open normally.</p>
+
+        <p>Existing owners can download 1.1.3 from the original Lemon Squeezy download link in their purchase email.</p>
+
+        <div class="divider"></div>
+
+        <h2>1.1.2</h2>
+        <p class="note-pubdate" style="margin-bottom: 26px;">Released 24 September 2026</p>
+
+        <p>A maintenance release refining Punchy Character and workflow clarity. No parameter, preset, state or latency change.</p>
+
+        <ul>
+          <li><strong>Punchy Character.</strong> Now responds to actual sustained energy growth rather than crest factor, preserving steady material more cleanly while real transients keep their impact; its shaping curve no longer folds back on extreme input.</li>
+          <li><strong>Input handling.</strong> NaN input is now contained before it can affect processing.</li>
+          <li><strong>Interface.</strong> Header workflow controls (Undo/Redo, preset strip, A/B, Bypass) read more clearly; the Output and True Peak meter captions are centered on the meters they name.</li>
+        </ul>
+
+        <p>Normal limiter audio, parameters, presets and saved-session compatibility are unchanged. Existing projects open normally.</p>
+
+        <p>Existing owners can download 1.1.2 from the original Lemon Squeezy download link in their purchase email.</p>
+
+        <div class="divider"></div>
+
         <h2>1.1.1</h2>
         <p class="note-pubdate" style="margin-bottom: 26px;">Released 18 September 2026</p>
 
