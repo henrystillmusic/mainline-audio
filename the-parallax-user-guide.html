@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Parallax User Guide | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta name="description" content="The official guide to The Parallax three-band stereo enhancer — Low/Mid/High width, Perspective, Integrity, Mono, and practical stereo-imaging workflows." />
+  <link rel="canonical" href="https://mainline-audio.com/the-parallax-user-guide.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mainline-audio.com/the-parallax-user-guide.html" />
+  <meta property="og:title" content="The Parallax User Guide | Mainline Audio" />
+  <meta property="og:description" content="The official guide to The Parallax three-band stereo enhancer — Low/Mid/High width, Perspective, Integrity, Mono, and practical stereo-imaging workflows." />
+  <meta property="og:image" content="https://mainline-audio.com/TheParallax_LaunchPic.png" />
+  <meta property="article:published_time" content="2026-10-13" />
+  <meta property="article:author" content="Henry Still" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/the-parallax-user-guide.html" />
+  <meta name="twitter:title" content="The Parallax User Guide | Mainline Audio" />
+  <meta name="twitter:description" content="The official guide to The Parallax three-band stereo enhancer — Low/Mid/High width, Perspective, Integrity, Mono, and practical stereo-imaging workflows." />
+  <meta name="twitter:image" content="https://mainline-audio.com/TheParallax_LaunchPic.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://mainline-audio.com/the-parallax-user-guide.html#article",
+    "headline": "The Parallax User Guide",
+    "description": "The official guide to The Parallax three-band stereo enhancer — Low/Mid/High width, Perspective, Integrity, Mono, and practical stereo-imaging workflows.",
+    "datePublished": "2026-10-13",
+    "dateModified": "2026-10-13",
+    "author": { "@id": "https://mainline-audio.com/#person" },
+    "publisher": { "@id": "https://mainline-audio.com/#organization" },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mainline-audio.com/the-parallax-user-guide.html"
+    }
+  }
+  </script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    a { color: inherit; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .note-header {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 40px 28px 56px;
+    }
+    .note-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 24px;
+    }
+    .note-header h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.12;
+      max-width: 780px; margin-bottom: 22px;
+    }
+    .note-subtitle {
+      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
+      margin-bottom: 18px;
+    }
+    .note-pubdate {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 64px 28px 8px;
+    }
+    .prose h2 {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3;
+      margin-top: 56px; margin-bottom: 22px;
+      scroll-margin-top: 24px;
+    }
+    .prose > h2:first-child { margin-top: 0; }
+    .prose h3 {
+      font-size: 16px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.35;
+      margin-top: 36px; margin-bottom: 14px;
+    }
+    .prose h4 {
+      font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em;
+      text-transform: uppercase; color: rgba(245,245,245,0.4);
+      margin-top: 24px; margin-bottom: 10px;
+    }
+    .prose p {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .prose ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(245,245,245,0.1);
+    }
+    .prose ul li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 2px 0;
+    }
+    .prose ol {
+      margin: 0 0 20px;
+      padding-left: 22px;
+    }
+    .prose ol li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 4px 0;
+    }
+    .prose ol li strong,
+    .prose p strong { color: rgba(245,245,245,0.72); font-weight: 700; }
+
+    /* ── TABLE OF CONTENTS ── */
+    .guide-toc {
+      border: 1px solid rgba(245,245,245,0.1);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 8px 0 48px;
+    }
+    .guide-toc-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      margin-bottom: 14px;
+    }
+    .guide-toc ol {
+      list-style: none; padding: 0; margin: 0;
+      columns: 2; column-gap: 28px;
+    }
+    .guide-toc li { margin-bottom: 8px; break-inside: avoid; padding: 0; }
+    .guide-toc a {
+      font-size: 12.5px; color: rgba(245,245,245,0.42);
+      text-decoration: none; line-height: 1.6;
+    }
+    .guide-toc a:hover { color: rgba(245,245,245,0.75); }
+
+    /* ── TECHNICAL NOTE CALLOUTS ──
+       Deliberately quieter than the main prose: smaller type, more muted
+       colour, left-border accent instead of a heading-weight treatment — a
+       reference aside, not another lesson. */
+    .tech-note {
+      margin: 32px 0 36px;
+      padding: 18px 22px;
+      border-left: 2px solid rgba(61,124,224,0.5);
+      background: rgba(255,255,255,0.02);
+      border-radius: 0 6px 6px 0;
+    }
+    .tech-note-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 10px;
+    }
+    .tech-note h3 {
+      font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.3;
+      margin: 0 0 12px;
+    }
+    .tech-note p {
+      font-size: 13px; font-weight: 400; color: rgba(245,245,245,0.4);
+      letter-spacing: 0.01em; line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .tech-note p:last-child { margin-bottom: 0; }
+
+    /* ── READING QUIET ZONE ──
+       Shared treatment across the site's long-form article pages: a soft
+       feathered scrim between the snow canvas and the reading column so the
+       article text sits in calmer air without a visible panel or border. */
+    .reading-quiet-zone { position: relative; }
+    .reading-quiet-zone::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: min(920px, 100%);
+      transform: translateX(-50%);
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(10,10,10,0)    0%,
+        rgba(10,10,10,0.7) 22%,
+        rgba(10,10,10,0.7) 78%,
+        rgba(10,10,10,0)  100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+    }
+
+    /* ── CLOSING ── */
+    .note-closing {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 8px 28px 24px;
+      text-align: center;
+    }
+    .note-closing .divider { margin: 64px auto 40px; }
+    .note-author {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      color: rgba(245,245,245,0.7); margin-bottom: 6px;
+    }
+    .note-author-role {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+    }
+    .note-links {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-text {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-text:hover { color: rgba(245,245,245,0.65); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+
+    @media (max-width: 640px) {
+      .note-header { padding: 28px 24px 40px; }
+      .prose { padding: 48px 24px 8px; }
+      .prose h2 { font-size: 17px; margin-top: 44px; }
+      .prose h3 { font-size: 15px; }
+      .prose p, .prose ul li, .prose ol li { font-size: 14px; }
+      .guide-toc { padding: 20px 22px; }
+      .guide-toc ol { columns: 1; }
+      .note-closing { padding: 8px 24px 24px; }
+      .note-links { gap: 20px; }
+      footer { padding: 48px 24px 36px; }
+    }
+  </style>
+</head>
+<body data-page="">
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav data-site-nav aria-label="Main navigation">
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+    </nav>
+
+    <article>
+      <header class="note-header">
+        <p class="note-eyebrow">User Guide</p>
+        <h1 class="gradient-text">The Parallax User Guide</h1>
+        <p class="note-subtitle">Low, Mid, High width, Perspective, Integrity, Mono, and practical stereo-imaging workflows.</p>
+        <time class="note-pubdate" datetime="2026-10-13">October 2026</time>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="reading-quiet-zone">
+      <div class="prose">
+        <p><strong>The Parallax</strong> is a three-band stereo enhancer for shaping width where it matters. Instead of making one broad stereo decision for the whole signal, it lets you treat the low, mid, and high frequency regions independently — so the low end can remain focused while the midrange and top open around it.</p>
+        <p>Use it on individual tracks, buses, mix buses, or toward the end of a master when the stereo field needs a deliberate adjustment. There is no fixed place for it in a chain; the useful place is wherever its stereo decision supports the record.</p>
+        <p>The two central ideas are simple:</p>
+        <ul>
+          <li><strong>Perspective</strong> scales your overall width decision.</li>
+          <li><strong>Integrity</strong> reacts only when widened material begins to lose phase coherence, gently bringing it back toward unity.</li>
+        </ul>
+
+        <nav class="guide-toc" aria-label="Guide contents">
+          <p class="guide-toc-label">Contents</p>
+          <ol>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#the-three-bands">The Three Bands</a></li>
+            <li><a href="#perspective">Perspective</a></li>
+            <li><a href="#integrity">Integrity</a></li>
+            <li><a href="#mono">Mono</a></li>
+            <li><a href="#response-display">Response Display</a></li>
+            <li><a href="#presets-ab-bypass">Presets, A/B, and Bypass</a></li>
+            <li><a href="#practical-workflows">Practical Workflows</a></li>
+            <li><a href="#zero-latency-operation">Zero-Latency Operation</a></li>
+            <li><a href="#updates-licensing-support">Updates, Licensing, and Support</a></li>
+            <li><a href="#final-perspective">Final Perspective</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="quick-start">Quick Start</h2>
+        <ol>
+          <li><strong>Begin with the Default preset.</strong></li>
+          <li><strong>Set Low, Mid, and High width</strong> for the balance you want.</li>
+          <li><strong>Keep Low at 100%</strong> or narrow it slightly when the bottom needs more focus.</li>
+          <li><strong>Use Perspective</strong> as the final, global width trim.</li>
+          <li><strong>Raise Integrity</strong> only after you have widened one or more bands beyond 100%.</li>
+          <li><strong>Check Mono</strong>, then compare with Bypass at a matched level.</li>
+        </ol>
+
+        <h2 id="the-three-bands">The Three Bands</h2>
+        <p><strong>Low</strong>, <strong>Mid</strong>, and <strong>High</strong> control stereo width independently from 0% to 200%.</p>
+        <ul>
+          <li><strong>0%</strong> removes the Side information for that band, making it mono.</li>
+          <li><strong>100%</strong> leaves its original stereo width unchanged.</li>
+          <li>Values above <strong>100%</strong> increase width.</li>
+        </ul>
+        <p>This is Mid/Side width processing: the Mid content is preserved while the Side content for each band is scaled. <strong>The Parallax</strong> does not use delay, Haas processing, or phase trickery to create width.</p>
+
+        <h3>Low Split and High Split</h3>
+        <p><strong>Low Split</strong> and <strong>High Split</strong> determine where the three frequency regions meet. The crossovers blend smoothly rather than switching abruptly from one band to another.</p>
+        <ul>
+          <li>Low Split: 60–1,000 Hz; default 300 Hz</li>
+          <li>High Split: 1,000–12,000 Hz; default 3,000 Hz</li>
+        </ul>
+        <p>Move the split points only when the musical balance needs it. If the bass feels too broad, lowering the Low Split can confine your low-band decision to a smaller region. If air or percussion needs room without widening the vocal range, raise the High Split and work primarily with High.</p>
+
+        <h2 id="perspective">Perspective</h2>
+        <p><strong>Perspective</strong> is the master width control. It scales the three band-width settings together from 0% to 200%, preserving their relative relationship.</p>
+        <p>At 100%, Perspective changes nothing. Lower it to pull your complete stereo decision inward; raise it to push the entire image outward.</p>
+        <p>Perspective does not create depth, move elements front to back, introduce delay, or change the Mid channel. Think of it as the final trim after you have balanced Low, Mid, and High — not a replacement for choosing the right per-band widths.</p>
+
+        <h2 id="integrity">Integrity</h2>
+        <p><strong>Integrity</strong> is a reactive safety net for width above 100%. It measures the stereo relationship of the processed signal and intervenes only when two things are true:</p>
+        <ol>
+          <li>A band has been widened beyond 100% after Perspective is applied.</li>
+          <li>The material in that moment is losing phase coherence.</li>
+        </ol>
+        <p>When both conditions occur, Integrity gently pulls that band's width back toward 100%. It never narrows a band below unity, and it never changes any band at or below 100%.</p>
+        <p>Integrity is sensitivity, from 0% to 100%, not an amount of stereo width, a correlation meter, or a tone control: 0% turns the restraint off; higher settings make it respond more strongly when widened material begins to become unstable.</p>
+        <p>The pink glow around the Integrity control shows the restraint actually being applied at that moment. It is not simply an indication of the knob position.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <p>Integrity evaluates correlation from the processed output, then applies its restraint smoothly. It keeps the listening result responsive while avoiding sudden changes to the stereo field.</p>
+        </aside>
+
+        <h2 id="mono">Mono</h2>
+        <p><strong>Mono</strong> is a true processed-signal mono check. It collapses all three bands to 0% width, regardless of your Perspective or Integrity settings.</p>
+        <p>Use it before committing to a wider setting. You are listening for what remains when the Side information is removed: kick, bass, vocal, core groove, and essential tonal balance should still make sense.</p>
+        <p>Mono is not automatic protection. It is a deliberate listening tool, and it remains on or off exactly as you set it.</p>
+
+        <h2 id="response-display">Response Display</h2>
+        <p>The response display has three distinct visual layers:</p>
+        <ul>
+          <li><strong>Blue</strong> shows the Low, Mid, and High width settings you have chosen.</li>
+          <li><strong>Pink</strong> shows the resulting width across frequency after crossover blending, Perspective, Integrity, and Mono are considered.</li>
+          <li><strong>Grey</strong> shows the incoming spectrum.</li>
+        </ul>
+        <p>The display is not a correlation meter and does not measure stereo width in the source. It is a clear view of the decision <strong>The Parallax</strong> is making. Let it help you understand the settings, then judge the result by listening.</p>
+
+        <h2 id="presets-ab-bypass">Presets, A/B, and Bypass</h2>
+        <p><strong>The Parallax</strong> includes five fixed factory presets:</p>
+        <ul>
+          <li>Default</li>
+          <li>Open Sesame</li>
+          <li>Open Air</li>
+          <li>Wide Spread</li>
+          <li>Down Low, Up High</li>
+        </ul>
+        <p>Use them as starting points, not rules. The preset selector is intentionally simple: there are no user presets, saving, renaming, or deleting. Recalling a preset changes Low, Mid, High, Perspective, Integrity, and the split frequencies as one edit; Mono and Bypass stay where they are.</p>
+        <p><strong>A/B</strong> stores two complete width states. Use it to compare two actual directions — perhaps a conservative low-end focus against a wider high-frequency approach — without rebuilding either one. A/B compares the seven width, Perspective, Integrity, and split settings; Mono and Bypass are deliberately left untouched.</p>
+        <p><strong>Bypass</strong> crossfades smoothly to the untouched input so comparisons do not click. The processing and Integrity tracker remain ready underneath, so re-engaging Bypass does not create a cold or delayed response.</p>
+
+        <h2 id="practical-workflows">Practical Workflows</h2>
+
+        <h3>Subtle width</h3>
+        <p>Leave Low close to 100%, add a small amount of width to Mid or High, and keep Perspective near 100%. This is often enough to make the image feel less constrained without changing the identity of the record.</p>
+
+        <h3>Focused low end, open top</h3>
+        <p>Narrow Low slightly or leave it at unity, then open Mid and High. Use the split controls to make sure the transition occurs where the music needs it. This is especially useful when kick and bass need a firm center while percussion, guitars, pads, or ambience can extend outward.</p>
+
+        <h3>More ambitious width</h3>
+        <p>Push one or more bands above 100%, then bring up Integrity to the degree that the material needs. The goal is not to keep the width as wide as possible; it is to let the record open without losing the parts that make it feel solid.</p>
+        <p><strong>Open Sesame</strong>, <strong>Open Air</strong>, and <strong>Wide Spread</strong> are useful references for more assertive starting points. <strong>Down Low, Up High</strong> is a direct way to hear the benefit of narrowing the low band while expanding the upper regions.</p>
+
+        <h3>Final compatibility check</h3>
+        <p>Use A/B to compare two choices at the same level. Then engage Mono. If the record loses its center, drive, or tonal balance, reduce width, adjust split points, or let Integrity work a little more. Return to stereo and Bypass before making the final call.</p>
+
+        <h2 id="zero-latency-operation">Zero-Latency Operation</h2>
+        <p><strong>The Parallax</strong> adds no processing latency and has no tail. Its crossover design is built for real-time use, so it can be practical on tracks and buses as well as in a final stereo-field decision.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <p>The three bands use a real-time, minimum-phase crossover system. At unity width, they recombine transparently rather than imposing a separate tonal shape on the source.</p>
+        </aside>
+
+        <h2 id="updates-licensing-support">Updates, Licensing, and Support</h2>
+        <p><strong>The Parallax</strong> is available as AU and VST3 for macOS. The About overlay shows the installed version and provides links to this User Guide, the product page, the Mainline Audio site, and support.</p>
+        <p>Some host browsers may still show the earlier descriptor "Stereo Imager." This refers to the same plug-in; the customer-facing product description is <strong>Three-Band Stereo Enhancer</strong>.</p>
+        <p>For current downloads, release notes, and support, visit <a href="the-parallax.html">the product page</a> or <a href="mailto:support@mainline-audio.com">support@mainline-audio.com</a>.</p>
+
+        <h2 id="final-perspective">Final Perspective</h2>
+        <p>The goal of <strong>The Parallax</strong> is not maximum width. It is intentional perspective: a tighter foundation, a more open upper field, and a stereo image that remains believable when the record is heard in mono. Make the band decisions first, use Perspective as the final trim, and let Integrity be the restraint — not the substitute for listening.</p>
+      </div>
+
+      <footer class="note-closing">
+        <div class="divider"></div>
+        <p class="note-author">Henry Still</p>
+        <p class="note-author-role">Mastering Engineer · Founder, Mainline Audio</p>
+        <div class="note-links">
+          <a class="btn-text" href="the-parallax.html">The Parallax →</a>
+          <a class="btn-text" href="the-parallax-release-notes.html">Release Notes →</a>
+        </div>
+      </footer>
+      </div>
+    </article>
+
+    <footer data-site-footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+<script src="/assets/player.js"></script>
+<script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
+</body>
+</html>
