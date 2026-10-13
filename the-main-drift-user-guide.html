@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Main Drift User Guide | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta name="description" content="The official guide to The Main Drift creative drift processor — Drift, Speed, Flutter, Width, Mix, Tape and Vinyl modes, and practical workflows." />
+  <link rel="canonical" href="https://mainline-audio.com/the-main-drift-user-guide.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mainline-audio.com/the-main-drift-user-guide.html" />
+  <meta property="og:title" content="The Main Drift User Guide | Mainline Audio" />
+  <meta property="og:description" content="The official guide to The Main Drift creative drift processor — Drift, Speed, Flutter, Width, Mix, Tape and Vinyl modes, and practical workflows." />
+  <meta property="og:image" content="https://mainline-audio.com/TheMainDrift_LaunchPic.png" />
+  <meta property="article:published_time" content="2026-10-13" />
+  <meta property="article:author" content="Henry Still" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/the-main-drift-user-guide.html" />
+  <meta name="twitter:title" content="The Main Drift User Guide | Mainline Audio" />
+  <meta name="twitter:description" content="The official guide to The Main Drift creative drift processor — Drift, Speed, Flutter, Width, Mix, Tape and Vinyl modes, and practical workflows." />
+  <meta name="twitter:image" content="https://mainline-audio.com/TheMainDrift_LaunchPic.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://mainline-audio.com/the-main-drift-user-guide.html#article",
+    "headline": "The Main Drift User Guide",
+    "description": "The official guide to The Main Drift creative drift processor — Drift, Speed, Flutter, Width, Mix, Tape and Vinyl modes, and practical workflows.",
+    "datePublished": "2026-10-13",
+    "dateModified": "2026-10-13",
+    "author": { "@id": "https://mainline-audio.com/#person" },
+    "publisher": { "@id": "https://mainline-audio.com/#organization" },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mainline-audio.com/the-main-drift-user-guide.html"
+    }
+  }
+  </script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    a { color: inherit; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .note-header {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 40px 28px 56px;
+    }
+    .note-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 24px;
+    }
+    .note-header h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.12;
+      max-width: 780px; margin-bottom: 22px;
+    }
+    .note-subtitle {
+      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
+      margin-bottom: 18px;
+    }
+    .note-pubdate {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 64px 28px 8px;
+    }
+    .prose h2 {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3;
+      margin-top: 56px; margin-bottom: 22px;
+      scroll-margin-top: 24px;
+    }
+    .prose > h2:first-child { margin-top: 0; }
+    .prose h3 {
+      font-size: 16px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.35;
+      margin-top: 36px; margin-bottom: 14px;
+    }
+    .prose h4 {
+      font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em;
+      text-transform: uppercase; color: rgba(245,245,245,0.4);
+      margin-top: 24px; margin-bottom: 10px;
+    }
+    .prose p {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .prose ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(245,245,245,0.1);
+    }
+    .prose ul li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 2px 0;
+    }
+    .prose ol {
+      margin: 0 0 20px;
+      padding-left: 22px;
+    }
+    .prose ol li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 4px 0;
+    }
+    .prose ol li strong,
+    .prose p strong { color: rgba(245,245,245,0.72); font-weight: 700; }
+    .prose table {
+      width: 100%; border-collapse: collapse; margin: 0 0 20px;
+      font-size: 14px;
+    }
+    .prose th {
+      text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(245,245,245,0.34);
+      padding: 8px 14px 8px 0; border-bottom: 1px solid rgba(245,245,245,0.12);
+    }
+    .prose td {
+      padding: 10px 14px 10px 0; border-bottom: 1px solid rgba(245,245,245,0.08);
+      color: rgba(245,245,245,0.5); line-height: 1.6; vertical-align: top;
+    }
+    .prose td strong { color: rgba(245,245,245,0.72); font-weight: 700; }
+
+    /* ── TABLE OF CONTENTS ── */
+    .guide-toc {
+      border: 1px solid rgba(245,245,245,0.1);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 8px 0 48px;
+    }
+    .guide-toc-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      margin-bottom: 14px;
+    }
+    .guide-toc ol {
+      list-style: none; padding: 0; margin: 0;
+      columns: 2; column-gap: 28px;
+    }
+    .guide-toc li { margin-bottom: 8px; break-inside: avoid; padding: 0; }
+    .guide-toc a {
+      font-size: 12.5px; color: rgba(245,245,245,0.42);
+      text-decoration: none; line-height: 1.6;
+    }
+    .guide-toc a:hover { color: rgba(245,245,245,0.75); }
+
+    /* ── TECHNICAL NOTE CALLOUTS ──
+       Deliberately quieter than the main prose: smaller type, more muted
+       colour, left-border accent instead of a heading-weight treatment — a
+       reference aside, not another lesson. */
+    .tech-note {
+      margin: 32px 0 36px;
+      padding: 18px 22px;
+      border-left: 2px solid rgba(61,124,224,0.5);
+      background: rgba(255,255,255,0.02);
+      border-radius: 0 6px 6px 0;
+    }
+    .tech-note-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 10px;
+    }
+    .tech-note h3 {
+      font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.3;
+      margin: 0 0 12px;
+    }
+    .tech-note p {
+      font-size: 13px; font-weight: 400; color: rgba(245,245,245,0.4);
+      letter-spacing: 0.01em; line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .tech-note p:last-child { margin-bottom: 0; }
+
+    /* ── READING QUIET ZONE ──
+       Shared treatment across the site's long-form article pages: a soft
+       feathered scrim between the snow canvas and the reading column so the
+       article text sits in calmer air without a visible panel or border. */
+    .reading-quiet-zone { position: relative; }
+    .reading-quiet-zone::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: min(920px, 100%);
+      transform: translateX(-50%);
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(10,10,10,0)    0%,
+        rgba(10,10,10,0.7) 22%,
+        rgba(10,10,10,0.7) 78%,
+        rgba(10,10,10,0)  100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+    }
+
+    /* ── CLOSING ── */
+    .note-closing {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 8px 28px 24px;
+      text-align: center;
+    }
+    .note-closing .divider { margin: 64px auto 40px; }
+    .note-author {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      color: rgba(245,245,245,0.7); margin-bottom: 6px;
+    }
+    .note-author-role {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+    }
+    .note-links {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-text {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-text:hover { color: rgba(245,245,245,0.65); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+
+    @media (max-width: 640px) {
+      .note-header { padding: 28px 24px 40px; }
+      .prose { padding: 48px 24px 8px; }
+      .prose h2 { font-size: 17px; margin-top: 44px; }
+      .prose h3 { font-size: 15px; }
+      .prose p, .prose ul li, .prose ol li { font-size: 14px; }
+      .prose table { font-size: 13px; }
+      .guide-toc { padding: 20px 22px; }
+      .guide-toc ol { columns: 1; }
+      .note-closing { padding: 8px 24px 24px; }
+      .note-links { gap: 20px; }
+      footer { padding: 48px 24px 36px; }
+    }
+  </style>
+</head>
+<body data-page="">
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav data-site-nav aria-label="Main navigation">
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+    </nav>
+
+    <article>
+      <header class="note-header">
+        <p class="note-eyebrow">User Guide</p>
+        <h1 class="gradient-text">The Main Drift User Guide</h1>
+        <p class="note-subtitle">Drift, Speed, Flutter, Width, Mix, Tape and Vinyl modes, and practical workflows.</p>
+        <time class="note-pubdate" datetime="2026-10-13">October 2026</time>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="reading-quiet-zone">
+      <div class="prose">
+        <p><strong>The Main Drift</strong> is a free Creative Drift Processor for tape- and vinyl-style pitch/time movement. Use it to add subtle instability, slow worn-out motion, faster flutter, stereo divergence, or more obvious creative warping.</p>
+        <p>Its motion engine shares its lineage with <strong>The Focal Point</strong>, but <strong>The Main Drift</strong> is a complete standalone tool: it adds its own fixed latency handling, latency-matched dry path, Mix control, and aligned Bypass. Its presets are designed for this plug-in and are not interchangeable with Focal Point presets.</p>
+
+        <nav class="guide-toc" aria-label="Guide contents">
+          <p class="guide-toc-label">Contents</p>
+          <ol>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#drift-speed-flutter">Drift, Speed, and Flutter</a></li>
+            <li><a href="#tape-and-vinyl">Tape and Vinyl</a></li>
+            <li><a href="#width">Width</a></li>
+            <li><a href="#mix">Mix</a></li>
+            <li><a href="#bypass-and-timing">Bypass and Timing</a></li>
+            <li><a href="#presets">Presets</a></li>
+            <li><a href="#practical-workflows">Practical Workflows</a></li>
+            <li><a href="#updates-and-support">Updates and Support</a></li>
+            <li><a href="#final-perspective">Final Perspective</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="quick-start">Quick Start</h2>
+        <ol>
+          <li><strong>Start with Default Vinyl.</strong></li>
+          <li><strong>Set Drift</strong> for the overall amount of movement.</li>
+          <li><strong>Use Speed</strong> to establish the pace, then add Flutter only if the sound needs faster instability.</li>
+          <li><strong>On stereo material, raise Width</strong> to let the left and right sides move less alike.</li>
+          <li><strong>Keep Mix at 100%</strong> for a pure drift effect. Move it lower only when you deliberately want chorus- or flange-style interaction.</li>
+        </ol>
+
+        <h2 id="drift-speed-flutter">Drift, Speed, and Flutter</h2>
+
+        <h3>Drift</h3>
+        <p><strong>Drift</strong> is the overall depth of pitch and timing movement, from 0% to 100%. Lower settings are weighted toward fine control; higher settings become more pronounced.</p>
+        <p>At 0%, the pitch movement is inactive, but the engine remains ready and time-aligned. Raising Drift again does not create a startup artifact.</p>
+
+        <h3>Speed</h3>
+        <p><strong>Speed</strong> sets the main movement rate from 0.05 to 3.0 Hz. Slow settings create long, gradual motion. Faster settings make the effect more obvious, rhythmic, or unstable.</p>
+        <p>The default is 0.55 Hz, which is a useful starting point for an audible but controlled drift.</p>
+
+        <h3>Flutter</h3>
+        <p><strong>Flutter</strong> adds faster, irregular wobble on top of the main movement. Its depth follows Drift: with Drift at 0%, Flutter has nothing to add.</p>
+        <p>Use Flutter sparingly when you want a more worn, mechanical, or unstable character. Tape uses more flutter than Vinyl by design.</p>
+
+        <h2 id="tape-and-vinyl">Tape and Vinyl</h2>
+        <p>The two modes choose the character of the movement itself.</p>
+
+        <h3>Vinyl</h3>
+        <p><strong>Vinyl</strong> is dominated by a steady, repeating wobble at the selected Speed. It has a familiar cyclical movement, with a slightly uneven rise and fall that keeps it from feeling perfectly mechanical.</p>
+        <p>Choose Vinyl for turntable-like motion, repeating pitch sway, or an effect that locks clearly to the Speed control.</p>
+
+        <h3>Tape</h3>
+        <p><strong>Tape</strong> is more irregular. Its movement wanders, its wow is less perfectly repetitive, and it carries more flutter.</p>
+        <p>Choose Tape for degraded tape character, unstable playback, or a less predictable sense of drift.</p>
+        <p>Switching modes crossfades smoothly, so you can compare their character without an abrupt jump.</p>
+
+        <h2 id="width">Width</h2>
+        <p><strong>Width</strong> controls how independently the left and right channels drift.</p>
+        <ul>
+          <li>At <strong>0%</strong>, both channels move together.</li>
+          <li>At <strong>100%</strong>, each channel follows its own drift pattern.</li>
+        </ul>
+        <p>Width affects stereo sources only. On a mono track, it has no audible effect — there is no second channel to separate.</p>
+        <p>Start low when you want the stereo image to remain cohesive. Raise it when the movement itself should create width, uncertainty, or a more unstable field.</p>
+
+        <h2 id="mix">Mix</h2>
+        <p><strong>Mix</strong> blends the drifting signal with a latency-matched dry signal.</p>
+        <ul>
+          <li>At <strong>100%</strong>, you hear the fully drifting signal.</li>
+          <li>At <strong>0%</strong>, you hear a time-aligned delayed-dry signal.</li>
+        </ul>
+        <p>Between those endpoints, Mix is deliberately creative rather than neutral. The static dry path and continuously moving wet path interact to create chorus- or flange-style movement. This is not a phase-neutral blend, and it is not meant to be.</p>
+        <p>Keep Mix at 100% when you want pure pitch/time drift. Bring it down when you want the dry and moving signals to rub against each other as part of the sound.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <p><strong>The Main Drift</strong> has a fixed delay of roughly 42 ms, reported automatically to your DAW. Its dry path is matched to that delay, so the 0% and 100% Mix endpoints remain properly aligned once your host applies delay compensation.</p>
+        </aside>
+
+        <h2 id="bypass-and-timing">Bypass and Timing</h2>
+        <p><strong>Bypass</strong> passes audio through with a smooth, time-aligned crossfade. The motion engine and delay paths keep running underneath, so re-engaging processing is seamless rather than starting cold.</p>
+        <p>The fixed latency remains constant at every setting, including Bypass. This keeps the plug-in in sync with the rest of a session and makes it safe to automate or bypass mid-mix without timing jumps.</p>
+        <p><strong>The Main Drift</strong> supports mono-to-mono and stereo-to-stereo processing. It does not upmix a mono signal or force stereo output.</p>
+
+        <h2 id="presets">Presets</h2>
+        <p><strong>The Main Drift</strong> includes five factory starting points:</p>
+        <table>
+          <thead><tr><th>Preset</th><th>Character</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Default Vinyl</strong></td><td>Balanced repeating vinyl-style drift.</td></tr>
+            <tr><td><strong>Gentle Tape</strong></td><td>Subtle, slow tape movement.</td></tr>
+            <tr><td><strong>Slow Deep</strong></td><td>Wide, slow, more pronounced tape instability.</td></tr>
+            <tr><td><strong>Fast Vinyl</strong></td><td>Quicker vinyl wobble with added flutter.</td></tr>
+            <tr><td><strong>Broken Transmission</strong></td><td>Aggressive vinyl instability for obvious creative warping.</td></tr>
+          </tbody>
+        </table>
+        <p>The preset strip lets you browse these five fixed settings. There are no user presets, Save As, Rename, or Delete functions. Presets do not change Mix or Bypass.</p>
+
+        <h2 id="practical-workflows">Practical Workflows</h2>
+
+        <h3>Subtle analog character</h3>
+        <p>Use Default Vinyl or Gentle Tape. Keep Drift low, Width modest, and Mix at 100%. The goal is movement that is felt more than noticed.</p>
+
+        <h3>Slow, deep instability</h3>
+        <p>Start with Slow Deep. Its low Speed and higher Drift create a broad, degraded-tape movement that works well on pads, ambience, sustained synths, or transitions.</p>
+
+        <h3>Faster creative warping</h3>
+        <p>Start with Fast Vinyl or Broken Transmission. Increase Flutter for more agitation, then decide whether Width should keep the channels together or let the stereo image become less stable.</p>
+
+        <h3>Chorus or flange movement</h3>
+        <p>Set Mix somewhere between 0% and 100%. Adjust Drift and Speed until the interaction between dry and wet feels musical. This is an intentional alternate use of the plug-in — not a fault or a compromise.</p>
+
+        <h3>Mono sources</h3>
+        <p>Use Drift, Speed, Flutter, Mode, and Mix normally. Leave Width alone: it does not affect a mono signal.</p>
+
+        <h2 id="updates-and-support">Updates and Support</h2>
+        <p><strong>The Main Drift</strong> is a free, license-free AU and VST3 plug-in for macOS. There is no activation, trial, or purchase process.</p>
+        <p>The About overlay shows the installed version and provides links to this User Guide, the product page, the Mainline Audio site, and support.</p>
+        <p>For current downloads, release notes, and support, visit <a href="the-main-drift.html">the product page</a> or <a href="mailto:support@mainline-audio.com">support@mainline-audio.com</a>.</p>
+
+        <h2 id="final-perspective">Final Perspective</h2>
+        <p><strong>The Main Drift</strong> works best when its movement has a purpose. Keep it subtle when you want a performance to feel more human or worn-in; push it when instability itself is the character. Start with the endpoints of Mix, then use the space between them when you want the effect to become part of the arrangement.</p>
+      </div>
+
+      <footer class="note-closing">
+        <div class="divider"></div>
+        <p class="note-author">Henry Still</p>
+        <p class="note-author-role">Mastering Engineer · Founder, Mainline Audio</p>
+        <div class="note-links">
+          <a class="btn-text" href="the-main-drift.html">The Main Drift →</a>
+          <a class="btn-text" href="the-main-drift-release-notes.html">Release Notes →</a>
+        </div>
+      </footer>
+      </div>
+    </article>
+
+    <footer data-site-footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+<script src="/assets/player.js"></script>
+<script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
+</body>
+</html>
