@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Fine Line User Guide | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta name="description" content="The official guide to The Fine Line mastering EQ — six bands, Tilt, Contour, Phase and Quality engines, Audition, Isolate, the Analyzer, Auto Gain, A/B, Bypass, Polarity, and practical mastering workflows." />
+  <link rel="canonical" href="https://mainline-audio.com/the-fine-line-user-guide.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mainline-audio.com/the-fine-line-user-guide.html" />
+  <meta property="og:title" content="The Fine Line User Guide | Mainline Audio" />
+  <meta property="og:description" content="The official guide to The Fine Line mastering EQ — six bands, Tilt, Contour, Phase and Quality engines, Audition, Isolate, the Analyzer, Auto Gain, A/B, Bypass, Polarity, and practical mastering workflows." />
+  <meta property="og:image" content="https://mainline-audio.com/TheFineLineProductPic.png" />
+  <meta property="article:published_time" content="2026-10-13" />
+  <meta property="article:author" content="Henry Still" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/the-fine-line-user-guide.html" />
+  <meta name="twitter:title" content="The Fine Line User Guide | Mainline Audio" />
+  <meta name="twitter:description" content="The official guide to The Fine Line mastering EQ — six bands, Tilt, Contour, Phase and Quality engines, Audition, Isolate, the Analyzer, Auto Gain, A/B, Bypass, Polarity, and practical mastering workflows." />
+  <meta name="twitter:image" content="https://mainline-audio.com/TheFineLineProductPic.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://mainline-audio.com/the-fine-line-user-guide.html#article",
+    "headline": "The Fine Line User Guide",
+    "description": "The official guide to The Fine Line mastering EQ — six bands, Tilt, Contour, Phase and Quality engines, Audition, Isolate, the Analyzer, Auto Gain, A/B, Bypass, Polarity, and practical mastering workflows.",
+    "datePublished": "2026-10-13",
+    "dateModified": "2026-10-13",
+    "author": { "@id": "https://mainline-audio.com/#person" },
+    "publisher": { "@id": "https://mainline-audio.com/#organization" },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mainline-audio.com/the-fine-line-user-guide.html"
+    }
+  }
+  </script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    a { color: inherit; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .note-header {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 40px 28px 56px;
+    }
+    .note-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 24px;
+    }
+    .note-header h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.12;
+      max-width: 780px; margin-bottom: 22px;
+    }
+    .note-subtitle {
+      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
+      margin-bottom: 18px;
+    }
+    .note-pubdate {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 64px 28px 8px;
+    }
+    .prose h2 {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3;
+      margin-top: 56px; margin-bottom: 22px;
+      scroll-margin-top: 24px;
+    }
+    .prose > h2:first-child { margin-top: 0; }
+    .prose h3 {
+      font-size: 16px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.35;
+      margin-top: 36px; margin-bottom: 14px;
+    }
+    .prose h4 {
+      font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em;
+      text-transform: uppercase; color: rgba(245,245,245,0.4);
+      margin-top: 24px; margin-bottom: 10px;
+    }
+    .prose p {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .prose ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(245,245,245,0.1);
+    }
+    .prose ul li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 2px 0;
+    }
+    .prose ol {
+      margin: 0 0 20px;
+      padding-left: 22px;
+    }
+    .prose ol li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 4px 0;
+    }
+    .prose ol li strong,
+    .prose p strong { color: rgba(245,245,245,0.72); font-weight: 700; }
+
+    /* ── TABLE OF CONTENTS ── */
+    .guide-toc {
+      border: 1px solid rgba(245,245,245,0.1);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 8px 0 48px;
+    }
+    .guide-toc-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      margin-bottom: 14px;
+    }
+    .guide-toc ol {
+      list-style: none; padding: 0; margin: 0;
+      columns: 2; column-gap: 28px;
+    }
+    .guide-toc li { margin-bottom: 8px; break-inside: avoid; padding: 0; }
+    .guide-toc a {
+      font-size: 12.5px; color: rgba(245,245,245,0.42);
+      text-decoration: none; line-height: 1.6;
+    }
+    .guide-toc a:hover { color: rgba(245,245,245,0.75); }
+
+    /* ── TECHNICAL NOTE CALLOUTS ──
+       Deliberately quieter than the main prose: smaller type, more muted
+       colour, left-border accent instead of a heading-weight treatment — a
+       reference aside, not another lesson. */
+    .tech-note {
+      margin: 32px 0 36px;
+      padding: 18px 22px;
+      border-left: 2px solid rgba(61,124,224,0.5);
+      background: rgba(255,255,255,0.02);
+      border-radius: 0 6px 6px 0;
+    }
+    .tech-note-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 10px;
+    }
+    .tech-note h3 {
+      font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.3;
+      margin: 0 0 12px;
+    }
+    .tech-note p {
+      font-size: 13px; font-weight: 400; color: rgba(245,245,245,0.4);
+      letter-spacing: 0.01em; line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .tech-note p:last-child { margin-bottom: 0; }
+
+    /* ── READING QUIET ZONE ──
+       Shared treatment across the site's long-form article pages: a soft
+       feathered scrim between the snow canvas and the reading column so the
+       article text sits in calmer air without a visible panel or border. */
+    .reading-quiet-zone { position: relative; }
+    .reading-quiet-zone::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: min(920px, 100%);
+      transform: translateX(-50%);
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(10,10,10,0)    0%,
+        rgba(10,10,10,0.7) 22%,
+        rgba(10,10,10,0.7) 78%,
+        rgba(10,10,10,0)  100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+    }
+
+    /* ── CLOSING ── */
+    .note-closing {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 8px 28px 24px;
+      text-align: center;
+    }
+    .note-closing .divider { margin: 64px auto 40px; }
+    .note-author {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      color: rgba(245,245,245,0.7); margin-bottom: 6px;
+    }
+    .note-author-role {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+    }
+    .note-links {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-text {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-text:hover { color: rgba(245,245,245,0.65); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+
+    @media (max-width: 640px) {
+      .note-header { padding: 28px 24px 40px; }
+      .prose { padding: 48px 24px 8px; }
+      .prose h2 { font-size: 17px; margin-top: 44px; }
+      .prose h3 { font-size: 15px; }
+      .prose p, .prose ul li, .prose ol li { font-size: 14px; }
+      .guide-toc { padding: 20px 22px; }
+      .guide-toc ol { columns: 1; }
+      .note-closing { padding: 8px 24px 24px; }
+      .note-links { gap: 20px; }
+      footer { padding: 48px 24px 36px; }
+    }
+  </style>
+</head>
+<body data-page="">
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav data-site-nav aria-label="Main navigation">
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+    </nav>
+
+    <article>
+      <header class="note-header">
+        <p class="note-eyebrow">User Guide</p>
+        <h1 class="gradient-text">The Fine Line User Guide</h1>
+        <p class="note-subtitle">Six bands, Tilt, Contour, Phase and Quality, Audition and Isolate, the Analyzer, Auto Gain, A/B, Bypass, Polarity, and practical mastering workflows.</p>
+        <time class="note-pubdate" datetime="2026-10-13">October 2026</time>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="reading-quiet-zone">
+      <div class="prose">
+        <p><strong>The Fine Line</strong> is a six-band mastering EQ for broad, confident tonal shaping. It is designed for the moments when a mix is fundamentally working, but needs a clearer balance, a little more weight, less excess at the edges, or a more intentional overall perspective.</p>
+        <p>It is not intended to be a surgical repair tool. Start with small, purposeful moves, listen in the context of the full track, and let the result — not the graph — make the case.</p>
+        <p>As a general mastering workflow, <strong>The Fine Line</strong> often sits early to mid-chain, before final dynamics and limiting. This is a recommendation rather than a rule: use it wherever its tonal decisions make the most sense in your process.</p>
+
+        <nav class="guide-toc" aria-label="Guide contents">
+          <p class="guide-toc-label">Contents</p>
+          <ol>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#eq-surface">The EQ Surface</a></li>
+            <li><a href="#tone-controls">Tone Controls</a></li>
+            <li><a href="#phase-quality">Phase and Quality</a></li>
+            <li><a href="#finding-what-matters">Finding What Matters</a></li>
+            <li><a href="#level-comparison-utility">Level, Comparison, and Utility</a></li>
+            <li><a href="#presets-undo-reset">Presets, Undo, and Reset</a></li>
+            <li><a href="#practical-workflows">Practical Workflows</a></li>
+            <li><a href="#updates-licensing-support">Updates, Licensing, and Support</a></li>
+            <li><a href="#final-perspective">Final Perspective</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="quick-start">Quick Start</h2>
+        <ol>
+          <li><strong>Begin with Init</strong>, or load a preset that is close to the direction you want.</li>
+          <li><strong>Work with one broad move at a time.</strong> Start around 0.5–1 dB, then decide whether the track actually benefits.</li>
+          <li><strong>Use Audition or Isolate</strong> to locate a frequency range, then return to listening in context before committing.</li>
+          <li><strong>Turn on Auto Gain</strong> when comparing tonal choices. It helps remove the natural bias toward anything louder.</li>
+          <li><strong>Use A/B</strong> to compare two complete EQ decisions, and use Bypass for the final reality check.</li>
+        </ol>
+
+        <h2 id="eq-surface">The EQ Surface</h2>
+        <p>The main graph is a direct view of the EQ curve. Drag a band node left or right to change its frequency, and up or down to change its gain. The curve stops at the available Nyquist frequency for the current session.</p>
+        <p>The graph can also show the input spectrum, output spectrum, or both. Treat the analyzer as useful visual context, not a decision-maker. Your ears and the musical balance of the record come first.</p>
+        <p>Each band can be selected from the graph or from its band card. Scroll over a node to adjust Q, or drag its outer handle. Option/Alt-drag adjusts Q directly. Double-clicking a control returns it to its default value.</p>
+
+        <h3>Six Bands</h3>
+        <p>Each band covers 20 Hz–20 kHz and offers up to ±18 dB of gain with a Q range of 0.10–10.00. The default band frequencies are 60 Hz, 150 Hz, 500 Hz, 1.5 kHz, 4 kHz, and 10 kHz.</p>
+        <p><strong>The Fine Line</strong> uses proportional-Q behaviour: as a boost or cut becomes more decisive, the band naturally becomes more focused. This supports the broad, controlled moves that work especially well in mastering without demanding constant bandwidth management.</p>
+        <p>Every band can work in Stereo, Mid, Side, Left, or Right. Use Stereo for most work. Mid/Side is useful when the centre and sides genuinely need different tonal balance; Left/Right is there when a stereo imbalance calls for a deliberate correction.</p>
+
+        <h3>High-Pass and Low-Pass Filters</h3>
+        <p>Bands 1 and 6 can be changed from Bell to a Low Shelf or High Shelf, respectively, or used as High-Pass and Low-Pass filters.</p>
+        <p>The high-pass and low-pass filters offer seven slopes — 6, 12, 18, 24, 36, 48, and 96 dB/octave. Use them to remove subsonic weight, extreme top-end excess, or material outside the useful range of the record. <strong>Resonance</strong> lets you control the response around the cutoff; at the gentlest 6 dB/octave setting, there is no resonance control because there is no resonant stage to adjust.</p>
+
+        <h2 id="tone-controls">Tone Controls</h2>
+
+        <h3>Tilt</h3>
+        <p><strong>Tilt</strong> is a broad tonal pivot: it brightens one side of the spectrum while darkening the other, around the selected pivot frequency. Its gain range is ±6 dB, though subtle moves are usually the most convincing.</p>
+        <p>Use Tilt when the whole record leans too dark or too bright and you want one coherent gesture instead of several individual bands. The pink diamond on the graph can be hidden from the Tilt control when you prefer a quieter view.</p>
+
+        <h3>Contour</h3>
+        <p><strong>Contour</strong> changes the overall character of the bell and shelf responses.</p>
+        <ul>
+          <li><strong>Transparent</strong> is the precise, modern default.</li>
+          <li><strong>Smooth</strong> uses gentler proportional-Q behaviour and a softer shelf response.</li>
+        </ul>
+        <p>Contour is not a saturation or analogue-colour mode. It changes how the EQ moves are shaped, so choose the response that best serves the source.</p>
+
+        <h2 id="phase-quality">Phase and Quality</h2>
+
+        <h3>Phase</h3>
+        <p><strong>Phase</strong> lets you choose the balance between latency and phase behaviour.</p>
+        <ul>
+          <li><strong>Minimum</strong> is the default: immediate, classic EQ behaviour with the lowest latency. It is the right choice for most mastering work.</li>
+          <li><strong>Natural</strong> offers lower phase distortion with less latency than Linear. It is an excellent option when transparency is the priority but a long delay is impractical.</li>
+          <li><strong>Linear</strong> avoids phase shift, with the highest latency and a possibility of pre-ringing. It is most useful when phase accuracy outweighs latency — often restoration, classical, or acoustic material.</li>
+        </ul>
+        <p>Changing Phase while audio is playing is deliberately not seamless. <strong>The Fine Line</strong> briefly mutes and fades back in while the new processing engine and host latency are updated, preventing clicks and pops. Choose the mode before printing or live use rather than switching it mid-performance.</p>
+
+        <h3>Quality</h3>
+        <p><strong>Quality</strong> applies only in Minimum phase.</p>
+        <ul>
+          <li><strong>Standard</strong>: no oversampling.</li>
+          <li><strong>High</strong>: 2&times; oversampling.</li>
+          <li><strong>Ultra</strong>: 4&times; oversampling.</li>
+        </ul>
+        <p>Higher quality can provide additional high-frequency cleanliness at a greater CPU cost. Natural and Linear use their own fixed reconstruction, so Quality is shown as fixed in those modes.</p>
+
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <h3>Phase Latency</h3>
+          <p>Natural and Linear add meaningful latency: approximately 1,024 samples for Natural and 9,216 samples for Linear. Minimum has no inherent EQ latency; High and Ultra add only a few reported samples, and only while Phase is set to Minimum.</p>
+        </aside>
+
+        <h2 id="finding-what-matters">Finding What Matters</h2>
+
+        <h3>Audition and Isolate</h3>
+        <p>Tap <strong>Audition</strong> on a band to hear its contribution while the other bands recede. This is useful for understanding what an existing move is doing.</p>
+        <p>Press and hold the same button to <strong>Isolate</strong> its frequency region. Use Isolate to find the area you are considering before making a move, then release it and make the final decision in the full mix.</p>
+        <p>Neither is meant to be left on as part of the sound. They are listening tools.</p>
+
+        <h3>Analyzer</h3>
+        <p>The Analyzer can show <strong>Off</strong>, <strong>Pre</strong>, <strong>Post</strong>, or <strong>Pre+Post</strong>, with optional pink or blue peak hold and adjustable opacity. Pre+Post is the default view. The view is independent of presets, so recalling a preset does not unexpectedly change what you are monitoring.</p>
+        <p>Keep its opacity low enough that the EQ curve stays readable. The spectrum can point to an area worth investigating; it cannot tell you whether a tonal decision is musically right.</p>
+
+        <h2 id="level-comparison-utility">Level, Comparison, and Utility</h2>
+
+        <h3>Auto Gain and Output Trim</h3>
+        <p><strong>Auto Gain</strong> compensates for the overall level change created by the current EQ curve without changing the Output Trim value you set. It is designed to make comparisons more honest — not to create a loudness target.</p>
+        <p>Use <strong>Output Trim</strong> (±24 dB) to establish the level feeding the next processor or your final output. The L/R meter is post-Output-Trim and shows peak level; a red indicator marks clipping above 0 dBFS.</p>
+
+        <h3>A/B and Bypass</h3>
+        <p><strong>A/B</strong> holds two complete EQ states. Build a different direction in each slot, then switch between them to decide which one serves the record better.</p>
+        <p><strong>Bypass</strong> passes the input through unmodified: bands, Tilt, Phase processing, and Output Trim are all skipped. Use it often, but match levels first. A better master is not simply a louder one.</p>
+
+        <h3>Polarity</h3>
+        <p>The &Oslash; control inverts output polarity. It is not a tone control and will rarely be needed in normal mastering. Use it only when you are deliberately checking polarity relationships elsewhere in the chain.</p>
+
+        <h2 id="presets-undo-reset">Presets, Undo, and Reset</h2>
+        <p>The preset menu contains <strong>Init</strong>, factory presets, and your saved user presets. Use <strong>Save As…</strong> to create your own. Factory presets are protected; your presets can be renamed or deleted from the preset menu.</p>
+        <p>Undo and Redo track normal editing gestures, typed values, resets, and preset recall. The <strong>Reset</strong> control is intentionally double-click only, protecting you from an accidental full reset. It returns band frequency, gain, Q, Tilt, Phase, Quality, Contour, and Output Trim to their defaults, while preserving band Type and Mode.</p>
+
+        <h2 id="practical-workflows">Practical Workflows</h2>
+        <p>These are starting points rather than recipes.</p>
+
+        <h3>Establish the overall balance</h3>
+        <p>Start with Tilt or one broad bell. If the entire track is dark, do not immediately boost every high-frequency area; make one coherent tonal decision, then refine only if the music asks for it.</p>
+
+        <h3>Clean the edges without thinning the record</h3>
+        <p>Use the high-pass filter to remove unnecessary sub energy, and a low-pass filter only when extreme top-end information is genuinely distracting. Increase slope only as far as the material needs.</p>
+
+        <h3>Refine the centre and the sides</h3>
+        <p>Work in Stereo first. If the vocal, kick, or bass needs a different treatment from the width of the production, move to Mid/Side carefully and make smaller moves than you think you need.</p>
+
+        <h3>Make a fair final decision</h3>
+        <p>Set Auto Gain, create two alternatives in A and B, and compare them at the same perceived level. Return to bypass after a short break. The best setting usually makes the track feel more inevitable without making the EQ itself obvious.</p>
+
+        <h2 id="updates-licensing-support">Updates, Licensing, and Support</h2>
+        <p><strong>The Fine Line</strong> is available as AU and VST3 for macOS. The About panel shows the installed version, provides access to this User Guide and the Mainline Audio site, and lets you enable or disable tooltips.</p>
+        <p>For current downloads, release notes, and support, visit <a href="the-fine-line.html">the product page</a> or <a href="mailto:support@mainline-audio.com">support@mainline-audio.com</a>.</p>
+
+        <h2 id="final-perspective">Final Perspective</h2>
+        <p>The purpose of <strong>The Fine Line</strong> is not to make every master sound more processed. It is to make the tonal decision clear, controlled, and easy to verify. Use fewer moves, listen at matched levels, and let the record tell you when you are done.</p>
+      </div>
+
+      <footer class="note-closing">
+        <div class="divider"></div>
+        <p class="note-author">Henry Still</p>
+        <p class="note-author-role">Mastering Engineer · Founder, Mainline Audio</p>
+        <div class="note-links">
+          <a class="btn-text" href="the-fine-line.html">The Fine Line →</a>
+          <a class="btn-text" href="the-fine-line-release-notes.html">Release Notes →</a>
+        </div>
+      </footer>
+      </div>
+    </article>
+
+    <footer data-site-footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+<script src="/assets/player.js"></script>
+<script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
+</body>
+</html>
