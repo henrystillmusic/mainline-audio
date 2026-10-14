@@ -234,7 +234,7 @@ h1.gradient-headline { margin-bottom: 0.26em; }
       </div>
       <div class="tfl-card">
         <div class="tfl-card-name">Global Mix</div>
-        <div class="tfl-card-desc">0% to 100% over the whole plug-in, blending the unprocessed signal against everything the three bands did. Independent of the per-band Mix controls, which stay exactly as you set them.</div>
+        <div class="tfl-card-desc">0% to 100% over the whole plug-in, dialing between the input and everything the three bands did &mdash; transparent at 0%, though Bypass gives you the true untouched signal. Independent of the per-band Mix controls, which stay exactly as you set them.</div>
       </div>
       <div class="tfl-card">
         <div class="tfl-card-name">Metering</div>
@@ -294,7 +294,7 @@ h1.gradient-headline { margin-bottom: 0.26em; }
           <tr><td class="tfl-spec-param">Metering</td><td class="tfl-spec-range">Input and output stereo peak, per-channel clip indication</td></tr>
           <tr><td class="tfl-spec-param">Workflow</td><td class="tfl-spec-range">Factory presets, user presets, A/B compare, undo/redo, host bypass</td></tr>
           <tr><td class="tfl-spec-param">Processing</td><td class="tfl-spec-range">Oversampled nonlinear stage, factor fixed by sample rate</td></tr>
-          <tr><td class="tfl-spec-param">Latency</td><td class="tfl-spec-range">Under 1.5 ms &middot; reported to the host and compensated</td></tr>
+          <tr><td class="tfl-spec-param">Latency</td><td class="tfl-spec-range">Under 3 ms &middot; reported to the host and compensated</td></tr>
           <tr><td class="tfl-spec-param">Channels</td><td class="tfl-spec-range">Mono and stereo</td></tr>
           <tr><td class="tfl-spec-param">Formats</td><td class="tfl-spec-range">AU / VST3</td></tr>
           <tr><td class="tfl-spec-param">Platform</td><td class="tfl-spec-range">macOS &middot; Apple Silicon &amp; Intel (Universal)</td></tr>
@@ -369,7 +369,7 @@ h1.gradient-headline { margin-bottom: 0.26em; }
     </details>
     <details>
       <summary>Why three bands instead of one saturator?</summary>
-      <p>Because a full-range drive lets the loudest part of the signal, usually the low end, decide how much harmonic content everything else receives. Three bands let you add weight down low without dulling the top, or add bite on top without thickening the bass.</p>
+      <p>Because a full-range drive lets the loudest part of the signal, usually the low end, decide how much harmonic content everything else receives. Three bands let you add weight down low without dulling the top, or add bite on top without thickening the bass. It&rsquo;s not just independent levels, either &mdash; each band carries its own Character curve, so Low can run Vintage while High stays Soft, rather than one mode deciding for the whole signal.</p>
     </details>
     <details>
       <summary>What is the difference between the four character modes?</summary>
