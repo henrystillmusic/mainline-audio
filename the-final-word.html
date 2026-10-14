@@ -356,7 +356,7 @@
 
   <section class="signup" id="signup">
     <p class="signup-label">Join the List</p>
-    <form class="signup-form" id="beta-signup-form">
+    <form class="signup-form" id="beta-signup-form" novalidate>
       <input type="hidden" name="_subject" value="The Final Word — mailing list signup">
       <div class="form-row"><input type="text" name="name" placeholder="Your name" required></div>
       <div class="form-row"><input type="email" name="email" placeholder="Your email" required></div>
@@ -371,6 +371,7 @@
         </select>
       </div>
       <div class="form-row"><input type="text" name="track_link" placeholder="Link to a track or mix (optional)"></div>
+      <p class="form-error" id="signup-error" role="alert"></p>
       <button type="submit" class="btn-submit" id="signup-submit">Join the List</button>
     </form>
   </section>
@@ -455,6 +456,17 @@
     e.preventDefault();
     const form = e.target;
     const button = document.getElementById('signup-submit');
+    const errorEl = document.getElementById('signup-error');
+
+    if (!form.checkValidity()) {
+      errorEl.textContent = 'Please fill in your name and email to join the list.';
+      errorEl.classList.add('is-visible');
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+    errorEl.classList.remove('is-visible');
+
     const formData = new FormData(form);
 
     button.textContent = 'Sending...';

@@ -159,6 +159,11 @@ textarea { resize: none; min-height: 60px; padding-top: 12px; }
   margin-top: 12px; transition: all 0.2s;
 }
 .btn-submit:hover { border-color: rgba(245,245,245,0.7); color: #f5f5f5; }
+.form-error {
+  display: none; font-size: 11px; letter-spacing: 0.04em;
+  color: #e2a564; margin: -4px 0 16px; text-align: center;
+}
+.form-error.is-visible { display: block; }
 
 .faq { padding: 56px 48px 88px; max-width: 640px; margin: 0 auto; }
 .faq h2 {
