@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Last Look User Guide | Mainline Audio</title>
+  <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico">
+  <link rel="apple-touch-icon" href="/MAINLINE-AUDIO-SITE/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
+
+  <meta name="description" content="The official guide to The Last Look metering and delivery-verification suite — the five views, Loudness/Dynamics/Stereo, Delivery, Standalone, and practical workflows." />
+  <link rel="canonical" href="https://mainline-audio.com/the-last-look-user-guide.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mainline-audio.com/the-last-look-user-guide.html" />
+  <meta property="og:title" content="The Last Look User Guide | Mainline Audio" />
+  <meta property="og:description" content="The official guide to The Last Look metering and delivery-verification suite — the five views, Loudness/Dynamics/Stereo, Delivery, Standalone, and practical workflows." />
+  <meta property="og:image" content="https://mainline-audio.com/TheLastLookProductPic.png" />
+  <meta property="article:published_time" content="2026-10-13" />
+  <meta property="article:author" content="Henry Still" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mainline-audio.com/the-last-look-user-guide.html" />
+  <meta name="twitter:title" content="The Last Look User Guide | Mainline Audio" />
+  <meta name="twitter:description" content="The official guide to The Last Look metering and delivery-verification suite — the five views, Loudness/Dynamics/Stereo, Delivery, Standalone, and practical workflows." />
+  <meta name="twitter:image" content="https://mainline-audio.com/TheLastLookProductPic.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://mainline-audio.com/the-last-look-user-guide.html#article",
+    "headline": "The Last Look User Guide",
+    "description": "The official guide to The Last Look metering and delivery-verification suite — the five views, Loudness/Dynamics/Stereo, Delivery, Standalone, and practical workflows.",
+    "datePublished": "2026-10-13",
+    "dateModified": "2026-10-13",
+    "author": { "@id": "https://mainline-audio.com/#person" },
+    "publisher": { "@id": "https://mainline-audio.com/#organization" },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://mainline-audio.com/the-last-look-user-guide.html"
+    }
+  }
+  </script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    a { color: inherit; }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #dffcff, #f7eaff, #ece8ff, #ffffff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 90s linear infinite;
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .note-header {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 40px 28px 56px;
+    }
+    .note-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 24px;
+    }
+    .note-header h1 {
+      font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.12;
+      max-width: 780px; margin-bottom: 22px;
+    }
+    .note-subtitle {
+      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
+      margin-bottom: 18px;
+    }
+    .note-pubdate {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.18);
+    }
+
+    .divider {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(245,245,245,0.07), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 64px 28px 8px;
+    }
+    .prose h2 {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: #f5f5f5; line-height: 1.3;
+      margin-top: 56px; margin-bottom: 22px;
+      scroll-margin-top: 24px;
+    }
+    .prose > h2:first-child { margin-top: 0; }
+    .prose h3 {
+      font-size: 16px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.35;
+      margin-top: 36px; margin-bottom: 14px;
+    }
+    .prose h4 {
+      font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em;
+      text-transform: uppercase; color: rgba(245,245,245,0.4);
+      margin-top: 24px; margin-bottom: 10px;
+    }
+    .prose p {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .prose ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(245,245,245,0.1);
+    }
+    .prose ul li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 2px 0;
+    }
+    .prose ol {
+      margin: 0 0 20px;
+      padding-left: 22px;
+    }
+    .prose ol li {
+      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      letter-spacing: 0.01em; line-height: 1.85;
+      padding: 4px 0;
+    }
+    .prose ol li strong,
+    .prose p strong { color: rgba(245,245,245,0.72); font-weight: 700; }
+    .prose table {
+      width: 100%; border-collapse: collapse; margin: 0 0 20px;
+      font-size: 14px;
+    }
+    .prose th {
+      text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(245,245,245,0.34);
+      padding: 8px 14px 8px 0; border-bottom: 1px solid rgba(245,245,245,0.12);
+    }
+    .prose td {
+      padding: 10px 14px 10px 0; border-bottom: 1px solid rgba(245,245,245,0.08);
+      color: rgba(245,245,245,0.5); line-height: 1.6; vertical-align: top;
+    }
+    .prose td strong { color: rgba(245,245,245,0.72); font-weight: 700; }
+
+    /* ── TABLE OF CONTENTS ── */
+    .guide-toc {
+      border: 1px solid rgba(245,245,245,0.1);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 8px 0 48px;
+    }
+    .guide-toc-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      margin-bottom: 14px;
+    }
+    .guide-toc ol {
+      list-style: none; padding: 0; margin: 0;
+      columns: 2; column-gap: 28px;
+    }
+    .guide-toc li { margin-bottom: 8px; break-inside: avoid; padding: 0; }
+    .guide-toc a {
+      font-size: 12.5px; color: rgba(245,245,245,0.42);
+      text-decoration: none; line-height: 1.6;
+    }
+    .guide-toc a:hover { color: rgba(245,245,245,0.75); }
+
+    /* ── TECHNICAL NOTE CALLOUTS ──
+       Deliberately quieter than the main prose: smaller type, more muted
+       colour, left-border accent instead of a heading-weight treatment — a
+       reference aside, not another lesson. */
+    .tech-note {
+      margin: 32px 0 36px;
+      padding: 18px 22px;
+      border-left: 2px solid rgba(61,124,224,0.5);
+      background: rgba(255,255,255,0.02);
+      border-radius: 0 6px 6px 0;
+    }
+    .tech-note-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(61,124,224,0.85);
+      margin-bottom: 10px;
+    }
+    .tech-note h3 {
+      font-size: 14px; font-weight: 700; letter-spacing: -0.005em;
+      color: rgba(245,245,245,0.68); line-height: 1.3;
+      margin: 0 0 12px;
+    }
+    .tech-note p {
+      font-size: 13px; font-weight: 400; color: rgba(245,245,245,0.4);
+      letter-spacing: 0.01em; line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .tech-note p:last-child { margin-bottom: 0; }
+
+    /* ── CAUTION CALLOUT ──
+       A second, distinct aside for the one behavioral warning this guide
+       needs to keep separable from an ordinary Technical Note: pink accent
+       instead of blue, so a reader scanning headings can tell "read this
+       before you print" apart from "read this if you're curious." */
+    .caution-note {
+      margin: 32px 0 36px;
+      padding: 18px 22px;
+      border-left: 2px solid rgba(255,112,224,0.55);
+      background: rgba(255,112,224,0.045);
+      border-radius: 0 6px 6px 0;
+    }
+    .caution-note-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(255,112,224,0.9);
+      margin-bottom: 10px;
+    }
+    .caution-note p {
+      font-size: 13.5px; font-weight: 400; color: rgba(245,245,245,0.6);
+      letter-spacing: 0.01em; line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .caution-note p:last-child { margin-bottom: 0; }
+    .caution-note strong { color: rgba(245,245,245,0.85); font-weight: 700; }
+
+    /* ── READING QUIET ZONE ──
+       Shared treatment across the site's long-form article pages: a soft
+       feathered scrim between the snow canvas and the reading column so the
+       article text sits in calmer air without a visible panel or border. */
+    .reading-quiet-zone { position: relative; }
+    .reading-quiet-zone::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: min(920px, 100%);
+      transform: translateX(-50%);
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(10,10,10,0)    0%,
+        rgba(10,10,10,0.7) 22%,
+        rgba(10,10,10,0.7) 78%,
+        rgba(10,10,10,0)  100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 90px), transparent 100%);
+    }
+
+    /* ── CLOSING ── */
+    .note-closing {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      padding: 8px 28px 24px;
+      text-align: center;
+    }
+    .note-closing .divider { margin: 64px auto 40px; }
+    .note-author {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      color: rgba(245,245,245,0.7); margin-bottom: 6px;
+    }
+    .note-author-role {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+    }
+    .note-links {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .btn-text {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-text:hover { color: rgba(245,245,245,0.65); }
+
+    footer { text-align: center; padding: 72px 48px 44px; }
+
+    @media (max-width: 640px) {
+      .note-header { padding: 28px 24px 40px; }
+      .prose { padding: 48px 24px 8px; }
+      .prose h2 { font-size: 17px; margin-top: 44px; }
+      .prose h3 { font-size: 15px; }
+      .prose p, .prose ul li, .prose ol li { font-size: 14px; }
+      .prose table { font-size: 13px; }
+      .guide-toc { padding: 20px 22px; }
+      .guide-toc ol { columns: 1; }
+      .note-closing { padding: 8px 24px 24px; }
+      .note-links { gap: 20px; }
+      footer { padding: 48px 24px 36px; }
+    }
+  </style>
+</head>
+<body data-page="">
+  <canvas id="snow"></canvas>
+  <div class="site">
+    <nav data-site-nav aria-label="Main navigation">
+      <a class="nav-home" href="index.html">Mainline Audio</a>
+    </nav>
+
+    <article>
+      <header class="note-header">
+        <p class="note-eyebrow">User Guide</p>
+        <h1 class="gradient-text">The Last Look User Guide</h1>
+        <p class="note-subtitle">The five views, Loudness/Dynamics/Stereo, Delivery, Standalone, and practical workflows.</p>
+        <time class="note-pubdate" datetime="2026-10-13">October 2026</time>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="reading-quiet-zone">
+      <div class="prose">
+        <p><strong>The Last Look</strong> is a metering and delivery-verification suite for answering a final, practical question: is this master ready to leave the studio?</p>
+        <p>It measures. It does not EQ, compress, limit, normalize, or repair audio for you. Its readings and Delivery statuses are evidence to interpret in context — not automatic verdicts on whether music is good, finished, or suitable for every destination.</p>
+        <p>The Last Look is available as an AU, VST3, and Standalone macOS application. The same analysis tools are shared across all three formats; the Standalone adds its own file-session and audio-device workflows.</p>
+
+        <nav class="guide-toc" aria-label="Guide contents">
+          <p class="guide-toc-label">Contents</p>
+          <ol>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#the-five-views">The Five Views</a></li>
+            <li><a href="#always-visible-meters">Always-Visible Meters</a></li>
+            <li><a href="#live-and-file-workflows">Live and File Workflows</a></li>
+            <li><a href="#audition-and-solo">Audition and Solo</a></li>
+            <li><a href="#freeze-and-reset">Freeze and Reset</a></li>
+            <li><a href="#standalone-application">Standalone Application</a></li>
+            <li><a href="#practical-workflows">Practical Workflows</a></li>
+            <li><a href="#delivery-statuses">What Delivery Statuses Mean</a></li>
+            <li><a href="#formats-demo-and-support">Formats, Demo, and Support</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="quick-start">Quick Start</h2>
+        <ol>
+          <li><strong>Put The Last Look last</strong> on a master or mix-bus chain, or open the Standalone app.</li>
+          <li><strong>Start with the always-visible Loudness, Dynamics, and Stereo modules</strong> to understand the program in front of you.</li>
+          <li><strong>Open Delivery</strong> for a concise, threshold-based check of peak, mono-fold, and DC-offset conditions.</li>
+          <li><strong>Use Spectral for balance and Wave for time-domain context</strong> — not as substitutes for listening.</li>
+          <li><strong>If comparing references</strong>, load them into FILE slots, nominate one with REF, and use MATCH for a more level-fair comparison.</li>
+        </ol>
+        <p>The most useful habit is to combine a reading with what you hear. A warning tells you exactly which measurement crossed which threshold; it does not know your arrangement, genre, intended playback system, or artistic intent.</p>
+
+        <h2 id="the-five-views">The Five Views</h2>
+
+        <h3>Spectral</h3>
+        <p>SPECTRAL shows frequency balance in three foreground modes:</p>
+        <ul>
+          <li><strong>LINE</strong> for a continuous FFT curve.</li>
+          <li><strong>BARS</strong> for a 48-band logarithmic spectrum.</li>
+          <li><strong>1/3 OCT</strong> for calibrated third-octave bars.</li>
+        </ul>
+        <p>The spectrogram layer can sit underneath these displays or be used on its own. Use Spectral to spot broad balance tendencies, masking, or unexpected buildup — not to chase a flat curve. Different records can have very different spectral shapes and still translate well.</p>
+
+        <h3>Wave</h3>
+        <p>WAVE shows the program waveform plus a more detailed recent-seconds view. It is also where you control FILE playback and enable MATCH when working with a reference.</p>
+
+        <h3>History</h3>
+        <p>HISTORY plots the way key readings change over time: short-term and integrated loudness, true peak, crest factor, and loudness range. It is available for live material only. A loaded file's scan is frozen analysis, so it does not have a live rolling history.</p>
+
+        <h3>Reference</h3>
+        <p>REFERENCE is the file-analysis workspace. It shows the selected file's identity — name, duration, sample rate, channels, and bit depth — alongside its scan report. This is where you load or drag files into FILE slots.</p>
+        <p>The name is REFERENCE. Some internal labels may still say "Analysis" or "File View" for compatibility, but those are not separate user-facing modes.</p>
+
+        <h3>Delivery</h3>
+        <p>DELIVERY gathers five practical checks in one place:</p>
+        <ul>
+          <li><strong>TRUE PEAK</strong></li>
+          <li><strong>NEAR FULL SCALE</strong></li>
+          <li><strong>INTER-SAMPLE OVERS</strong></li>
+          <li><strong>MONO FOLD</strong></li>
+          <li><strong>DC OFFSET</strong></li>
+        </ul>
+        <p>Each row shows the measurement, the relevant threshold, and a status such as PASS, REVIEW, ATTENTION, CONTEXT, N/A, or INCOMPLETE. The banner above them summarizes the most serious current result.</p>
+        <p>Treat these as prompts for review. For example, a MONO FOLD warning means a measurable level change occurs when folded to mono; it does not prove that the record will fail on every mono playback system. Listen, check the relevant material, and decide deliberately.</p>
+
+        <h2 id="always-visible-meters">Always-Visible Meters</h2>
+
+        <h3>Loudness</h3>
+        <p>The LOUDNESS module presents:</p>
+        <ul>
+          <li><strong>Integrated LUFS</strong> — long-form program loudness.</li>
+          <li><strong>Momentary LUFS</strong> — the immediate loudness view.</li>
+          <li><strong>Short-Term LUFS</strong> — the most recent three seconds of program.</li>
+          <li><strong>PLR, PMR, and PSR</strong> — level relationships that help describe the headroom and peak structure around the loudness reading.</li>
+          <li><strong>LRA</strong> — how much the program's loudness moves over time.</li>
+        </ul>
+        <p>These are descriptions, not targets imposed by the plug-in. A very compact club master, a film cue, and an acoustic performance may all make different, valid use of loudness range and peak headroom.</p>
+
+        <h3>Dynamics</h3>
+        <p>The DYNAMICS module includes Crest Factor, Crest Range, true-peak context, and a long-term distribution view. Use it to understand attack, density, and movement — not as a score that must be maximized.</p>
+        <p>A lower crest factor can be exactly right for a dense, aggressive record. A wider result can be exactly right for music that depends on transient contrast. Compare like with like, and listen for whether the dynamics support the music.</p>
+
+        <h3>Stereo</h3>
+        <p>The STEREO module includes:</p>
+        <ul>
+          <li><strong>Correlation</strong> from −1 to +1.</li>
+          <li><strong>Balance</strong> as CENTER or left/right percentage.</li>
+          <li><strong>Width</strong>.</li>
+          <li><strong>DC L/R</strong>.</li>
+          <li>A Lissajous goniometer with FAST/HOLD persistence.</li>
+        </ul>
+        <p>Correlation is useful context for stereo compatibility, but it is not a universal pass/fail meter. A brief dip can be musically harmless; a persistent negative tendency in important low-frequency material deserves closer listening and a mono check.</p>
+        <p>The goniometer shows the raw left/right relationship. Use it to see the shape of the image, not to force every production into the same pattern.</p>
+
+        <h3>Peak Meters</h3>
+        <p>The meter column provides a combined worst-of-channel TRUE PK reading, peak hold, an OVER latch, and individual left/right sample-peak bars.</p>
+        <p>TRUE PK identifies the highest reconstructed peak across the two channels; it is a single combined reading, so use the sample-peak bars and the program itself for channel-specific context.</p>
+
+        <h2 id="live-and-file-workflows">Live and File Workflows</h2>
+        <p>Use the LIVE/FILE selector to choose what you are examining.</p>
+
+        <h3>Live</h3>
+        <p>LIVE measures the program currently arriving at the plug-in input or, in Standalone, the active live input. It is the right mode for continuous mix-bus or mastering checks.</p>
+
+        <h3>File Slots</h3>
+        <p>The four FILE slots — A, B, C, and D — hold independently scanned references. A ready slot displays its letter; the interface also indicates loading, missing, failed, or empty slots with a small suffix and an explanatory tooltip.</p>
+        <p>Load WAV, AIFF, or FLAC files using the file chooser or by dragging them into the window. Files are loaded into the currently selected slot. If that slot is already occupied, The Last Look asks whether to replace it, load the new file into an empty slot, or cancel.</p>
+        <p>Each loaded file is scanned at its own native sample rate. The frozen report, Delivery events, and file measurements remain tied to that original analysis — not to your current DAW or device sample rate.</p>
+        <p>Files must be mono or stereo. Other channel layouts are refused rather than silently downmixed.</p>
+
+        <h3>REF and MATCH</h3>
+        <p>Click REF to name a FILE slot as the loudness reference. Enable MATCH in Wave view to apply integrated-loudness matching to the FILE side of the comparison.</p>
+        <p>MATCH is a listening aid, not a render process and not a measurement rewrite. It affects FILE audition only; it does not alter the loaded file's scan report, DELIVERY readings, or live program.</p>
+        <p>If no reference slot is named, MATCH can still compare the current FILE against LIVE. If a named reference file is missing or unavailable, The Last Look reports that clearly and does not silently fall back to LIVE as though it were the reference.</p>
+
+        <h2 id="audition-and-solo">Audition and Solo</h2>
+        <p>The Last Look measures the untouched incoming program. However, two user-invoked features can change what the plug-in returns to a DAW host while they are engaged:</p>
+        <ul>
+          <li><strong>FILE audition</strong> replaces the returning host signal with the auditioned file.</li>
+          <li><strong>Solo/Band</strong> monitoring — ST, L, R, M, S, or a frequency band — returns that selected listening signal instead of the normal program.</li>
+        </ul>
+        <p>These features run after the measurement taps, so they never alter the readings. But they are not merely local monitor buttons in a DAW: if you bounce, print, or record through that insert while FILE audition or Solo/Band is active, you will capture the altered output.</p>
+
+        <aside class="caution-note">
+          <p class="caution-note-label">Before You Print</p>
+          <p>Use FILE audition and Solo freely for analysis, then clear Solo and return to LIVE before printing a master. <strong>CLEAR SOLO</strong> immediately restores the normal program path.</p>
+          <p>This matters especially for mono checks. The DELIVERY <strong>MONO FOLD</strong> row is a passive measurement and never changes audio. To hear the fold-down, use the <strong>M</strong> Solo chip — but remember that M Solo changes the output a plug-in instance returns to its host while it is active, not only what you hear locally.</p>
+        </aside>
+
+        <h2 id="freeze-and-reset">Freeze and Reset</h2>
+        <p>The modules include shared F (freeze) and R (reset) controls.</p>
+        <ul>
+          <li><strong>Freeze</strong> holds the displayed analysis so you can inspect a moment.</li>
+          <li><strong>Reset</strong> starts that measurement history again.</li>
+        </ul>
+        <p>Use RESET SESSION when you want to clear the broader live-session context before a new pass. Live view, FILE files, and session-document state have different persistence rules; a reset should be treated as a fresh measurement decision, not a correction to the audio.</p>
+
+        <h2 id="standalone-application">Standalone Application</h2>
+        <p>The Standalone edition is a dedicated measurement workspace, not a DAW replacement.</p>
+
+        <h3>What Standalone Adds</h3>
+        <ul>
+          <li>A session-document workflow: New Session, Open Session, Recent Sessions, Save Session, and Save Session As.</li>
+          <li>A dirty-session guard with Save, Don't Save, and Cancel before discarding unsaved changes.</li>
+          <li>Audio/MIDI Settings for choosing device type, audio device, sample rate, buffer size, and output channels.</li>
+          <li>Optional live-input acquisition, requested explicitly by you rather than opening automatically.</li>
+          <li>Keyboard transport shortcuts: Space for play/pause, and Left/Right Arrow for movement.</li>
+        </ul>
+        <p>Standalone sessions use the <code>.tllsession</code> format. They remember workspace information — such as file identities and paths, selected/reference slots, display choices, cursor position, MATCH, and view selection — but do not store file audio, waveforms, spectrograms, histories, or event logs. On reopening, The Last Look scans the referenced files again and visibly reports progress.</p>
+        <p>Missing files remain identified by their saved name and path until you relink them yourself. The app never searches your disk or silently substitutes another file.</p>
+
+        <h3>Playback and File Analysis</h3>
+        <p>Standalone can audition one loaded FILE slot at a time with Play/Pause, Return to Start, and waveform scrubbing. It does not record, bounce, host other plug-ins, provide multi-output routing, or offer a multitrack timeline.</p>
+        <p>Switching FILE slots while playback is active changes the transport target rather than automatically stopping playback.</p>
+        <p>FILE audition uses sample-rate conversion when necessary. That realtime audition can produce meter readings that differ from the file's frozen native-rate scan. When you need the authoritative delivery report for a reference file, use its frozen REFERENCE and DELIVERY data; use the realtime meters to understand what you are hearing through the current device path.</p>
+
+        <h3>What Is Shared Across Formats</h3>
+        <p>All five views, all metering modules, FILE scanning, Delivery checks, REF/MATCH, Mono Fold measurement, and Solo/Band behavior are shared by the AU, VST3, and Standalone editions.</p>
+        <p>In a DAW, LIVE is simply the audio sent to the plug-in input. There is no audio-device selection step — the host owns that job. The Standalone app owns device selection and session documents, but its core analysis is the same.</p>
+
+        <h2 id="practical-workflows">Practical Workflows</h2>
+
+        <h3>Final master check</h3>
+        <p>Use LIVE on the final chain. Check Loudness and Dynamics for context, then open Delivery to review true peak, near-full-scale, inter-sample overs, mono fold, and DC offset together. Investigate the rows that matter to your release path and your own listening — not every flag needs the same response.</p>
+
+        <h3>Reference comparison</h3>
+        <p>Load up to four references in A–D. Choose one with REF, turn on MATCH when comparing loudness, and move between Spectral, Wave, and Delivery to compare broad balance, structure, and technical conditions. Keep in mind that MATCH is a listening comparison, not a statement that the two records should have the same loudness.</p>
+
+        <h3>Mono compatibility</h3>
+        <p>Read the MONO FOLD row first for a safe, continuous indication of fold-down change. Then use M Solo to hear what is happening, especially around bass, wide synths, reverbs, and layered high-frequency details. Clear Solo afterward before any print or bounce.</p>
+
+        <h3>File delivery review</h3>
+        <p>Drop the final rendered file into a FILE slot. Its scan is separate from your live session and stays at the file's native rate, making it the cleanest way to inspect the delivered asset itself. Use the event log in Delivery to locate specific inter-sample-over or other delivery events in the file.</p>
+
+        <h2 id="delivery-statuses">What Delivery Statuses Mean</h2>
+        <aside class="tech-note">
+          <p class="tech-note-label">Technical Note</p>
+          <p>The measurement engine reports measurements; The Last Look's product layer applies the displayed thresholds and labels. PASS, REVIEW, and ATTENTION are therefore transparent statements about a specific measurement crossing a named threshold — not hidden quality scores.</p>
+          <p>True peak uses reconstruction rather than simple sample-peak reading, and inter-sample-over events use a small amount of hysteresis and hold time so one continuous event does not become dozens of fragmented entries. These details make the report more useful, but they do not replace informed listening.</p>
+        </aside>
+
+        <h2 id="formats-demo-and-support">Formats, Demo, and Support</h2>
+        <p><strong>The Last Look</strong> is available as AU, VST3, and Standalone for macOS on Apple Silicon and Intel Macs. It includes a fully functional 14-day demo. One paid edition includes the complete feature set.</p>
+        <p>Click the logo to open the About overlay, where you can access this User Guide, the Mainline Audio website, support, version information, and the tooltip preference.</p>
+      </div>
+
+      <footer class="note-closing">
+        <div class="divider"></div>
+        <p class="note-author">Henry Still</p>
+        <p class="note-author-role">Mastering Engineer · Founder, Mainline Audio</p>
+        <div class="note-links">
+          <a class="btn-text" href="the-last-look.html">The Last Look →</a>
+          <a class="btn-text" href="the-last-look-release-notes.html">Release Notes →</a>
+        </div>
+      </footer>
+      </div>
+    </article>
+
+    <footer data-site-footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a></footer>
+  </div>
+
+  <audio id="bg-track" preload="auto"></audio>
+  <div class="audio-widget" id="audio-widget">
+    <div class="now-playing" id="now-playing">Click anywhere to play</div>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volume" />
+    <div id="skip-btn" title="Next track" aria-label="Next track">→</div>
+    <div id="mute-btn" title="Toggle music">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,245,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <path id="wave-1" d="M15.5 8.5a5.5 5.5 0 010 8" />
+        <path id="wave-2" d="M18.5 5.5a9.5 9.5 0 010 13" />
+      </svg>
+    </div>
+  </div>
+
+<script src="/assets/player.js"></script>
+<script src="/assets/snow.js"></script>
+<script src="/assets/site-chrome.js"></script>
+</body>
+</html>
