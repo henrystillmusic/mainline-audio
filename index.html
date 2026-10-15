@@ -79,16 +79,16 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 56px 48px 72px;
+      padding: 36px 48px 72px;
     }
 
     .hero-logo {
-      width: 440px;
-      max-width: 88%;
+      width: 320px;
+      max-width: 70%;
       height: auto;
       filter: drop-shadow(0 0 40px rgba(184,248,255,0.18));
       opacity: 0.93;
-      margin-bottom: 48px;
+      margin-bottom: 24px;
     }
 
     .hero-tagline {
@@ -96,8 +96,8 @@
       font-weight: 500;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(245,245,245,0.2);
-      margin-bottom: 22px;
+      color: rgba(245,245,245,0.32);
+      margin-bottom: 16px;
     }
 
     .hero-statement {
@@ -106,6 +106,59 @@
       letter-spacing: 0.06em;
       line-height: 1.85;
       max-width: 480px;
+    }
+
+    /* Homepage-local nav legibility bump — scoped to this page only,
+       does not touch the shared .nav-home rule in /assets/site.css. */
+    .nav-home { color: rgba(245,245,245,0.4); }
+    .nav-home:hover { color: #f5f5f5; }
+
+    /* ── HERO CTAs ── */
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .hero-btn-primary {
+      background: transparent;
+      border: 1px solid rgba(245,245,245,0.4);
+      color: rgba(245,245,245,0.9);
+      padding: 15px 34px;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .hero-btn-primary:hover {
+      border-color: rgba(245,245,245,0.75);
+      color: #f5f5f5;
+      background: rgba(245,245,245,0.04);
+    }
+
+    .hero-btn-secondary {
+      border-bottom: 1px solid rgba(245,245,245,0.14);
+      color: rgba(245,245,245,0.45);
+      padding: 16px 18px;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .hero-btn-secondary:hover {
+      color: rgba(245,245,245,0.8);
+      border-bottom-color: rgba(245,245,245,0.35);
     }
 
     /* ── DIVIDER ── */
@@ -190,6 +243,8 @@
     @media (max-width: 768px) {
       .hero { padding: 40px 28px 56px; }
       .hero-logo { width: 280px; }
+      .hero-cta { flex-direction: column; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; }
+      .hero-btn-primary, .hero-btn-secondary { width: 100%; text-align: center; box-sizing: border-box; }
       .tiles { grid-template-columns: 1fr; margin-top: 40px; }
       .tile-wide { grid-column: span 1; }
       .tile { min-height: 160px; padding: 32px 28px; }
@@ -218,6 +273,10 @@
       <p class="hero-statement gradient-text">
         Precision where it matters.<br>Restraint where it doesn't.
       </p>
+      <div class="hero-cta">
+        <a class="hero-btn-primary" href="mastering.html">Start a Mastering Project</a>
+        <a class="hero-btn-secondary" href="dsp.html">Explore DSP Tools</a>
+      </div>
     </section>
 
     <div class="divider"></div>
