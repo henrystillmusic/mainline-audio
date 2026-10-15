@@ -96,7 +96,7 @@
       font-weight: 500;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(245,245,245,0.32);
+      color: var(--text-meta);
       margin-bottom: 16px;
     }
 
@@ -108,10 +108,8 @@
       max-width: 480px;
     }
 
-    /* Homepage-local nav legibility bump — scoped to this page only,
-       does not touch the shared .nav-home rule in /assets/site.css. */
-    .nav-home { color: rgba(245,245,245,0.4); }
-    .nav-home:hover { color: #f5f5f5; }
+    /* Homepage now inherits the shared --text-link/--text-primary tokens from
+       /assets/site.css for .nav-home — no local override needed. */
 
     /* ── HERO CTAs ── */
     .hero-cta {
@@ -137,7 +135,7 @@
       display: inline-block;
       transition: all 0.2s;
     }
-    .hero-btn-primary:hover {
+    .hero-btn-primary:hover, .hero-btn-primary:focus-visible {
       border-color: rgba(245,245,245,0.75);
       color: #f5f5f5;
       background: rgba(245,245,245,0.04);
@@ -145,7 +143,7 @@
 
     .hero-btn-secondary {
       border-bottom: 1px solid rgba(245,245,245,0.14);
-      color: rgba(245,245,245,0.45);
+      color: var(--text-link);
       padding: 16px 18px;
       font-family: inherit;
       font-size: 10px;
@@ -156,8 +154,8 @@
       display: inline-block;
       transition: all 0.2s;
     }
-    .hero-btn-secondary:hover {
-      color: rgba(245,245,245,0.8);
+    .hero-btn-secondary:hover, .hero-btn-secondary:focus-visible {
+      color: var(--text-primary);
       border-bottom-color: rgba(245,245,245,0.35);
     }
 
@@ -197,7 +195,7 @@
       font-size: 9px;
       font-weight: 700;
       letter-spacing: 0.3em;
-      color: rgba(245,245,245,0.12);
+      color: var(--text-decorative);
       margin-bottom: 20px;
     }
 
@@ -213,7 +211,7 @@
     .tile-desc {
       font-size: 11px;
       font-weight: 400;
-      color: rgba(245,245,245,0.28);
+      color: var(--text-body);
       letter-spacing: 0.05em;
       line-height: 1.75;
       margin-bottom: 24px;
@@ -225,11 +223,11 @@
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(245,245,245,0.2);
+      color: var(--text-link);
       transition: color 0.2s;
     }
 
-    .tile:hover .tile-cta { color: rgba(245,245,245,0.55); }
+    .tile:hover .tile-cta, .tile:focus-visible .tile-cta { color: var(--text-primary); }
 
     /* ── FOOTER ── */
     footer {

@@ -7,6 +7,19 @@
  * the-final-word-assets/style.css on top of this file.
  */
 
+/* ── Legibility tokens ──
+   A small, intentional text-opacity hierarchy, defined once here since every
+   page links this file first. Referenced by var(--text-*) throughout this
+   file, the-final-word-assets/style.css, and page-local <style> blocks. */
+:root {
+  --text-primary: #f5f5f5;
+  --text-body: rgba(245,245,245,0.60);
+  --text-link: rgba(245,245,245,0.60);
+  --text-secondary: rgba(245,245,245,0.44);
+  --text-meta: rgba(245,245,245,0.42);
+  --text-decorative: rgba(245,245,245,0.14);
+}
+
 /* ── Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -45,28 +58,28 @@ nav {
 }
 .nav-home {
   font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
-  text-transform: uppercase; color: rgba(245,245,245,0.18);
+  text-transform: uppercase; color: var(--text-link);
   text-decoration: none; transition: color 0.2s;
 }
-.nav-home:hover { color: #f5f5f5; }
+.nav-home:hover, .nav-home:focus-visible { color: var(--text-primary); }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-logo { height: 20px; width: auto; opacity: 0.9; }
 .nav-logo-link { display: inline-flex; line-height: 0; }
 .nav-links a {
   font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
-  text-transform: uppercase; color: rgba(245,245,245,0.28);
+  text-transform: uppercase; color: var(--text-link);
   text-decoration: none; transition: color 0.2s;
 }
-.nav-links a:hover { color: #f5f5f5; }
-.nav-links a.current { color: rgba(245,245,245,0.1); pointer-events: none; }
+.nav-links a:hover, .nav-links a:focus-visible { color: var(--text-primary); }
+.nav-links a.current { color: var(--text-meta); pointer-events: none; }
 
 /* ── Footer primitives ──
    footer padding stays page-specific — it is vertical rhythm against whatever
    section precedes the footer, not footer identity. */
-.footer-copy { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.08); margin-top: 10px; }
+.footer-copy { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-meta); margin-top: 10px; }
 .footer-links-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
-.footer-link { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,245,245,0.22); text-decoration: none; }
-.footer-link:hover { color: rgba(245,245,245,0.5); }
+.footer-link { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-link); text-decoration: none; }
+.footer-link:hover, .footer-link:focus-visible { color: var(--text-primary); }
 
 /* ── Background player widget ── */
 .audio-widget {

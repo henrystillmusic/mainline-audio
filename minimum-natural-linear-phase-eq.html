@@ -73,13 +73,13 @@
       max-width: 780px; margin-bottom: 22px;
     }
     .note-subtitle {
-      font-size: 14px; font-weight: 400; color: rgba(245,245,245,0.34);
+      font-size: 14px; font-weight: 400; color: var(--text-body);
       letter-spacing: 0.03em; line-height: 1.8; max-width: 560px;
       margin-bottom: 18px;
     }
     .note-pubdate {
       font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
-      text-transform: uppercase; color: rgba(245,245,245,0.18);
+      text-transform: uppercase; color: var(--text-meta);
     }
 
     .divider {
@@ -101,7 +101,7 @@
     }
     .prose > h2:first-child { margin-top: 0; }
     .prose p {
-      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      font-size: 15px; font-weight: 400; color: var(--text-body);
       letter-spacing: 0.01em; line-height: 1.85;
       margin-bottom: 20px;
     }
@@ -112,7 +112,7 @@
       border-left: 2px solid rgba(245,245,245,0.1);
     }
     .prose ul li {
-      font-size: 15px; font-weight: 400; color: rgba(245,245,245,0.5);
+      font-size: 15px; font-weight: 400; color: var(--text-body);
       letter-spacing: 0.01em; line-height: 1.85;
       padding: 2px 0;
     }
@@ -157,7 +157,7 @@
     }
     .note-author-role {
       font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
-      color: rgba(245,245,245,0.28); margin-bottom: 32px;
+      color: var(--text-secondary); margin-bottom: 32px;
     }
     .note-links {
       display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
@@ -165,10 +165,10 @@
     }
     .btn-text {
       font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
-      text-transform: uppercase; color: rgba(245,245,245,0.32);
+      text-transform: uppercase; color: var(--text-link);
       text-decoration: none; transition: color 0.2s;
     }
-    .btn-text:hover { color: rgba(245,245,245,0.65); }
+    .btn-text:hover, .btn-text:focus-visible { color: var(--text-primary); }
 
     .note-references {
       text-align: left;
@@ -177,22 +177,22 @@
     }
     .note-references-label {
       font-size: 9px; font-weight: 700; letter-spacing: 0.24em;
-      text-transform: uppercase; color: rgba(245,245,245,0.2);
+      text-transform: uppercase; color: var(--text-meta);
       margin-bottom: 14px;
     }
     .note-references ol {
       list-style: decimal; padding-left: 18px;
     }
     .note-references li {
-      font-size: 11.5px; font-weight: 400; color: rgba(245,245,245,0.28);
+      font-size: 11.5px; font-weight: 400; color: var(--text-secondary);
       letter-spacing: 0.02em; line-height: 1.7; margin-bottom: 8px;
     }
     .note-references li a {
-      color: rgba(245,245,245,0.4); text-decoration: underline;
+      color: var(--text-link); text-decoration: underline;
       text-decoration-color: rgba(245,245,245,0.15);
       text-underline-offset: 2px;
     }
-    .note-references li a:hover { color: rgba(245,245,245,0.7); }
+    .note-references li a:hover, .note-references li a:focus-visible { color: var(--text-primary); }
 
     footer { text-align: center; padding: 72px 48px 44px; }
 
