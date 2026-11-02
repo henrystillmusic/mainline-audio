@@ -47,6 +47,7 @@
   var wakeLock = null, usedFullscreen = false;
   var raf = 0, titleTimer = 0, leaveTimer = 0, still = false;
   var stalks = [];
+  var flakes = [];
 
   /* ───────────────────────── helpers ───────────────────────── */
 
@@ -105,7 +106,8 @@
         try {
           if (!graph.source) graph.source = ctxA.createMediaElementSource(a);
           var an = ctxA.createAnalyser();
-          an.fftSize = 128;
+          an.fftSize = 2048;
+          an.smoothingTimeConstant = 0.88;
           graph.source.connect(an);
           if (!graph.connectedToOutput) {     // the source must keep reaching the speakers
             graph.source.connect(ctxA.destination);
@@ -132,7 +134,51 @@
   ];
   var COUNT = 90;
 
+  var BAND_LO = 40, BAND_HI = 12000, bandsFor = 0;
+
+  // Give every stalk a log-spaced slice of the spectrum, low on the left and
+  // high on the right, like an analyzer, so the whole width moves.
+  function assignBands() {
+    var n = freqData.length, rate = (graph.ctx && graph.ctx.sampleRate) || 44100;
+    var hzPerBin = rate / 2 / n, order = [];
+    for (var i = 0; i < stalks.length; i++) order.push(i);
+    for (var b = 0; b < order.length; b++) {
+      var f0 = BAND_LO * Math.pow(BAND_HI / BAND_LO, b / order.length);
+      var f1 = BAND_LO * Math.pow(BAND_HI / BAND_LO, (b + 1) / order.length);
+      var st = stalks[order[b]];
+      st.lo = Math.min(n - 1, Math.floor(f0 / hzPerBin));
+      st.hi = Math.min(n, Math.max(st.lo + 1, Math.ceil(f1 / hzPerBin)));
+      st.peak = 0.25;
+    }
+    bandsFor = n;
+  }
+
+  // The overlay hides the page's own snow canvas, so it carries its own,
+  // matching snow.js (same colour and sizes, a little brighter).
+  function buildFlakes() {
+    flakes = [];
+    var W = window.innerWidth, H = window.innerHeight;
+    for (var i = 0; i < 160; i++) {
+      flakes.push({ x: Math.random() * W, y: Math.random() * H,
+        r: 1.0 + Math.random() * 2.5, d: 1.2 + Math.random() * 2.2 });
+    }
+  }
+
+  function drawSnow() {
+    var W = canvas.width, H = canvas.height;
+    ctx.fillStyle = "rgba(230,255,255,0.6)";
+    for (var i = 0; i < flakes.length; i++) {
+      var p = flakes[i];
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+      if (still) continue;
+      p.y += p.d;
+      p.x += Math.sin((p.y + p.x) * 0.002) * 0.08;
+      if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+    }
+  }
+
   function buildStalks() {
+    bandsFor = 0;
     stalks = [];
     for (var i = 0; i < COUNT; i++) {
       var p = PALETTE[Math.floor(Math.random() * PALETTE.length)];
@@ -185,8 +231,15 @@
     for (var i = 0; i < stalks.length; i++) {
       var s = stalks[i];
       if (live) {
-        var bin = Math.floor(s.fpos * freqData.length * 0.8);
-        s.target = Math.max(0.03, (freqData[bin] / 255) * s.maxFrac * 1.4);
+        if (bandsFor !== freqData.length) assignBands();
+        var sum = 0;
+        for (var bi = s.lo; bi < s.hi; bi++) sum += freqData[bi];
+        var lvl = sum / (s.hi - s.lo) / 255;
+        // Each band is judged against its own recent peak, so quiet high
+        // bands swing as fully as the bass does.
+        s.peak = Math.max(lvl, s.peak * 0.998, 0.12);
+        var norm = Math.pow(lvl / s.peak, 1.6);
+        s.target = Math.max(0.03, Math.min(0.6, norm * s.maxFrac * 1.2));
       } else {
         var v = Math.sin(t * s.freq + s.phase) * s.amp * 0.6 +
                 Math.sin(t * s.freq * 1.8 + s.phase * 1.3) * s.amp * 0.25 +
@@ -194,7 +247,7 @@
         s.target = Math.max(0.03, ((v + 1) / 2) * s.maxFrac);
       }
       // Slow idle motion is deliberately gentler than the audio-driven attack.
-      var speed = live ? (s.current < s.target ? 0.14 : 0.06) : 0.03;
+      var speed = live ? (s.current < s.target ? 0.07 : 0.025) : 0.03;
       s.current += (s.target - s.current) * (still ? 1 : speed);
 
       var barH = Math.max(4, s.current * H * 0.85);
@@ -240,6 +293,7 @@
     floor.addColorStop(1, "rgba(4,7,12,.95)");
     ctx.fillStyle = floor;
     ctx.fillRect(0, H - H * 0.1, W, H * 0.1);
+    drawSnow();
   }
 
   function resizeCanvas() {
@@ -380,6 +434,7 @@
     fadeMs = still ? 800 : (mode === "manual" ? FADE_IN_MANUAL_MS : FADE_IN_MS);
 
     buildStalks();
+    buildFlakes();
     resizeCanvas();
     refreshTitle();
     root.classList.toggle("still", still);
