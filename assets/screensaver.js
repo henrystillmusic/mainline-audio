@@ -296,17 +296,120 @@
     drawSnow();
   }
 
+  /* ─────────────── second look: swaying garden (from the prototype) ─────────────── */
+
+  var look = "spectrum";
+  var LOOK_KEY = "ml-ss-look";
+
+  // Alternate between the two looks each time the screensaver starts.
+  function nextLook() {
+    var prev = null;
+    try { prev = localStorage.getItem(LOOK_KEY); } catch (e) {}
+    var next = prev === "spectrum" ? "garden" : prev === "garden" ? "spectrum"
+             : (Math.random() < 0.5 ? "spectrum" : "garden");
+    try { localStorage.setItem(LOOK_KEY, next); } catch (e) {}
+    return next;
+  }
+
+  function drawScene(ts) {
+    if (look === "garden") drawGarden(ts); else drawReef(ts);
+  }
+
+  var garden = [], motes = [], gLvl = [0, 0, 0];
+
+  function buildGarden() {
+    var W = window.innerWidth, H = window.innerHeight;
+    garden = [];
+    var n = Math.max(9, Math.round(W / 70));
+    for (var i = 0; i < n; i++) {
+      garden.push({ x: (i + 0.5) / n * W + (Math.random() - 0.5) * 40, h: H * (0.18 + Math.random() * 0.3),
+        seg: 7 + Math.floor(Math.random() * 4), ph: Math.random() * 6.28,
+        col: Math.random() < 0.6 ? "233,138,116" : "127,214,200", w: 2 + Math.random() * 3 });
+    }
+    motes = [];
+    for (var m = 0, mc = Math.round(W / 22); m < mc; m++) {
+      motes.push({ x: Math.random() * W, y: Math.random() * H, r: 0.6 + Math.random() * 2, v: 0.15 + Math.random() * 0.5 });
+    }
+  }
+
+  function gardenBands() {
+    var a = audioEl();
+    if (still || !graph.analyser || !freqData || !a || a.paused) return [0, 0, 0];
+    graph.analyser.getByteFrequencyData(freqData);
+    var hz = ((graph.ctx && graph.ctx.sampleRate) || 44100) / 2 / freqData.length;
+    function avg(f0, f1) {
+      var lo = Math.max(1, Math.floor(f0 / hz)), hi = Math.min(freqData.length, Math.max(lo + 1, Math.ceil(f1 / hz))), sum = 0;
+      for (var i = lo; i < hi; i++) sum += freqData[i];
+      return sum / (hi - lo) / 255;
+    }
+    return [avg(40, 250), avg(250, 2000), avg(2000, 8000)];
+  }
+
+  function drawGarden(ts) {
+    var W = canvas.width, H = canvas.height, t = still ? 0 : ts * 0.00048;
+    if (!garden.length) buildGarden();
+    var b = gardenBands();
+    for (var k = 0; k < 3; k++) gLvl[k] += (b[k] - gLvl[k]) * 0.08;
+
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, "#05080d"); g.addColorStop(0.6, "#081625"); g.addColorStop(1, "#0d2230");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+    // light shafts
+    ctx.globalCompositeOperation = "lighter";
+    for (var i = 0; i < 4; i++) {
+      var x = W * (0.15 + i * 0.25) + Math.sin(t * 0.7 + i) * 60;
+      var sh = ctx.createLinearGradient(x, 0, x + 120, H);
+      sh.addColorStop(0, "rgba(127,214,200," + (0.05 + gLvl[2] * 0.12) + ")"); sh.addColorStop(1, "rgba(127,214,200,0)");
+      ctx.fillStyle = sh; ctx.beginPath();
+      ctx.moveTo(x - 30, 0); ctx.lineTo(x + 50, 0); ctx.lineTo(x + 260, H); ctx.lineTo(x + 40, H); ctx.fill();
+    }
+    ctx.globalCompositeOperation = "source-over";
+
+    // coral, swaying with the low and mid bands
+    ctx.lineCap = "round";
+    for (var c = 0; c < garden.length; c++) {
+      var s = garden[c], px = s.x, py = H, ang = -Math.PI / 2;
+      var len = s.h / s.seg * (1 + gLvl[0] * 0.35);
+      for (var j = 0; j < s.seg; j++) {
+        ang += Math.sin(t * 1.3 + s.ph + j * 0.5) * (0.06 + gLvl[1] * 0.12);
+        var nx = px + Math.cos(ang) * len, ny = py + Math.sin(ang) * len;
+        ctx.strokeStyle = "rgba(" + s.col + "," + (0.35 + 0.5 * (j / s.seg) + gLvl[1] * 0.2) + ")";
+        ctx.lineWidth = s.w * (1 - j / s.seg) + 0.6;
+        ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(nx, ny); ctx.stroke();
+        if (j > 2 && j % 2 === 0) {
+          var ba = ang + (j % 4 ? 0.7 : -0.7) + Math.sin(t + j) * 0.1;
+          ctx.beginPath(); ctx.moveTo(nx, ny); ctx.lineTo(nx + Math.cos(ba) * len * 0.6, ny + Math.sin(ba) * len * 0.6); ctx.stroke();
+        }
+        px = nx; py = ny;
+      }
+      ctx.fillStyle = "rgba(" + s.col + "," + (0.5 + gLvl[2] * 0.5) + ")";
+      ctx.beginPath(); ctx.arc(px, py, 2 + gLvl[2] * 5, 0, Math.PI * 2); ctx.fill();
+    }
+
+    // rising bubbles
+    ctx.fillStyle = "rgba(219,228,238,0.35)";
+    for (var m = 0; m < motes.length; m++) {
+      var mo = motes[m];
+      if (!still) { mo.y -= mo.v * (1 + gLvl[0] * 2); if (mo.y < -4) { mo.y = H + 4; mo.x = Math.random() * W; } }
+      ctx.beginPath(); ctx.arc(mo.x, mo.y, mo.r, 0, Math.PI * 2); ctx.fill();
+    }
+
+    drawSnow();
+  }
+
   function resizeCanvas() {
     if (!canvas) return;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    if (still) drawReef(12000);
+    if (look === "garden") buildGarden();
+    if (still) drawScene(12000);
   }
 
   function frame(ts) {
     raf = 0;
     if (state === "off") return;
-    drawReef(ts);
+    drawScene(ts);
     driftTitle(ts);
     raf = requestAnimationFrame(frame);
   }
@@ -433,12 +536,14 @@
     // The fade is a straight opacity transition; reduced-motion visitors get a shorter one.
     fadeMs = still ? 800 : (mode === "manual" ? FADE_IN_MANUAL_MS : FADE_IN_MS);
 
+    look = nextLook();
+    garden = [];
     buildStalks();
     buildFlakes();
     resizeCanvas();
     refreshTitle();
     root.classList.toggle("still", still);
-    if (still) drawReef(12000);
+    if (still) drawScene(12000);
 
     root.classList.add("on");
     root.style.transition = "none";
