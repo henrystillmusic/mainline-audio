@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sound Design Reel | Henry Still</title>
+    <meta name="description" content="Original sound redesigns for games and animation by Henry Still." />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <link rel="canonical" href="https://mainline-audio.com/sound-design-reel.html" />
+    <link rel="icon" href="/MAINLINE-AUDIO-SITE/favicon.ico" />
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <style>
+      .reel-page { max-width: 1080px; margin: 0 auto; padding: 66px 40px 80px; }
+      .reel-intro { max-width: 680px; margin: 0 auto 40px; text-align: center; }
+      .eyebrow { margin: 0 0 18px; color: var(--text-meta); font-size: 10px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; }
+      h1 { margin: 0 0 18px; color: var(--text-primary); font-size: clamp(34px, 6vw, 68px); font-weight: 700; letter-spacing: -.035em; line-height: .96; }
+      .intro-copy { margin: 0; color: var(--text-body); font-size: 12px; letter-spacing: .08em; line-height: 1.9; }
+      .reel-frame { overflow: hidden; border: 1px solid rgba(245,245,245,.14); background: #050505; box-shadow: 0 22px 70px rgba(0,0,0,.35); }
+      video { display: block; width: 100%; height: auto; background: #050505; }
+      .reel-caption { display: flex; justify-content: space-between; gap: 20px; padding: 15px 18px; border-top: 1px solid rgba(245,245,245,.1); color: var(--text-meta); font-size: 9px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
+      .reel-notes { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 850px; margin: 52px auto 0; }
+      .note { padding: 0 24px; border-right: 1px solid rgba(245,245,245,.08); text-align: center; }
+      .note:last-child { border-right: 0; }
+      .note h2 { margin: 0 0 10px; color: rgba(245,245,245,.62); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+      .note p { margin: 0; color: var(--text-body); font-size: 11px; line-height: 1.75; }
+      .contact { margin-top: 70px; text-align: center; }
+      .contact p { margin: 0 0 15px; color: var(--text-meta); font-size: 9px; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; }
+      .contact a { color: var(--text-primary); font-size: 15px; letter-spacing: .05em; text-decoration: none; }
+      .contact a:hover { opacity: .65; }
+      footer { padding: 0 40px 36px; text-align: center; }
+      @media (max-width: 700px) { .reel-page { padding: 48px 20px 60px; } .reel-notes { grid-template-columns: repeat(2, 1fr); row-gap: 34px; } .note { padding: 0 14px; } .note:nth-child(2) { border-right: 0; } }
+      @media (max-width: 420px) { .reel-caption { flex-direction: column; gap: 6px; } .reel-notes { grid-template-columns: 1fr; } .note, .note:nth-child(2) { border-right: 0; } }
+    </style>
+  </head>
+  <body data-page="sound-design-reel">
+    <canvas id="snow"></canvas>
+    <div class="site">
+      <nav data-site-nav aria-label="Main navigation"><a class="nav-home" href="index.html">Mainline Audio</a></nav>
+      <main class="reel-page">
+        <section class="reel-intro">
+          <p class="eyebrow">Henry Still</p>
+          <h1>Sound Design Reel</h1>
+          <p class="intro-copy">Original sound redesigns for games and animation.</p>
+        </section>
+        <section class="reel-frame" aria-label="Sound design reel">
+          <video controls playsinline preload="metadata">
+            <source src="/assets/henry-still-sound-design-reel.mp4" type="video/mp4" />
+            Your browser does not support HTML video.
+          </video>
+          <div class="reel-caption"><span>96 seconds</span><span>Game and animation sound redesigns</span></div>
+        </section>
+        <section class="reel-notes" aria-label="Reel highlights">
+          <article class="note"><h2>Combat</h2><p>Weapons, impacts, abilities, and responsive gameplay effects.</p></article>
+          <article class="note"><h2>Environment</h2><p>Atmosphere, movement, textures, and spatial detail.</p></article>
+          <article class="note"><h2>Character</h2><p>Performance-driven detail for action and animation.</p></article>
+          <article class="note"><h2>Process</h2><p>Recording, synthesis, layering, editing, processing, and mix.</p></article>
+        </section>
+        <section class="contact"><p>Contact</p><a href="mailto:henry@mainline-audio.com">henry@mainline-audio.com</a></section>
+      </main>
+      <footer data-site-footer><a class="footer-link" href="privacy-policy.html">Privacy Policy</a></footer>
+    </div>
+    <script src="/assets/snow.js"></script>
+    <script src="/assets/site-chrome.js"></script>
+    <script src="/assets/screensaver.js"></script>
+  </body>
+</html>
