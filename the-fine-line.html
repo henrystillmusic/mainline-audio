@@ -99,6 +99,15 @@
   .process-item { flex-basis: 40%; }
 }
 </style>
+
+  <style id="black-friday-sale">
+    .black-friday-strip { position: relative; overflow: hidden; margin: 18px auto 0; width: min(1080px, calc(100% - 48px)); box-sizing: border-box; padding: 12px 22px; border: 1px solid rgba(185,246,255,.52); background: linear-gradient(105deg, rgba(79,29,121,.78), rgba(8,76,96,.76), rgba(117,31,101,.72)); text-align: center; color: #fff; }
+    .black-friday-strip::before { content:""; position:absolute; inset:-80% -35%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent); transform:rotate(24deg); animation:bfstrip 6s ease-in-out infinite; }
+    .black-friday-strip span { position:relative; z-index:1; font-size:10px; font-weight:700; letter-spacing:.16em; line-height:1.7; text-transform:uppercase; }
+    .black-friday-strip a { position:relative; z-index:1; color:#cbfcff; font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; margin-left:12px; border-bottom:1px solid rgba(203,252,255,.45); }
+    @keyframes bfstrip { 0%,45%{transform:translateX(-50%) rotate(24deg)} 75%,100%{transform:translateX(50%) rotate(24deg)} }
+    @media(max-width:640px){.black-friday-strip{width:calc(100% - 32px);padding:11px 14px}.black-friday-strip a{display:inline-block;margin-left:0}}
+  </style>
 </head>
 <body data-page="">
 <canvas id="snow" data-count="120" data-opacity="0.4" data-radius="1.0,3.2" data-speed="1.0,3.0"></canvas>
@@ -109,6 +118,7 @@
       <img class="nav-logo" src="the-final-word-assets/img/logo-wordmark.png" alt="Mainline Audio">
     </a>
   </nav>
+<div class="black-friday-strip"><span>Black Friday Early Access · The Parallax is free · every other paid plugin $25</span> <a href="dsp.html">Explore the offer →</a></div>
 
   <section class="hero">
     <p class="hero-eyebrow">Mainline Audio</p>
@@ -118,12 +128,12 @@
       A precise, restrained mastering EQ — exact numeric control, minimal visual noise.
     </p>
     <div class="price-block" id="hero-price">
-      <p class="price-label">Available Now · Introductory Price</p>
-      <p class="price-value">$99</p>
+      <p class="price-label">Black Friday Early Access</p>
+      <p class="price-value">$25</p>
       <p class="price-regular">Regular price $149</p>
     </div>
     <div class="hero-cta" id="hero-cta">
-      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/e30bb3f6-7641-418f-862e-d3688fd60bae" target="_blank" rel="noopener">Buy Now — $99</a>
+      <a class="btn-outline" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/e30bb3f6-7641-418f-862e-d3688fd60bae" target="_blank" rel="noopener">Get It — $25</a>
       <a class="btn-text" href="https://mainline-audio.lemonsqueezy.com/checkout/buy/1be3c846-01e2-4853-955c-070705673f0d" target="_blank" rel="noopener">Download 14-Day Demo</a>
       <a class="btn-text" href="#features">See what's inside ↓</a>
     </div>
