@@ -202,6 +202,24 @@
         .product { min-height: 180px; padding: 32px 28px; }
         footer { padding: 48px 28px 36px; }
       }
+
+      /* Black Friday Early Access */
+      .sale-panel {
+        position: relative; overflow: hidden; width: min(740px, 100%); margin: 28px auto -8px; padding: 26px 30px;
+        border: 1px solid rgba(187, 246, 255, .62); background: linear-gradient(115deg, rgba(77, 28, 121, .78), rgba(7, 77, 95, .76) 50%, rgba(121, 31, 103, .73));
+        box-shadow: 0 0 54px rgba(108, 219, 255, .23), inset 0 0 36px rgba(255,255,255,.055);
+      }
+      .sale-panel::after { content: ""; position: absolute; inset: -55%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent); transform: rotate(24deg); animation: sale-sweep 6s ease-in-out infinite; }
+      .sale-panel > * { position: relative; z-index: 1; }
+      .sale-kicker { font-size: 9px; font-weight: 800; letter-spacing: .34em; text-transform: uppercase; color: #cdfaff; }
+      .sale-primary { margin: 8px 0 5px; font-size: clamp(24px, 4.3vw, 42px); line-height: 1; font-weight: 800; letter-spacing: -.035em; color: #fff; }
+      .sale-primary strong { color: #bfffff; text-shadow: 0 0 25px rgba(173,255,255,.42); }
+      .sale-secondary { font-size: 11px; letter-spacing: .11em; line-height: 1.7; color: rgba(255,255,255,.9); text-transform: uppercase; }
+      .sale-fine { margin: 12px 0 0; font-size: 9px; letter-spacing: .10em; color: rgba(255,255,255,.64); }
+      .sale-card-status { color: #ccfbff !important; }
+      .sale-card-status.free-now { color: #c0ffdf !important; }
+      @keyframes sale-sweep { 0%,45% { transform: translateX(-55%) rotate(24deg); } 75%,100% { transform: translateX(55%) rotate(24deg); } }
+      @media (max-width: 768px) { .sale-panel { box-sizing: border-box; padding: 22px 18px; } }
     </style>
   </head>
   <body data-page="dsp">
@@ -215,6 +233,12 @@
         <p class="hero-eyebrow">Mixing & Mastering Plugins</p>
         <h1 class="gradient-text">MAINLINE AUDIO DSP</h1>
         <p class="hero-sub">Professional mastering tools built with the same philosophy as the service.</p>
+        <section class="sale-panel" aria-label="Black Friday Early Access offer">
+          <div class="sale-kicker">Black Friday Early Access</div>
+          <div class="sale-primary">The Parallax — <strong>Free</strong></div>
+          <div class="sale-secondary">Every other paid Mainline plugin — $25</div>
+          <p class="sale-fine">Buy any 3 paid plugins, get a fourth free. Limited-time offer through Cyber Monday.</p>
+        </section>
       </section>
 
       <div class="divider"></div>
@@ -222,8 +246,8 @@
       <div class="products">
         <a class="product" href="the-final-word.html">
           <div>
-            <div class="product-status live">Available Now</div>
-            <h2 class="product-title">The Final Word</h2>
+            <div class="product-status live sale-card-status">Black Friday · $25</div>
+            <h2 class="product-title">The Final Word</h2> <span class="free-badge">$25</span>
             <p class="product-desc">True peak limiting with five character modes — from surgically clean and transparent to vintage tape and tube warmth. Built for the last stage of the chain.</p>
             <img class="product-render" src="TheFinalWord_Product.png" width="2234" height="1028" alt="The Final Word mastering limiter plugin interface">
           </div>
@@ -232,8 +256,8 @@
 
         <a class="product" href="the-fine-line.html">
           <div>
-            <div class="product-status live">Available Now</div>
-            <h2 class="product-title">The Fine Line</h2>
+            <div class="product-status live sale-card-status">Black Friday · $25</div>
+            <h2 class="product-title">The Fine Line</h2> <span class="free-badge">$25</span>
             <p class="product-desc">A precise, restrained mastering EQ — exact numeric control, minimal visual noise.</p>
             <img class="product-render" src="TheFineLineProductPic.png" width="2495" height="1275" alt="The Fine Line mastering EQ plugin interface">
           </div>
@@ -242,8 +266,8 @@
 
         <a class="product" href="the-focal-point.html">
           <div>
-            <div class="product-status live">Available Now</div>
-            <h2 class="product-title">The Focal Point</h2>
+            <div class="product-status live sale-card-status">Black Friday · $25</div>
+            <h2 class="product-title">The Focal Point</h2> <span class="free-badge">$25</span>
             <p class="product-desc">An eight-stage spectral motion processor for precise filtering, resonant movement, and evolving tonal shape.</p>
             <img class="product-render" src="TheFocalPoint_LaunchPic.png" width="2550" height="1546" loading="lazy" alt="The Focal Point 8-stage spectral motion processor plugin interface">
           </div>
@@ -252,8 +276,8 @@
 
         <a class="product" href="the-main-squeeze.html">
           <div>
-            <div class="product-status live">Available Now</div>
-            <h2 class="product-title">The Main Squeeze</h2>
+            <div class="product-status live sale-card-status">Black Friday · $25</div>
+            <h2 class="product-title">The Main Squeeze</h2> <span class="free-badge">$25</span>
             <p class="product-desc">A feed-forward mastering compressor built around Contour — from a transparent baseline to program-dependent glue.</p>
             <img class="product-render is-wide" src="TheMainSqueeze_LaunchPic.png" width="2240" height="936" loading="lazy" alt="The Main Squeeze feed-forward mastering compressor plugin interface">
           </div>
@@ -262,8 +286,8 @@
 
         <a class="product" href="the-parallax.html">
           <div>
-            <div class="product-status live">Available Now</div>
-            <h2 class="product-title">The Parallax</h2>
+            <div class="product-status live sale-card-status free-now">Black Friday · Free</div>
+            <h2 class="product-title">The Parallax</h2> <span class="free-badge">FREE</span>
             <p class="product-desc">A three-band stereo enhancer — independent Low, Mid and High width, a Perspective master, and Integrity restraint driven by stereo correlation.</p>
             <img class="product-render" src="TheParallax_LaunchPic.png" width="1429" height="950" loading="lazy" alt="The Parallax three-band stereo enhancer plugin interface">
           </div>
@@ -272,7 +296,7 @@
 
         <a class="product" href="the-main-drift.html">
           <div>
-            <div class="product-status live">Available Now</div>
+            <div class="product-status live">Always Free</div>
             <h2 class="product-title">The Main Drift <span class="free-badge">FREE</span></h2>
             <p class="product-desc">A creative drift processor — tape- and vinyl-style pitch and timing movement with Speed, Flutter, Width and Mix. Free.</p>
             <img class="product-render is-tall" src="TheMainDrift_LaunchPic.png" width="1036" height="836" loading="lazy" alt="The Main Drift creative drift processor plugin interface">
@@ -282,8 +306,8 @@
 
         <a class="product" href="the-spark-plug.html">
           <div>
-            <div class="product-status live">Available Now</div>
-            <h2 class="product-title">The Spark Plug</h2>
+            <div class="product-status live sale-card-status">Black Friday · $25</div>
+            <h2 class="product-title">The Spark Plug</h2> <span class="free-badge">$25</span>
             <p class="product-desc">Shape weight, presence, and texture across three independently driven bands.</p>
             <img class="product-render is-wide" src="TheSparkPlug_LaunchPic.png" width="2276" height="909" loading="lazy" alt="The Spark Plug three-band harmonic saturation plugin interface">
           </div>
@@ -292,8 +316,8 @@
 
         <a class="product" href="the-last-look.html">
           <div>
-            <div class="product-status live">Available Now</div>
-            <h2 class="product-title">The Last Look</h2>
+            <div class="product-status live sale-card-status">Black Friday · $25</div>
+            <h2 class="product-title">The Last Look</h2> <span class="free-badge">$25</span>
             <p class="product-desc">Complete metering and analysis for final mix/master decisions — loudness, dynamics, stereo image, spectral balance, reference comparison, and delivery checks in one view.</p>
             <img class="product-render" src="TheLastLookProductPic.png" width="2716" height="1798" loading="lazy" alt="The Last Look metering and analysis plugin interface">
           </div>
