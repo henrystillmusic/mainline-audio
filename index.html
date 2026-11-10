@@ -248,6 +248,22 @@
       .tile { min-height: 160px; padding: 32px 28px; }
       footer { padding: 28px 28px 36px; }
     }
+
+    /* Black Friday Early Access */
+    .black-friday-home {
+      position: relative; overflow: hidden; margin: 6px auto 0; width: min(980px, calc(100% - 48px));
+      padding: 17px 28px 18px; border: 1px solid rgba(186, 244, 255, 0.56);
+      background: linear-gradient(105deg, rgba(72, 28, 116, 0.78), rgba(8, 74, 94, 0.72) 49%, rgba(115, 35, 107, 0.70));
+      box-shadow: 0 0 46px rgba(126, 211, 255, 0.20), inset 0 0 35px rgba(255,255,255,0.045);
+      color: #fff; text-decoration: none; display: block; text-align: center;
+    }
+    .black-friday-home::before { content: ""; position: absolute; inset: -45%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transform: rotate(20deg); animation: bfSweep 6s ease-in-out infinite; }
+    .black-friday-home > * { position: relative; }
+    .bf-kicker { font-size: 9px; font-weight: 800; letter-spacing: .32em; text-transform: uppercase; color: #c9faff; }
+    .bf-headline { margin: 6px 0 4px; font-size: clamp(18px, 3vw, 29px); font-weight: 800; letter-spacing: -.025em; }
+    .bf-detail { font-size: 10px; letter-spacing: .12em; color: rgba(255,255,255,.84); text-transform: uppercase; }
+    @keyframes bfSweep { 0%,45% { transform: translateX(-55%) rotate(20deg); } 75%,100% { transform: translateX(55%) rotate(20deg); } }
+    @media (max-width: 640px) { .black-friday-home { width: calc(100% - 32px); padding: 15px 16px; } .bf-detail { line-height: 1.6; } }
   </style>
 </head>
 <body data-page="">
@@ -259,6 +275,12 @@
     <nav data-site-nav aria-label="Main navigation">
       <a class="nav-home" href="index.html">Mainline Audio</a>
     </nav>
+
+    <a class="black-friday-home" href="dsp.html" aria-label="Explore the Black Friday DSP sale">
+      <div class="bf-kicker">Black Friday Early Access</div>
+      <div class="bf-headline">The Parallax — Free</div>
+      <div class="bf-detail">Every other paid plugin $25 · Buy any 3, get 1 free →</div>
+    </a>
 
     <!-- HERO -->
     <section class="hero">
