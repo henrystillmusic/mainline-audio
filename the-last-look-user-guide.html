@@ -350,7 +350,7 @@
 
         <h3>Spectral</h3>
         <p>Each plug-in instance remembers its Spectrogram setting when you close the window or save and reopen your DAW project. New instances start with Spectrogram on.</p>
-        <p>SPECTRAL shows frequency balance in three foreground modes:</p>
+        <p>Spectral shows frequency balance in three foreground modes:</p>
         <ul>
           <li><strong>LINE</strong> for a continuous FFT curve.</li>
           <li><strong>BARS</strong> for a 48-band logarithmic spectrum.</li>
@@ -359,17 +359,17 @@
         <p>The spectrogram layer can sit underneath these displays or be used on its own. Use Spectral to spot broad balance tendencies, masking, or unexpected buildup — not to chase a flat curve. Different records can have very different spectral shapes and still translate well.</p>
 
         <h3>Wave</h3>
-        <p>WAVE shows the program waveform plus a more detailed recent-seconds view. It is also where you control FILE playback and enable MATCH when working with a reference.</p>
+        <p>Wave shows the program waveform plus a more detailed recent-seconds view. It is also where you control FILE playback and enable MATCH when working with a reference.</p>
 
         <h3>History</h3>
-        <p>HISTORY plots the way key readings change over time: short-term and integrated loudness, true peak, crest factor, and loudness range. It is available for live material only. A loaded file's scan is frozen analysis, so it does not have a live rolling history.</p>
+        <p>History plots the way key readings change over time: short-term and integrated loudness, true peak, crest factor, and loudness range. It is available for live material only. A loaded file's scan is frozen analysis, so it does not have a live rolling history.</p>
 
         <h3>Reference</h3>
-        <p>REFERENCE is the file-analysis workspace. It shows the selected file's identity — name, duration, sample rate, channels, and bit depth — alongside its scan report. This is where you load or drag files into FILE slots.</p>
+        <p>Reference is the file-analysis workspace. It shows the selected file's identity — name, duration, sample rate, channels, and bit depth — alongside its scan report. This is where you load or drag files into FILE slots.</p>
         <p>The name is REFERENCE. Some internal labels may still say "Analysis" or "File View" for compatibility, but those are not separate user-facing modes.</p>
 
         <h3>Delivery</h3>
-        <p>DELIVERY gathers five practical checks in one place:</p>
+        <p>Delivery gathers five practical checks in one place:</p>
         <ul>
           <li><strong>TRUE PEAK</strong></li>
           <li><strong>NEAR FULL SCALE</strong></li>
@@ -383,7 +383,7 @@
         <h2 id="always-visible-meters">Always-Visible Meters</h2>
 
         <h3>Loudness</h3>
-        <p>The LOUDNESS module presents:</p>
+        <p>The Loudness module presents:</p>
         <ul>
           <li><strong>Integrated LUFS</strong> — long-form program loudness.</li>
           <li><strong>Momentary LUFS</strong> — the immediate loudness view.</li>
@@ -394,11 +394,11 @@
         <p>These are descriptions, not targets imposed by the plug-in. A very compact club master, a film cue, and an acoustic performance may all make different, valid use of loudness range and peak headroom.</p>
 
         <h3>Dynamics</h3>
-        <p>The DYNAMICS module includes Crest Factor, Crest Range, true-peak context, and a long-term distribution view. Use it to understand attack, density, and movement — not as a score that must be maximized.</p>
+        <p>The Dynamics module includes Crest Factor, Crest Range, true-peak context, and a long-term distribution view. Use it to understand attack, density, and movement — not as a score that must be maximized.</p>
         <p>A lower crest factor can be exactly right for a dense, aggressive record. A wider result can be exactly right for music that depends on transient contrast. Compare like with like, and listen for whether the dynamics support the music.</p>
 
         <h3>Stereo</h3>
-        <p>The STEREO module includes:</p>
+        <p>The Stereo module includes:</p>
         <ul>
           <li><strong>Correlation</strong> from −1 to +1.</li>
           <li><strong>Balance</strong> as CENTER or left/right percentage.</li>
@@ -427,7 +427,7 @@
 
         <h3>REF and MATCH</h3>
         <p>Click REF to name a FILE slot as the loudness reference. Enable MATCH in Wave view to apply integrated-loudness matching to the FILE side of the comparison.</p>
-        <p>MATCH is a listening aid, not a render process and not a measurement rewrite. It affects FILE audition only; it does not alter the loaded file's scan report, DELIVERY readings, or live program.</p>
+        <p>MATCH is a listening aid, not a render process and not a measurement rewrite. It affects FILE audition only; it does not alter the loaded file's scan report, Delivery readings, or live program.</p>
         <p>If no reference slot is named, MATCH can still compare the current FILE against LIVE. If a named reference file is missing or unavailable, The Last Look reports that clearly and does not silently fall back to LIVE as though it were the reference.</p>
 
         <h2 id="audition-and-solo">Audition and Solo</h2>
@@ -441,7 +441,7 @@
         <aside class="caution-note">
           <p class="caution-note-label">Before You Print</p>
           <p>Use FILE audition and Solo freely for analysis, then clear Solo and return to LIVE before printing a master. <strong>CLEAR SOLO</strong> immediately restores the normal program path.</p>
-          <p>This matters especially for mono checks. The DELIVERY <strong>MONO FOLD</strong> row is a passive measurement and never changes audio. To hear the fold-down, use the <strong>M</strong> Solo chip — but remember that M Solo changes the output a plug-in instance returns to its host while it is active, not only what you hear locally.</p>
+          <p>This matters especially for mono checks. The <strong>MONO FOLD</strong> row in Delivery is a passive measurement and never changes audio. To hear the fold-down, use the <strong>M</strong> Solo chip — but remember that M Solo changes the output a plug-in instance returns to its host while it is active, not only what you hear locally.</p>
         </aside>
 
         <h2 id="freeze-and-reset">Freeze and Reset</h2>
@@ -450,7 +450,7 @@
           <li><strong>Freeze</strong> holds the displayed analysis so you can inspect a moment.</li>
           <li><strong>Reset</strong> starts that measurement history again.</li>
         </ul>
-        <p>Use RESET SESSION when you want to clear the broader live-session context before a new pass. Live view, FILE files, and session-document state have different persistence rules; a reset should be treated as a fresh measurement decision, not a correction to the audio.</p>
+        <p>Use RESET SESSION when you want to clear the broader live-session context before a new pass. Live view, loaded files, and session-document state have different persistence rules; a reset should be treated as a fresh measurement decision, not a correction to the audio.</p>
 
         <h2 id="standalone-application">Standalone Application</h2>
         <p>The Standalone edition is a dedicated measurement workspace, not a DAW replacement.</p>
@@ -469,14 +469,14 @@
         <h3>Playback and File Analysis</h3>
         <p>Standalone can audition one loaded FILE slot at a time with Play/Pause, Return to Start, and waveform scrubbing. It does not record, bounce, host other plug-ins, provide multi-output routing, or offer a multitrack timeline.</p>
         <p>Switching FILE slots while playback is active changes the transport target rather than automatically stopping playback.</p>
-        <p>FILE audition uses sample-rate conversion when necessary. That realtime audition can produce meter readings that differ from the file's frozen native-rate scan. When you need the authoritative delivery report for a reference file, use its frozen REFERENCE and DELIVERY data; use the realtime meters to understand what you are hearing through the current device path.</p>
+        <p>FILE audition uses sample-rate conversion when necessary. That real-time audition can produce meter readings that differ from the file's frozen native-rate scan. When you need the authoritative delivery report for a reference file, use its frozen Reference and Delivery data; use the real-time meters to understand what you are hearing through the current device path.</p>
 
         <h3>What Is Shared Across Formats</h3>
         <p>All five views, all metering modules, FILE scanning, Delivery checks, REF/MATCH, Mono Fold measurement, and Solo/Band behavior are shared by the AU, VST3, and Standalone editions.</p>
         <p>In a DAW, LIVE is simply the audio sent to the plug-in input. There is no audio-device selection step — the host owns that job. The Standalone app owns device selection and session documents, but its core analysis is the same.</p>
 
         <h2 id="batch-qc">Batch QC</h2>
-        <p>Use Batch QC in the standalone app to review the actual files you plan to deliver. In AU and VST3, use the existing Delivery view to check your DAW signal or a loaded reference.</p>
+        <p>Use Batch QC in the Standalone app to review the actual files you plan to deliver. In AU and VST3, use the existing Delivery view to check your DAW signal or a loaded reference.</p>
         <p>Batch QC remembers the most recent batch between launches. Select <strong>Clear Batch</strong> to discard its results and stop batch audition. Your source files and exported PDFs stay on disk. If a scan is running, let it finish or select <strong>Cancel scan</strong> first.</p>
         <ol>
           <li>Open <strong>Batch QC</strong> and drop in a folder of masters, or select <strong>Choose folder&hellip;</strong>.</li>
