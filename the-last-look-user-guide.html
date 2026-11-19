@@ -479,14 +479,14 @@
         <p>Use Batch QC in the standalone app to review the actual files you plan to deliver. In AU and VST3, use the existing Delivery view to check your DAW signal or a loaded reference.</p>
         <p>Batch QC remembers the most recent batch between launches. Select <strong>Clear Batch</strong> to discard its results and stop batch audition. Your source files and exported PDFs stay on disk. If a scan is running, let it finish or select <strong>Cancel scan</strong> first.</p>
         <ol>
-          <li>Open <strong>Batch QC</strong> and drop in a folder of masters, or select <strong>Choose folder</strong>.</li>
-          <li>Start with <strong>General QC</strong>, or select the delivery reference for your destination. Choose <strong>Open guidelines</strong> when a reference provides an external link. Profile notes compare the source file with published guidance.</li>
-          <li>In the overview, select a track to see its waveform and findings. <strong>PASS</strong> means the measured check cleared its limits. <strong>REVIEW</strong> calls for a listen or a closer look. <strong>ATTENTION</strong> means a finding crossed the higher threshold. Select a timestamped finding to jump to that spot, then press <strong>Play</strong> to audition it with the full meters.</li>
-          <li>Enter your mastering credit in <strong>PDF CREDIT</strong> and select <strong>Save PDF</strong> to export the batch overview and individual track findings.</li>
+          <li>Open <strong>Batch QC</strong> and drop in a folder of masters, or select <strong>Choose folder&hellip;</strong>.</li>
+          <li>Start with <strong>General QC</strong> or select a delivery reference for your destination. Read the profile notes to see how the source file compares with the published guidance. Select <strong>Open guidelines</strong> to read that guidance when a link is available.</li>
+          <li>In the overview, select a track to see its waveform and findings. <strong>PASS</strong> means the measured check cleared its limits. <strong>REVIEW</strong> calls for a listen or a closer look. <strong>ATTENTION</strong> means a finding crossed the higher threshold. Select a timestamped finding to jump to that spot, then press <strong>Play</strong> to audition it while watching the main workspace meters.</li>
+          <li>Enter your mastering credit in <strong>PDF CREDIT</strong> and select <strong>Save PDF&hellip;</strong> to export the batch overview and individual track findings.</li>
         </ol>
         <h3>AAC preview and decoded overs</h3>
         <p>Choose <strong>Apple Digital Masters</strong>, select a track, and run <strong>AAC check</strong>. Use <strong>Hear AAC</strong> and <strong>Hear source</strong> to compare playback. A brief <strong>Preparing meters&hellip;</strong> message can appear while the app prepares measurements for the audition source.</p>
-        <p>Compare source true peak with decoded true peak. A decoded value above 0 dBTP flags potential clipping on playback. Audit the flagged timestamps and repeat the check after any headroom adjustment. The report identifies the encoder used. An Apple AAC result represents the local Apple round trip, and other encoders can produce different peaks at the same bitrate.</p>
+        <p>Compare the source true peak, measured from the original file, with the true peak measured after AAC encoding and decoding. A decoded AAC peak above 0 dBTP flags potential clipping on playback. Audition the flagged timestamps and repeat the check after any headroom adjustment. The on-screen AAC round-trip results identify the encoder. If you export a PDF after the check, the track’s report includes the same AAC results. Other AAC encoders can produce different peaks at the same bitrate.</p>
 
         <h2 id="practical-workflows">Practical Workflows</h2>
 
