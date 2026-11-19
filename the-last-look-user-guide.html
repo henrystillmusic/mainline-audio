@@ -404,7 +404,7 @@
           <li><strong>Balance</strong> as CENTER or left/right percentage.</li>
           <li><strong>Width</strong>.</li>
           <li><strong>DC L/R</strong>.</li>
-          <li>A Lissajous goniometer with FAST/HOLD persistence. Double-click the slider to restore its default position.</li>
+          <li>A Lissajous goniometer with a <strong>FAST / HOLD</strong> persistence control. Double-click the persistence slider to restore its default position.</li>
         </ul>
         <p>Correlation is useful context for stereo compatibility, but it is not a universal pass/fail meter. A brief dip can be musically harmless; a persistent negative tendency in important low-frequency material deserves closer listening and a mono check.</p>
         <p>The goniometer shows the raw left/right relationship. Use it to see the shape of the image, not to force every production into the same pattern.</p>
@@ -426,7 +426,7 @@
         <p>Files must be mono or stereo. Other channel layouts are refused rather than silently downmixed.</p>
 
         <h3>REF and MATCH</h3>
-        <p>Click REF to name a FILE slot as the loudness reference. Enable MATCH in Wave view to apply integrated-loudness matching to the FILE side of the comparison.</p>
+        <p>Click <strong>REF</strong> to name a FILE slot as the loudness reference. Enable <strong>MATCH</strong> in Wave to apply integrated-loudness matching to the FILE side of the comparison.</p>
         <p>MATCH is a listening aid, not a render process and not a measurement rewrite. It affects FILE audition only; it does not alter the loaded file's scan report, Delivery readings, or live program.</p>
         <p>If no reference slot is named, MATCH can still compare the current FILE against LIVE. If a named reference file is missing or unavailable, The Last Look reports that clearly and does not silently fall back to LIVE as though it were the reference.</p>
 
@@ -445,12 +445,12 @@
         </aside>
 
         <h2 id="freeze-and-reset">Freeze and Reset</h2>
-        <p>The modules include shared F (freeze) and R (reset) controls.</p>
+        <p>The modules include shared <strong>F</strong> (freeze) and <strong>R</strong> (reset) controls.</p>
         <ul>
           <li><strong>Freeze</strong> holds the displayed analysis so you can inspect a moment.</li>
           <li><strong>Reset</strong> starts that measurement history again.</li>
         </ul>
-        <p>Use RESET SESSION when you want to clear the broader live-session context before a new pass. Live view, loaded files, and session-document state have different persistence rules; a reset should be treated as a fresh measurement decision, not a correction to the audio.</p>
+        <p>Use <strong>RESET SESSION</strong> when you want to clear the broader live-session context before a new pass. LIVE input, loaded FILE slots, and session-document state have different persistence rules; a reset should be treated as a fresh measurement decision, not a correction to the audio.</p>
 
         <h2 id="standalone-application">Standalone Application</h2>
         <p>The Standalone edition is a dedicated measurement workspace, not a DAW replacement.</p>
@@ -467,7 +467,7 @@
         <p>Missing files remain identified by their saved name and path until you relink them yourself. The app never searches your disk or silently substitutes another file.</p>
 
         <h3>Playback and File Analysis</h3>
-        <p>Standalone can audition one loaded FILE slot at a time with Play/Pause, Return to Start, and waveform scrubbing. It does not record, bounce, host other plug-ins, provide multi-output routing, or offer a multitrack timeline.</p>
+        <p>Standalone can audition one loaded FILE slot at a time with <strong>PLAY</strong> / <strong>PAUSE</strong>, <strong>RETURN TO START</strong>, and waveform scrubbing. It does not record, bounce, host other plug-ins, provide multi-output routing, or offer a multitrack timeline.</p>
         <p>Switching FILE slots while playback is active changes the transport target rather than automatically stopping playback.</p>
         <p>FILE audition uses sample-rate conversion when necessary. That real-time audition can produce meter readings that differ from the file's frozen native-rate scan. When you need the authoritative delivery report for a reference file, use its frozen Reference and Delivery data; use the real-time meters to understand what you are hearing through the current device path.</p>
 
@@ -484,22 +484,22 @@
           <li>In the overview, select a track to see its waveform and findings. <strong>PASS</strong> means the measured check cleared its limits. <strong>REVIEW</strong> calls for a listen or a closer look. <strong>ATTENTION</strong> means a finding crossed the higher threshold. Select a timestamped finding to jump to that spot, then press <strong>Play</strong> to audition it while watching the main workspace meters.</li>
           <li>Enter your mastering credit in <strong>PDF CREDIT</strong> and select <strong>Save PDF&hellip;</strong> to export the batch overview and individual track findings.</li>
         </ol>
-        <h3>AAC preview and decoded overs</h3>
+        <h3>AAC Preview and Decoded Overs</h3>
         <p>Choose <strong>Apple Digital Masters</strong>, select a track, and run <strong>AAC check</strong>. Use <strong>Hear AAC</strong> and <strong>Hear source</strong> to compare playback. A brief <strong>Preparing meters&hellip;</strong> message can appear while the app prepares measurements for the audition source.</p>
         <p>Compare the source true peak, measured from the original file, with the true peak measured after AAC encoding and decoding. A decoded AAC peak above 0 dBTP flags potential clipping on playback. Audition the flagged timestamps and repeat the check after any headroom adjustment. The on-screen AAC round-trip results identify the encoder. If you export a PDF after the check, the track’s report includes the same AAC results. Other AAC encoders can produce different peaks at the same bitrate.</p>
 
         <h2 id="practical-workflows">Practical Workflows</h2>
 
-        <h3>Final master check</h3>
+        <h3>Final Master Check</h3>
         <p>Use LIVE on the final chain. Check Loudness and Dynamics for context, then open Delivery to review true peak, near-full-scale, inter-sample overs, mono fold, and DC offset together. Investigate the rows that matter to your release path and your own listening — not every flag needs the same response.</p>
 
-        <h3>Reference comparison</h3>
+        <h3>Reference Comparison</h3>
         <p>Load up to four references in A–D. Choose one with REF, turn on MATCH when comparing loudness, and move between Spectral, Wave, and Delivery to compare broad balance, structure, and technical conditions. Keep in mind that MATCH is a listening comparison, not a statement that the two records should have the same loudness.</p>
 
-        <h3>Mono compatibility</h3>
+        <h3>Mono Compatibility</h3>
         <p>Read the MONO FOLD row first for a safe, continuous indication of fold-down change. Then use M Solo to hear what is happening, especially around bass, wide synths, reverbs, and layered high-frequency details. Clear Solo afterward before any print or bounce.</p>
 
-        <h3>File delivery review</h3>
+        <h3>File Delivery Review</h3>
         <p>Drop the final rendered file into a FILE slot. Its scan is separate from your live session and stays at the file's native rate, making it the cleanest way to inspect the delivered asset itself. Use the event log in Delivery to locate specific inter-sample-over or other delivery events in the file.</p>
 
         <h2 id="delivery-statuses">What Delivery Statuses Mean</h2>
