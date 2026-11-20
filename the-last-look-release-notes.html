@@ -9,20 +9,20 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/MAINLINE-AUDIO-SITE/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/MAINLINE-AUDIO-SITE/favicon-16x16.png">
 
-  <meta name="description" content="Release notes for The Last Look metering and analysis plugin — what changed in each version, and what it means when you are working." />
+  <meta name="description" content="What’s new in The Last Look 1.1.0 for macOS." />
   <link rel="canonical" href="https://mainline-audio.com/the-last-look-release-notes.html" />
 
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://mainline-audio.com/the-last-look-release-notes.html" />
   <meta property="og:title" content="The Last Look Release Notes | Mainline Audio" />
-  <meta property="og:description" content="Release notes for The Last Look metering and analysis plugin — what changed in each version, and what it means when you are working." />
+  <meta property="og:description" content="What’s new in The Last Look 1.1.0 for macOS." />
   <meta property="article:published_time" content="2026-10-13" />
   <meta property="article:author" content="Henry Still" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:url" content="https://mainline-audio.com/the-last-look-release-notes.html" />
   <meta name="twitter:title" content="The Last Look Release Notes | Mainline Audio" />
-  <meta name="twitter:description" content="Release notes for The Last Look metering and analysis plugin — what changed in each version, and what it means when you are working." />
+  <meta name="twitter:description" content="What’s new in The Last Look 1.1.0 for macOS." />
 
   <script type="application/ld+json">
   {
@@ -30,9 +30,9 @@
     "@type": "TechArticle",
     "@id": "https://mainline-audio.com/the-last-look-release-notes.html#article",
     "headline": "The Last Look Release Notes",
-    "description": "Release notes for The Last Look metering and analysis plugin — what changed in each version, and what it means when you are working.",
+    "description": "What’s new in The Last Look 1.1.0 for macOS.",
     "datePublished": "2026-10-13",
-    "dateModified": "2026-11-17",
+    "dateModified": "2026-11-20",
     "author": { "@id": "https://mainline-audio.com/#person" },
     "publisher": { "@id": "https://mainline-audio.com/#organization" },
     "mainEntityOfPage": {
@@ -161,47 +161,18 @@
       <header class="note-header">
         <p class="note-eyebrow">Release Notes</p>
         <h1 class="gradient-text">The Last Look Release Notes</h1>
-        <p class="note-subtitle">What's in each version, and what it means when you are working.</p>
-        <time class="note-pubdate" datetime="2026-11-17">November 2026</time>
+        <p class="note-subtitle">What’s new in version 1.1.0.</p>
+        <time class="note-pubdate" datetime="2026-11-20">November 2026</time>
       </header>
 
       <div class="divider"></div>
 
       <div class="prose">
-        <h2>The Last Look 1.1.0</h2>
-        <p class="note-pubdate" style="margin-bottom: 26px;">Released 18 November 2026 &middot; Batch QC and Spectrogram recall</p>
         <ul>
-          <li><strong>Batch QC in standalone.</strong> Scan a folder, review track findings on the waveform, and audition flagged moments with the full meters. Reopen the last batch or clear it from the toolbar.</li>
-          <li><strong>Delivery references and AAC audition.</strong> Compare exports with platform guidance and check the decoded true peak of a local AAC preview.</li>
-          <li><strong>PDF reports.</strong> Export the batch overview and individual track findings with an editable mastering credit.</li>
-          <li><strong>Goniometer reset in all formats.</strong> Double-click FAST/HOLD to restore the default trace persistence.</li>
-          <li><strong>Spectrogram settings recall.</strong> Each plug-in instance remembers whether Spectrogram is on or off when you reopen the window or reload a saved set.</li>
+          <li><strong>Delivery QC in Standalone.</strong> Check a single master or scan an album folder, jump to flagged moments, compare the source with a decoded AAC preview, and export PDF reports.</li>
+          <li><strong>Reference playback.</strong> Assign tracks from a batch to A/B slots in Standalone. In AU and VST3, turn on HOST to follow the DAW playhead.</li>
+          <li><strong>Metering workspace.</strong> Use the same transport across analysis views and adjust the Spectral Line response for live input and reference files.</li>
         </ul>
-
-        <h2>The Last Look 1.0.1 and 1.0.2</h2>
-        <p class="note-pubdate" style="margin-bottom: 26px;">Released 17 November 2026 &middot; Live input and metering</p>
-
-        <ul>
-          <li><strong>Standalone live input and waveform.</strong> The signed app opens both channels of a stereo input, including loopback devices such as BlackHole. The WAVE overview fills as audio arrives, including audio routed from Music or QuickTime.</li>
-          <li><strong>Stereo readouts.</strong> Correlation and balance move more smoothly during live metering and file playback. Live width moves more smoothly, and DC L/R stays on screen long enough to read across all three formats.</li>
-          <li><strong>True peak.</strong> The numerical readout catches peaks quickly, holds them for about 400 ms, then falls more slowly. The L/R sample-peak bars also release more gradually.</li>
-          <li><strong>Delivery checks.</strong> Peak detection, warning thresholds, verdicts, and event logs continue to use the same measurements.</li>
-        </ul>
-
-        <h2>The Last Look 1.0.0</h2>
-        <p class="note-pubdate" style="margin-bottom: 26px;">Released 13 October 2026 &middot; Initial release</p>
-
-        <p>The first release of The Last Look — complete metering and analysis for final mix/master decisions.</p>
-
-        <ul>
-          <li><strong>Formats.</strong> AU, VST3, and Standalone for macOS (Apple Silicon &amp; Intel, Universal).</li>
-          <li><strong>Demo.</strong> A 14-day, full-featured demo is available.</li>
-          <li><strong>Reference files.</strong> Load a reference file — including MP3 — for direct comparison against your own mix.</li>
-          <li><strong>Delivery checks.</strong> True peak, clipping, inter-sample overs, and DC offset, flagged before you export.</li>
-          <li><strong>Reference &amp; audition workflow.</strong> Switch between your mix and a loaded reference to judge level and tonal balance side by side.</li>
-        </ul>
-
-        <p>This is the initial release — there is no prior version to compare against.</p>
 
         <footer class="note-closing">
           <div class="divider"></div>
