@@ -485,9 +485,17 @@
           <li>In the overview, select a track to see its waveform and findings. <strong>PASS</strong> means the measured check cleared its limits. <strong>REVIEW</strong> calls for a listen or a closer look. <strong>ATTENTION</strong> means a finding crossed the higher threshold. Select a timestamped finding to jump to that spot, then press <strong>Play</strong> to audition it while watching the main workspace meters.</li>
           <li>Enter your mastering credit in <strong>PDF CREDIT</strong> and select <strong>Save PDF&hellip;</strong> to export the batch overview and individual track findings.</li>
         </ol>
-        <h3>AAC Preview and Decoded Overs</h3>
-        <p>Choose <strong>Apple Digital Masters</strong>, select a track, and run <strong>AAC check</strong>. Use <strong>Hear AAC</strong> and <strong>Hear source</strong> to compare playback. A brief <strong>Preparing meters&hellip;</strong> message can appear while the app prepares measurements for the audition source.</p>
-        <p>Compare the source true peak, measured from the original file, with the true peak measured after AAC encoding and decoding. A decoded AAC peak above 0 dBTP flags potential clipping on playback. Audition the flagged timestamps and repeat the check after any headroom adjustment. The on-screen AAC round-trip results identify the encoder. If you export a PDF after the check, the track’s report includes the same AAC results. Other AAC encoders can produce different peaks at the same bitrate.</p>
+        <h3>AAC Preview — 256 kbps Target</h3>
+        <p>AAC Preview encodes and decodes the selected master at a 256 kbps target. It uses Apple AAC when available and can fall back to FFmpeg AAC-LC if installed. The result identifies the encoder used.</p>
+
+        <h3>Delivery Presets</h3>
+        <p>Selecting Apple Digital Masters, Spotify, YouTube, TIDAL, Bandcamp, or General QC changes the technical delivery criteria used to evaluate your master.</p>
+        <p>Delivery presets do not simulate a streaming service's proprietary encoding or playback processing.</p>
+        <p>The AAC Preview uses the same encoding process regardless of the selected delivery preset.</p>
+
+        <h3>Understanding the Results</h3>
+        <p>The preview allows you to audition the decoded audio and identify potential encoding artifacts or true-peak overs introduced by lossy compression.</p>
+        <p>Delivery status indicates how a file compares with the selected technical criteria. It does not guarantee acceptance by a streaming service or identical playback results across platforms.</p>
 
         <h2 id="practical-workflows">Practical Workflows</h2>
 
