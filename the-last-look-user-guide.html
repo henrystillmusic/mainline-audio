@@ -487,9 +487,11 @@
         </ol>
         <h3>AAC Preview — 256 kbps Target</h3>
         <p>AAC Preview encodes and decodes the selected master at a 256 kbps target. It uses Apple AAC when available and can fall back to FFmpeg AAC-LC if installed. The result identifies the encoder used.</p>
+        <p>To run it, select a scanned WAV, AIFF, or FLAC track and click <strong>AAC Check</strong>. Switch between <strong>Original</strong> and <strong>AAC</strong> to audition the difference and review the decoded true-peak result. Run AAC Check before exporting your PDF if you want the completed AAC result, including encoder details and decoded true peak, included in the report.</p>
 
         <h3>Delivery Presets</h3>
-        <p>Selecting Apple Digital Masters, Spotify, YouTube, TIDAL, Bandcamp, or General QC changes the technical delivery criteria used to evaluate your master.</p>
+        <p>All presets use the same core Batch QC measurements and PASS / REVIEW / ATTENTION verdict thresholds. Selecting a destination adds source-format comparisons and guidance; it does not change those core measurements or thresholds.</p>
+        <p><strong>General QC</strong> adds no destination-specific comparison. <strong>Apple Digital Masters</strong> checks the source format against Apple guidance. <strong>Spotify</strong> adds format checks and advisory loudness/headroom estimates. <strong>TIDAL / HiRes FLAC</strong> compares the source with published stereo FLAC playback ranges. <strong>YouTube Music / Art Tracks</strong> checks the preferred source container, while <strong>YouTube Video</strong> compares the source sample rate with 48 kHz. <strong>Bandcamp</strong> checks lossless container, stereo, bit depth, and sample rate.</p>
         <p>Delivery presets do not simulate a streaming service's proprietary encoding or playback processing.</p>
         <p>The AAC Preview uses the same encoding process regardless of the selected delivery preset.</p>
 
@@ -520,7 +522,7 @@
 
         <h2 id="licensing-and-activation">Licensing and Activation</h2>
         <p>Purchase The Last Look through Mainline Audio’s secure Stripe checkout. Your license key is delivered by email after purchase. Enter that key in The Last Look to activate the full version.</p>
-        <p>Each license key permits <strong>one active computer at a time</strong>. To move The Last Look to a different computer, deactivate the license on your current computer, then use the <strong>same license key</strong> to activate it on the new computer. You do not need to purchase a second license just to change computers.</p>
+        <p>Each license key permits <strong>one active computer at a time</strong>. To move The Last Look to another computer, click the <strong>License status</strong> control, choose <strong>Deactivate License</strong>, and confirm. Then use the <strong>same license key</strong> to activate The Last Look on the new computer. You do not need to purchase a second license just to change computers.</p>
         <p>If you need assistance with activation or moving your license, contact <a href="mailto:support@mainline-audio.com">support@mainline-audio.com</a>.</p>
 
         <h2 id="formats-demo-and-support">Formats, Demo, and Support</h2>
